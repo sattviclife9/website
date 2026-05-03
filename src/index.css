@@ -27,3 +27,41 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
 }
+
+/* Hide Google Translate top banner and fix body shifting */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+body {
+  top: 0px !important;
+}
+#goog-gt-tt {
+  display: none !important;
+}
+.goog-tooltip skiptranslate {
+  display: none !important;
+}
+.goog-tooltip:hover {
+  display: none !important;
+}
+/* Style the google translate dropdown */
+.goog-te-gadget {
+  font-family: var(--font-sans) !important;
+  color: transparent !important;
+  font-size: 0 !important;
+}
+.goog-te-gadget .goog-te-combo {
+  font-family: inherit;
+  color: var(--color-clinic-white-off);
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  padding: 2px 4px;
+  font-size: 11px !important;
+  outline: none;
+  cursor: pointer;
+  margin: 0;
+}
+.goog-te-gadget span {
+  display: none;
+}

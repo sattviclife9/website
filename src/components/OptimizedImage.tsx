@@ -32,7 +32,7 @@ export default function OptimizedImage({
   const finalSrc = error ? fallbackSrc : optimizeUrl(src);
 
   return (
-    <div className={`relative overflow-hidden ${wrapperClassName} ${className.includes('rounded') ? className.match(/rounded-[a-z0-9-]+/)?.[0] || '' : ''} ${className.includes('aspect-') ? className.match(/aspect-[a-z0-9-\[\]]+/)?.[0] || '' : ''}`.trim()}>
+    <div className={`relative overflow-hidden h-full w-full ${wrapperClassName} ${className.includes('rounded') ? className.match(/rounded-[a-z0-9-]+/)?.[0] || '' : ''} ${className.includes('aspect-') ? className.match(/aspect-[a-z0-9-\[\]]+/)?.[0] || '' : ''}`.trim()}>
       {!isLoaded && !error && (
         <div className="absolute inset-0 bg-clinic-paper/40 animate-pulse" />
       )}
@@ -41,7 +41,7 @@ export default function OptimizedImage({
         alt={alt}
         loading={loading}
         decoding="async"
-        className={`transition-opacity duration-500 max-w-full ${isLoaded ? "opacity-100" : "opacity-0"} ${className}`}
+        className={`block transition-opacity duration-500 max-w-full ${isLoaded ? "opacity-100" : "opacity-0"} ${className}`}
         onLoad={(e) => {
           setIsLoaded(true);
           if (props.onLoad) props.onLoad(e);

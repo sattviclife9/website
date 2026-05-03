@@ -79,7 +79,7 @@ export default function Home() {
       "addressCountry": "IN"
     },
     "openingHours": "Mo-Sa 10:00-20:00",
-    "image": "https://sattvic.life/clinic.jpg",
+    "image": "https://lh3.googleusercontent.com/d/1Z5sQpQRsH-JUUuxKU2kYdS4MOflfEFTU",
     "priceRange": "$$",
     "review": TESTIMONIALS.map(t => ({
       "@type": "Review",
@@ -98,12 +98,12 @@ export default function Home() {
         schema={schema}
       />
       <section className="max-w-7xl mx-auto px-6 md:px-12 mb-20 text-center md:text-left relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-2xl mx-auto md:mx-0"
+            className="max-w-2xl mx-auto md:mx-0 lg:col-span-5"
           >
             <div className="mb-4 inline-flex items-center gap-3">
               <span className="h-[1px] w-8 bg-clinic-bronze"></span>
@@ -132,11 +132,11 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="relative lg:col-span-7"
           >
-            <div className="w-full aspect-video bg-clinic-teal-50 rounded-2xl md:rounded-[2.5rem] border border-clinic-border shadow-xl relative overflow-hidden">
+            <div className="w-full aspect-video md:aspect-[4/3] bg-clinic-teal-50 rounded-2xl md:rounded-[2.5rem] border border-clinic-border shadow-xl relative overflow-hidden">
               <OptimizedImage
-                src="/clinic.jpg"
+                src="https://lh3.googleusercontent.com/d/1Z5sQpQRsH-JUUuxKU2kYdS4MOflfEFTU"
                 alt="Clinic Interior"
                 className="w-full h-full object-cover opacity-90 mix-blend-multiply transition-transform duration-700 hover:scale-105"
               />
@@ -216,24 +216,44 @@ export default function Home() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
-                  <div className="aspect-square bg-white/10 rounded-2xl flex flex-col items-center justify-center p-6 text-center backdrop-blur-sm border border-white/10">
+                  <motion.div 
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    whileHover={{ scale: 1.05 }}
+                    className="aspect-square bg-white/10 rounded-2xl flex flex-col items-center justify-center p-6 text-center backdrop-blur-sm border border-white/10 shadow-lg cursor-pointer hover:bg-white/20 transition-colors"
+                  >
                     <Utensils className="w-8 h-8 text-clinic-gold mb-3" />
                     <span className="text-sm font-medium">Sattvic Diet</span>
-                  </div>
-                  <div className="aspect-[4/5] bg-clinic-gold/20 rounded-2xl flex flex-col items-center justify-center p-6 text-center border border-clinic-gold/20">
+                  </motion.div>
+                  <motion.div 
+                    animate={{ y: [0, 8, 0] }}
+                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                    whileHover={{ scale: 1.05 }}
+                    className="aspect-[4/5] bg-clinic-gold/20 rounded-2xl flex flex-col items-center justify-center p-6 text-center border border-clinic-gold/20 shadow-lg cursor-pointer hover:bg-clinic-gold/30 transition-colors"
+                  >
                     <Brain className="w-8 h-8 text-clinic-gold mb-3" />
                     <span className="text-sm font-medium">Mindfulness</span>
-                  </div>
+                  </motion.div>
                 </div>
                 <div className="space-y-4 pt-8">
-                  <div className="aspect-[4/5] bg-white/5 rounded-2xl flex flex-col items-center justify-center p-6 text-center border border-white/10">
+                  <motion.div 
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                    whileHover={{ scale: 1.05 }}
+                    className="aspect-[4/5] bg-white/5 rounded-2xl flex flex-col items-center justify-center p-6 text-center border border-white/10 shadow-lg cursor-pointer hover:bg-white/15 transition-colors"
+                  >
                     <Sun className="w-8 h-8 text-clinic-gold mb-3" />
                     <span className="text-sm font-medium">Daily Rhythms</span>
-                  </div>
-                  <div className="aspect-square bg-white/10 rounded-2xl flex flex-col items-center justify-center p-6 text-center backdrop-blur-sm border border-white/10">
+                  </motion.div>
+                  <motion.div 
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                    whileHover={{ scale: 1.05 }}
+                    className="aspect-square bg-white/10 rounded-2xl flex flex-col items-center justify-center p-6 text-center backdrop-blur-sm border border-white/10 shadow-lg cursor-pointer hover:bg-white/20 transition-colors"
+                  >
                     <Heart className="w-8 h-8 text-clinic-gold mb-3" />
                     <span className="text-sm font-medium">Holistic Joy</span>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>
@@ -283,68 +303,6 @@ export default function Home() {
       </section>
 
 
-
-      {/* Therapies Grid */}
-      <section className="bg-clinic-border/20 py-24 border-y border-clinic-border">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <div className="mb-4 inline-flex items-center gap-3">
-              <span className="h-[1px] w-8 bg-clinic-bronze"></span>
-              <span className="text-clinic-bronze font-serif italic text-lg">Curated Care</span>
-              <span className="h-[1px] w-8 bg-clinic-bronze"></span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-serif text-clinic-teal-900 mb-4 font-light">
-              Our Signature <span className="italic font-medium text-clinic-teal-900/80">Treatments</span>
-            </h2>
-            <p className="text-clinic-muted mt-6">
-              A selection of our most requested therapies. A formal consultation is required to tailor the perfect protocol for you.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-            {THERAPIES.map((therapy, index) => (
-              <motion.div
-                key={therapy.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group flex flex-col sm:flex-row bg-white/80 backdrop-blur-md rounded-2xl border border-white shadow-xl shadow-stone-200/50 overflow-hidden"
-              >
-                <div className="w-full sm:w-2/5 aspect-[4/3] sm:aspect-auto overflow-hidden">
-                  <OptimizedImage
-                    src={therapy.image}
-                    alt={therapy.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out grayscale hover:grayscale-0"
-                  />
-                </div>
-                <div className="p-6 sm:p-8 flex flex-col justify-center w-full sm:w-3/5">
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className="w-10 h-10 bg-clinic-white-off border border-clinic-border rounded-full flex items-center justify-center">
-                      {React.cloneElement(therapy.icon, { className: 'w-5 h-5 text-clinic-teal-900' })}
-                    </div>
-                    <span className="text-[10px] font-bold tracking-widest text-clinic-bronze uppercase">
-                      {therapy.duration}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-serif text-clinic-teal-900 mb-3">
-                    {therapy.title}
-                  </h3>
-                  <p className="text-xs text-clinic-muted leading-relaxed mb-6">
-                    {therapy.description}
-                  </p>
-                  <Link to="/services">
-                    <button className="flex items-center gap-1 text-[11px] font-bold tracking-widest uppercase text-clinic-teal-900 border-b border-transparent hover:border-clinic-bronze hover:text-clinic-bronze transition-colors mt-auto w-max pb-0.5">
-                      Read More
-                      <ChevronRight className="w-4 h-4 ml-1" />
-                    </button>
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Why Patients Trust Us */}
       <section className="bg-clinic-teal-900 text-clinic-white-off py-12 md:py-24 mt-24">

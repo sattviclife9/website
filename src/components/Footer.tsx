@@ -1,8 +1,29 @@
+import React from 'react';
 import { SattvicLogo } from './SattvicLogo';
 import { Link } from 'react-router-dom';
 import { Instagram, Facebook, Linkedin, Youtube } from 'lucide-react';
+import GoogleTranslate from './GoogleTranslate';
 
 export default function Footer() {
+  const handleLanguageChange = (code: string) => {
+    const select = document.querySelector('.goog-te-combo') as HTMLSelectElement | null;
+    if (select) {
+      select.value = code;
+      const event = new Event('change', { bubbles: true, cancelable: true });
+      select.dispatchEvent(event);
+    } else {
+      document.cookie = `googtrans=/en/${code}; path=/;`;
+      window.location.reload();
+    }
+  };
+
+  const languages = [
+    { code: 'en', label: 'ENGLISH' },
+    { code: 'mr', label: 'MARATHI' },
+    { code: 'ar', label: 'ARABIC' },
+    { code: 'hi', label: 'HINDI' }
+  ];
+
   return (
     <footer className="px-6 md:px-12 py-12 md:py-16 bg-clinic-charcoal border-t border-clinic-gold/30">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 mb-12">
@@ -25,7 +46,20 @@ export default function Footer() {
           <Link to="/treatments" className="hover:text-white cursor-pointer transition-colors border-b border-transparent hover:border-clinic-gold pb-1">Treatments</Link>
           <Link to="/about" className="hover:text-white cursor-pointer transition-colors border-b border-transparent hover:border-clinic-gold pb-1">About Us</Link>
           <div className="hidden md:block h-4 w-[1px] bg-white/20"></div>
-          <span className="text-white">EN / HI</span>
+          <div className="flex items-center space-x-3">
+            <GoogleTranslate />
+            {languages.map((lang, index) => (
+              <React.Fragment key={lang.code}>
+                <button 
+                  onClick={() => handleLanguageChange(lang.code)}
+                  className="hover:text-white transition-colors"
+                >
+                  {lang.label}
+                </button>
+                {index < languages.length - 1 && <span className="text-white/30">/</span>}
+              </React.Fragment>
+            ))}
+          </div>
         </div>
 
         {/* Social Media Icons */}

@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import SEO from '../components/SEO';
-import ShopNav from '../components/ShopNav';
+import InsightsNav from '../components/InsightsNav';
 
 export default function News() {
   return (
     <>
-      <ShopNav />
+      <InsightsNav />
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-12">
       <SEO 
         title="News & Updates | Sattvic Life"

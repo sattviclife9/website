@@ -104,9 +104,9 @@ export default function KnowDoctors() {
           <div className="sticky top-40 space-y-8">
             <div className="bg-clinic-teal-50 rounded-2xl overflow-hidden shadow-xl border border-clinic-border">
               <OptimizedImage
-                src="/doctor.jpg"
+                src="https://lh3.googleusercontent.com/d/1g206DwQZZlSr3ddAFXvdATkJU77qFk1K"
                 alt="Dr. Khan Aqsa Zarin"
-                className="w-full aspect-square object-cover"
+                className="w-full h-auto block"
               />
             </div>
 

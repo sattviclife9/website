@@ -53,7 +53,7 @@ export default function Navbar() {
         {/* Top Notification Bar */}
         <div className="bg-clinic-charcoal border-b border-clinic-gold/30 text-clinic-white-off py-2.5 text-[9px] md:text-[10px] font-bold tracking-[0.2em] uppercase">
           <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-6">
+            <div className="flex flex-wrap items-center gap-4 md:gap-6 justify-center sm:justify-start">
               <a href="tel:+919404417145" className="flex items-center gap-2 hover:text-clinic-gold transition-colors">
                 <Phone className="w-3 h-3 md:w-3.5 md:h-3.5" />
                 <span>Call Us: +91-9404417145</span>
@@ -509,7 +509,7 @@ export default function Navbar() {
               onMouseLeave={() => setWellnessHubDropdownOpen(false)}
             >
               <Link to="/dosha-quiz" className={`cursor-pointer flex items-center gap-1 border-b transition-all pb-0.5 ${
-                isActive('/dosha-quiz') || isActive('/lifestyle-tips')
+                isActive('/dosha-quiz') || isActive('/lifestyle-tips') || isActive('/store')
                   ? 'text-clinic-teal-900 border-clinic-gold' 
                   : 'hover:text-clinic-teal-900 border-transparent hover:border-clinic-gold'
               }`}>
@@ -524,6 +524,7 @@ export default function Navbar() {
                     exit={{ opacity: 0, y: 10 }}
                     className="absolute top-full left-0 mt-2 w-48 bg-white border border-clinic-border shadow-xl rounded-sm overflow-hidden flex flex-col py-2 uppercase text-[10px] tracking-wider"
                   >
+                    <Link to="/store" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Ayurvedic Store</Link>
                     <Link to="/dosha-quiz" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Dosha Quiz</Link>
                     <Link to="/lifestyle-tips" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Lifestyle Tips</Link>
                   </motion.div>
@@ -536,12 +537,12 @@ export default function Navbar() {
               onMouseEnter={() => setShopDropdownOpen(true)}
               onMouseLeave={() => setShopDropdownOpen(false)}
             >
-              <Link to="/store" className={`cursor-pointer flex items-center gap-1 border-b transition-all pb-0.5 ${
-                isActive('/store') || isActive('/news') || isActive('/announcements')
+              <Link to="/announcements" className={`cursor-pointer flex items-center gap-1 border-b transition-all pb-0.5 ${
+                isActive('/announcements') || isActive('/news') || isActive('/videos')
                   ? 'text-clinic-teal-900 border-clinic-gold' 
                   : 'hover:text-clinic-teal-900 border-transparent hover:border-clinic-gold'
               }`}>
-                Shop
+                Insights
               </Link>
               
               <AnimatePresence>
@@ -552,9 +553,9 @@ export default function Navbar() {
                     exit={{ opacity: 0, y: 10 }}
                     className="absolute top-full left-0 mt-2 w-48 bg-white border border-clinic-border shadow-xl rounded-sm overflow-hidden flex flex-col py-2 uppercase text-[10px] tracking-wider"
                   >
-                    <Link to="/store" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Ayurvedic Store</Link>
-                    <Link to="/news" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">News & Updates</Link>
                     <Link to="/announcements" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Announcements</Link>
+                    <Link to="/videos" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Video Gallery</Link>
+                    <Link to="/news" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">News & Updates</Link>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -1040,7 +1041,7 @@ export default function Navbar() {
               
               <div className="flex flex-col">
                 <div 
-                  className={`border-b border-clinic-border pb-4 w-full flex justify-between items-center ${(isActive('/dosha-quiz') || isActive('/lifestyle-tips')) ? 'text-clinic-teal-900' : 'hover:text-clinic-teal-900'}`}
+                  className={`border-b border-clinic-border pb-4 w-full flex justify-between items-center ${(isActive('/dosha-quiz') || isActive('/lifestyle-tips') || isActive('/store')) ? 'text-clinic-teal-900' : 'hover:text-clinic-teal-900'}`}
                 >
                   <Link to="/dosha-quiz" onClick={() => setMobileMenuOpen(false)} className="uppercase flex-1 text-left">Wellness Hub</Link>
                   <button onClick={() => setMobileExpanded(mobileExpanded === 'wellness' ? null : 'wellness')} className="px-4 py-1 -mr-4 focus:outline-none">
@@ -1055,6 +1056,7 @@ export default function Navbar() {
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden flex flex-col pl-4"
                     >
+                      <Link to="/store" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Ayurvedic Store</Link>
                       <Link to="/dosha-quiz" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Dosha Quiz</Link>
                       <Link to="/lifestyle-tips" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Lifestyle Tips</Link>
                     </motion.div>
@@ -1064,9 +1066,9 @@ export default function Navbar() {
 
               <div className="flex flex-col">
                 <div 
-                  className={`border-b border-clinic-border pb-4 w-full flex justify-between items-center ${(isActive('/store') || isActive('/news') || isActive('/announcements')) ? 'text-clinic-teal-900' : 'hover:text-clinic-teal-900'}`}
+                  className={`border-b border-clinic-border pb-4 w-full flex justify-between items-center ${(isActive('/announcements') || isActive('/videos') || isActive('/news')) ? 'text-clinic-teal-900' : 'hover:text-clinic-teal-900'}`}
                 >
-                  <Link to="/store" onClick={() => setMobileMenuOpen(false)} className="uppercase flex-1 text-left">Shop</Link>
+                  <Link to="/announcements" onClick={() => setMobileMenuOpen(false)} className="uppercase flex-1 text-left">Insights</Link>
                   <button onClick={() => setMobileExpanded(mobileExpanded === 'shop' ? null : 'shop')} className="px-4 py-1 -mr-4 focus:outline-none">
                     <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileExpanded === 'shop' ? 'rotate-180' : ''}`} />
                   </button>
@@ -1079,9 +1081,9 @@ export default function Navbar() {
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden flex flex-col pl-4"
                     >
-                      <Link to="/store" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Ayurvedic Store</Link>
-                      <Link to="/news" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">News & Updates</Link>
                       <Link to="/announcements" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Announcements</Link>
+                      <Link to="/videos" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Video Gallery</Link>
+                      <Link to="/news" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">News & Updates</Link>
                     </motion.div>
                   )}
                 </AnimatePresence>
