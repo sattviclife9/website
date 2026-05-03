@@ -327,7 +327,7 @@ export default function Services() {
   return (
     <>
       <TreatmentNav />
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-40 md:pb-32">
       <SEO 
         title="Ayurvedic Treatments & Panchakarma"
         description="Explore our authentic Ayurvedic treatments in Pune. Specialized services include Agnikarma for chronic pain, Viddhakarma, and traditional Panchakarma detox therapies."
@@ -337,30 +337,31 @@ export default function Services() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="max-w-3xl mb-16"
+        className="max-w-4xl mx-auto text-center mb-20 md:mb-28"
       >
-        <div className="mb-4 inline-flex items-center gap-3">
+        <div className="mb-6 md:mb-8 inline-flex items-center gap-4">
           <span className="h-[1px] w-8 bg-clinic-bronze"></span>
-          <span className="text-clinic-bronze font-serif italic text-lg">Healing Protocols</span>
+          <span className="text-clinic-bronze font-serif italic text-lg md:text-xl">Healing Protocols</span>
+          <span className="h-[1px] w-8 bg-clinic-bronze"></span>
         </div>
-        <h1 className="text-5xl md:text-6xl font-serif text-clinic-teal-900 leading-[0.9] mb-8 font-light">
+        <h1 className="text-5xl md:text-7xl font-serif text-clinic-teal-900 leading-[0.9] mb-8 font-light">
           Ayurvedic <span className="italic font-medium text-clinic-teal-900/80">Services</span>
         </h1>
-        <p className="text-lg text-clinic-muted leading-relaxed">
+        <p className="text-xl md:text-2xl text-clinic-charcoal font-light leading-relaxed max-w-3xl mx-auto">
           The core procedures of traditional healing. From Panchakarma to specialized para-surgical therapies.
         </p>
       </motion.div>
 
-      <div className="space-y-24">
+      <div className="space-y-24 md:space-y-32">
         {PROCEDURES.map((section: ServiceSection, idx) => {
           const sectionId = section.category.toLowerCase().replace(/[^a-z0-9]+/g, '-');
           return (
-          <div key={idx} id={sectionId} className="scroll-mt-[260px] lg:scroll-mt-[300px]">
-            <h2 className="text-3xl font-serif text-clinic-teal-900 mb-4 border-b border-clinic-border pb-4 uppercase tracking-wider">{section.category}</h2>
+          <div key={idx} id={sectionId} className="scroll-mt-[190px] lg:scroll-mt-[160px]">
+            <h2 className="text-3xl md:text-4xl font-serif text-clinic-teal-900 mb-6 border-b border-clinic-border pb-6 uppercase tracking-wider">{section.category}</h2>
             {section.desc && (
-              <p className="text-lg text-clinic-muted mb-8 leading-relaxed max-w-4xl">{section.desc}</p>
+              <p className="text-lg md:text-xl text-clinic-charcoal font-light mb-10 leading-relaxed max-w-4xl">{section.desc}</p>
             )}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {section.items.map((item, idxi) => (
                 <motion.div 
                    initial={{ opacity: 0, y: 10 }}
@@ -369,10 +370,10 @@ export default function Services() {
                    transition={{ duration: 0.4 }}
                    key={idxi} 
                    onClick={() => setSelectedService(item)}
-                   className="bg-white p-6 rounded-2xl shadow-sm border border-clinic-border cursor-pointer hover:shadow-md transition-shadow group overflow-hidden relative"
+                   className="bg-white p-8 rounded-[2rem] shadow-sm border border-clinic-border cursor-pointer hover:shadow-lg transition-all duration-300 group overflow-hidden relative"
                 >
-                  <h3 className="text-lg font-serif text-clinic-teal-900 mb-3 group-hover:text-clinic-gold transition-colors">{item.name}</h3>
-                  <p className="text-sm text-clinic-muted leading-relaxed">{item.desc}</p>
+                  <h3 className="text-xl md:text-2xl font-serif text-clinic-teal-900 mb-4 group-hover:text-clinic-gold transition-colors">{item.name}</h3>
+                  <p className="text-base text-clinic-muted font-light leading-relaxed">{item.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -382,7 +383,7 @@ export default function Services() {
       {createPortal(
         <AnimatePresence>
           {selectedService && (
-            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6" style={{ zIndex: 99999 }}>
+            <div className="fixed inset-0 z-[100] flex items-start justify-center p-4 pt-20 md:items-center md:pt-4 md:p-6" style={{ zIndex: 99999 }}>
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -394,7 +395,7 @@ export default function Services() {
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="bg-white max-w-2xl w-full rounded-2xl shadow-2xl z-10 relative overflow-hidden flex flex-col max-h-[90vh]"
+                className="bg-white max-w-2xl w-full rounded-2xl shadow-2xl z-10 relative overflow-hidden flex flex-col max-h-[85vh]"
               >
                 <div className="p-8 md:p-10 overflow-y-auto">
                   <button

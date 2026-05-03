@@ -63,28 +63,28 @@ export default function ConditionPage() {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-clinic-paper">
+      <section className="relative pt-8 pb-12 md:pt-40 md:pb-32 overflow-hidden bg-clinic-paper">
         <div className="absolute inset-0 z-0 opacity-10 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-clinic-bronze via-transparent to-transparent"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="inline-flex items-center gap-3 mb-6">
+              <div className="inline-flex items-center gap-4 mb-8">
                 <span className="h-[1px] w-8 bg-clinic-bronze"></span>
-                <span className="text-clinic-bronze font-serif italic text-lg">{data.category}</span>
+                <span className="text-clinic-bronze font-serif italic text-lg md:text-xl">{data.category}</span>
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-clinic-teal-900 leading-[1.1] mb-6">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-clinic-teal-900 leading-[1.1] mb-8 font-light">
                 {data.hero.title.split(data.name)[0]}
-                <span className="italic font-light">{data.name}</span>
+                <span className="italic font-medium">{data.name}</span>
                 {data.hero.title.split(data.name)[1]}
               </h1>
               
-              <p className="text-lg md:text-xl text-clinic-muted mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-clinic-charcoal font-light mb-10 leading-relaxed">
                 {data.hero.description}
               </p>
               

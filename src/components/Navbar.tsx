@@ -52,8 +52,11 @@ export default function Navbar() {
       <div className="fixed top-0 inset-x-0 z-50 flex flex-col">
         {/* Top Notification Bar */}
         <div className="bg-clinic-charcoal border-b border-clinic-gold/30 text-clinic-white-off py-2.5 text-[9px] md:text-[10px] font-bold tracking-[0.2em] uppercase">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex flex-wrap items-center gap-4 md:gap-6 justify-center sm:justify-start">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+            <div className="flex flex-col sm:flex-row items-center text-center sm:text-left order-1">
+              <ClinicStatus />
+            </div>
+            <div className="flex flex-wrap items-center gap-4 md:gap-6 justify-center sm:justify-end order-2 pt-1 sm:pt-0">
               <a href="tel:+919404417145" className="flex items-center gap-2 hover:text-clinic-gold transition-colors">
                 <Phone className="w-3 h-3 md:w-3.5 md:h-3.5" />
                 <span>Call Us: +91-9404417145</span>
@@ -62,9 +65,6 @@ export default function Navbar() {
                 <WhatsAppIcon className="w-3.5 h-3.5" />
                 <span>WhatsApp</span>
               </a>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-4 text-center sm:text-right">
-              <ClinicStatus />
             </div>
           </div>
         </div>

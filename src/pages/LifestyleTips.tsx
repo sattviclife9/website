@@ -106,7 +106,7 @@ export default function LifestyleTips() {
   return (
     <>
       <WellnessNav />
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-40 md:pb-32">
       <SEO 
         title="Sattvic Lifestyle Tips | Ayurvedic Diet & Routine"
         description="Discover Ayurvedic wisdom for daily living. Practical tips on diet (Ahara), daily routine (Dinacharya), and mindfulness for a balanced, Sattvic life."
@@ -116,15 +116,17 @@ export default function LifestyleTips() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-16"
+        className="max-w-4xl mx-auto text-center mb-20 md:mb-28"
       >
-        <div className="flex items-center justify-center gap-4 mb-4">
+        <div className="flex items-center justify-center gap-4 mb-6 md:mb-8">
           <span className="h-[1px] w-8 bg-clinic-bronze"></span>
-          <span className="text-clinic-bronze font-serif italic text-lg">Living Harmony</span>
+          <span className="text-clinic-bronze font-serif italic text-lg md:text-xl">Living Harmony</span>
           <span className="h-[1px] w-8 bg-clinic-bronze"></span>
         </div>
-        <h1 className="text-4xl md:text-5xl font-serif text-clinic-teal-900 mb-6">Sattvic Lifestyle <span className="italic">Tips</span></h1>
-        <p className="text-clinic-charcoal max-w-2xl mx-auto text-lg leading-relaxed">
+        <h1 className="text-5xl md:text-7xl font-serif text-clinic-teal-900 leading-[0.9] mb-8 font-light">
+          Sattvic Lifestyle <span className="italic font-medium text-clinic-teal-900/80">Tips</span>
+        </h1>
+        <p className="text-xl md:text-2xl text-clinic-charcoal font-light leading-relaxed max-w-3xl mx-auto">
           Health in Ayurveda isn't just about medicine—it's a way of living. Small, consistent shifts in your daily choices can lead to profound healing.
         </p>
       </motion.div>

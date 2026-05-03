@@ -7,32 +7,33 @@ export default function KnowDoctors() {
   return (
     <>
       <AboutNav />
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-40 md:pb-32">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="max-w-3xl mb-16"
+        className="max-w-4xl mx-auto text-center mb-20 md:mb-28"
       >
-        <div className="mb-4 inline-flex items-center gap-3">
+        <div className="mb-6 md:mb-8 inline-flex items-center gap-4">
           <span className="h-[1px] w-8 bg-clinic-bronze"></span>
-          <span className="text-clinic-bronze font-serif italic text-lg">Our Lineage</span>
+          <span className="text-clinic-bronze font-serif italic text-lg md:text-xl">Our Lineage</span>
+          <span className="h-[1px] w-8 bg-clinic-bronze"></span>
         </div>
-        <h1 className="text-5xl md:text-6xl font-serif text-clinic-teal-900 leading-[0.9] mb-8 font-light">
+        <h1 className="text-5xl md:text-7xl font-serif text-clinic-teal-900 leading-[0.9] mb-8 font-light">
           Know Your <span className="italic font-medium text-clinic-teal-900/80">Doctor</span>
         </h1>
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="lg:col-span-8 space-y-6 text-clinic-muted text-lg leading-relaxed"
+          className="lg:col-span-8 space-y-8 text-clinic-muted text-lg md:text-xl font-light leading-relaxed order-2 lg:order-1"
         >
-          <div className="mb-8">
-            <h2 className="text-4xl font-serif text-clinic-teal-900 mb-2 font-light">Dr. Khan Aqsa Zarin</h2>
-            <p className="text-clinic-gold font-bold uppercase tracking-widest text-sm">M.D Kayachikitsa (Medicine)</p>
+          <div className="mb-10">
+            <h2 className="text-4xl md:text-5xl font-serif text-clinic-teal-900 mb-4 font-light">Dr. Khan Aqsa Zarin</h2>
+            <p className="text-clinic-gold font-bold uppercase tracking-widest text-sm md:text-base">M.D Kayachikitsa (Medicine)</p>
           </div>
           <p>
             Dr. Khan Aqsa Zarin is a dedicated Ayurvedic physician known for her deep commitment to natural healing and personalized patient care. She holds an <strong className="text-clinic-teal-900 font-medium">M.D. in Kayachikitsa (Medicine)</strong> from Dr. D. Y. Patil College of Ayurveda, Pune, and completed her graduation (<strong className="text-clinic-teal-900 font-medium">B.A.M.S.</strong>) from <strong className="text-clinic-teal-900 font-medium">Government Ayurvedic College and Hospital Nanded</strong>. She has further enhanced her expertise with a <strong className="text-clinic-teal-900 font-medium">Diploma in Nutrition</strong>, along with <strong className="text-clinic-teal-900 font-medium">certifications in Panchakarma and Yoga</strong>, and <strong className="text-clinic-teal-900 font-medium">fellowship training in Viddhakarma and Agnikarma</strong>.
@@ -57,13 +58,27 @@ export default function KnowDoctors() {
             She believes in identifying the root cause (Nidana) of disease through precise diagnosis, including <strong className="text-clinic-teal-900 font-medium">Nadi Parikshan</strong>, and providing targeted, individualized treatment. She carefully plans every treatment based on the patient's body constitution (Prakriti), seasonal variations, and specific health needs. Her approach integrates Ayurvedic medicines, therapies, diet, and lifestyle modifications, with the goal of achieving complete and sustainable healing. She emphasizes guiding patients in such a way that, over time, they become independent of long-term medications and are able to maintain their health naturally.
           </p>
 
-          <blockquote className="mt-10 p-8 bg-clinic-teal-50 rounded-2xl border-l-4 border-clinic-gold text-clinic-teal-900 font-serif italic text-xl leading-relaxed">
+          <blockquote className="mt-16 p-10 md:p-12 bg-clinic-teal-50 rounded-[2.5rem] border-l-4 border-clinic-gold text-clinic-teal-900 font-serif italic text-2xl md:text-3xl leading-snug">
             "True healing is a journey we walk together—with trust, care, and understanding. My aim is not just to treat your illness, but to truly listen to you, support you, and gently guide you back to balance in life. True success for me is when my patients feel truly healthy, confident, and at peace—embracing positive lifestyle changes naturally and eventually living a life free from dependence on medicines."
           </blockquote>
 
-          <div className="mt-12 bg-white p-8 rounded-2xl shadow-sm border border-clinic-border">
-            <h3 className="text-2xl font-serif text-clinic-teal-900 mb-6 font-light">Selected International Publications</h3>
-            <div className="space-y-4">
+          <div className="mt-16 bg-white p-10 md:p-14 rounded-[2.5rem] shadow-sm border border-clinic-border">
+            <h3 className="text-3xl md:text-4xl font-serif text-clinic-teal-900 mb-8 font-light">Key Areas of Expertise</h3>
+            <ul className="space-y-6 text-clinic-muted">
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1.5">✦</span> Chronic joint and musculoskeletal pain</li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1.5">✦</span> Skin and beauty concerns</li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1.5">✦</span> Gut and digestive care</li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1.5">✦</span> Stress, anxiety, and sleep-related issues</li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1.5">✦</span> Hair and scalp problems</li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1.5">✦</span> Women's health and fertility care</li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1.5">✦</span> Lifestyle disorders</li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1.5">✦</span> Immunity-boosting and Panchakarma detox</li>
+            </ul>
+          </div>
+
+          <div className="mt-16 bg-white p-10 md:p-14 rounded-[2.5rem] shadow-sm border border-clinic-border">
+            <h3 className="text-3xl md:text-4xl font-serif text-clinic-teal-900 mb-8 font-light">Selected International Publications</h3>
+            <div className="space-y-6">
               <a href="https://www.sciencedirect.com/science/article/pii/S0975947623001791" target="_blank" rel="noopener noreferrer" className="block group">
                 <div className="p-5 rounded-xl border border-clinic-border hover:border-clinic-gold hover:shadow-md transition-all">
                   <h4 className="text-lg text-clinic-charcoal font-medium group-hover:text-clinic-gold transition-colors leading-snug tracking-wide">Ayurveda and Yoga management of chronic alcoholism sequelae - A case report</h4>
@@ -99,7 +114,7 @@ export default function KnowDoctors() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="lg:col-span-4"
+          className="lg:col-span-4 order-1 lg:order-2"
         >
           <div className="sticky top-40 space-y-8">
             <div className="bg-clinic-teal-50 rounded-2xl overflow-hidden shadow-xl border border-clinic-border">
@@ -108,20 +123,6 @@ export default function KnowDoctors() {
                 alt="Dr. Khan Aqsa Zarin"
                 className="w-full h-auto block"
               />
-            </div>
-
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-clinic-border">
-              <h3 className="text-xl font-serif text-clinic-teal-900 mb-6 border-b border-clinic-border pb-4">Key Areas of Expertise</h3>
-            <ul className="space-y-4 text-clinic-muted">
-              <li className="flex items-start gap-3"><span className="text-clinic-gold mt-1">✦</span> Chronic joint and musculoskeletal pain</li>
-              <li className="flex items-start gap-3"><span className="text-clinic-gold mt-1">✦</span> Skin and beauty concerns</li>
-              <li className="flex items-start gap-3"><span className="text-clinic-gold mt-1">✦</span> Gut and digestive care</li>
-              <li className="flex items-start gap-3"><span className="text-clinic-gold mt-1">✦</span> Stress, anxiety, and sleep-related issues</li>
-              <li className="flex items-start gap-3"><span className="text-clinic-gold mt-1">✦</span> Hair and scalp problems</li>
-              <li className="flex items-start gap-3"><span className="text-clinic-gold mt-1">✦</span> Women's health and fertility care</li>
-              <li className="flex items-start gap-3"><span className="text-clinic-gold mt-1">✦</span> Lifestyle disorders</li>
-              <li className="flex items-start gap-3"><span className="text-clinic-gold mt-1">✦</span> Immunity-boosting and Panchakarma detox</li>
-            </ul>
             </div>
           </div>
         </motion.div>

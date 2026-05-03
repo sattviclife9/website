@@ -97,8 +97,8 @@ export default function Home() {
         keywords="Ayurveda Clinic Pune, Agnikarma therapy, Viddhakarma treatment, Panchakarma detox, Ayurvedic pain relief, Nadi Pariksha, Sattvic Life Ayurveda"
         schema={schema}
       />
-      <section className="max-w-7xl mx-auto px-6 md:px-12 mb-20 text-center md:text-left relative">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <section className="max-w-7xl mx-auto px-6 md:px-12 mb-20 md:mb-28 text-center md:text-left relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -111,7 +111,7 @@ export default function Home() {
                 Expert Ayurvedic Care
               </span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-serif text-clinic-teal-900 leading-[1.1] mb-6 font-light">
+            <h1 className="text-4xl md:text-6xl font-serif text-clinic-teal-900 leading-[1.1] mb-6 md:mb-8 font-light">
               Relief from Chronic Illness with <br className="hidden md:block" />
               <span className="italic font-medium text-clinic-teal-900/80">Authentic Ayurveda</span>
             </h1>
@@ -150,11 +150,11 @@ export default function Home() {
       </section>
 
       {/* Patient Experience / Qualitative Trust Signal */}
-      <section className="bg-white py-16 border-y border-clinic-border mb-12 overflow-hidden">
+      <section className="bg-white py-16 md:py-24 border-y border-clinic-border mb-16 md:mb-24 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-           <div className="text-center mb-12">
-             <h2 className="text-2xl font-serif text-clinic-teal-900 mb-2">The Sattvic Experience</h2>
-             <p className="text-clinic-muted">What to expect when you choose us for your healing journey.</p>
+           <div className="text-center mb-12 md:mb-16">
+             <h2 className="text-3xl md:text-4xl font-serif text-clinic-teal-900 mb-4">The Sattvic Experience</h2>
+             <p className="text-clinic-muted font-light text-lg">What to expect when you choose us for your healing journey.</p>
            </div>
            
            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -176,10 +176,10 @@ export default function Home() {
       </section>
 
       {/* Dosha Quiz Banner */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 pb-8">
-        <div className="bg-clinic-teal-50 rounded-2xl p-10 md:p-14 border border-clinic-border text-center flex flex-col md:flex-row items-center justify-between gap-8 shadow-sm">
-          <div className="text-left md:text-left text-center max-w-2xl">
-            <h3 className="text-3xl font-serif text-clinic-teal-900 mb-4">What's Your Ayurvedic Body Type?</h3>
+      <section className="max-w-7xl mx-auto px-6 md:px-12 mb-16 md:mb-24">
+        <div className="bg-clinic-teal-50 rounded-2xl md:rounded-[2.5rem] p-10 md:p-16 border border-clinic-border text-center flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 shadow-sm">
+          <div className="text-center md:text-left max-w-2xl">
+            <h3 className="text-3xl md:text-4xl font-serif text-clinic-teal-900 mb-4 md:mb-6 leading-tight">What's Your Ayurvedic Body Type?</h3>
             <p className="text-clinic-muted font-light text-lg">Take our quick dosha quiz to uncover your unique mind-body constitution and receive personalized insight into your health.</p>
           </div>
           <Link to="/dosha-quiz" className="w-full md:w-auto">
@@ -191,23 +191,23 @@ export default function Home() {
       </section>
 
       {/* Lifestyle Tips Teaser */}
-      <section className="pb-8 bg-white">
+      <section className="pb-16 md:pb-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="bg-clinic-teal-900 rounded-[2.5rem] p-8 md:p-16 text-white relative overflow-hidden">
+          <div className="bg-clinic-teal-900 rounded-[2.5rem] p-8 md:p-16 lg:p-20 text-white relative overflow-hidden">
             {/* Background Accent */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
               <div>
                 <span className="text-clinic-gold font-serif italic text-lg mb-4 block">Ayurvedic Living</span>
-                <h2 className="text-4xl md:text-5xl font-serif mb-6 leading-tight">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif mb-6 md:mb-8 leading-tight">
                   Nourish Your Body,<br />
-                  <span className="italic">Calm Your Mind</span>
+                  <span className="italic font-light">Calm Your Mind</span>
                 </h2>
-                <p className="text-white/80 text-lg mb-8 leading-relaxed">
+                <p className="text-white/80 text-lg md:text-xl font-light mb-8 md:mb-10 leading-relaxed">
                   Discover practical wisdom for daily rituals, mindful eating, and mental clarity through the Sattvic lifestyle. Small changes, profound impact.
                 </p>
-                <Link to="/lifestyle-tips">
+                <Link to="/lifestyle-tips" className="inline-block">
                   <button className="bg-clinic-gold hover:bg-clinic-gold/90 text-clinic-teal-900 px-8 py-4 rounded-full transition-all font-bold flex items-center gap-2 group shadow-lg">
                     Explore Lifestyle Tips
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -262,9 +262,9 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="bg-clinic-ivory py-12 md:py-16 border-b border-clinic-border">
+      <section className="bg-clinic-ivory py-16 md:py-24 border-y border-clinic-border">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-           <div className="text-center mb-16">
+           <div className="text-center mb-16 md:mb-20">
              <div className="mb-4 inline-flex items-center gap-3">
                <span className="h-[1px] w-8 bg-clinic-bronze"></span>
                <span className="text-clinic-bronze font-serif italic text-lg">Patient Voices</span>
@@ -305,10 +305,10 @@ export default function Home() {
 
 
       {/* Why Patients Trust Us */}
-      <section className="bg-clinic-teal-900 text-clinic-white-off py-12 md:py-24 mt-24">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-12 lg:gap-24">
+      <section className="bg-clinic-teal-900 text-clinic-white-off py-16 md:py-28 mt-16 md:mt-24">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-16 lg:gap-24">
           <div className="w-full md:w-1/3 text-center md:text-left">
-            <div className="mb-4 inline-flex items-center gap-3">
+            <div className="mb-4 inline-flex items-center justify-center md:justify-start gap-3">
               <span className="h-[1px] w-8 bg-clinic-gold"></span>
               <span className="text-clinic-gold font-serif italic text-lg">Philosophy of Care</span>
             </div>
@@ -365,8 +365,8 @@ export default function Home() {
       </section>
 
       {/* CTA Banner */}
-      <section className="py-24 max-w-5xl mx-auto px-6 md:px-12 relative">
-        <div className="bg-clinic-teal-900 rounded-2xl p-10 md:p-16 text-center text-clinic-white-off relative overflow-hidden shadow-2xl">
+      <section className="py-20 md:py-32 max-w-5xl mx-auto px-6 md:px-12 relative">
+        <div className="bg-clinic-teal-900 rounded-[2.5rem] p-10 md:p-20 text-center text-clinic-white-off relative overflow-hidden shadow-2xl">
           {/* Soft decorative shapes */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[60px] transform translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-clinic-gold/10 rounded-full blur-[60px] transform -translate-x-1/2 translate-y-1/2 pointer-events-none"></div>

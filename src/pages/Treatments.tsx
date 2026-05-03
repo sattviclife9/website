@@ -398,32 +398,33 @@ export default function Treatments() {
   return (
     <>
       <TreatmentNav />
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-40 md:pb-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mb-16"
+          className="max-w-4xl mx-auto text-center mb-20 md:mb-28"
         >
-          <div className="mb-4 inline-flex items-center gap-3">
+          <div className="mb-6 md:mb-8 inline-flex items-center gap-4">
             <span className="h-[1px] w-8 bg-clinic-bronze"></span>
-            <span className="text-clinic-bronze font-serif italic text-lg">
+            <span className="text-clinic-bronze font-serif italic text-lg md:text-xl">
               Our Offerings
             </span>
+            <span className="h-[1px] w-8 bg-clinic-bronze"></span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-serif text-clinic-teal-900 leading-[0.9] mb-8 font-light">
+          <h1 className="text-5xl md:text-7xl font-serif text-clinic-teal-900 leading-[0.9] mb-8 font-light">
             Medical{" "}
             <span className="italic font-medium text-clinic-teal-900/80">
               Treatments
             </span>
           </h1>
-          <p className="text-lg text-clinic-muted leading-relaxed">
+          <p className="text-xl md:text-2xl text-clinic-charcoal font-light leading-relaxed max-w-3xl mx-auto">
             Comprehensive clinical divisions and specialized diagnostic care
             rooted in traditional Ayurveda.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
           {categories.map((category, index) => (
             <motion.div
               key={index}
@@ -432,15 +433,15 @@ export default function Treatments() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-clinic-border h-full scroll-mt-[140px]"
+              className="bg-white p-10 md:p-14 rounded-[2.5rem] shadow-sm border border-clinic-border h-full scroll-mt-[190px] lg:scroll-mt-[160px] hover:shadow-lg transition-all duration-300"
             >
-              <div className="w-14 h-14 bg-clinic-ivory rounded-full flex items-center justify-center mb-6">
+              <div className="w-16 h-16 bg-clinic-ivory rounded-full flex items-center justify-center mb-8">
                 {category.icon}
               </div>
-              <h3 className="text-2xl font-serif text-clinic-teal-900 mb-6">
+              <h3 className="text-3xl font-serif text-clinic-teal-900 mb-8 font-light">
                 {category.title}
               </h3>
-              <ul className="space-y-4 text-left">
+              <ul className="space-y-6 text-left">
                 {category.items.map((item, i) => (
                   <li key={i} className="flex flex-col gap-2">
                     <div className="flex items-start gap-3">

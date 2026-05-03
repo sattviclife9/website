@@ -121,7 +121,7 @@ export default function DoshaQuiz() {
   return (
     <>
       <WellnessNav />
-      <div className="min-h-[80vh] py-12 px-6 max-w-4xl mx-auto flex flex-col justify-center">
+      <div className="min-h-[80vh] pt-8 pb-12 md:pt-40 md:pb-32 px-6 max-w-4xl mx-auto flex flex-col justify-center">
       <AnimatePresence mode="wait">
         
         {/* INTRO STEP */}
@@ -131,17 +131,17 @@ export default function DoshaQuiz() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="text-center"
+            className="text-center mb-20 md:mb-28"
           >
-            <div className="mb-4 inline-flex items-center gap-4">
+            <div className="mb-6 md:mb-8 inline-flex items-center gap-4">
               <span className="h-[1px] w-8 bg-clinic-bronze"></span>
-              <span className="text-clinic-bronze font-serif italic text-lg">Prakriti Test</span>
+              <span className="text-clinic-bronze font-serif italic text-lg md:text-xl">Prakriti Test</span>
               <span className="h-[1px] w-8 bg-clinic-bronze"></span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-serif text-clinic-teal-900 leading-tight mb-6 font-light">
+            <h1 className="text-5xl md:text-7xl font-serif text-clinic-teal-900 leading-[0.9] mb-8 font-light">
               Discover Your <span className="italic font-medium text-clinic-teal-900/80">Dosha</span>
             </h1>
-            <p className="text-clinic-charcoal text-lg max-w-2xl mx-auto mb-10 font-light">
+            <p className="text-xl md:text-2xl text-clinic-charcoal font-light leading-relaxed max-w-3xl mx-auto mb-10">
               Ayurveda identifies three basic body types or "doshas" — Vata, Pitta, and Kapha. 
               Understanding your unique constitution helps guide your dietary, lifestyle, and treatment choices to maintain balance and optimal health.
             </p>

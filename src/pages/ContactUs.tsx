@@ -23,7 +23,7 @@ export default function ContactUs() {
   return (
     <>
       <AboutNav />
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-40 md:pb-32">
       <SEO 
         title="Contact Us | Book Your Ayurvedic Consultation"
         description="Get in touch with Sattvic Advanced Ayurveda in Pune. Book your appointment for Nadi Parikshan, Panchakarma, or pain management therapies today."
@@ -33,22 +33,23 @@ export default function ContactUs() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="max-w-3xl mb-16"
+        className="max-w-4xl mx-auto text-center mb-20 md:mb-28"
       >
-        <div className="mb-4 inline-flex items-center gap-3">
+        <div className="mb-6 md:mb-8 inline-flex items-center gap-4">
           <span className="h-[1px] w-8 bg-clinic-bronze"></span>
-          <span className="text-clinic-bronze font-serif italic text-lg">Reach Out</span>
+          <span className="text-clinic-bronze font-serif italic text-lg md:text-xl">Reach Out</span>
+          <span className="h-[1px] w-8 bg-clinic-bronze"></span>
         </div>
-        <h1 className="text-5xl md:text-6xl font-serif text-clinic-teal-900 leading-[0.9] mb-8 font-light">
+        <h1 className="text-5xl md:text-7xl font-serif text-clinic-teal-900 leading-[0.9] mb-8 font-light">
           Contact <span className="italic font-medium text-clinic-teal-900/80">Us</span>
         </h1>
-        <p className="text-lg text-clinic-muted leading-relaxed">
+        <p className="text-xl md:text-2xl text-clinic-charcoal font-light leading-relaxed max-w-3xl mx-auto">
           Book your consultation or simply reach out with questions regarding our therapies.
         </p>
       </motion.div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div className="bg-white p-8 rounded-[2rem] border border-clinic-border shadow-sm">
-          <h3 className="text-2xl font-serif text-clinic-teal-900 mb-6">Send an Inquiry</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+        <div className="bg-white p-10 md:p-14 rounded-[2.5rem] border border-clinic-border shadow-sm">
+          <h3 className="text-3xl font-serif text-clinic-teal-900 mb-8 font-light">Send an Inquiry</h3>
           <form 
             className="flex flex-col gap-4" 
             onSubmit={async (e) => { 
