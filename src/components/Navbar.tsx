@@ -537,7 +537,7 @@ export default function Navbar() {
               onMouseLeave={() => setShopDropdownOpen(false)}
             >
               <Link to="/store" className={`cursor-pointer flex items-center gap-1 border-b transition-all pb-0.5 ${
-                isActive('/store') || isActive('/news')
+                isActive('/store') || isActive('/news') || isActive('/announcements')
                   ? 'text-clinic-teal-900 border-clinic-gold' 
                   : 'hover:text-clinic-teal-900 border-transparent hover:border-clinic-gold'
               }`}>
@@ -554,6 +554,7 @@ export default function Navbar() {
                   >
                     <Link to="/store" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Ayurvedic Store</Link>
                     <Link to="/news" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">News & Updates</Link>
+                    <Link to="/announcements" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Announcements</Link>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -1063,7 +1064,7 @@ export default function Navbar() {
 
               <div className="flex flex-col">
                 <div 
-                  className={`border-b border-clinic-border pb-4 w-full flex justify-between items-center ${(isActive('/store') || isActive('/news')) ? 'text-clinic-teal-900' : 'hover:text-clinic-teal-900'}`}
+                  className={`border-b border-clinic-border pb-4 w-full flex justify-between items-center ${(isActive('/store') || isActive('/news') || isActive('/announcements')) ? 'text-clinic-teal-900' : 'hover:text-clinic-teal-900'}`}
                 >
                   <Link to="/store" onClick={() => setMobileMenuOpen(false)} className="uppercase flex-1 text-left">Shop</Link>
                   <button onClick={() => setMobileExpanded(mobileExpanded === 'shop' ? null : 'shop')} className="px-4 py-1 -mr-4 focus:outline-none">
@@ -1080,6 +1081,7 @@ export default function Navbar() {
                     >
                       <Link to="/store" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Ayurvedic Store</Link>
                       <Link to="/news" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">News & Updates</Link>
+                      <Link to="/announcements" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Announcements</Link>
                     </motion.div>
                   )}
                 </AnimatePresence>

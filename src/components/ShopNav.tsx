@@ -4,7 +4,8 @@ import { motion } from 'motion/react';
 
 const navItems = [
   { name: 'Ayurvedic Store', path: '/store' },
-  { name: 'News & Updates', path: '/news' }
+  { name: 'News & Updates', path: '/news' },
+  { name: 'Announcements', path: '/announcements' }
 ];
 
 export default function ShopNav() {

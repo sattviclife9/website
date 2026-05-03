@@ -9,6 +9,7 @@ import AboutCentre from './pages/AboutCentre';
 import KnowDoctors from './pages/KnowDoctors';
 import Store from './pages/Store';
 import News from './pages/News';
+import Announcements from './pages/Announcements';
 import ContactUs from './pages/ContactUs';
 import DoshaQuiz from './pages/DoshaQuiz';
 import LifestyleTips from './pages/LifestyleTips';
@@ -39,6 +40,7 @@ export default function App() {
             </Route>
             <Route path="store" element={<Store />} />
             <Route path="news" element={<News />} />
+            <Route path="announcements" element={<Announcements />} />
             <Route path="contact" element={<ContactUs />} />
             <Route path="lifestyle-tips" element={<LifestyleTips />} />
             <Route path="privacy" element={<PrivacyPolicy />} />
