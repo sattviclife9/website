@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
 
 const navItems = [
-  { name: 'Ayurvedic Store', path: '/store' },
+  { name: 'Store', path: '/store' },
   { name: 'Dosha Quiz', path: '/dosha-quiz' },
   { name: 'Lifestyle Tips', path: '/lifestyle-tips' }
 ];
