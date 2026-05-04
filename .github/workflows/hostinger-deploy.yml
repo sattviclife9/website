@@ -20,7 +20,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 20
 
       - name: Install dependencies
         run: |
@@ -37,3 +37,15 @@ jobs:
           publish_dir: ./dist
           publish_branch: hostinger-build
           force_orphan: true
+
+      - name: Trigger Hostinger Webhook
+        if: success()
+        run: |
+          if [ -n "${{ env.WEBHOOK }}" ]; then
+            curl -X POST -d '' "${{ env.WEBHOOK }}"
+            echo "Webhook triggered"
+          else
+            echo "No webhook configured. Please set HOSTINGER_WEBHOOK_URL in GitHub Secrets."
+          fi
+        env:
+          WEBHOOK: ${{ secrets.HOSTINGER_WEBHOOK_URL }}
