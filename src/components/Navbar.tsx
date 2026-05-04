@@ -528,7 +528,7 @@ export default function Navbar() {
                     exit={{ opacity: 0, y: 10 }}
                     className="absolute top-full left-0 mt-2 w-48 bg-white border border-clinic-border shadow-xl rounded-sm overflow-hidden flex flex-col py-2 uppercase text-[10px] tracking-wider"
                   >
-                    <Link to="/store" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Store</Link>
+                    <Link to="/store" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Ayurvedic Store</Link>
                     <Link to="/dosha-quiz" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Dosha Quiz</Link>
                     <Link to="/lifestyle-tips" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Lifestyle Tips</Link>
                   </motion.div>
@@ -1082,7 +1082,7 @@ export default function Navbar() {
                       className="overflow-hidden flex flex-col pl-4 mt-2 mb-2"
                     >
                       <Link to="/dosha-quiz" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase text-clinic-teal-900 font-medium tracking-wider">Overview</Link>
-                      <Link to="/store" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Store</Link>
+                      <Link to="/store" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Ayurvedic Store</Link>
                       <Link to="/dosha-quiz" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Dosha Quiz</Link>
                       <Link to="/lifestyle-tips" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Lifestyle Tips</Link>
                     </motion.div>
