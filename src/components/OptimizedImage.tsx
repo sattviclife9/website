@@ -34,7 +34,9 @@ export default function OptimizedImage({
   return (
     <div className={`relative overflow-hidden h-full w-full ${wrapperClassName} ${className.includes('rounded') ? className.match(/rounded-[a-z0-9-]+/)?.[0] || '' : ''} ${className.includes('aspect-') ? className.match(/aspect-[a-z0-9-\[\]]+/)?.[0] || '' : ''}`.trim()}>
       {!isLoaded && !error && (
-        <div className="absolute inset-0 bg-clinic-paper/40 animate-pulse" />
+        <div className="absolute inset-0 bg-clinic-border/30 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer" />
+        </div>
       )}
       <img
         src={finalSrc}

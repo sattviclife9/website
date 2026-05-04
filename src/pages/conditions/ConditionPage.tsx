@@ -33,7 +33,7 @@ export default function ConditionPage() {
       <Helmet>
         <title>{data.seo.title}</title>
         <meta name="description" content={data.seo.description} />
-        <meta name="keywords" content={data.seo.keywords} />
+        <meta name="keywords" content={`${data.seo.keywords}, Ayurvedic treatment for ${data.name}, Panchakarma for ${data.name}, natural remedies, holistic healing, Sattvic Ayurveda Pune, Nadi Parikshan, pain management`} />
         
         {/* Open Graph Tags */}
         <meta property="og:title" content={data.seo.title} />

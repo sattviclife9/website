@@ -104,6 +104,7 @@ export default function Navbar() {
                     exit={{ opacity: 0, y: 10 }}
                     className="absolute top-full left-0 mt-2 w-64 bg-white border border-clinic-border shadow-xl rounded-sm overflow-hidden flex flex-col py-2 uppercase text-[10px] tracking-wider"
                   >
+                    <Link to="/services" className="px-4 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors border-b border-clinic-border/30 font-medium text-clinic-teal-900">Overview</Link>
                     <Link to="/services#consultation-and-diagnostic-services" className="px-4 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors border-b border-clinic-border/30">Consultation & Diagnostic</Link>
                     <Link to="/services#panchakarma-and-detox-therapies" className="px-4 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors border-b border-clinic-border/30">Panchakarma & Detox</Link>
                     <Link to="/services#specialized-pain-management" className="px-4 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors border-b border-clinic-border/30">Specialized Pain Management</Link>
@@ -137,6 +138,9 @@ export default function Navbar() {
                     exit={{ opacity: 0, y: 10 }}
                     className="absolute top-full left-0 mt-2 w-[22rem] bg-white border border-clinic-border shadow-xl rounded-sm flex flex-col py-2 uppercase text-[10px] tracking-wider z-[100] group"
                   >
+                    <Link to="/treatments" className="px-5 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors w-full border-b border-clinic-border/30 font-medium text-clinic-teal-900">
+                      Overview
+                    </Link>
                     <div className="group/sub relative w-full">
                       <Link to="/treatments#musculoskeletal-joint-care" className="px-5 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors flex justify-between items-center w-full">
                         Musculoskeletal & Joint Care
@@ -635,10 +639,17 @@ export default function Navbar() {
 
               <div className="flex flex-col">
                 <div 
-                  className={`border-b border-clinic-border pb-4 w-full flex justify-between items-center ${isActive('/services') ? 'text-clinic-teal-900' : 'hover:text-clinic-teal-900'}`}
+                  className={`border-b border-clinic-border pb-3 w-full flex justify-between items-center ${isActive('/services') ? 'text-clinic-teal-900' : 'hover:text-clinic-teal-900'}`}
                 >
                   <Link to="/services" onClick={() => setMobileMenuOpen(false)} className="uppercase flex-1 text-left">Services</Link>
-                  <button onClick={() => setMobileExpanded(mobileExpanded === 'services' ? null : 'services')} className="px-4 py-1 -mr-4 focus:outline-none">
+                  <button 
+                    onClick={() => setMobileExpanded(mobileExpanded === 'services' ? null : 'services')} 
+                    className={`p-2 rounded-full transition-all duration-300 focus:outline-none flex items-center justify-center ${
+                      mobileExpanded === 'services' 
+                        ? 'bg-clinic-teal-50 text-clinic-teal-900 shadow-sm border border-clinic-teal-900/10' 
+                        : 'text-clinic-teal-900/50 bg-clinic-white-off/50 hover:bg-clinic-teal-50 hover:text-clinic-teal-900'
+                    }`}
+                  >
                     <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileExpanded === 'services' ? 'rotate-180' : ''}`} />
                   </button>
                 </div>
@@ -648,9 +659,9 @@ export default function Navbar() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden flex flex-col pl-4 text-[12px]"
+                      className="overflow-hidden flex flex-col pl-4 text-[12px] mt-2 mb-2"
                     >
-                      <Link to="/services" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Overview</Link>
+                      <Link to="/services" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase text-clinic-teal-900 font-medium tracking-wider">Overview</Link>
                       <Link to="/services#consultation-and-diagnostic-services" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Consultation & Diagnostic</Link>
                       <Link to="/services#panchakarma-and-detox-therapies" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Panchakarma & Detox</Link>
                       <Link to="/services#specialized-pain-management" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Specialized Pain Management</Link>
@@ -665,10 +676,17 @@ export default function Navbar() {
 
               <div className="flex flex-col">
                 <div 
-                  className={`border-b border-clinic-border pb-4 w-full flex justify-between items-center ${(isActive('/treatments') || location.pathname.startsWith('/conditions/')) ? 'text-clinic-teal-900' : 'hover:text-clinic-teal-900'}`}
+                  className={`border-b border-clinic-border pb-3 w-full flex justify-between items-center ${(isActive('/treatments') || location.pathname.startsWith('/conditions/')) ? 'text-clinic-teal-900' : 'hover:text-clinic-teal-900'}`}
                 >
                   <Link to="/treatments" onClick={() => setMobileMenuOpen(false)} className="uppercase flex-1 text-left">Treatments</Link>
-                  <button onClick={() => setMobileExpanded(mobileExpanded === 'treatments' ? null : 'treatments')} className="px-4 py-1 -mr-4 focus:outline-none">
+                  <button 
+                    onClick={() => setMobileExpanded(mobileExpanded === 'treatments' ? null : 'treatments')} 
+                    className={`p-2 rounded-full transition-all duration-300 focus:outline-none flex items-center justify-center ${
+                      mobileExpanded === 'treatments' 
+                        ? 'bg-clinic-teal-50 text-clinic-teal-900 shadow-sm border border-clinic-teal-900/10' 
+                        : 'text-clinic-teal-900/50 bg-clinic-white-off/50 hover:bg-clinic-teal-50 hover:text-clinic-teal-900'
+                    }`}
+                  >
                     <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileExpanded === 'treatments' ? 'rotate-180' : ''}`} />
                   </button>
                 </div>
@@ -678,7 +696,7 @@ export default function Navbar() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden flex flex-col pl-4 text-[12px]"
+                      className="overflow-hidden flex flex-col pl-4 text-[12px] mt-2 mb-2"
                     >
                       <Link to="/treatments" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase text-clinic-teal-900 font-medium tracking-wider">Overview</Link>
                       <div className="flex flex-col border-b border-clinic-border/50">
@@ -1041,10 +1059,17 @@ export default function Navbar() {
               
               <div className="flex flex-col">
                 <div 
-                  className={`border-b border-clinic-border pb-4 w-full flex justify-between items-center ${(isActive('/dosha-quiz') || isActive('/lifestyle-tips') || isActive('/store')) ? 'text-clinic-teal-900' : 'hover:text-clinic-teal-900'}`}
+                  className={`border-b border-clinic-border pb-3 w-full flex justify-between items-center ${(isActive('/dosha-quiz') || isActive('/lifestyle-tips') || isActive('/store')) ? 'text-clinic-teal-900' : 'hover:text-clinic-teal-900'}`}
                 >
                   <Link to="/dosha-quiz" onClick={() => setMobileMenuOpen(false)} className="uppercase flex-1 text-left">Wellness Hub</Link>
-                  <button onClick={() => setMobileExpanded(mobileExpanded === 'wellness' ? null : 'wellness')} className="px-4 py-1 -mr-4 focus:outline-none">
+                  <button 
+                    onClick={() => setMobileExpanded(mobileExpanded === 'wellness' ? null : 'wellness')} 
+                    className={`p-2 rounded-full transition-all duration-300 focus:outline-none flex items-center justify-center ${
+                      mobileExpanded === 'wellness' 
+                        ? 'bg-clinic-teal-50 text-clinic-teal-900 shadow-sm border border-clinic-teal-900/10' 
+                        : 'text-clinic-teal-900/50 bg-clinic-white-off/50 hover:bg-clinic-teal-50 hover:text-clinic-teal-900'
+                    }`}
+                  >
                     <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileExpanded === 'wellness' ? 'rotate-180' : ''}`} />
                   </button>
                 </div>
@@ -1054,8 +1079,9 @@ export default function Navbar() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden flex flex-col pl-4"
+                      className="overflow-hidden flex flex-col pl-4 mt-2 mb-2"
                     >
+                      <Link to="/dosha-quiz" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase text-clinic-teal-900 font-medium tracking-wider">Overview</Link>
                       <Link to="/store" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Ayurvedic Store</Link>
                       <Link to="/dosha-quiz" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Dosha Quiz</Link>
                       <Link to="/lifestyle-tips" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Lifestyle Tips</Link>
@@ -1066,10 +1092,17 @@ export default function Navbar() {
 
               <div className="flex flex-col">
                 <div 
-                  className={`border-b border-clinic-border pb-4 w-full flex justify-between items-center ${(isActive('/announcements') || isActive('/videos') || isActive('/news')) ? 'text-clinic-teal-900' : 'hover:text-clinic-teal-900'}`}
+                  className={`border-b border-clinic-border pb-3 w-full flex justify-between items-center ${(isActive('/announcements') || isActive('/videos') || isActive('/news')) ? 'text-clinic-teal-900' : 'hover:text-clinic-teal-900'}`}
                 >
                   <Link to="/announcements" onClick={() => setMobileMenuOpen(false)} className="uppercase flex-1 text-left">Insights</Link>
-                  <button onClick={() => setMobileExpanded(mobileExpanded === 'shop' ? null : 'shop')} className="px-4 py-1 -mr-4 focus:outline-none">
+                  <button 
+                    onClick={() => setMobileExpanded(mobileExpanded === 'shop' ? null : 'shop')} 
+                    className={`p-2 rounded-full transition-all duration-300 focus:outline-none flex items-center justify-center ${
+                      mobileExpanded === 'shop' 
+                        ? 'bg-clinic-teal-50 text-clinic-teal-900 shadow-sm border border-clinic-teal-900/10' 
+                        : 'text-clinic-teal-900/50 bg-clinic-white-off/50 hover:bg-clinic-teal-50 hover:text-clinic-teal-900'
+                    }`}
+                  >
                     <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileExpanded === 'shop' ? 'rotate-180' : ''}`} />
                   </button>
                 </div>
@@ -1079,8 +1112,9 @@ export default function Navbar() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden flex flex-col pl-4"
+                      className="overflow-hidden flex flex-col pl-4 mt-2 mb-2"
                     >
+                      <Link to="/announcements" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase text-clinic-teal-900 font-medium tracking-wider">Overview</Link>
                       <Link to="/announcements" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Announcements</Link>
                       <Link to="/videos" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Video Gallery</Link>
                       <Link to="/news" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">News & Updates</Link>
@@ -1091,10 +1125,17 @@ export default function Navbar() {
               
               <div className="flex flex-col">
                 <div 
-                  className={`border-b border-clinic-border pb-4 w-full flex justify-between items-center ${(isActive('/about') || isActive('/about/centre') || isActive('/about/doctors') || isActive('/contact')) ? 'text-clinic-teal-900' : 'hover:text-clinic-teal-900'}`}
+                  className={`border-b border-clinic-border pb-3 w-full flex justify-between items-center ${(isActive('/about') || isActive('/about/centre') || isActive('/about/doctors') || isActive('/contact')) ? 'text-clinic-teal-900' : 'hover:text-clinic-teal-900'}`}
                 >
                   <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="uppercase flex-1 text-left">About Us</Link>
-                  <button onClick={() => setMobileExpanded(mobileExpanded === 'about' ? null : 'about')} className="px-4 py-1 -mr-4 focus:outline-none">
+                  <button 
+                    onClick={() => setMobileExpanded(mobileExpanded === 'about' ? null : 'about')} 
+                    className={`p-2 rounded-full transition-all duration-300 focus:outline-none flex items-center justify-center ${
+                      mobileExpanded === 'about' 
+                        ? 'bg-clinic-teal-50 text-clinic-teal-900 shadow-sm border border-clinic-teal-900/10' 
+                        : 'text-clinic-teal-900/50 bg-clinic-white-off/50 hover:bg-clinic-teal-50 hover:text-clinic-teal-900'
+                    }`}
+                  >
                     <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileExpanded === 'about' ? 'rotate-180' : ''}`} />
                   </button>
                 </div>
@@ -1104,8 +1145,9 @@ export default function Navbar() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden flex flex-col pl-4"
+                      className="overflow-hidden flex flex-col pl-4 mt-2 mb-2"
                     >
+                      <Link to="/about" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase text-clinic-teal-900 font-medium tracking-wider">Overview</Link>
                       <Link to="/about" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Our Story</Link>
                       <Link to="/about/centre" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">The Centre</Link>
                       <Link to="/about/doctors" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Know Your Doctor</Link>

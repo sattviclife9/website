@@ -16,6 +16,13 @@
   --color-clinic-charcoal: #2A3332;
   --color-clinic-muted: #4A5554;
   --color-clinic-border: #E4EBEA;
+
+  --animate-shimmer: shimmer 2s infinite linear;
+  
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
 }
 
 body {

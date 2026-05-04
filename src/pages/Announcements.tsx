@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Check, Share2, Copy } from 'lucide-react';
+import { X, Check, Share2, Copy, Maximize2 } from 'lucide-react';
+import { createPortal } from 'react-dom';
 import SEO from '../components/SEO';
 import InsightsNav from '../components/InsightsNav';
 
@@ -9,13 +10,22 @@ export default function Announcements() {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentModalId = searchParams.get('id');
   const [copied, setCopied] = useState<string | null>(null);
+  const [isImageExpanded, setIsImageExpanded] = useState(false);
 
-  const openModal = (id: string) => setSearchParams({ id });
-  const closeModal = () => setSearchParams({});
+  const openModal = (id: string) => {
+    setIsImageExpanded(false);
+    setSearchParams({ id });
+  };
+  
+  const closeModal = () => {
+    setSearchParams({});
+    setIsImageExpanded(false);
+  };
 
   const handleShare = async (e: React.MouseEvent, id: string, title: string) => {
     e.stopPropagation();
-    const shareUrl = `${window.location.origin}/announcements?id=${id}`;
+    const currentUrlWithoutQuery = window.location.href.split('?')[0];
+    const shareUrl = `${currentUrlWithoutQuery}?id=${id}`;
     if (navigator.share) {
       try {
         await navigator.share({
@@ -41,7 +51,7 @@ export default function Announcements() {
       date: 'Announced Today',
       title: 'Medicated Takra Dhara - Special Offer',
       description: 'Tired of internal heat, acidity or burning sensation? Relief from acidity, burning & body heat naturally with our clinically proven deep cooling therapy.',
-      image: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80',
+      image: 'https://drive.google.com/thumbnail?id=16Qs9mwjpknCEqSRgG7eO-4fnO7HSn3hz&sz=w1200',
       imageAlt: 'Chakra Dhara Therapy on Forehead',
       oldPrice: '₹4,000',
       price: '₹2,799',
@@ -55,7 +65,7 @@ export default function Announcements() {
       date: '8th & 9th March',
       title: 'Celebrating International Women\'s Day',
       description: '"Honoring Her Strength, Healing Her Soul" - A Luxurious Wellness Experience for Her. Join us for a free Ayurvedic consultation, therapies, and exclusive discounts.',
-      image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80',
+      image: 'https://drive.google.com/thumbnail?id=1WsJ0YswDqDPM7XLxCPj01u1nG5JHbw44&sz=w1200',
       imageAlt: 'Ayurvedic Wellness Spa for Women',
       oldPrice: '',
       price: 'Free',
@@ -100,7 +110,8 @@ export default function Announcements() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 * (index + 1) }}
-            className="group block overflow-hidden rounded-2xl bg-white border border-clinic-border/60 shadow-lg hover:shadow-xl transition-all duration-300"
+            onClick={() => openModal(announcement.id)}
+            className="group block overflow-hidden rounded-2xl bg-white border border-clinic-border/60 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
           >
             <div className="relative aspect-[4/3] md:aspect-auto md:h-64 overflow-hidden bg-clinic-teal-50">
               <img 
@@ -144,7 +155,7 @@ export default function Announcements() {
 
               <div className="flex gap-3">
                 <button 
-                  onClick={() => openModal(announcement.id)}
+                  onClick={(e) => { e.stopPropagation(); openModal(announcement.id); }}
                   className="flex-1 py-3 bg-clinic-teal-50 text-clinic-teal-900 text-center rounded-xl font-medium hover:bg-clinic-teal-100 hover:shadow-md transition-all duration-300"
                 >
                   View Details
@@ -162,21 +173,22 @@ export default function Announcements() {
           ))}
         </div>
 
-        <AnimatePresence>
-          {activeAnnouncement && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-12 overflow-y-auto">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={closeModal}
-                className="fixed inset-0 bg-clinic-charcoal/60 backdrop-blur-sm"
-              />
+        {createPortal(
+          <AnimatePresence>
+            {activeAnnouncement && (
+              <div key="announcement-modal" className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 md:p-12 overflow-y-auto">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={closeModal}
+                  className="fixed inset-0 bg-clinic-charcoal/60 backdrop-blur-sm"
+                />
               <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="relative w-full max-w-3xl bg-white rounded-[2rem] shadow-2xl overflow-hidden z-10 flex flex-col max-h-[90vh]"
+                className={`relative w-full ${isImageExpanded ? 'max-w-6xl h-[90vh]' : 'max-w-3xl max-h-[90vh]'} bg-white rounded-[2rem] shadow-2xl overflow-hidden z-10 flex flex-col transition-all duration-500`}
               >
                 <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
                   <button 
@@ -186,23 +198,41 @@ export default function Announcements() {
                   >
                     {copied === activeAnnouncement.id ? <Check className="w-5 h-5 text-green-600" /> : <Share2 className="w-5 h-5" />}
                   </button>
-                  <button 
-                    onClick={closeModal}
-                    className="p-2 bg-white/80 backdrop-blur-md rounded-full text-clinic-charcoal hover:bg-white hover:text-clinic-teal-900 transition-colors shadow-sm"
-                    title="Close"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
+                  {isImageExpanded ? (
+                    <button 
+                      onClick={() => setIsImageExpanded(false)}
+                      className="p-2 bg-white/80 backdrop-blur-md rounded-full text-clinic-charcoal hover:bg-white hover:text-clinic-teal-900 transition-colors shadow-sm"
+                      title="Shrink image"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  ) : (
+                    <button 
+                      onClick={closeModal}
+                      className="p-2 bg-white/80 backdrop-blur-md rounded-full text-clinic-charcoal hover:bg-white hover:text-clinic-teal-900 transition-colors shadow-sm"
+                      title="Close"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  )}
                 </div>
 
-                <div className="overflow-y-auto flex-1">
-                  <div className="relative h-64 md:h-80 w-full bg-clinic-teal-50">
+                <div className={`overflow-y-auto flex-1 ${isImageExpanded ? 'flex flex-col' : ''}`}>
+                  <div 
+                    className={`relative w-full bg-clinic-teal-50 cursor-pointer group ${isImageExpanded ? 'flex-1 h-full min-h-0' : 'h-64 md:h-80'}`}
+                    onClick={() => setIsImageExpanded(!isImageExpanded)}
+                  >
                     <img 
                       src={activeAnnouncement.image} 
                       alt={activeAnnouncement.imageAlt} 
-                      className="w-full h-full object-cover"
+                      className={`w-full h-full ${isImageExpanded ? 'object-contain bg-black/5' : 'object-cover'}`}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-clinic-teal-900/80 via-clinic-teal-900/30 to-transparent flex items-end p-6 md:p-10">
+                    {!isImageExpanded && (
+                      <div className="absolute top-4 left-4 bg-black/40 backdrop-blur-sm text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <Maximize2 className="w-5 h-5" />
+                      </div>
+                    )}
+                    <div className={`absolute inset-0 bg-gradient-to-t from-clinic-teal-900/80 via-clinic-teal-900/30 to-transparent flex items-end p-6 md:p-10 pointer-events-none transition-opacity duration-300 ${isImageExpanded ? 'opacity-0' : 'opacity-100'}`}>
                       <div className="text-white">
                         {activeAnnouncement.badge && (
                           <div className="inline-block bg-clinic-gold text-clinic-teal-900 font-medium px-4 py-1.5 rounded-full text-sm mb-4">
@@ -215,6 +245,7 @@ export default function Announcements() {
                     </div>
                   </div>
 
+                  {!isImageExpanded && (
                   <div className="p-6 md:p-10">
                     {activeAnnouncement.id === 'takra-dhara' ? (
                       <>
@@ -358,11 +389,14 @@ export default function Announcements() {
                       </div>
                     )}
                   </div>
+                  )}
                 </div>
               </motion.div>
             </div>
-          )}
-        </AnimatePresence>
+            )}
+          </AnimatePresence>,
+          document.body
+        )}
       </div>
     </>
   );

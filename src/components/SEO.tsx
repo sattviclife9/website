@@ -21,13 +21,15 @@ export default function SEO({
   schema
 }: SEOProps) {
   const fullTitle = `${title} | Sattvic Ayurveda & Wellness`;
+  const defaultKeywords = "Ayurvedic treatments, Panchakarma, Nadi Parikshan, pain management, Viddhakarma, Agnikarma, joint pain relief, spine care, Ayurvedic clinic Pune, holistic healing, Dosha balance, natural remedies";
+  const finalKeywords = keywords ? `${keywords}, ${defaultKeywords}` : defaultKeywords;
 
   return (
     <Helmet>
       {/* Standard Metadata */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
-      {keywords && <meta name="keywords" content={keywords} />}
+      <meta name="keywords" content={finalKeywords} />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
