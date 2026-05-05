@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLocation } from 'react-router-dom';
-import { X } from 'lucide-react';
+import { X, Maximize2 } from 'lucide-react';
 import SEO from '../components/SEO';
 import TreatmentNav from '../components/TreatmentNav';
 
@@ -10,6 +10,7 @@ interface ServiceItem {
   name: string;
   desc: string;
   details?: string;
+  image?: string;
 }
 
 interface ServiceSection {
@@ -34,12 +35,14 @@ const PROCEDURES: ServiceSection[] = [
       { 
         name: "Nasya (Nasal Therapy)", 
         desc: "Cleanses nasal passages and sinuses, balancing Vata and Kapha. Good for allergies, headaches, and mental clarity.",
-        details: "Nasya is an Ayurvedic OPD procedure, usually completed within 15 minutes, and is an integral part of the Dinacharya (daily regimen) described in Ayurveda. It involves the administration of medicated oil or herbal preparations through the nostrils and is especially beneficial for maintaining the health of the head and neck region. Nasya helps cleanse the nasal passages and sinuses, improves breathing, and supports proper oxygen supply to the brain. It is effective in overcoming allergies, nasal dryness, irritation, and congestion, while providing relief from sinusitis, headaches, and respiratory discomfort. Regular practice of Nasya helps balance Vata and Kapha doshas, reduces dryness, strengthens the nose, eyes, ears, throat, and brain, improves mental clarity, and supports overall sensory organ health and well-being."
+        details: "Nasya is an Ayurvedic OPD procedure, usually completed within 15 minutes, and is an integral part of the Dinacharya (daily regimen) described in Ayurveda. It involves the administration of medicated oil or herbal preparations through the nostrils and is especially beneficial for maintaining the health of the head and neck region. Nasya helps cleanse the nasal passages and sinuses, improves breathing, and supports proper oxygen supply to the brain. It is effective in overcoming allergies, nasal dryness, irritation, and congestion, while providing relief from sinusitis, headaches, and respiratory discomfort. Regular practice of Nasya helps balance Vata and Kapha doshas, reduces dryness, strengthens the nose, eyes, ears, throat, and brain, improves mental clarity, and supports overall sensory organ health and well-being.",
+        image: "https://drive.google.com/thumbnail?id=1vpJdms9yG39uoKOQZrbYlahE6yOEA3b_&sz=w1200"
       },
       { 
         name: "Vamana (Therapeutic Emesis)", 
         desc: "Detoxifies Kapha-dominant conditions like asthma, allergies, and vitiligo through therapeutic vomiting.",
-        details: "In this treatment, the patient undergoes internal and external oleation and fomentation for a few days, which include specific therapies and Ayurvedic medicines. This process liquefies the toxins and causes them to accumulate in the upper cavities of the body. The patient is then given emetic medicines and decoctions, which induce therapeutic vomiting and help eliminate toxins from the body tissues. Vamana treatment thus detoxifies and is particularly recommended for Kapha-dominant conditions such as weight gain, asthma, allergies, vitiligo, psoriasis, and hyperacidity."
+        details: "In this treatment, the patient undergoes internal and external oleation and fomentation for a few days, which include specific therapies and Ayurvedic medicines. This process liquefies the toxins and causes them to accumulate in the upper cavities of the body. The patient is then given emetic medicines and decoctions, which induce therapeutic vomiting and help eliminate toxins from the body tissues. Vamana treatment thus detoxifies and is particularly recommended for Kapha-dominant conditions such as weight gain, asthma, allergies, vitiligo, psoriasis, and hyperacidity.",
+        image: "https://drive.google.com/thumbnail?id=17N2y8OZPTDEOI6We9iJsFaC7H_ccS_0A&sz=w1200"
       },
       { 
         name: "Virechana (Purgation Therapy)", 
@@ -54,12 +57,14 @@ const PROCEDURES: ServiceSection[] = [
       { 
         name: "Raktamokshan (Blood Detox Therapy)", 
         desc: "Bloodletting therapy (e.g. leech therapy) to remove impure blood. Highly effective for acne, psoriasis, gout, and sciatica.",
-        details: "Raktamokshan is an Ayurvedic purification therapy in which impure or vitiated blood is removed from the body. It is especially beneficial in conditions related to Pitta dosha imbalance and helps in cleansing and purifying the blood. This therapy helps reduce skin disorders such as acne, rashes, itching, boils, and inflammation. It also relieves pain and swelling, improves blood circulation, reduces acidity, decreases excess heat and toxins in the body, and supports overall immunity. Raktamokshan is commonly used in conditions such as varicose veins, sciatica, arthritis, and other joint disorders, back pain, neck pain, headaches and migraines, muscle stiffness and spasms, and general pain or swelling. It is also indicated in burning sensation, suppuration, gout (Vatarakta), elephantiasis, toxic blood conditions, fibroid, tumors, mastitis, debility, heaviness of the body, conjunctivitis, sinusitis, herpes, liver or spleen abscess, bleeding disorders, and other conditions arising from vitiated blood. Raktamokshan can be performed through different methods such as leech therapy (Jalaukavacharan), venesection (Siravyadha), or cupping, depending on the patient’s condition, body constitution, and the doctor’s advice."
+        details: "Raktamokshan is an Ayurvedic purification therapy in which impure or vitiated blood is removed from the body. It is especially beneficial in conditions related to Pitta dosha imbalance and helps in cleansing and purifying the blood. This therapy helps reduce skin disorders such as acne, rashes, itching, boils, and inflammation. It also relieves pain and swelling, improves blood circulation, reduces acidity, decreases excess heat and toxins in the body, and supports overall immunity. Raktamokshan is commonly used in conditions such as varicose veins, sciatica, arthritis, and other joint disorders, back pain, neck pain, headaches and migraines, muscle stiffness and spasms, and general pain or swelling. It is also indicated in burning sensation, suppuration, gout (Vatarakta), elephantiasis, toxic blood conditions, fibroid, tumors, mastitis, debility, heaviness of the body, conjunctivitis, sinusitis, herpes, liver or spleen abscess, bleeding disorders, and other conditions arising from vitiated blood. Raktamokshan can be performed through different methods such as leech therapy (Jalaukavacharan), venesection (Siravyadha), or cupping, depending on the patient’s condition, body constitution, and the doctor’s advice.",
+        image: "https://drive.google.com/thumbnail?id=1yRgwP1QS4AVZki3nJUOWcMbcr0FWoksZ&sz=w1200"
       },
       {
         name: "Dhoompan (Medicated Smoke Therapy)",
         desc: "Inhalation of medicinal herbal smoke to clear respiratory tract and sensory organs.",
-        details: "In Ayurveda, Dhoompan is a therapeutic procedure in which medicinal herbal smoke is inhaled through the nose and exhaled strictly through the mouth. Regular practice helps maintain the health of organs above the shoulders by eliminating vitiated Vata and Kapha doshas. This therapy is highly effective for chronic respiratory conditions, specifically relieving sinusitis by draining mucus and reducing inflammation. It also benefits symptoms of DNS (Deviated Nasal Septum) by clearing blockages, reducing swelling, and improving nasal airflow. Beyond respiratory relief, Dhoompan treats persistent cough, asthma, chronic rhinitis, allergies, and recurrent sneezing. It eliminates bad breath, strengthens teeth and hair, and prevents premature graying. Additionally, it clears the sensory organs, reducing head heaviness, earaches, and eye discharges while restoring voice clarity. By removing stupor, it promotes a sense of lightness and alertness throughout the body."
+        details: "In Ayurveda, Dhoompan is a therapeutic procedure in which medicinal herbal smoke is inhaled through the nose and exhaled strictly through the mouth. Regular practice helps maintain the health of organs above the shoulders by eliminating vitiated Vata and Kapha doshas. This therapy is highly effective for chronic respiratory conditions, specifically relieving sinusitis by draining mucus and reducing inflammation. It also benefits symptoms of DNS (Deviated Nasal Septum) by clearing blockages, reducing swelling, and improving nasal airflow. Beyond respiratory relief, Dhoompan treats persistent cough, asthma, chronic rhinitis, allergies, and recurrent sneezing. It eliminates bad breath, strengthens teeth and hair, and prevents premature graying. Additionally, it clears the sensory organs, reducing head heaviness, earaches, and eye discharges while restoring voice clarity. By removing stupor, it promotes a sense of lightness and alertness throughout the body.",
+        image: "https://drive.google.com/thumbnail?id=1rc9bUqMx0H6Ezpb27sZ1f5Kopvj45TR_&sz=w1200"
       },
       {
         name: "Dhoopan Therapies (Ayurvedic Fumigation)",
@@ -134,7 +139,8 @@ const PROCEDURES: ServiceSection[] = [
       { 
         name: "Hrid Basti (Cardiac Basti)", 
         desc: "Localized oil therapy performed over the heart region to deeply nourish heart muscles and calm the nervous system.",
-        details: "Hrida refers to the heart, which in Ayurveda is regarded as the seat of Prana, Ojas, and Mana. Hrida Basti is an Ayurvedic localized oil therapy performed over the heart (chest) region. In this therapy, a small ring made of herbal dough is placed on the chest, and warm medicated oil is gently poured into it and retained for a specific duration while maintaining a constant warm temperature. This treatment deeply nourishes and strengthens the heart muscles, improves blood circulation, and calms the nervous system. Hrida Basti helps reduce stress, anxiety, palpitations, and chest tightness while balancing aggravated Vata and Pitta dosha. It also promotes emotional calmness and deep relaxation. Hrida Basti is especially beneficial in stress-related heart complaints, mild hypertension, palpitations, anxiety, functional (non-structural) cardiac disorders, insomnia, and fatigue, and supports overall cardiovascular and emotional well-being."
+        details: "Hrida refers to the heart, which in Ayurveda is regarded as the seat of Prana, Ojas, and Mana. Hrida Basti is an Ayurvedic localized oil therapy performed over the heart (chest) region. In this therapy, a small ring made of herbal dough is placed on the chest, and warm medicated oil is gently poured into it and retained for a specific duration while maintaining a constant warm temperature. This treatment deeply nourishes and strengthens the heart muscles, improves blood circulation, and calms the nervous system. Hrida Basti helps reduce stress, anxiety, palpitations, and chest tightness while balancing aggravated Vata and Pitta dosha. It also promotes emotional calmness and deep relaxation. Hrida Basti is especially beneficial in stress-related heart complaints, mild hypertension, palpitations, anxiety, functional (non-structural) cardiac disorders, insomnia, and fatigue, and supports overall cardiovascular and emotional well-being.",
+        image: "https://drive.google.com/thumbnail?id=10N6hkr7iAYGcVdYWuh2sQJjlXuffKUbN&sz=w1200"
       },
       { 
         name: "Dhara (Therapeutic Pouring)", 
@@ -164,7 +170,8 @@ const PROCEDURES: ServiceSection[] = [
       { 
         name: "Anjan (Medicated Kohl)", 
         desc: "Therapy involving medicated kohl to improve vision and remove accumulated Kapha.",
-        details: "Anjana is an Ayurvedic eye therapy in which medicated kohl is applied to the inner margins of the eyelids to maintain eye health and manage various ocular disorders. It enhances vision and supports normal ocular function by cleansing the eyes and removing accumulated Kapha and Ama (Toxins). Anjana helps relieve symptoms such as eye strain, itching, redness, burning sensation, excessive discharge, and heaviness of the eyes. Regular and judicious use improves clarity of vision, reduces fatigue caused by prolonged screen exposure, dust, smoke, and pollution, and strengthens ocular tissues. By balancing Pitta and Kapha, Anjana plays an important role in promoting long-term eye health and preventing eye diseases when administered under proper Ayurvedic guidance."
+        details: "Anjana is an Ayurvedic eye therapy in which medicated kohl is applied to the inner margins of the eyelids to maintain eye health and manage various ocular disorders. It enhances vision and supports normal ocular function by cleansing the eyes and removing accumulated Kapha and Ama (Toxins). Anjana helps relieve symptoms such as eye strain, itching, redness, burning sensation, excessive discharge, and heaviness of the eyes. Regular and judicious use improves clarity of vision, reduces fatigue caused by prolonged screen exposure, dust, smoke, and pollution, and strengthens ocular tissues. By balancing Pitta and Kapha, Anjana plays an important role in promoting long-term eye health and preventing eye diseases when administered under proper Ayurvedic guidance.",
+        image: "https://drive.google.com/thumbnail?id=1kZpBnkUQpvMoGtlgt9TNxOZCqfKMjbk6&sz=w1200"
       },
       { 
         name: "Netra Tarpana (Eye Nourishment)", 
@@ -308,7 +315,8 @@ const PROCEDURES: ServiceSection[] = [
 
 export default function Services() {
   const location = useLocation();
-  const [selectedService, setSelectedService] = useState<{name: string, desc: string, details?: string} | null>(null);
+  const [selectedService, setSelectedService] = useState<{name: string, desc: string, details?: string, image?: string} | null>(null);
+  const [isImageExpanded, setIsImageExpanded] = useState(false);
 
   useEffect(() => {
     if (location.hash) {
@@ -370,10 +378,18 @@ export default function Services() {
                    transition={{ duration: 0.4 }}
                    key={idxi} 
                    onClick={() => setSelectedService(item)}
-                   className="bg-white p-8 rounded-[2rem] shadow-sm border border-clinic-border cursor-pointer hover:shadow-lg transition-all duration-300 group overflow-hidden relative"
+                   className={`p-8 rounded-[2rem] shadow-sm border border-clinic-border cursor-pointer hover:shadow-lg transition-all duration-300 group overflow-hidden relative flex flex-col ${item.image ? 'min-h-[320px] justify-end border-none' : 'bg-white'}`}
                 >
-                  <h3 className="text-xl md:text-2xl font-serif text-clinic-teal-900 mb-4 group-hover:text-clinic-gold transition-colors">{item.name}</h3>
-                  <p className="text-base text-clinic-muted font-light leading-relaxed">{item.desc}</p>
+                  {item.image && (
+                    <div className="absolute inset-0 z-0">
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/95 via-gray-900/60 to-black/20 group-hover:via-gray-900/70 transition-colors duration-500 z-10" />
+                      <img src={item.image} alt={item.name} referrerPolicy="no-referrer" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    </div>
+                  )}
+                  <div className="relative z-10">
+                    <h3 className={`text-xl md:text-2xl font-serif mb-4 transition-colors ${item.image ? 'text-white drop-shadow-md group-hover:text-clinic-gold/90' : 'text-clinic-teal-900 group-hover:text-clinic-gold'}`}>{item.name}</h3>
+                    <p className={`text-base font-light leading-relaxed ${item.image ? 'text-gray-200 drop-shadow' : 'text-clinic-muted'}`}>{item.desc}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -395,25 +411,51 @@ export default function Services() {
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="bg-white max-w-2xl w-full rounded-2xl shadow-2xl z-10 relative overflow-hidden flex flex-col max-h-[85vh]"
+                className={`w-full ${isImageExpanded ? 'max-w-6xl h-[90vh]' : 'max-w-2xl max-h-[85vh]'} bg-white rounded-2xl shadow-2xl z-10 relative overflow-hidden flex flex-col transition-all duration-500`}
               >
-                <div className="p-8 md:p-10 overflow-y-auto">
+                <div className={`p-8 md:p-10 overflow-y-auto flex-1 ${isImageExpanded ? 'flex flex-col' : ''}`}>
                   <button
-                    onClick={() => setSelectedService(null)}
-                    className="absolute top-6 right-6 text-clinic-muted hover:text-clinic-teal-900 transition-colors bg-clinic-teal-50 p-2 rounded-full z-10"
+                    onClick={() => {
+                      if (isImageExpanded) {
+                        setIsImageExpanded(false);
+                      } else {
+                        setSelectedService(null);
+                      }
+                    }}
+                    className={`absolute top-4 right-4 md:top-6 md:right-6 text-clinic-muted hover:text-clinic-teal-900 transition-colors ${isImageExpanded ? 'bg-white/80 backdrop-blur-sm pl-2 pt-2' : 'bg-clinic-teal-50'} shadow-sm p-2 rounded-full z-[100]`}
                   >
                     <X className="w-5 h-5" />
                   </button>
-                  <div className="mb-6 inline-flex items-center gap-3 mt-4 md:mt-0">
+                  <div className={`mb-4 inline-flex items-center gap-3 ${!isImageExpanded ? 'mt-4 md:mt-0' : ''}`}>
                     <span className="h-[1px] w-8 bg-clinic-bronze"></span>
                     <span className="text-clinic-bronze font-serif italic text-sm">Treatment Details</span>
                   </div>
-                  <h3 className="text-3xl font-serif text-clinic-teal-900 mb-6 pr-8 leading-tight">
+                  <h3 className="text-3xl font-serif text-clinic-teal-900 mb-6 pr-12 leading-tight">
                     {selectedService.name}
                   </h3>
-                  <div className="prose prose-teal max-w-none text-clinic-charcoal/80 text-lg leading-relaxed whitespace-pre-line">
-                    {selectedService.details || selectedService.desc}
-                  </div>
+                  {selectedService.image && (
+                    <div 
+                      className={`relative w-full cursor-pointer group rounded-xl overflow-hidden ${isImageExpanded ? 'flex-1 h-full min-h-0 bg-clinic-teal-50 mb-0' : 'aspect-video mb-8'}`}
+                      onClick={() => setIsImageExpanded(!isImageExpanded)}
+                    >
+                      <img 
+                        src={selectedService.image} 
+                        alt={selectedService.name} 
+                        referrerPolicy="no-referrer" 
+                        className={`w-full h-full ${isImageExpanded ? 'object-contain bg-black/5' : 'object-cover hover:scale-105 transition-transform duration-500'}`} 
+                      />
+                      {!isImageExpanded && (
+                        <div className="absolute top-4 left-4 bg-black/40 backdrop-blur-sm text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                          <Maximize2 className="w-5 h-5" />
+                        </div>
+                      )}
+                    </div>
+                  )}
+                  {!isImageExpanded && (
+                    <div className="prose prose-teal max-w-none text-clinic-charcoal/80 text-lg leading-relaxed whitespace-pre-line">
+                      {selectedService.details || selectedService.desc}
+                    </div>
+                  )}
                 </div>
               </motion.div>
             </div>
