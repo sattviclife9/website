@@ -6,6 +6,8 @@ import { createPortal } from 'react-dom';
 import SEO from '../components/SEO';
 import InsightsNav from '../components/InsightsNav';
 
+import { useScrollLock } from '../hooks/useScrollLock';
+
 export default function Announcements() {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentModalId = searchParams.get('id');
@@ -75,6 +77,7 @@ export default function Announcements() {
   ];
 
   const activeAnnouncement = announcements.find(a => a.id === currentModalId);
+  useScrollLock(!!activeAnnouncement);
 
   return (
     <>

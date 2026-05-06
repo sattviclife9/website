@@ -3,6 +3,7 @@ import { X, Phone, ChevronDown, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link, useLocation } from 'react-router-dom';
 import { SattvicLogo } from './SattvicLogo';
+import { useScrollLock } from '../hooks/useScrollLock';
 
 import { ClinicStatus } from './ClinicStatus';
 
@@ -22,6 +23,8 @@ export default function Navbar() {
   const [wellnessHubDropdownOpen, setWellnessHubDropdownOpen] = useState(false);
   const [shopDropdownOpen, setShopDropdownOpen] = useState(false);
   const location = useLocation();
+
+  useScrollLock(mobileMenuOpen);
 
   useEffect(() => {
     const handleScroll = () => {

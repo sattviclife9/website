@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { X, Maximize2 } from 'lucide-react';
 import SEO from '../components/SEO';
 import TreatmentNav from '../components/TreatmentNav';
+import { useScrollLock } from '../hooks/useScrollLock';
 
 interface ServiceItem {
   name: string;
@@ -317,6 +318,8 @@ export default function Services() {
   const location = useLocation();
   const [selectedService, setSelectedService] = useState<{name: string, desc: string, details?: string, image?: string} | null>(null);
   const [isImageExpanded, setIsImageExpanded] = useState(false);
+
+  useScrollLock(!!selectedService);
 
   useEffect(() => {
     if (location.hash) {
