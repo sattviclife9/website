@@ -141,12 +141,12 @@ export default function Navbar() {
                     <Link to="/treatments" className="px-5 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors w-full border-b border-clinic-border/30 font-medium text-clinic-teal-900">
                       Overview
                     </Link>
-                    <div className="group/sub relative w-full">
+                    <div className="group/sub w-full">
                       <Link to="/treatments#musculoskeletal-joint-care" className="px-5 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors flex justify-between items-center w-full">
                         Musculoskeletal & Joint Care
                         <ChevronRight className="w-3 h-3" />
                       </Link>
-                      <div className="absolute top-0 left-[95%] w-72 bg-white border border-clinic-border shadow-xl rounded-sm py-2 hidden group-hover/sub:flex flex-col z-[110] max-h-[60vh] overflow-y-auto">
+                      <div className="absolute top-0 left-[98%] w-72 bg-white border border-clinic-border shadow-xl rounded-sm py-2 hidden group-hover/sub:flex flex-col z-[110] max-h-[85vh] overflow-y-auto">
                         <div className="px-4 py-2 text-clinic-teal-900 font-bold border-b border-clinic-border/30 bg-clinic-teal-50/50">Arthritis & Joint Care</div>
                         <Link to="/conditions/osteoarthritis" className="px-5 py-2 hover:bg-clinic-teal-50 hover:text-clinic-bronze transition-colors flex items-center gap-2 capitalize text-xs font-medium border-b border-clinic-border/10 leading-snug">
                           <span className="w-1 h-1 rounded-full bg-clinic-bronze flex-shrink-0"></span>
@@ -193,12 +193,12 @@ export default function Navbar() {
                         </Link>
                       </div>
                     </div>
-                    <div className="group/sub relative w-full">
+                    <div className="group/sub w-full">
                       <Link to="/treatments#digestive-metabolic-health" className="px-5 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors flex justify-between items-center w-full border-t border-clinic-border/30">
                         Digestive & Metabolic Health
                         <ChevronRight className="w-3 h-3" />
                       </Link>
-                      <div className="absolute top-0 left-[95%] w-72 bg-white border border-clinic-border shadow-xl rounded-sm py-2 hidden group-hover/sub:flex flex-col z-[110] max-h-[60vh] overflow-y-auto">
+                      <div className="absolute top-0 left-[98%] w-72 bg-white border border-clinic-border shadow-xl rounded-sm py-2 hidden group-hover/sub:flex flex-col z-[110] max-h-[85vh] overflow-y-auto">
                         <div className="px-4 py-2 text-clinic-teal-900 font-bold border-b border-clinic-border/30 bg-clinic-teal-50/50">Digestive Disorders</div>
                         <Link to="/conditions/acidity" className="px-5 py-2 hover:bg-clinic-teal-50 hover:text-clinic-bronze transition-colors flex items-center gap-2 capitalize text-xs font-medium border-b border-clinic-border/10 leading-snug">
                           <span className="w-1 h-1 rounded-full bg-clinic-bronze flex-shrink-0"></span>
@@ -262,12 +262,12 @@ export default function Navbar() {
                         </Link>
                       </div>
                     </div>
-                    <div className="group/sub relative w-full">
+                    <div className="group/sub w-full">
                       <Link to="/treatments#skin-hair-aesthetic-wellness" className="px-5 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors flex justify-between items-center w-full border-t border-clinic-border/30">
                         Skin, Hair & Aesthetic Wellness
                         <ChevronRight className="w-3 h-3" />
                       </Link>
-                      <div className="absolute top-0 left-[95%] w-72 bg-white border border-clinic-border shadow-xl rounded-sm py-2 hidden group-hover/sub:flex flex-col z-[110] max-h-[60vh] overflow-y-auto">
+                      <div className="absolute top-0 left-[98%] w-72 bg-white border border-clinic-border shadow-xl rounded-sm py-2 hidden group-hover/sub:flex flex-col z-[110] max-h-[85vh] overflow-y-auto">
                         <div className="px-4 py-2 text-clinic-teal-900 font-bold border-b border-clinic-border/30 bg-clinic-teal-50/50">Chronic Skin Conditions</div>
                         <Link to="/conditions/psoriasis" className="px-5 py-2 hover:bg-clinic-teal-50 hover:text-clinic-bronze transition-colors flex items-center gap-2 capitalize text-xs font-medium border-b border-clinic-border/10 leading-snug">
                           <span className="w-1 h-1 rounded-full bg-clinic-bronze flex-shrink-0"></span>
@@ -305,12 +305,12 @@ export default function Navbar() {
                         </Link>
                       </div>
                     </div>
-                    <div className="group/sub relative w-full">
+                    <div className="group/sub w-full">
                       <Link to="/treatments#women-s-health-fertility" className="px-5 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors flex justify-between items-center w-full border-t border-clinic-border/30">
                         Women’s Health & Fertility
                         <ChevronRight className="w-3 h-3" />
                       </Link>
-                      <div className="absolute top-0 left-[95%] w-72 bg-white border border-clinic-border shadow-xl rounded-sm py-2 hidden group-hover/sub:flex flex-col z-[110] max-h-[60vh] overflow-y-auto">
+                      <div className="absolute top-0 left-[98%] w-72 bg-white border border-clinic-border shadow-xl rounded-sm py-2 hidden group-hover/sub:flex flex-col z-[110] max-h-[85vh] overflow-y-auto">
                         <div className="px-4 py-2 text-clinic-teal-900 font-bold border-b border-clinic-border/30 bg-clinic-teal-50/50">Hormonal Care</div>
                         <Link to="/conditions/pcod-pcos" className="px-5 py-2 hover:bg-clinic-teal-50 hover:text-clinic-bronze transition-colors flex items-center gap-2 capitalize text-xs font-medium border-b border-clinic-border/10 leading-snug">
                           <span className="w-1 h-1 rounded-full bg-clinic-bronze flex-shrink-0"></span>
@@ -349,12 +349,12 @@ export default function Navbar() {
                         </Link>
                       </div>
                     </div>
-                    <div className="group/sub relative w-full">
+                    <div className="group/sub w-full">
                       <Link to="/treatments#mental-health-neurology" className="px-5 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors flex justify-between items-center w-full border-t border-clinic-border/30">
                         Mental Health & Neurology
                         <ChevronRight className="w-3 h-3" />
                       </Link>
-                      <div className="absolute bottom-0 left-[95%] w-72 bg-white border border-clinic-border shadow-xl rounded-sm py-2 hidden group-hover/sub:flex flex-col z-[110] max-h-[60vh] overflow-y-auto">
+                      <div className="absolute top-0 left-[98%] w-72 bg-white border border-clinic-border shadow-xl rounded-sm py-2 hidden group-hover/sub:flex flex-col z-[110] max-h-[85vh] overflow-y-auto">
                         <div className="px-4 py-2 text-clinic-teal-900 font-bold border-b border-clinic-border/30 bg-clinic-teal-50/50">Stress Management</div>
                         <Link to="/conditions/anxiety-insomnia" className="px-5 py-2 hover:bg-clinic-teal-50 hover:text-clinic-bronze transition-colors flex items-center gap-2 capitalize text-xs font-medium border-b border-clinic-border/10 leading-snug">
                           <span className="w-1 h-1 rounded-full bg-clinic-bronze flex-shrink-0"></span>
@@ -393,12 +393,12 @@ export default function Navbar() {
                         </Link>
                       </div>
                     </div>
-                    <div className="group/sub relative w-full">
+                    <div className="group/sub w-full">
                       <Link to="/treatments#respiratory-immune-health" className="px-5 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors flex justify-between items-center w-full border-t border-clinic-border/30">
                         Respiratory & Immune Health
                         <ChevronRight className="w-3 h-3" />
                       </Link>
-                      <div className="absolute bottom-0 left-[95%] w-72 bg-white border border-clinic-border shadow-xl rounded-sm py-2 hidden group-hover/sub:flex flex-col z-[110] max-h-[60vh] overflow-y-auto">
+                      <div className="absolute top-0 left-[98%] w-72 bg-white border border-clinic-border shadow-xl rounded-sm py-2 hidden group-hover/sub:flex flex-col z-[110] max-h-[85vh] overflow-y-auto">
                         <div className="px-4 py-2 text-clinic-teal-900 font-bold border-b border-clinic-border/30 bg-clinic-teal-50/50">Allergy Management</div>
                         <Link to="/conditions/chronic-sinusitis" className="px-5 py-2 hover:bg-clinic-teal-50 hover:text-clinic-bronze transition-colors flex items-center gap-2 capitalize text-xs font-medium border-b border-clinic-border/10 leading-snug">
                           <span className="w-1 h-1 rounded-full bg-clinic-bronze flex-shrink-0"></span>
@@ -424,12 +424,12 @@ export default function Navbar() {
                         </Link>
                       </div>
                     </div>
-                    <div className="group/sub relative w-full">
+                    <div className="group/sub w-full">
                       <Link to="/treatments#men-s-health-urology" className="px-5 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors flex justify-between items-center w-full border-t border-clinic-border/30">
                         Men’s Health & Urology
                         <ChevronRight className="w-3 h-3" />
                       </Link>
-                      <div className="absolute bottom-0 left-[95%] w-72 bg-white border border-clinic-border shadow-xl rounded-sm py-2 hidden group-hover/sub:flex flex-col z-[110] max-h-[60vh] overflow-y-auto">
+                      <div className="absolute top-0 left-[98%] w-72 bg-white border border-clinic-border shadow-xl rounded-sm py-2 hidden group-hover/sub:flex flex-col z-[110] max-h-[85vh] overflow-y-auto">
                         <div className="px-4 py-2 text-clinic-teal-900 font-bold border-b border-clinic-border/30 bg-clinic-teal-50/50">Reproductive Wellness</div>
                         <Link to="/conditions/erectile-dysfunction" className="px-5 py-2 hover:bg-clinic-teal-50 hover:text-clinic-bronze transition-colors flex items-center gap-2 capitalize text-xs font-medium border-b border-clinic-border/10 leading-snug">
                           <span className="w-1 h-1 rounded-full bg-clinic-bronze flex-shrink-0"></span>
@@ -467,12 +467,12 @@ export default function Navbar() {
                         </Link>
                       </div>
                     </div>
-                    <div className="group/sub relative w-full">
+                    <div className="group/sub w-full">
                       <Link to="/treatments#pediatric-child-healthcare" className="px-5 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors flex justify-between items-center w-full border-t border-clinic-border/30">
                         Pediatric (Child) Healthcare
                         <ChevronRight className="w-3 h-3" />
                       </Link>
-                      <div className="absolute bottom-0 left-[95%] w-72 bg-white border border-clinic-border shadow-xl rounded-sm py-2 hidden group-hover/sub:flex flex-col z-[110] max-h-[60vh] overflow-y-auto">
+                      <div className="absolute top-0 left-[98%] w-72 bg-white border border-clinic-border shadow-xl rounded-sm py-2 hidden group-hover/sub:flex flex-col z-[110] max-h-[85vh] overflow-y-auto">
                         <div className="px-4 py-2 text-clinic-teal-900 font-bold border-b border-clinic-border/30 bg-clinic-teal-50/50">Immunity</div>
                         <Link to="/conditions/recurrent-colds" className="px-5 py-2 hover:bg-clinic-teal-50 hover:text-clinic-bronze transition-colors flex items-center gap-2 capitalize text-xs font-medium border-b border-clinic-border/10 leading-snug">
                           <span className="w-1 h-1 rounded-full bg-clinic-bronze flex-shrink-0"></span>
@@ -661,7 +661,6 @@ export default function Navbar() {
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden flex flex-col pl-4 text-[12px] mt-2 mb-2"
                     >
-                      <Link to="/services" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase text-clinic-teal-900 font-medium tracking-wider">Overview</Link>
                       <Link to="/services#consultation-and-diagnostic-services" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Consultation & Diagnostic</Link>
                       <Link to="/services#panchakarma-and-detox-therapies" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Panchakarma & Detox</Link>
                       <Link to="/services#specialized-pain-management" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Specialized Pain Management</Link>
@@ -698,7 +697,6 @@ export default function Navbar() {
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden flex flex-col pl-4 text-[12px] mt-2 mb-2"
                     >
-                      <Link to="/treatments" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase text-clinic-teal-900 font-medium tracking-wider">Overview</Link>
                       <div className="flex flex-col border-b border-clinic-border/50">
                         <Link to="/treatments#musculoskeletal-joint-care" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 uppercase text-clinic-teal-900/80 font-medium hover:text-clinic-teal-900">
                           Musculoskeletal & Joint Care
@@ -1081,7 +1079,6 @@ export default function Navbar() {
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden flex flex-col pl-4 mt-2 mb-2"
                     >
-                      <Link to="/dosha-quiz" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase text-clinic-teal-900 font-medium tracking-wider">Overview</Link>
                       <Link to="/store" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Store</Link>
                       <Link to="/dosha-quiz" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Dosha Quiz</Link>
                       <Link to="/lifestyle-tips" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Lifestyle Tips</Link>
@@ -1114,7 +1111,6 @@ export default function Navbar() {
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden flex flex-col pl-4 mt-2 mb-2"
                     >
-                      <Link to="/announcements" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase text-clinic-teal-900 font-medium tracking-wider">Overview</Link>
                       <Link to="/announcements" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Announcements</Link>
                       <Link to="/videos" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Video Gallery</Link>
                       <Link to="/news" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">News & Updates</Link>
@@ -1147,7 +1143,6 @@ export default function Navbar() {
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden flex flex-col pl-4 mt-2 mb-2"
                     >
-                      <Link to="/about" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase text-clinic-teal-900 font-medium tracking-wider">Overview</Link>
                       <Link to="/about" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Our Story</Link>
                       <Link to="/about/centre" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">The Centre</Link>
                       <Link to="/about/doctors" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Know Your Doctor</Link>
