@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { X, Phone, ChevronDown, ChevronRight } from 'lucide-react';
+import { X, Phone, ChevronDown, ChevronRight, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link, useLocation } from 'react-router-dom';
 import { SattvicLogo } from './SattvicLogo';
 import { useScrollLock } from '../hooks/useScrollLock';
 
 import { ClinicStatus } from './ClinicStatus';
+import SearchModal from './SearchModal';
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={className} fill="currentColor">
@@ -16,6 +17,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchModalOpen, setSearchModalOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
@@ -599,28 +601,47 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div className="hidden lg:flex items-center">
+          <div className="hidden lg:flex items-center gap-4">
+            <button 
+              onClick={() => setSearchModalOpen(true)}
+              className="text-clinic-charcoal p-2 hover:bg-clinic-teal-50 rounded-full transition-colors focus:outline-none"
+              aria-label="Search"
+            >
+              <Search className="w-5 h-5" />
+            </button>
             <a href="https://admin.ayurgrid.com/doctor/websiteappointments/createAppointment?doctor_id=945" target="_blank" rel="noopener noreferrer">
-              <button className="bg-clinic-gold text-clinic-charcoal px-6 py-2.5 rounded-sm text-[11px] font-bold tracking-widest hover:bg-clinic-bronze hover:text-white transition-all uppercase shadow-[0_3px_10px_0_rgba(212,175,55,0.4)] hover:shadow-[0_5px_15px_rgba(212,175,55,0.3)] hover:-translate-y-0.5">
+              <button className="group flex items-center gap-2 bg-clinic-gold text-clinic-charcoal px-6 py-2.5 rounded-sm text-[11px] font-bold tracking-widest hover:bg-clinic-bronze hover:text-white transition-all uppercase shadow-[0_3px_10px_0_rgba(212,175,55,0.4)] hover:shadow-[0_5px_15px_rgba(212,175,55,0.3)] hover:-translate-y-0.5">
                 Book Consultation
+                <ChevronRight className="w-3.5 h-3.5 ml-0.5 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
             </a>
           </div>
 
-          <button
-            className="lg:hidden text-clinic-charcoal p-2 focus:outline-none transition-transform active:scale-95"
-            onClick={() => setMobileMenuOpen(true)}
-            aria-label="Open Menu"
-          >
-            <div className="flex flex-col gap-1.5 items-end">
-              <span className="w-8 h-0.5 bg-clinic-teal-900 rounded-full transition-all"></span>
-              <span className="w-6 h-0.5 bg-clinic-bronze rounded-full transition-all"></span>
-              <span className="w-8 h-0.5 bg-clinic-teal-900 rounded-full transition-all"></span>
-            </div>
-          </button>
+          <div className="lg:hidden flex items-center gap-2">
+            <button 
+              onClick={() => setSearchModalOpen(true)}
+              className="text-clinic-charcoal p-2 hover:bg-clinic-teal-50 rounded-full transition-colors focus:outline-none"
+              aria-label="Search"
+            >
+              <Search className="w-5 h-5" />
+            </button>
+            <button
+              className="text-clinic-charcoal p-2 focus:outline-none transition-transform active:scale-95"
+              onClick={() => setMobileMenuOpen(true)}
+              aria-label="Open Menu"
+            >
+              <div className="flex flex-col gap-1.5 items-end">
+                <span className="w-8 h-0.5 bg-clinic-teal-900 rounded-full transition-all"></span>
+                <span className="w-6 h-0.5 bg-clinic-bronze rounded-full transition-all"></span>
+                <span className="w-8 h-0.5 bg-clinic-teal-900 rounded-full transition-all"></span>
+              </div>
+            </button>
+          </div>
         </div>
       </nav>
       </div>
+
+      <SearchModal isOpen={searchModalOpen} onClose={() => setSearchModalOpen(false)} />
 
       {/* Mobile Menu */}
       <AnimatePresence>
@@ -1165,8 +1186,9 @@ export default function Navbar() {
                 <span>Call Now</span>
               </a>
               <a href="https://admin.ayurgrid.com/doctor/websiteappointments/createAppointment?doctor_id=945" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)}>
-                <button className="w-full mt-3 bg-clinic-gold text-clinic-charcoal px-6 py-4 rounded-sm text-center font-bold tracking-widest uppercase hover:bg-clinic-bronze hover:text-white transition-all shadow-[0_4px_14px_0_rgba(212,175,55,0.39)]">
+                <button className="group w-full flex items-center justify-center gap-2 mt-3 bg-clinic-gold text-clinic-charcoal px-6 py-4 rounded-sm text-center font-bold tracking-widest uppercase hover:bg-clinic-bronze hover:text-white transition-all shadow-[0_4px_14px_0_rgba(212,175,55,0.39)]">
                   Book Consultation
+                  <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
               </a>
             </div>

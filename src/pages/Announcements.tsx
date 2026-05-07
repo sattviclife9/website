@@ -5,6 +5,7 @@ import { X, Check, Share2, Copy, Maximize2 } from 'lucide-react';
 import { createPortal } from 'react-dom';
 import SEO from '../components/SEO';
 import InsightsNav from '../components/InsightsNav';
+import { ANNOUNCEMENTS as announcements } from '../data/announcementsData';
 
 import { useScrollLock } from '../hooks/useScrollLock';
 
@@ -44,37 +45,6 @@ export default function Announcements() {
       setTimeout(() => setCopied(null), 2000);
     }
   };
-
-  const announcements = [
-    {
-      id: 'takra-dhara',
-      badge: 'Limited Time Offer',
-      category: 'Cooling Therapy',
-      date: 'Announced Today',
-      title: 'Medicated Takra Dhara - Special Offer',
-      description: 'Tired of internal heat, acidity or burning sensation? Relief from acidity, burning & body heat naturally with our clinically proven deep cooling therapy.',
-      image: 'https://drive.google.com/thumbnail?id=16Qs9mwjpknCEqSRgG7eO-4fnO7HSn3hz&sz=w1200',
-      imageAlt: 'Chakra Dhara Therapy on Forehead',
-      oldPrice: '₹4,000',
-      price: '₹2,799',
-      duration: '90-110 mins',
-      recommended: '5 days recommended',
-    },
-    {
-      id: 'womens-day-camp',
-      badge: 'Free Camp',
-      category: 'Special Event',
-      date: '8th & 9th March',
-      title: 'Celebrating International Women\'s Day',
-      description: '"Honoring Her Strength, Healing Her Soul" - A Luxurious Wellness Experience for Her. Join us for a free Ayurvedic consultation, therapies, and exclusive discounts.',
-      image: 'https://drive.google.com/thumbnail?id=1WsJ0YswDqDPM7XLxCPj01u1nG5JHbw44&sz=w1200',
-      imageAlt: 'Ayurvedic Wellness Spa for Women',
-      oldPrice: '',
-      price: 'Free',
-      duration: '10am - 7pm',
-      recommended: 'Advance Booking Required',
-    }
-  ];
 
   const activeAnnouncement = announcements.find(a => a.id === currentModalId);
   useScrollLock(!!activeAnnouncement);

@@ -40,7 +40,13 @@ export default function AboutUs() {
 
       {/* Main Content Sections */}
       <section className="py-20 md:py-28 bg-white border-b border-clinic-border">
-        <div className="max-w-4xl mx-auto px-6 md:px-12 text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-4xl mx-auto px-6 md:px-12 text-center"
+        >
           <div className="text-clinic-charcoal text-lg md:text-xl font-light leading-relaxed space-y-8">
             <p>
               Located in Pune, our clinic is dedicated to helping individuals struggling with chronic lifestyle disorders find long-term, sustainable healing through classical Ayurveda and specialized Panchakarma therapies.
@@ -49,13 +55,18 @@ export default function AboutUs() {
               In today’s fast-paced lifestyle, conditions like acidity, skin disorders, hair fall, joint pain, hormonal imbalance, and stress are often managed temporarily. At Sattvic Advanced Ayurveda, we take a different approach—focusing on deep detoxification, metabolic correction, and personalized healing protocols.
             </p>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <section className="py-20 md:py-28 bg-clinic-teal-50 border-b border-clinic-border">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <h3 className="text-3xl md:text-5xl font-serif text-clinic-teal-900 mb-8 font-light">
                 Our Ayurvedic Philosophy: <br/>
                 <span className="italic font-medium">Root-Cause Healing</span>
@@ -81,8 +92,14 @@ export default function AboutUs() {
                   <span className="text-lg font-light">Personalized treatment based on Prakriti (body constitution)</span>
                 </li>
               </ul>
-            </div>
-            <div className="bg-white p-8 md:p-14 lg:p-16 rounded-[2.5rem] shadow-sm border border-clinic-border">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-white p-8 md:p-14 lg:p-16 rounded-[2.5rem] shadow-sm border border-clinic-border"
+            >
               <p className="text-clinic-charcoal text-lg md:text-xl font-light leading-relaxed mb-10">
                 Unlike many Ayurveda clinics, we combine traditional diagnostic methods such as Nadi Pariksha (pulse examination) with modern tracking systems to ensure accurate diagnosis and measurable progress.
               </p>
@@ -91,19 +108,25 @@ export default function AboutUs() {
                    Our goal is simple: restore your body’s natural equilibrium and prevent recurrence of disease.
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
-          <div className="text-center mb-16 md:mb-20">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16 md:mb-20"
+          >
             <h3 className="text-3xl md:text-5xl font-serif text-clinic-teal-900 mb-6 font-light">Specialized Ayurvedic Treatments</h3>
             <p className="text-clinic-charcoal text-lg md:text-xl font-light max-w-2xl mx-auto">
               We are known for providing some of the most effective Ayurvedic treatments in Pune for various conditions.
             </p>
-          </div>
+          </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-20 lg:mb-24">
             {[
@@ -114,19 +137,38 @@ export default function AboutUs() {
               "Women’s health and hormonal imbalance",
               "Stress, anxiety, and lifestyle disorders"
             ].map((item, index) => (
-              <div key={index} className="bg-clinic-ivory p-8 rounded-[2rem] border border-clinic-border flex items-start gap-4">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                key={index} 
+                className="bg-clinic-ivory p-8 rounded-[2rem] border border-clinic-border flex items-start gap-4"
+              >
                 <span className="w-2 h-2 mt-2 rounded-full bg-clinic-gold shrink-0"></span>
                 <span className="text-clinic-charcoal font-light text-lg">{item}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
           
-          <p className="text-clinic-charcoal text-xl md:text-2xl font-light leading-relaxed text-center max-w-4xl mx-auto mb-24 md:mb-32">
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-clinic-charcoal text-xl md:text-2xl font-light leading-relaxed text-center max-w-4xl mx-auto mb-24 md:mb-32"
+          >
             Our expertise lies in classical Panchakarma treatment in Pune, including therapies like Shirodhara, Basti, and customized detox programs designed according to each patient’s condition. Every treatment plan is fully personalized, ensuring deeper healing and long-lasting results.
-          </p>
+          </motion.p>
 
           <div className="grid md:grid-cols-2 gap-16 lg:gap-20 items-center">
-            <div className="bg-clinic-teal-50 p-10 md:p-16 lg:p-20 rounded-[2.5rem] border border-clinic-border">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-clinic-teal-50 p-10 md:p-16 lg:p-20 rounded-[2.5rem] border border-clinic-border"
+            >
               <h3 className="text-3xl font-serif text-clinic-teal-900 mb-8 leading-tight">Authentic Panchakarma & Detox Therapies</h3>
               <p className="text-clinic-charcoal mb-8 font-light text-lg">
                 At Sattvic Advanced Ayurveda, Panchakarma is not performed as a routine package—it is a carefully structured medical process. Our detox therapies help:
@@ -142,9 +184,15 @@ export default function AboutUs() {
               <p className="text-clinic-charcoal font-light italic mt-10 opacity-80 border-t border-clinic-border pt-6">
                 Patients looking for Panchakarma detox in Pune often choose us for our precision-based approach and authentic methodology.
               </p>
-            </div>
+            </motion.div>
             
-            <div className="p-4 md:p-8">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="p-4 md:p-8"
+            >
               <h3 className="text-3xl font-serif text-clinic-teal-900 mb-8 leading-tight">Patient-Centric Care & Modern Clinical Experience</h3>
               <p className="text-clinic-charcoal mb-8 font-light text-lg">
                 We provide a calm, clean, and minimalist clinical environment designed for comfort and healing. What makes us different:
@@ -160,7 +208,7 @@ export default function AboutUs() {
               <p className="text-clinic-charcoal font-light text-lg">
                 Many of our patients come to us after trying multiple treatments without success. Through our structured approach, they experience not just relief—but lasting transformation in their health.
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -171,9 +219,15 @@ export default function AboutUs() {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-clinic-teal-500/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
         
         <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10 text-center">
-          <h3 className="text-4xl md:text-6xl font-serif text-clinic-ivory mb-16 md:mb-20 font-light">
+          <motion.h3 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl md:text-6xl font-serif text-clinic-ivory mb-16 md:mb-20 font-light"
+          >
             Why Choose <span className="italic font-medium text-clinic-gold">Sattvic</span><br className="hidden md:block" /> Advanced Ayurveda in Pune?
-          </h3>
+          </motion.h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-4xl mx-auto mb-24 md:mb-32">
             {[
               "Authentic Ayurvedic treatment with modern precision",

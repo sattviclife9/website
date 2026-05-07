@@ -1,8 +1,7 @@
-import React from 'react';
-import { Leaf, ChevronRight, ArrowRight, Sun, Droplets, Wind, Activity, Stethoscope, Star, MessageCircle, Utensils, Heart, Brain } from 'lucide-react';
-import { motion } from 'motion/react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Leaf, ChevronRight, ChevronLeft, ArrowRight, Sun, Droplets, Wind, Activity, Stethoscope, Star, MessageCircle, Utensils, Heart, Brain, Quote } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
-
 import BackToTopButton from '../components/BackToTopButton';
 import SEO from '../components/SEO';
 import OptimizedImage from '../components/OptimizedImage';
@@ -11,17 +10,32 @@ const TESTIMONIALS = [
   {
     name: "Rajesh Kumar",
     testimonial: "I was suffering from chronic lower back pain for years. The Agnikarma treatment provided immediate relief that I couldn't find elsewhere. Truly life-changing experience.",
-    rating: 5
+    rating: 5,
+    condition: "Lower Back Pain"
   },
   {
     name: "Priya Sharma",
     testimonial: "The Panchakarma detox helped me clear my skin and improved my digestion tremendously. The doctors are very knowledgeable and compassionate.",
-    rating: 5
+    rating: 5,
+    condition: "Digestive Issues"
   },
   {
     name: "Sunita Reddy",
     testimonial: "Shirodhara was the most relaxing experience of my life. It helped me manage my stress and insomnia naturally. I highly recommend Sattvic for authentic Ayurvedic care.",
-    rating: 5
+    rating: 5,
+    condition: "Insomnia & Stress"
+  },
+  {
+    name: "Vikram Singh",
+    testimonial: "Agnikarma effectively fixed my frozen shoulder when other therapies failed. I regained full mobility within a few sessions. Very grateful to the team.",
+    rating: 5,
+    condition: "Frozen Shoulder"
+  },
+  {
+    name: "Anjali Gupta",
+    testimonial: "The Janu Basti treatment for my knee osteoarthritis was incredible. It relieved my pain and allowed me to walk comfortably again without relying on painkillers.",
+    rating: 5,
+    condition: "Knee Pain (OA)"
   }
 ];
 
@@ -61,6 +75,21 @@ const THERAPIES = [
 ];
 
 export default function Home() {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % TESTIMONIALS.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+  };
+
+  useEffect(() => {
+    const timer = setInterval(nextTestimonial, 8000);
+    return () => clearInterval(timer);
+  }, []);
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "MedicalClinic",
@@ -120,8 +149,9 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4">
               <a href="https://admin.ayurgrid.com/doctor/websiteappointments/createAppointment?doctor_id=945" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto block">
-                <button className="w-full justify-center flex items-center gap-2 bg-clinic-gold text-clinic-teal-900 px-8 py-4 rounded-sm text-[13px] font-bold tracking-widest hover:bg-clinic-bronze hover:text-white transition-all uppercase shadow-[0_4px_14px_0_rgba(212,175,55,0.39)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.23)] hover:-translate-y-0.5 border border-transparent">
+                <button className="group w-full justify-center flex items-center gap-2 bg-clinic-gold text-clinic-teal-900 px-8 py-4 rounded-sm text-[13px] font-bold tracking-widest hover:bg-clinic-bronze hover:text-white transition-all uppercase shadow-[0_4px_14px_0_rgba(212,175,55,0.39)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.23)] hover:-translate-y-0.5 border border-transparent">
                   Book Consultation
+                  <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
               </a>
             </div>
@@ -163,14 +193,147 @@ export default function Home() {
                { icon: <Leaf className="w-6 h-6" />, title: "Authentic Treatments", desc: "All our therapies use traditional Kerala Panchakarma methods and pure, unadulterated herbal formulations." },
                { icon: <Stethoscope className="w-6 h-6" />, title: "Root-Cause Focus", desc: "We aim to carefully treat the underlying imbalance in your doshas to provide sustainable, long-term health benefits." }
              ].map((feature, idx) => (
-                <div key={idx} className="bg-clinic-teal-50 p-8 rounded-2xl border border-clinic-border relative shadow-sm flex flex-col items-start">
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-clinic-gold border border-clinic-border mb-6">
+                <motion.div 
+                  key={idx} 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1, duration: 0.5 }}
+                  className="group bg-clinic-teal-50 p-8 rounded-2xl border border-clinic-border relative shadow-sm flex flex-col items-start hover:-translate-y-2 hover:shadow-md hover:bg-clinic-ivory transition-all duration-300"
+                >
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-clinic-gold border border-clinic-border mb-6 group-hover:scale-110 transition-transform duration-300">
                     {feature.icon}
                   </div>
-                  <h3 className="font-serif text-xl text-clinic-teal-900 mb-3">{feature.title}</h3>
+                  <h3 className="font-serif text-xl text-clinic-teal-900 mb-3 group-hover:text-clinic-gold transition-colors duration-300">{feature.title}</h3>
                   <p className="text-clinic-charcoal leading-relaxed">{feature.desc}</p>
-                </div>
+                </motion.div>
              ))}
+           </div>
+        </div>
+      </section>
+
+      {/* Why Patients Trust Us */}
+      <section className="bg-clinic-teal-900 text-clinic-white-off py-16 md:py-28 mt-16 md:mt-24">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-16 lg:gap-24">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="w-full md:w-1/3 text-center md:text-left"
+          >
+            <div className="mb-4 inline-flex items-center justify-center md:justify-start gap-3">
+               <span className="h-[1px] w-8 bg-clinic-gold"></span>
+               <span className="text-clinic-gold font-serif italic text-lg">Philosophy of Care</span>
+             </div>
+             <h2 className="text-4xl lg:text-5xl font-serif font-light mb-6 text-white leading-tight">
+               Why Patients <br/><span className="italic font-medium text-clinic-gold">Trust Us</span>
+             </h2>
+             <p className="text-white/70 text-lg font-light leading-relaxed">Experience safe, effective, and trusted Ayurvedic care that prioritizes natural root-cause healing and personalized attention.</p>
+           </motion.div>
+           <motion.div 
+             initial={{ opacity: 0, x: 20 }}
+             whileInView={{ opacity: 1, x: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.6, staggerChildren: 0.1 }}
+             className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6"
+           >
+             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-start gap-4">
+               <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
+                 <span className="text-clinic-gold text-sm font-bold">✓</span>
+               </div>
+               <span className="text-white/90 text-lg font-light">Instant pain management</span>
+             </motion.div>
+             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-start gap-4">
+               <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
+                 <span className="text-clinic-gold text-sm font-bold">✓</span>
+               </div>
+               <span className="text-white/90 text-lg font-light">Integrated mind-body approach</span>
+             </motion.div>
+             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-start gap-4">
+               <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
+                 <span className="text-clinic-gold text-sm font-bold">✓</span>
+               </div>
+               <span className="text-white/90 text-lg font-light">Personalized treatment plans</span>
+             </motion.div>
+             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-start gap-4">
+               <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
+                 <span className="text-clinic-gold text-sm font-bold">✓</span>
+               </div>
+               <span className="text-white/90 text-lg font-light">Expertise in chronic disorders</span>
+             </motion.div>
+             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-start gap-4">
+               <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
+                 <span className="text-clinic-gold text-sm font-bold">✓</span>
+               </div>
+               <span className="text-white/90 text-lg font-light">Natural healing methods</span>
+             </motion.div>
+             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-start gap-4">
+               <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
+                 <span className="text-clinic-gold text-sm font-bold">✓</span>
+               </div>
+               <span className="text-white/90 text-lg font-light">Long-term preventive care</span>
+             </motion.div>
+             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-start gap-4 sm:col-span-2">
+               <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
+                 <span className="text-clinic-gold text-sm font-bold">✓</span>
+               </div>
+               <span className="text-white/90 text-lg font-light">Doctor-guided therapies based on proven protocols</span>
+             </motion.div>
+           </motion.div>
+         </div>
+       </section>
+ 
+       {/* What We Treat */}
+      <section className="py-16 md:py-24 bg-white border-b border-clinic-border">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+           <div className="text-center mb-16 md:mb-20">
+             <div className="mb-4 inline-flex items-center gap-3">
+               <span className="h-[1px] w-8 bg-clinic-bronze"></span>
+               <span className="text-clinic-bronze font-serif italic text-lg">Our Expertise</span>
+               <span className="h-[1px] w-8 bg-clinic-bronze"></span>
+             </div>
+             <h2 className="text-3xl md:text-5xl font-serif text-clinic-teal-900 mb-6 font-light">
+               Conditions We <span className="italic font-medium text-clinic-teal-900/80">Treat</span>
+             </h2>
+             <p className="text-clinic-muted font-light text-lg max-w-2xl mx-auto">Discover the root-cause Ayurvedic solutions we provide for various chronic lifestyle disorders.</p>
+           </div>
+           
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+             {THERAPIES.map((therapy, idx) => (
+               <motion.div 
+                 key={therapy.id}
+                 initial={{ opacity: 0, y: 20 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ delay: idx * 0.1 }}
+                 className="group flex flex-col bg-clinic-ivory rounded-[2rem] overflow-hidden border border-clinic-border"
+               >
+                 <div className="relative h-48 overflow-hidden">
+                   <div className="absolute inset-0 bg-clinic-teal-900/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
+                   <OptimizedImage src={therapy.image} alt={therapy.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                   <div className="absolute top-4 right-4 z-20 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-2 text-[10px] sm:text-xs font-bold uppercase tracking-widest text-clinic-teal-900">
+                     {therapy.icon}
+                     {therapy.duration}
+                   </div>
+                 </div>
+                 <div className="p-6 sm:p-8 flex flex-col flex-1">
+                   <h3 className="text-xl font-serif text-clinic-teal-900 mb-3 group-hover:text-clinic-gold transition-colors">{therapy.title}</h3>
+                   <p className="text-clinic-charcoal font-light leading-relaxed mb-6 flex-1 text-sm sm:text-base">{therapy.description}</p>
+                   <Link to="/treatments" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-clinic-teal-900 hover:text-clinic-gold transition-colors mt-auto group/link">
+                     Learn More <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform duration-300" />
+                   </Link>
+                 </div>
+               </motion.div>
+             ))}
+           </div>
+           
+           <div className="text-center mt-16">
+             <Link to="/treatments">
+               <button className="bg-transparent border border-clinic-teal-900 text-clinic-teal-900 hover:bg-clinic-teal-900 hover:text-white px-8 py-4 rounded-sm text-[13px] font-bold tracking-widest transition-all uppercase">
+                 View All Treatments
+               </button>
+             </Link>
            </div>
         </div>
       </section>
@@ -262,7 +425,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="bg-clinic-ivory py-16 md:py-24 border-y border-clinic-border">
+      <section className="bg-clinic-ivory py-16 md:py-24 border-y border-clinic-border overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
            <div className="text-center mb-16 md:mb-20">
              <div className="mb-4 inline-flex items-center gap-3">
@@ -275,94 +438,83 @@ export default function Home() {
              </h2>
            </div>
            
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-             {TESTIMONIALS.map((item, idx) => (
-               <motion.div 
-                 key={idx}
-                 initial={{ opacity: 0, y: 20 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 viewport={{ once: true }}
-                 transition={{ delay: idx * 0.1 }}
-                 className="bg-white p-8 rounded-2xl border border-clinic-border shadow-sm flex flex-col items-center text-center relative"
+           <div className="relative max-w-4xl mx-auto">
+             {/* Slider Navigation Buttons */}
+             <div className="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-12 z-20 hidden md:block">
+               <button 
+                 onClick={prevTestimonial}
+                 className="w-12 h-12 rounded-full bg-white border border-clinic-border shadow-sm flex items-center justify-center text-clinic-teal-900 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors"
+                 aria-label="Previous Testimonial"
                >
-                 <div className="flex gap-1 mb-4">
-                   {[...Array(item.rating)].map((_, i) => (
-                     <Star key={i} className="w-4 h-4 fill-clinic-gold text-clinic-gold" />
-                   ))}
-                 </div>
-                 <p className="text-clinic-charcoal italic leading-relaxed mb-6">"{item.testimonial}"</p>
-                 <div className="mt-auto">
-                   <span className="w-8 h-[1px] bg-clinic-gold mb-2 block mx-auto"></span>
-                   <h4 className="font-serif text-clinic-teal-900">{item.name}</h4>
-                   <p className="text-[10px] text-clinic-muted uppercase tracking-widest font-bold">Verified Patient</p>
-                 </div>
-               </motion.div>
-             ))}
+                 <ChevronLeft className="w-6 h-6" />
+               </button>
+             </div>
+             
+             <div className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-12 z-20 hidden md:block">
+               <button 
+                 onClick={nextTestimonial}
+                 className="w-12 h-12 rounded-full bg-white border border-clinic-border shadow-sm flex items-center justify-center text-clinic-teal-900 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors"
+                 aria-label="Next Testimonial"
+               >
+                 <ChevronRight className="w-6 h-6" />
+               </button>
+             </div>
+
+             {/* Testimonial Active Card */}
+             <div className="relative h-[380px] sm:h-[320px] md:h-[280px]">
+               <AnimatePresence mode="wait">
+                 <motion.div
+                   key={currentTestimonial}
+                   initial={{ opacity: 0, x: 20 }}
+                   animate={{ opacity: 1, x: 0 }}
+                   exit={{ opacity: 0, x: -20 }}
+                   transition={{ duration: 0.5, ease: "anticipate" }}
+                   drag="x"
+                   dragConstraints={{ left: 0, right: 0 }}
+                   dragElastic={0.2}
+                   onDragEnd={(e, { offset, velocity }) => {
+                     const swipe = Math.abs(offset.x) * velocity.x;
+                     if (swipe < -100) nextTestimonial();
+                     else if (swipe > 100) prevTestimonial();
+                   }}
+                   className="absolute inset-0 bg-white p-8 md:p-12 rounded-[2rem] border border-clinic-border shadow-md flex flex-col items-center text-center max-w-3xl mx-auto my-auto h-full cursor-grab active:cursor-grabbing"
+                 >
+                   <Quote className="w-10 h-10 text-clinic-gold/30 absolute top-6 left-6" />
+                   <div className="flex gap-1 mb-6 mt-4">
+                     {[...Array(TESTIMONIALS[currentTestimonial].rating)].map((_, i) => (
+                       <Star key={i} className="w-5 h-5 fill-clinic-gold text-clinic-gold" />
+                     ))}
+                   </div>
+                   <p className="text-clinic-charcoal italic leading-relaxed md:text-lg md:leading-loose mb-8 flex-1">
+                     "{TESTIMONIALS[currentTestimonial].testimonial}"
+                   </p>
+                   <div className="mt-auto">
+                     <h4 className="font-serif text-clinic-teal-900 text-lg mb-1">{TESTIMONIALS[currentTestimonial].name}</h4>
+                     <p className="text-xs text-clinic-muted font-medium mb-1">Treated for: {TESTIMONIALS[currentTestimonial].condition}</p>
+                     <p className="text-[10px] text-clinic-gold uppercase tracking-widest font-bold">Verified Patient</p>
+                   </div>
+                 </motion.div>
+               </AnimatePresence>
+             </div>
+
+             {/* Slider Pagination Indicators */}
+             <div className="flex justify-center items-center gap-3 mt-10">
+               {TESTIMONIALS.map((_, idx) => (
+                 <button
+                   key={idx}
+                   onClick={() => setCurrentTestimonial(idx)}
+                   className={`h-2 rounded-full transition-all duration-300 ${
+                     idx === currentTestimonial ? 'w-8 bg-clinic-bronze' : 'w-2 bg-clinic-border hover:bg-clinic-bronze/50'
+                   }`}
+                   aria-label={`Go to testimonial ${idx + 1}`}
+                 />
+               ))}
+             </div>
            </div>
         </div>
       </section>
 
 
-
-      {/* Why Patients Trust Us */}
-      <section className="bg-clinic-teal-900 text-clinic-white-off py-16 md:py-28 mt-16 md:mt-24">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-16 lg:gap-24">
-          <div className="w-full md:w-1/3 text-center md:text-left">
-            <div className="mb-4 inline-flex items-center justify-center md:justify-start gap-3">
-              <span className="h-[1px] w-8 bg-clinic-gold"></span>
-              <span className="text-clinic-gold font-serif italic text-lg">Philosophy of Care</span>
-            </div>
-            <h2 className="text-4xl lg:text-5xl font-serif font-light mb-6 text-white leading-tight">
-              Why Patients <br/><span className="italic font-medium text-clinic-gold">Trust Us</span>
-            </h2>
-            <p className="text-white/70 text-lg font-light leading-relaxed">Experience safe, effective, and trusted Ayurvedic care that prioritizes natural root-cause healing and personalized attention.</p>
-          </div>
-          <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6">
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
-                <span className="text-clinic-gold text-sm font-bold">✓</span>
-              </div>
-              <span className="text-white/90 text-lg font-light">Instant pain management</span>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
-                <span className="text-clinic-gold text-sm font-bold">✓</span>
-              </div>
-              <span className="text-white/90 text-lg font-light">Integrated mind-body approach</span>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
-                <span className="text-clinic-gold text-sm font-bold">✓</span>
-              </div>
-              <span className="text-white/90 text-lg font-light">Personalized treatment plans</span>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
-                <span className="text-clinic-gold text-sm font-bold">✓</span>
-              </div>
-              <span className="text-white/90 text-lg font-light">Expertise in chronic disorders</span>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
-                <span className="text-clinic-gold text-sm font-bold">✓</span>
-              </div>
-              <span className="text-white/90 text-lg font-light">Natural healing methods</span>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
-                <span className="text-clinic-gold text-sm font-bold">✓</span>
-              </div>
-              <span className="text-white/90 text-lg font-light">Long-term preventive care</span>
-            </div>
-            <div className="flex items-start gap-4 sm:col-span-2">
-              <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
-                <span className="text-clinic-gold text-sm font-bold">✓</span>
-              </div>
-              <span className="text-white/90 text-lg font-light">Doctor-guided therapies based on proven protocols</span>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* CTA Banner */}
       <section className="py-20 md:py-32 max-w-5xl mx-auto px-6 md:px-12 relative">
@@ -385,8 +537,9 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
             <a href="https://admin.ayurgrid.com/doctor/websiteappointments/createAppointment?doctor_id=945" target="_blank" rel="noopener noreferrer">
-              <button className="bg-clinic-gold text-clinic-teal-900 border border-transparent hover:bg-clinic-bronze hover:text-white px-8 py-4 rounded-sm text-[13px] font-bold tracking-widest transition-all uppercase shadow-[0_4px_14px_0_rgba(212,175,55,0.39)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.23)] hover:-translate-y-0.5">
+              <button className="group flex items-center gap-2 bg-clinic-gold text-clinic-teal-900 border border-transparent hover:bg-clinic-bronze hover:text-white px-8 py-4 rounded-sm text-[13px] font-bold tracking-widest transition-all uppercase shadow-[0_4px_14px_0_rgba(212,175,55,0.39)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.23)] hover:-translate-y-0.5">
                 Book Consultation
+                <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
             </a>
           </div>
