@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 
 export default function TermsOfService() {
   return (
-    <div className="pt-8 md:pt-32 pb-20 px-6 max-w-4xl mx-auto">
+    <div className="pt-8 md:pt-16 pb-20 px-6 max-w-4xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

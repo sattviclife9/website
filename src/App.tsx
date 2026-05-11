@@ -13,6 +13,9 @@ import Announcements from './pages/Announcements';
 import VideoGallery from './pages/VideoGallery';
 import ContactUs from './pages/ContactUs';
 import DoshaQuiz from './pages/DoshaQuiz';
+import SymptomChecker from './pages/SymptomChecker';
+import HerbGlossary from './pages/HerbGlossary';
+import TreatmentJourney from './pages/TreatmentJourney';
 import LifestyleTips from './pages/LifestyleTips';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
@@ -32,8 +35,11 @@ export default function App() {
             <Route index element={<Home />} />
             <Route path="services" element={<Services />} />
             <Route path="treatments" element={<Treatments />} />
+            <Route path="treatments/journey" element={<TreatmentJourney />} />
             <Route path="conditions/:slug" element={<ConditionPage />} />
             <Route path="dosha-quiz" element={<DoshaQuiz />} />
+            <Route path="symptom-navigator" element={<SymptomChecker />} />
+            <Route path="herb-glossary" element={<HerbGlossary />} />
             <Route path="about">
               <Route index element={<AboutUs />} />
               <Route path="centre" element={<AboutCentre />} />

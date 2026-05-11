@@ -44,11 +44,24 @@ export function getClinicStatus() {
   
   let isOpen = false;
   let nextTransition: { type: 'open' | 'close', timeMinutes: number, isToday: boolean, dayStr?: string } | null = null;
+  let upcomingTransition: { type: 'open', timeMinutes: number, isToday: boolean, dayStr?: string } | null = null;
   
-  for (let shift of todaySchedule) {
+  for (let i = 0; i < todaySchedule.length; i++) {
+    const shift = todaySchedule[i];
     if (currentMinutes >= shift.open && currentMinutes < shift.close) {
       isOpen = true;
       nextTransition = { type: 'close', timeMinutes: shift.close, isToday: true };
+      
+      // Look for the next open shift (either later today or tomorrow)
+      if (i < todaySchedule.length - 1) {
+        upcomingTransition = { type: 'open', timeMinutes: todaySchedule[i + 1].open, isToday: true };
+      } else {
+        const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        let tomorrowIndex = (daysOfWeek.indexOf(currentDay) + 1) % 7;
+        let tomorrowStr = daysOfWeek[tomorrowIndex];
+        let firstShiftTomorrow = schedule[tomorrowStr][0];
+        upcomingTransition = { type: 'open', timeMinutes: firstShiftTomorrow.open, isToday: false, dayStr: tomorrowStr };
+      }
       break;
     }
   }
@@ -84,6 +97,10 @@ export function getClinicStatus() {
   let statusText = '';
   if (isOpen && nextTransition) {
      statusText = `Closes at ${formatTime(nextTransition.timeMinutes)}`;
+     if (upcomingTransition) {
+       let upcomingPrefix = upcomingTransition.isToday ? 'Reopens at ' : `Reopens ${upcomingTransition.dayStr} at `;
+       statusText += ` • ${upcomingPrefix}${formatTime(upcomingTransition.timeMinutes)}`;
+     }
   } else if (!isOpen && nextTransition) {
      let dayPrefix = nextTransition.isToday ? 'Opens at ' : `Opens ${nextTransition.dayStr} at `;
      statusText = `${dayPrefix}${formatTime(nextTransition.timeMinutes)}`;
@@ -127,7 +144,8 @@ export function ClinicStatus() {
       {status.statusText && (
         <>
           <span className="text-clinic-gold/50 mx-0.5">•</span>
-          <span className="text-clinic-white-off/90 tracking-widest">{status.statusText}</span>
+          <span className="text-clinic-white-off/90 tracking-wide text-xs sm:text-sm hidden sm:inline-block whitespace-nowrap">{status.statusText}</span>
+          <span className="text-clinic-white-off/90 tracking-wide text-[10px] sm:hidden whitespace-nowrap">{status.statusText}</span>
         </>
       )}
     </div>

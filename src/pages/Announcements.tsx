@@ -52,7 +52,7 @@ export default function Announcements() {
   return (
     <>
       <InsightsNav />
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-40 md:pb-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-16 md:pb-32">
         <SEO 
           title="Announcements | Sattvic Life"
           description="Stay updated with the latest announcements and happenings from Sattvic Life."

@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Search, X, ChevronRight, Activity, Calendar, Newspaper } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useScrollLock } from '../hooks/useScrollLock';
 
 // Import data
 import { specificConditions } from '../data/conditionsData';
 import { NEWS_ARTICLES } from '../data/newsData';
 import { ANNOUNCEMENTS } from '../data/announcementsData';
+import { PROCEDURES } from '../pages/Services';
+import { TREATMENTS_CATEGORIES } from '../pages/Treatments';
 
 interface SearchResult {
   title: string;
@@ -15,6 +17,7 @@ interface SearchResult {
   path: string;
   description: string;
   icon?: React.ReactNode;
+  score: number;
 }
 
 const ALL_PAGES = [
@@ -45,6 +48,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const [results, setResults] = useState<SearchResult[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useScrollLock(isOpen);
 
@@ -64,78 +68,258 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
       return;
     }
 
-    const lowercaseQuery = query.toLowerCase();
+    const searchTerms = query.toLowerCase().split(/\s+/).filter(term => term.length > 0);
+    const normalizedQuery = query.toLowerCase().trim();
     
+    if (searchTerms.length === 0) {
+      setResults([]);
+      return;
+    }
+
+    const calculateScore = (title: string, secondaryText?: string, keywords?: string) => {
+      let score = 0;
+      const t = title.toLowerCase();
+      const s = secondaryText?.toLowerCase() || '';
+      const k = keywords?.toLowerCase() || '';
+
+      if (t === normalizedQuery) score += 1000;
+      else if (t.startsWith(normalizedQuery)) score += 500;
+      else if (t.includes(normalizedQuery)) score += 200;
+
+      searchTerms.forEach(term => {
+        if (t.split(' ').includes(term)) score += 100; // exact word match
+        else if (t.includes(term)) score += 50;
+        else if (s.includes(term)) score += 20;
+        else if (k.includes(term)) score += 10;
+        else score += 1;
+      });
+      return score;
+    };
+
     // Search Conditions
     const matchedConditions: SearchResult[] = Object.values(specificConditions)
-      .filter(cond => 
-        cond.name.toLowerCase().includes(lowercaseQuery) || 
-        cond.ayurvedicName?.toLowerCase().includes(lowercaseQuery) ||
-        cond.category.toLowerCase().includes(lowercaseQuery) ||
-        cond.seo.description.toLowerCase().includes(lowercaseQuery) ||
-        cond.seo.keywords.toLowerCase().includes(lowercaseQuery)
-      )
-      .map(cond => ({
-        title: cond.ayurvedicName ? `${cond.name} (${cond.ayurvedicName})` : cond.name,
-        category: 'Condition',
-        path: `/conditions/${cond.id}`,
-        description: cond.seo.description,
-        icon: <Activity className="w-4 h-4" />
-      }));
+      .flatMap(cond => {
+        const textToSearch = [
+          cond.name,
+          cond.ayurvedicName || '',
+          cond.category,
+          cond.seo.description,
+          cond.seo.keywords,
+          cond.about?.paragraphs?.join(' ') || '',
+          cond.about?.symptoms?.join(' ') || '',
+          cond.hero?.description || ''
+        ].join(' ').toLowerCase();
+
+        if (!searchTerms.every(term => textToSearch.includes(term))) {
+          return [];
+        }
+
+        const score = calculateScore(
+          cond.ayurvedicName ? `${cond.name} (${cond.ayurvedicName})` : cond.name,
+          cond.hero?.description || '',
+          cond.seo.keywords
+        );
+
+        return [{
+          title: cond.ayurvedicName ? `${cond.name} (${cond.ayurvedicName})` : cond.name,
+          category: 'Condition',
+          path: `/conditions/${cond.id}`,
+          description: cond.seo.description,
+          icon: <Activity className="w-4 h-4" />,
+          score
+        }];
+      });
 
     // Search News
     const matchedNews: SearchResult[] = NEWS_ARTICLES
-      .filter(article => 
-        article.title.toLowerCase().includes(lowercaseQuery) ||
-        article.excerpt.toLowerCase().includes(lowercaseQuery) ||
-        article.category.toLowerCase().includes(lowercaseQuery)
-      )
-      .map(article => ({
-        title: article.title,
-        category: 'News',
-        path: `/news`, // Or specific news URL if exists
-        description: article.excerpt,
-        icon: <Newspaper className="w-4 h-4" />
-      }));
+      .flatMap(article => {
+        const textToSearch = [
+          article.title,
+          article.excerpt,
+          article.category
+        ].join(' ').toLowerCase();
+
+        if (!searchTerms.every(term => textToSearch.includes(term))) {
+          return [];
+        }
+
+        const score = calculateScore(article.title, article.category, article.excerpt);
+
+        return [{
+          title: article.title,
+          category: 'News',
+          path: `/news`, // Or specific news URL if exists
+          description: article.excerpt,
+          icon: <Newspaper className="w-4 h-4" />,
+          score
+        }];
+      });
 
     // Search Announcements
     const matchedAnnouncements: SearchResult[] = ANNOUNCEMENTS
-      .filter(ann => 
-        ann.title.toLowerCase().includes(lowercaseQuery) ||
-        ann.description.toLowerCase().includes(lowercaseQuery) ||
-        ann.category.toLowerCase().includes(lowercaseQuery)
-      )
-      .map(ann => ({
-        title: ann.title,
-        category: 'Announcement',
-        path: `/announcements?id=${ann.id}`,
-        description: ann.description,
-        icon: <Calendar className="w-4 h-4" />
-      }));
+      .flatMap(ann => {
+        const textToSearch = [
+          ann.title,
+          ann.description,
+          ann.category
+        ].join(' ').toLowerCase();
+
+        if (!searchTerms.every(term => textToSearch.includes(term))) {
+          return [];
+        }
+
+        const score = calculateScore(ann.title, ann.category, ann.description);
+
+        return [{
+          title: ann.title,
+          category: 'Announcement',
+          path: `/announcements?id=${ann.id}`,
+          description: ann.description,
+          icon: <Calendar className="w-4 h-4" />,
+          score
+        }];
+      });
+
+    // Search Procedures/Treatments
+    const matchedProcedures: SearchResult[] = PROCEDURES.flatMap(section => 
+      section.items.flatMap(item => {
+        const textToSearch = [
+          item.name,
+          item.desc,
+          item.details || '',
+          section.category
+        ].join(' ').toLowerCase();
+
+        if (!searchTerms.every(term => textToSearch.includes(term))) {
+          return [];
+        }
+
+        const score = calculateScore(item.name, section.category, item.desc);
+
+        return [{
+          title: item.name,
+          category: 'Treatment',
+          path: `/services#${item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`,
+          description: item.desc,
+          icon: <Activity className="w-4 h-4" />,
+          score
+        }];
+      })
+    );
+
+    // Search Treatments page categories
+    const matchedTreatmentsCategories: SearchResult[] = TREATMENTS_CATEGORIES.flatMap(category => 
+      category.items.flatMap(item => {
+        const results: SearchResult[] = [];
+        if (item.path) {
+          const textMatches = searchTerms.every(term => [item.name, category.title].join(' ').toLowerCase().includes(term));
+          if (textMatches) {
+            const score = calculateScore(item.name, category.title);
+            results.push({
+              title: item.name,
+              category: 'Condition',
+              path: item.path,
+              description: `Treatment category: ${category.title}`,
+              icon: <Activity className="w-4 h-4" />,
+              score
+            });
+          }
+        }
+        if (item.subItems) {
+          item.subItems.forEach(subItem => {
+            if (subItem.path) {
+              const textMatches = searchTerms.every(term => [subItem.name, category.title, item.name].join(' ').toLowerCase().includes(term));
+              if (textMatches) {
+                const score = calculateScore(subItem.name, item.name, category.title);
+                results.push({
+                  title: subItem.name,
+                  category: 'Condition',
+                  path: subItem.path,
+                  description: `Treatment for ${item.name} under ${category.title}`,
+                  icon: <Activity className="w-4 h-4" />,
+                  score
+                });
+              }
+            }
+          });
+        }
+        return results;
+      })
+    );
 
     // Search Pages
     const matchedPages: SearchResult[] = ALL_PAGES
-      .filter(p => p.title.toLowerCase().includes(lowercaseQuery) || p.description.toLowerCase().includes(lowercaseQuery))
-      .map(p => ({
-        title: p.title,
-        category: 'Page' as any,
-        path: p.path,
-        description: p.description
-      }));
+      .flatMap(p => {
+        const textToSearch = `${p.title} ${p.description}`.toLowerCase();
+        
+        if (!searchTerms.every(term => textToSearch.includes(term))) {
+          return [];
+        }
+
+        const score = calculateScore(p.title, p.description);
+
+        return [{
+          title: p.title,
+          category: 'Page' as any,
+          path: p.path,
+          description: p.description,
+          score
+        }];
+      });
       
     // Combine and slice to max top 12 results
-    const combined = [
+    const combinedMap = new Map<string, SearchResult>();
+
+    [
       ...matchedConditions,
+      ...matchedTreatmentsCategories,
+      ...matchedProcedures,
       ...matchedPages,
       ...matchedNews,
       ...matchedAnnouncements
-    ].slice(0, 12);
+    ].forEach(result => {
+      if (!combinedMap.has(result.title)) {
+        combinedMap.set(result.title, result);
+      } else {
+        if (result.score > combinedMap.get(result.title)!.score) {
+          combinedMap.set(result.title, result);
+        }
+      }
+    });
+
+    const combined = Array.from(combinedMap.values()).sort((a, b) => b.score - a.score).slice(0, 12);
     
     setResults(combined);
   }, [query]);
 
   const handleSelect = (path: string) => {
-    navigate(path);
+    const currentFullPath = location.pathname + location.search + location.hash;
+    
+    if (path === currentFullPath) {
+      if (path.includes('#')) {
+        const id = path.split('#')[1];
+        const element = document.getElementById(id);
+        if (element) {
+          const y = element.getBoundingClientRect().top + window.scrollY - 160;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } else {
+      navigate(path);
+      const [targetPath, targetHash] = path.split('#');
+      if (targetPath === location.pathname && targetHash) {
+        setTimeout(() => {
+          const element = document.getElementById(targetHash);
+          if (element) {
+            const y = element.getBoundingClientRect().top + window.scrollY - 160;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        }, 100);
+      }
+    }
+    
     onClose();
   };
 

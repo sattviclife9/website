@@ -6,7 +6,7 @@ export default function Store() {
   return (
     <>
       <WellnessNav />
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-40 md:pb-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-16 md:pb-32">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

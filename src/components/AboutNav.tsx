@@ -15,7 +15,7 @@ export default function AboutNav() {
   return (
     <div className="sticky top-[160px] sm:top-[140px] lg:top-[145px] z-40 w-full bg-clinic-ivory/95 backdrop-blur-md border-b border-clinic-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 md:px-12 py-2">
-        <div className="flex items-center justify-start md:justify-center gap-2 md:gap-4 overflow-x-auto no-scrollbar scroll-smooth">
+        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 pb-1 lg:pb-0">
           {navItems.map((item) => {
             const isActive = location.pathname === item.path;
             return (

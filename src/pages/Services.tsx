@@ -20,7 +20,7 @@ interface ServiceSection {
   items: ServiceItem[];
 }
 
-const PROCEDURES: ServiceSection[] = [
+export const PROCEDURES: ServiceSection[] = [
   {
     category: "Consultation and Diagnostic Services",
     items: [
@@ -90,31 +90,37 @@ const PROCEDURES: ServiceSection[] = [
       { 
         name: "Fire Cupping Therapy (Dry Hijama)", 
         desc: "Uses controlled heat suction to improve circulation, relieve muscle tension, and remove stagnation.",
-        details: "Fire Cupping Therapy is a traditional therapeutic technique used to relieve pain, improve circulation, and help detoxify the body. In this therapy, special cups are placed on specific areas of the body after creating mild suction using controlled heat. The vacuum effect gently lifts the skin and underlying tissues, stimulating blood flow and helping to remove stagnation. The suction created during fire cupping improves local blood circulation, relieves muscle tension and stiffness, reduces inflammation, helps detoxify the blood, and promotes relaxation and faster recovery. Additionally, it aids in removing toxins (Ama) from deeper tissues, supports lymphatic drainage and immune function, helps manage chronic pain conditions such as back, neck, and joint pain, reduces stress, anxiety, and fatigue, improves skin health by enhancing tissue nourishment, and may be beneficial in conditions like migraines, sciatica, and respiratory congestion. Fire cupping provides quick and effective results when performed by a trained professional and is often included as part of a holistic healing approach."
+        image: "https://drive.google.com/thumbnail?id=1-G890VvCdkzpYCt6sD3C-ks0IRTy6plR&sz=w1200",
+        details: "Fire Cupping Therapy is a traditional therapeutic technique used to relieve pain, improve circulation, and help detoxify the body. In this therapy, special cups are placed on specific areas of the body after creating mild suction using controlled heat. The vacuum effect gently lifts the skin and underlying tissues, stimulating blood flow and helping to remove stagnation. The suction created during fire cupping improves local blood circulation, relieves muscle tension and stiffness, reduces inflammation, helps detoxify the blood, and promotes relaxation and faster recovery. Additionally, it aids in removing toxins (Ama) from deeper tissues, supports lymphatic drainage and immune function, helps manage chronic pain conditions such as back, neck, and joint pain, reduces stress, anxiety, and fatigue, improves skin health by enhancing tissue nourishment, and may be beneficial in conditions like migraines, sciatica, and respiratory congestion. Fire Cupping provides quick and effective results when performed by a trained professional and is often included as part of a holistic healing approach."
       },
       { 
         name: "Hijama Therapy (Wet Cupping)", 
         desc: "Controlled suction to draw out stagnant blood and toxins, providing rapid relief from inflammation and stiffness.",
+        image: "https://drive.google.com/thumbnail?id=1-A65Lf0V2fqisSnqd5vT030p2NSr4jd6&sz=w1200",
         details: "Hijama is a traditional therapeutic technique that uses controlled suction to draw out stagnant blood and toxins from the body. It helps in pain management by improving blood circulation, reducing inflammation, and relieving muscle tension. The suction created during Hijama decreases pressure on nerves and promotes the release of natural pain-relieving substances in the body, leading to quick and effective relief. It is especially beneficial in conditions like back pain, neck pain, joint pain, sciatica, frozen shoulder, and muscle stiffness. Regular Hijama therapy also supports detoxification, enhances mobility, and promotes faster healing of affected tissues."
       },
       { 
         name: "Janu Basti (Knee Basti)", 
         desc: "Localized oil-retention therapy over the knees to nourish joints and relieve chronic pain.",
+        image: "https://drive.google.com/thumbnail?id=18delcsmlVHVZtxXvAQOYgcDCgski4o88&sz=w1200",
         details: "Janu Basti (Knee Basti) is an Ayurvedic localized oil-retention therapy in which warm, medicated herbal oil is retained over the knee joint within a dough ring made of black gram flour. Janu refers to the knee, and Basti means to retain, signifying deep nourishment of the joint structures through sustained oil contact. This therapy pacifies aggravated Vata dosha, which is the primary cause of joint degeneration and pain. Janu Basti lubricates the joint, strengthens cartilage, ligaments, and tendons, reduces swelling and pain, and improves range of motion. It is especially beneficial in osteoarthritis, degenerative knee disorders, chronic knee pain, post-injury pain, ligament weakness, ligament tear, and age-related joint wear. Janu Basti also delays joint degeneration, improves synovial fluid quality, and enhances overall knee stability and mobility."
       },
       { 
         name: "Kati Basti (Lower Back Basti)", 
         desc: "Localized oil-retention therapy over the lower back to relieve pain, stiffness, spasms, and inflammation.",
+        image: "https://drive.google.com/thumbnail?id=1slKmewrs8vMZ0Mb8ZqWFeVSkJPLWp5K6&sz=w1200",
         details: "Kati Basti (Lower Back Basti) is an Ayurvedic treatment where warm medicated oil is retained over the lumbosacral (lower back) region using a dough reservoir. Kati denotes the waist or lower back, and this therapy is highly effective in pacifying Vata disorders affecting the spine and nerves. The warmth and medicinal properties of the oil penetrate deeply into muscles, intervertebral joints, and nerves, helping relieve pain, stiffness, spasms, and inflammation. Kati Basti is indicated in chronic low back pain, lumbar spondylosis, disc degeneration, sciatica, muscle spasms, sacroiliac joint disorders, and postural strain. It improves circulation, strengthens spinal muscles, nourishes nerves, and restores flexibility, making it valuable for both degenerative and stress-related spinal conditions."
       },
       { 
         name: "Prishta Basti (Spine Basti)", 
         desc: "Localized oil-retention therapy over the spine to relieve chronic back pain, spine stiffness, and weakness.",
+        image: "https://drive.google.com/thumbnail?id=1IVOWz48g3FcubCWCXLeAi0Xu-iKBeVjW&sz=w1200",
         details: "Prishta Basti (Spine Basti) is an Ayurvedic therapy in which warm medicated oil is retained over the spine using a herbal dough ring. The warmth allows the oil to penetrate deeper tissues, helping nourish the muscles and balance Vata dosha. It is commonly used for chronic back pain, spine stiffness, spine disorders, and weakness of the back. The therapy helps reduce pain and inflammation, relax muscles, improve circulation, and support spinal strength and mobility."
       },
       { 
         name: "Greeva Basti (Cervical Basti)", 
         desc: "Localized oil-retention therapy over the neck to relieve pain and improve mobility.",
+        image: "https://drive.google.com/thumbnail?id=17u9KYJjXk7ngAEafMUimAZFux1rGwC1m&sz=w1200",
         details: "Greeva Basti (Cervical Basti) is a localized oil-retention therapy performed over the neck and cervical spine region, where warm medicated oil is retained within a dough boundary. Greeva means neck, and this therapy is especially effective for cervical disorders. Greeva Basti nourishes cervical vertebrae, intervertebral discs, nerves, and surrounding muscles, helping relieve pain, numbness, and restricted neck movement. It is indicated in cervical spondylosis, cervical disc issues, tension headaches, vertigo, shoulder pain, and postural neck strain, commonly seen due to prolonged screen use. This therapy improves flexibility, strengthens neck muscles, enhances nerve function, and prevents the progression of degenerative cervical conditions."
       }
     ]
@@ -125,11 +131,13 @@ const PROCEDURES: ServiceSection[] = [
       { 
         name: "Abhyanga (Full Body Massage)", 
         desc: "Luxurious massage using medicated oils tailored to your dosha to liquify toxins and nourish tissues.",
+        image: "https://drive.google.com/thumbnail?id=1LtSvQ1zHcwUuGUKMLmEtWtHwV_PsJgSt&sz=w1200",
         details: "Abhyanga is an important Ayurvedic therapy in which medicated oils or ghee are gently applied and massaged over the body. It helps liquify toxins (Ama) from the tissues, prepares the body for detoxification therapies such as Panchakarma, and slows down the aging process by nourishing the body tissues (Dhatus). The oil used for Abhyanga is customized by the doctor based on the individual’s body constitution and disease condition, ensuring maximum therapeutic benefit. Ayurvedic Abhyanga is different from routine home massage, as it focuses on using specific oils tailored according to an individual’s Prakriti, season, and the purpose of the massage, and it involves specific pressure, direction, and therapeutic points, making it a targeted and healing procedure rather than simple relaxation. Abhyanga provides relief from body pain, reduces dryness of the skin and joints, improves blood circulation, calms the nervous system, reduces stress, enhances sleep quality, strengthens muscles and joints, and improves overall softness and flexibility of the body. It can be performed on the entire body or on specific areas such as the knees, back, neck, hands, or legs, depending on the patient’s complaints and the doctor’s advice."
       },
       { 
         name: "Swedan (Medicated Steam Bath)", 
         desc: "Induces gentle sweating to dilate body channels and eliminate toxins, typically following Abhyanga.",
+        image: "https://drive.google.com/thumbnail?id=1QF0kbRglidVTducA3MB0rz1d2BrsZkpw&sz=w1200",
         details: "Swedan is an Ayurvedic therapy that induces gentle sweating using medicated steam or warmth and is commonly performed after Abhyanga (oil therapy) to enhance its effects. It can be applied to the entire body or locally on specific areas such as the knees, neck, back, hands, and legs, as advised by the doctor and according to the disease condition. Swedan helps by dilating body channels (Srotas), liquefying toxins (Ama) for easy elimination, and reducing stiffness, heaviness, and coldness in the body. It relieves joint pain, muscle stiffness, and swelling; balances Vata and Kapha dosha; improves blood circulation; delays aging; reduces body heaviness; enhances flexibility and mobility; supports detoxification; improves the effectiveness of Panchakarma therapies; improves vision; reduces tiredness and fatigue; nourishes body tissues (Dhatus); promotes longevity; induces sound sleep; and enhances skin tone and complexion. Swedan is especially useful in conditions such as arthritis and joint disorders, back pain, neck pain, frozen shoulder, muscle spasms and stiffness, cold-related disorders, and as a post-Abhyanga therapy to open body channels."
       },
       { 
@@ -146,11 +154,13 @@ const PROCEDURES: ServiceSection[] = [
       { 
         name: "Dhara (Therapeutic Pouring)", 
         desc: "Continuous stream of warm medicated liquid over the body or specific part to induce deep relaxation and healing.",
+        image: "https://drive.google.com/thumbnail?id=1EtfdUuWaJstsiBOAOsTrs-NmQef0qsU3&sz=w1200",
         details: "In Ayurveda, Dhara refers to a therapeutic procedure in which a warm, medicated liquid is poured in a steady and continuous stream over the body or a specific part of the body. It may be performed as Sarvanga Dhara, where the medicated liquid is poured over the entire body, or as Ekanga (localized) Dhara, in which the stream is applied to specific areas such as the head (Shirodhara), joints (Sandhi Dhara), or other affected regions. Based on the individual’s doshic imbalance and health condition, the physician may prescribe different forms of Dhara, such as Taila Dhara (medicated oils for Vata disorders and degenerative conditions), Ghrita Dhara (medicated ghee for nourishment and strengthening), Kashaya Dhara (a powerful “dry” sudation using herbal decoctions for detoxification), Dhanyamla Dhara (fermented liquids for inflammatory and Ama-related conditions), Ksheera Dhara (medicated milk for inflammation and weakness, known for its cooling and nourishing properties), and Takra Dhara (medicated buttermilk for stress, hypertension, and skin disorders such as psoriasis and hair-related issues). Dhara therapy helps strengthen body tissues, soothe muscles and joints, improve flexibility and circulation, balance digestive fire, reduce pain and stiffness, and induce deep relaxation and rejuvenation. It also supports dosha regulation, delays aging, enhances immunity, and improves skin health and complexion."
       },
       { 
         name: "Shirodhara (Head Pouring Therapy)", 
         desc: "Continuous pouring of warm medicated oil over the forehead to deeply relax the nervous system and relieve stress.",
+        image: "https://drive.google.com/thumbnail?id=1PvC73g63_vYVsrHjRjgKigIESUU6lKVD&sz=w1200",
         details: "Shirodhara is a classical Ayurvedic therapy in which a continuous stream of warm medicated oil, milk, or other herbal liquids is gently poured over the forehead. It deeply relaxes the mind and nervous system, helping balance mainly Vata and Pitta doshas. Shirodhara is highly beneficial for stress, anxiety, insomnia, mental fatigue, headaches, migraines, and hypertension (high blood pressure), as it calms the nervous system and reduces mental overactivity. It is also helpful in hormonal imbalances, PMS (premenstrual syndrome), pre-menopause, and post-menopausal symptoms such as mood swings, irritability, anxiety, hot flashes, and disturbed sleep. Additionally, Shirodhara improves sleep quality, concentration, and emotional stability, supports neurological and endocrine balance, nourishes the scalp and hair, and is effective in psychosomatic and stress-related disorders. Overall, it promotes deep relaxation, rejuvenation, and long-term mental and physical well-being."
       },
       { 
@@ -161,11 +171,13 @@ const PROCEDURES: ServiceSection[] = [
       { 
         name: "Pinda Sweda (Herbal Bolus Therapy)", 
         desc: "Warm herbal bundles massaged over the body to induce sweating, relieve pain, and nourish muscles.",
+        image: "https://drive.google.com/thumbnail?id=1bxuU1F1mPy3N0uNTQ4jLseX9RIb30UC7&sz=w1200",
         details: "Pinda Sweda is an Ayurvedic therapy in which warm herbal bundles (potli) made of medicinal herbs or powders are heated and applied to the body to induce sweating, relieve pain, and reduce stiffness. The boluses are prepared by tying herbal ingredients in cloth, heating them in medicated oil, and gently massaging over the affected area, usually after a light oil massage. This combined action improves blood circulation, relaxes muscles, and helps remove Ama (toxins) from the tissues. There are various types of Pinda Sweda, including Patra Pinda Sweda (herbal leaves), Churna Pinda Sweda (herbal powders), Shashtika Shali Pinda Sweda (Njavara Kizhi – medicated rice), Jambira Pinda Sweda (lemon-based), Valuka Sweda (sand), Mamsa Pinda Sweda/Mamsa Kizhi (medicated meat), and Kukkut Pinda Sweda/Kukutanda Kizhi (chicken-based), chosen according to the patient’s condition. Among these, Shashtika Shali Pinda Sweda is a nourishing therapy using rice cooked in herbal decoction and milk, which strengthens muscles (Mamsa dhatu), improves circulation, and acts as a rejuvenative (Rasayana). It is especially beneficial for joint pain, muscle stiffness, arthritis, and other musculoskeletal conditions, helping improve mobility and promote overall healing and relaxation."
       },
       { 
         name: "Udvartana (Scrub Massage)", 
         desc: "Herbal powder massage in an upward direction to mobilize toxins, reduce fat, and improve skin tone.",
+        image: "https://drive.google.com/thumbnail?id=18sSB7SUV6fQivCJgO6nQ6J9MFmK5Hndo&sz=w1200",
         details: "Udvartana is a classical Ayurvedic therapy in which a herbal powder massage is applied in a downward-to-upward direction. This method is different from conventional oil massage and is useful for mobilizing accumulated toxins (Ama) and stagnant fat, while stimulating blood circulation and metabolic activity. It is especially beneficial for weight management and body contouring, as brisk upward massage helps to liquefy excess fat, support metabolism, and improve body shape. The medicinal powders act like natural scrubs, cleansing the skin, removing dead cells, and enhancing skin texture and glow. By increasing blood and lymph circulation, Udvartana promotes detoxification, refreshes the muscles, and helps reduce heaviness, sluggishness, and swelling. It is indicated in conditions such as obesity, overweight, high cholesterol, slow metabolism, lethargy, and lack of freshness. Additionally, it helps improve skin health and radiance, manage skin conditions like psoriasis, strengthen and tone muscles and joints, prepare the body for Panchakarma therapies, and is useful for lifestyle-related disorders such as PCOS and hypothyroidism."
       },
       { 
@@ -327,7 +339,8 @@ export default function Services() {
         const id = location.hash.replace('#', '');
         const element = document.getElementById(id);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          const y = element.getBoundingClientRect().top + window.scrollY - 160;
+          window.scrollTo({ top: y, behavior: 'smooth' });
         }
       }, 100);
     } else {
@@ -338,7 +351,7 @@ export default function Services() {
   return (
     <>
       <TreatmentNav />
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-40 md:pb-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-4 pb-12 md:pt-8 md:pb-32">
       <SEO 
         title="Ayurvedic Treatments & Panchakarma"
         description="Explore our authentic Ayurvedic treatments in Pune. Specialized services include Agnikarma for chronic pain, Viddhakarma, and traditional Panchakarma detox therapies."
@@ -348,7 +361,7 @@ export default function Services() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="max-w-4xl mx-auto text-center mb-20 md:mb-28"
+        className="max-w-4xl mx-auto text-center mb-12 md:mb-16"
       >
         <div className="mb-6 md:mb-8 inline-flex items-center gap-4">
           <span className="h-[1px] w-8 bg-clinic-bronze"></span>
@@ -380,6 +393,7 @@ export default function Services() {
                    viewport={{ once: true }}
                    transition={{ duration: 0.4 }}
                    key={idxi} 
+                   id={item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}
                    onClick={() => setSelectedService(item)}
                    className={`p-8 rounded-[2rem] shadow-sm border border-clinic-border cursor-pointer hover:shadow-lg transition-all duration-300 group overflow-hidden relative flex flex-col ${item.image ? 'min-h-[320px] justify-end border-none' : 'bg-white'}`}
                 >
@@ -429,7 +443,7 @@ export default function Services() {
                   >
                     <X className="w-5 h-5" />
                   </button>
-                  <div className={`mb-4 inline-flex items-center gap-3 ${!isImageExpanded ? 'mt-4 md:mt-0' : ''}`}>
+                  <div className={`mb-6 md:mb-8 inline-flex items-center gap-4 ${!isImageExpanded ? 'mt-4 md:mt-0' : ''}`}>
                     <span className="h-[1px] w-8 bg-clinic-bronze"></span>
                     <span className="text-clinic-bronze font-serif italic text-sm">Treatment Details</span>
                   </div>

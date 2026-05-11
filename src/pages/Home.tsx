@@ -42,40 +42,36 @@ const TESTIMONIALS = [
 const THERAPIES = [
   {
     id: 1,
-    title: 'Chronic Joint & Musculoskeletal Pain',
+    title: 'Musculoskeletal & Joint Care',
     description: 'Advanced treatments like Viddhakarma and Agnikarma to provide instant and lasting relief from arthritis, sciatica, and muscular stiffness.',
     image: 'https://images.unsplash.com/photo-1560972550-aba3456b5564?q=80&w=600&auto=format&fit=crop',
     icon: <Sun className="w-5 h-5 text-clinic-gold" />,
     duration: 'Rapid Relief',
-  },
-  {
-    id: 2,
-    title: 'Skin & Beauty Rejuvenation',
-    description: 'Root-cause management for chronic skin issues and personalized Ayurvedic facials using potent herbal formulations for a natural glow.',
-    image: 'https://images.unsplash.com/photo-1620608552195-236b3598dcbe?q=80&w=600&auto=format&fit=crop',
-    icon: <Droplets className="w-5 h-5 text-clinic-gold" />,
-    duration: 'Holistic',
+    path: '/treatments#musculoskeletal-joint-care'
   },
   {
     id: 3,
-    title: 'Gut & Digestive Care',
+    title: 'Digestive & Metabolic Health',
     description: 'Restoring digestive balance gently and naturally through personalized detox regimens to improve metabolism and overcome discomfort.',
     image: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=600&auto=format&fit=crop',
     icon: <Leaf className="w-5 h-5 text-clinic-gold" />,
     duration: 'Internal Balance',
+    path: '/treatments#digestive-metabolic-health'
   },
   {
     id: 4,
-    title: 'Stress, Anxiety & Sleep Problems',
+    title: 'Mental Health & Neurology',
     description: 'Deeply relaxing therapies including Shirodhara and Nasya to remove deeply-rooted toxins, nourish the mind, and restore emotional stability.',
     image: 'https://images.unsplash.com/photo-1544161513-01859bf9ec4d?q=80&w=600&auto=format&fit=crop',
     icon: <Wind className="w-5 h-5 text-clinic-gold" />,
     duration: 'Calming',
+    path: '/treatments#mental-health-neurology'
   }
 ];
 
 export default function Home() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [currentTherapy, setCurrentTherapy] = useState(0);
 
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => (prev + 1) % TESTIMONIALS.length);
@@ -83,6 +79,19 @@ export default function Home() {
 
   const prevTestimonial = () => {
     setCurrentTestimonial((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+  };
+
+  const nextTherapy = () => {
+    setCurrentTherapy((prev) => (prev + 1) % THERAPIES.length);
+  };
+
+  const prevTherapy = () => {
+    setCurrentTherapy((prev) => (prev - 1 + THERAPIES.length) % THERAPIES.length);
+  };
+
+  const swipeConfidenceThreshold = 10000;
+  const swipePower = (offset: number, velocity: number) => {
+    return Math.abs(offset) * velocity;
   };
 
   useEffect(() => {
@@ -126,7 +135,7 @@ export default function Home() {
         keywords="Ayurveda Clinic Pune, Agnikarma therapy, Viddhakarma treatment, Panchakarma detox, Ayurvedic pain relief, Nadi Pariksha, Sattvic Life Ayurveda"
         schema={schema}
       />
-      <section className="max-w-7xl mx-auto px-6 md:px-12 mb-20 md:mb-28 text-center md:text-left relative">
+      <section className="pt-8 md:pt-16 max-w-7xl mx-auto px-6 md:px-12 mb-20 md:mb-28 text-center md:text-left relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -134,13 +143,13 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="max-w-2xl mx-auto md:mx-0 lg:col-span-5"
           >
-            <div className="mb-4 inline-flex items-center gap-3">
+            <div className="mb-6 md:mb-8 inline-flex items-center gap-4">
               <span className="h-[1px] w-8 bg-clinic-bronze"></span>
-              <span className="text-clinic-bronze font-serif italic text-lg">
+              <span className="text-clinic-bronze font-serif italic text-lg md:text-xl">
                 Expert Ayurvedic Care
               </span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-serif text-clinic-teal-900 leading-[1.1] mb-6 md:mb-8 font-light">
+            <h1 className="text-4xl md:text-6xl font-serif text-clinic-teal-900 leading-[0.9] mb-6 md:mb-8 font-light">
               Relief from Chronic Illness with <br className="hidden md:block" />
               <span className="italic font-medium text-clinic-teal-900/80">Authentic Ayurveda</span>
             </h1>
@@ -222,11 +231,11 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="w-full md:w-1/3 text-center md:text-left"
           >
-            <div className="mb-4 inline-flex items-center justify-center md:justify-start gap-3">
+            <div className="mb-6 md:mb-8 inline-flex items-center justify-center md:justify-start gap-4">
                <span className="h-[1px] w-8 bg-clinic-gold"></span>
-               <span className="text-clinic-gold font-serif italic text-lg">Philosophy of Care</span>
+               <span className="text-clinic-gold font-serif italic text-lg md:text-xl">Philosophy of Care</span>
              </div>
-             <h2 className="text-4xl lg:text-5xl font-serif font-light mb-6 text-white leading-tight">
+             <h2 className="text-4xl lg:text-5xl font-serif font-light mb-6 text-white leading-[0.9]">
                Why Patients <br/><span className="italic font-medium text-clinic-gold">Trust Us</span>
              </h2>
              <p className="text-white/70 text-lg font-light leading-relaxed">Experience safe, effective, and trusted Ayurvedic care that prioritizes natural root-cause healing and personalized attention.</p>
@@ -288,18 +297,19 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-white border-b border-clinic-border">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
            <div className="text-center mb-16 md:mb-20">
-             <div className="mb-4 inline-flex items-center gap-3">
+             <div className="mb-6 md:mb-8 inline-flex items-center gap-4">
                <span className="h-[1px] w-8 bg-clinic-bronze"></span>
-               <span className="text-clinic-bronze font-serif italic text-lg">Our Expertise</span>
+               <span className="text-clinic-bronze font-serif italic text-lg md:text-xl">Our Expertise</span>
                <span className="h-[1px] w-8 bg-clinic-bronze"></span>
              </div>
-             <h2 className="text-3xl md:text-5xl font-serif text-clinic-teal-900 mb-6 font-light">
+             <h2 className="text-3xl md:text-5xl font-serif text-clinic-teal-900 mb-6 font-light leading-[0.9]">
                Conditions We <span className="italic font-medium text-clinic-teal-900/80">Treat</span>
              </h2>
              <p className="text-clinic-muted font-light text-lg max-w-2xl mx-auto">Discover the root-cause Ayurvedic solutions we provide for various chronic lifestyle disorders.</p>
            </div>
            
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+           {/* Desktop Grid */}
+           <div className="hidden md:grid md:grid-cols-3 gap-8">
              {THERAPIES.map((therapy, idx) => (
                <motion.div 
                  key={therapy.id}
@@ -307,7 +317,7 @@ export default function Home() {
                  whileInView={{ opacity: 1, y: 0 }}
                  viewport={{ once: true }}
                  transition={{ delay: idx * 0.1 }}
-                 className="group flex flex-col bg-clinic-ivory rounded-[2rem] overflow-hidden border border-clinic-border"
+                 className="group flex flex-col bg-clinic-ivory rounded-[2rem] overflow-hidden border border-clinic-border h-full"
                >
                  <div className="relative h-48 overflow-hidden">
                    <div className="absolute inset-0 bg-clinic-teal-900/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
@@ -320,17 +330,75 @@ export default function Home() {
                  <div className="p-6 sm:p-8 flex flex-col flex-1">
                    <h3 className="text-xl font-serif text-clinic-teal-900 mb-3 group-hover:text-clinic-gold transition-colors">{therapy.title}</h3>
                    <p className="text-clinic-charcoal font-light leading-relaxed mb-6 flex-1 text-sm sm:text-base">{therapy.description}</p>
-                   <Link to="/treatments" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-clinic-teal-900 hover:text-clinic-gold transition-colors mt-auto group/link">
+                   <Link to={therapy.path || "/treatments"} className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-clinic-teal-900 hover:text-clinic-gold transition-colors mt-auto group/link">
                      Learn More <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform duration-300" />
                    </Link>
                  </div>
                </motion.div>
              ))}
            </div>
+
+           {/* Mobile Slider */}
+           <div className="md:hidden relative pb-10 w-full">
+             <div className="relative overflow-hidden w-full h-[450px]">
+               <AnimatePresence mode="wait">
+                 <motion.div 
+                   key={currentTherapy}
+                   initial={{ opacity: 0, x: 50 }}
+                   animate={{ opacity: 1, x: 0 }}
+                   exit={{ opacity: 0, x: -50 }}
+                   transition={{ duration: 0.3 }}
+                   drag="x"
+                   dragConstraints={{ left: 0, right: 0 }}
+                   onDragEnd={(e, { offset, velocity }) => {
+                     const swipe = swipePower(offset.x, velocity.x);
+                     if (swipe < -swipeConfidenceThreshold) {
+                       nextTherapy();
+                     } else if (swipe > swipeConfidenceThreshold) {
+                       prevTherapy();
+                     }
+                   }}
+                   className="absolute inset-0 w-full group flex flex-col bg-clinic-ivory rounded-[2rem] overflow-hidden border border-clinic-border h-[430px]"
+                 >
+                   <div className="relative h-48 overflow-hidden shrink-0">
+                     <div className="absolute inset-0 bg-clinic-teal-900/10 pointer-events-none z-10" />
+                     <OptimizedImage src={THERAPIES[currentTherapy].image} alt={THERAPIES[currentTherapy].title} className="w-full h-full object-cover pointer-events-none" />
+                     <div className="absolute top-4 right-4 z-20 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-clinic-teal-900">
+                       {THERAPIES[currentTherapy].icon}
+                       {THERAPIES[currentTherapy].duration}
+                     </div>
+                   </div>
+                   <div className="p-6 flex flex-col flex-1">
+                     <h3 className="text-xl font-serif text-clinic-teal-900 mb-2">{THERAPIES[currentTherapy].title}</h3>
+                     <p className="text-clinic-charcoal font-light leading-relaxed mb-6 flex-1 text-sm">{THERAPIES[currentTherapy].description}</p>
+                     <Link to={THERAPIES[currentTherapy].path || "/treatments"} className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-clinic-teal-900 mt-auto">
+                       Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                     </Link>
+                   </div>
+                 </motion.div>
+               </AnimatePresence>
+             </div>
+             <div className="flex justify-center gap-2 absolute bottom-0 inset-x-0">
+               {THERAPIES.map((_, idx) => (
+                 <button 
+                   key={idx}
+                   onClick={() => setCurrentTherapy(idx)}
+                   className={`w-2 h-2 rounded-full transition-all ${currentTherapy === idx ? 'bg-clinic-teal-900 w-6' : 'bg-clinic-teal-900/30'}`}
+                   aria-label={`Go to slide ${idx + 1}`}
+                 />
+               ))}
+             </div>
+           </div>
            
-           <div className="text-center mt-16">
+           <div className="text-center mt-16 flex flex-col sm:flex-row items-center justify-center gap-4">
+             <Link to="/treatments/journey">
+               <button className="bg-clinic-teal-900 border border-clinic-teal-900 text-white hover:bg-clinic-teal-800 px-8 py-4 rounded-sm text-[13px] font-bold tracking-widest transition-all uppercase flex items-center gap-2 group shadow-lg">
+                 Explore Treatment Journey
+                 <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+               </button>
+             </Link>
              <Link to="/treatments">
-               <button className="bg-transparent border border-clinic-teal-900 text-clinic-teal-900 hover:bg-clinic-teal-900 hover:text-white px-8 py-4 rounded-sm text-[13px] font-bold tracking-widest transition-all uppercase">
+               <button className="bg-transparent border border-clinic-teal-900 text-clinic-teal-900 hover:bg-clinic-teal-50 px-8 py-4 rounded-sm text-[13px] font-bold tracking-widest transition-all uppercase">
                  View All Treatments
                </button>
              </Link>
@@ -362,8 +430,8 @@ export default function Home() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
               <div>
-                <span className="text-clinic-gold font-serif italic text-lg mb-4 block">Ayurvedic Living</span>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif mb-6 md:mb-8 leading-tight">
+                <span className="text-clinic-gold font-serif italic text-lg md:text-xl mb-6 md:mb-8 block">Ayurvedic Living</span>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif mb-6 md:mb-8 leading-[0.9]">
                   Nourish Your Body,<br />
                   <span className="italic font-light">Calm Your Mind</span>
                 </h2>
@@ -428,12 +496,12 @@ export default function Home() {
       <section className="bg-clinic-ivory py-16 md:py-24 border-y border-clinic-border overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
            <div className="text-center mb-16 md:mb-20">
-             <div className="mb-4 inline-flex items-center gap-3">
+             <div className="mb-6 md:mb-8 inline-flex items-center gap-4">
                <span className="h-[1px] w-8 bg-clinic-bronze"></span>
-               <span className="text-clinic-bronze font-serif italic text-lg">Patient Voices</span>
+               <span className="text-clinic-bronze font-serif italic text-lg md:text-xl">Patient Voices</span>
                <span className="h-[1px] w-8 bg-clinic-bronze"></span>
              </div>
-             <h2 className="text-4xl md:text-5xl font-serif text-clinic-teal-900 mb-4 font-light">
+             <h2 className="text-4xl md:text-5xl font-serif text-clinic-teal-900 mb-4 font-light leading-[0.9]">
                Healing <span className="italic font-medium text-clinic-teal-900/80">Journeys</span>
              </h2>
            </div>
@@ -523,9 +591,9 @@ export default function Home() {
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[60px] transform translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-clinic-gold/10 rounded-full blur-[60px] transform -translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
 
-          <div className="mb-4 inline-flex items-center gap-3 relative z-10">
+          <div className="mb-6 md:mb-8 inline-flex items-center gap-4 relative z-10">
             <span className="h-[1px] w-8 bg-clinic-gold"></span>
-            <span className="text-clinic-gold font-serif italic text-lg">Your Next Step</span>
+            <span className="text-clinic-gold font-serif italic text-lg md:text-xl">Your Next Step</span>
             <span className="h-[1px] w-8 bg-clinic-gold"></span>
           </div>
           

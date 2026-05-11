@@ -23,7 +23,7 @@ export default function ContactUs() {
   return (
     <>
       <AboutNav />
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-40 md:pb-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-16 md:pb-32">
       <SEO 
         title="Contact Us | Book Your Ayurvedic Consultation"
         description="Get in touch with Sattvic Advanced Ayurveda in Pune. Book your appointment for Nadi Parikshan, Panchakarma, or pain management therapies today."

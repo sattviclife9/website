@@ -106,7 +106,7 @@ export default function LifestyleTips() {
   return (
     <>
       <WellnessNav />
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-40 md:pb-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-16 md:pb-32">
       <SEO 
         title="Sattvic Lifestyle Tips | Ayurvedic Diet & Routine"
         description="Discover Ayurvedic wisdom for daily living. Practical tips on diet (Ahara), daily routine (Dinacharya), and mindfulness for a balanced, Sattvic life."

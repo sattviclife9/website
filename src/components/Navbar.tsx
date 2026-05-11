@@ -81,12 +81,14 @@ export default function Navbar() {
               : 'bg-white border-b border-clinic-border py-1'
           }`}
         >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-          <Link to="/">
-            <SattvicLogo type="full" className="mr-4" inHeader={true} />
-          </Link>
+        <div className="max-w-7xl mx-auto w-full px-6 md:px-12 flex items-center justify-between">
+          <div className="flex lg:flex-1 justify-start">
+            <Link to="/">
+              <SattvicLogo type="full" className="mr-4" inHeader={true} />
+            </Link>
+          </div>
 
-          <div className="hidden lg:flex flex-1 justify-center gap-8 text-[11px] uppercase tracking-[0.15em] font-semibold text-clinic-teal-900/70 items-center">
+          <div className="hidden lg:flex justify-center gap-8 text-[11px] uppercase tracking-[0.15em] font-semibold text-clinic-teal-900/70 items-center">
             <NavLink to="/">Home</NavLink>
             <div 
               className="relative"
@@ -109,7 +111,6 @@ export default function Navbar() {
                     exit={{ opacity: 0, y: 10 }}
                     className="absolute top-full left-0 mt-2 w-64 bg-white border border-clinic-border shadow-xl rounded-sm overflow-hidden flex flex-col py-2 uppercase text-[10px] tracking-wider"
                   >
-                    <Link to="/services" className="px-4 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors border-b border-clinic-border/30 font-medium text-clinic-teal-900">Overview</Link>
                     <Link to="/services#consultation-and-diagnostic-services" className="px-4 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors border-b border-clinic-border/30">Consultation & Diagnostic</Link>
                     <Link to="/services#panchakarma-and-detox-therapies" className="px-4 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors border-b border-clinic-border/30">Panchakarma & Detox</Link>
                     <Link to="/services#specialized-pain-management" className="px-4 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors border-b border-clinic-border/30">Specialized Pain Management</Link>
@@ -143,8 +144,9 @@ export default function Navbar() {
                     exit={{ opacity: 0, y: 10 }}
                     className="absolute top-full left-0 mt-2 w-[22rem] bg-white border border-clinic-border shadow-xl rounded-sm flex flex-col py-2 uppercase text-[10px] tracking-wider z-[100] group"
                   >
-                    <Link to="/treatments" className="px-5 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors w-full border-b border-clinic-border/30 font-medium text-clinic-teal-900">
-                      Overview
+                    <Link to="/treatments/journey" className="px-5 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors w-full border-b border-clinic-border/30 font-bold tracking-widest bg-clinic-teal-50/50 text-clinic-teal-900 flex items-center justify-between">
+                      Treatment Journey
+                      <span className="bg-amber-100 text-amber-800 border border-amber-200 px-1.5 py-0.5 rounded text-[8px] font-bold tracking-wider relative -top-0.5 animate-pulse flex items-center gap-1 shadow-sm"><span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-ping absolute opacity-75"></span><span className="w-1.5 h-1.5 bg-amber-500 rounded-full relative"></span>EXPLORE</span>
                     </Link>
                     <div className="group/sub w-full">
                       <Link to="/treatments#musculoskeletal-joint-care" className="px-5 py-3 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors flex justify-between items-center w-full">
@@ -531,11 +533,13 @@ export default function Navbar() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 mt-2 w-48 bg-white border border-clinic-border shadow-xl rounded-sm overflow-hidden flex flex-col py-2 uppercase text-[10px] tracking-wider"
+                    className="absolute top-full left-0 mt-2 w-60 bg-white border border-clinic-border shadow-xl rounded-sm overflow-hidden flex flex-col py-2 uppercase text-[10px] tracking-wider"
                   >
-                    <Link to="/store" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Store</Link>
                     <Link to="/dosha-quiz" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Dosha Quiz</Link>
+                    <Link to="/herb-glossary" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Herb Glossary</Link>
                     <Link to="/lifestyle-tips" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Lifestyle Tips</Link>
+                    <Link to="/store" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Store</Link>
+                    <Link to="/symptom-navigator" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Symptom Navigator</Link>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -562,7 +566,10 @@ export default function Navbar() {
                     exit={{ opacity: 0, y: 10 }}
                     className="absolute top-full left-0 mt-2 w-48 bg-white border border-clinic-border shadow-xl rounded-sm overflow-hidden flex flex-col py-2 uppercase text-[10px] tracking-wider"
                   >
-                    <Link to="/announcements" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Announcements</Link>
+                    <Link to="/announcements" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors flex items-center justify-between">
+                      Announcements
+                      <span className="bg-amber-100 text-amber-800 border border-amber-200 px-1.5 py-0.5 rounded text-[8px] font-bold tracking-wider relative -top-0.5 animate-pulse flex items-center gap-1 shadow-sm"><span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-ping absolute opacity-75"></span><span className="w-1.5 h-1.5 bg-amber-500 rounded-full relative"></span>OFFER</span>
+                    </Link>
                     <Link to="/videos" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">Video Gallery</Link>
                     <Link to="/news" className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors">News & Updates</Link>
                   </motion.div>
@@ -601,7 +608,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex lg:flex-1 justify-end items-center gap-4">
             <button 
               onClick={() => setSearchModalOpen(true)}
               className="text-clinic-charcoal p-2 hover:bg-clinic-teal-50 rounded-full transition-colors focus:outline-none"
@@ -721,6 +728,10 @@ export default function Navbar() {
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden flex flex-col pl-4 text-[12px] mt-2 mb-2"
                     >
+                      <Link to="/treatments/journey" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 pr-4 uppercase text-[11px] font-bold tracking-widest text-clinic-teal-900 border-b border-clinic-border/50 bg-clinic-teal-50/50 flex items-center justify-between">
+                        Treatment Journey
+                        <span className="bg-amber-100 text-amber-800 border border-amber-200 px-2 py-0.5 rounded text-[10px] font-bold tracking-wider flex items-center gap-1 shadow-sm animate-pulse"><span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-ping absolute opacity-75"></span><span className="w-1.5 h-1.5 bg-amber-500 rounded-full relative"></span>EXPLORE</span>
+                      </Link>
                       <div className="flex flex-col border-b border-clinic-border/50">
                         <Link to="/treatments#musculoskeletal-joint-care" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 uppercase text-clinic-teal-900/80 font-medium hover:text-clinic-teal-900">
                           Musculoskeletal & Joint Care
@@ -1103,9 +1114,11 @@ export default function Navbar() {
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden flex flex-col pl-4 mt-2 mb-2"
                     >
-                      <Link to="/store" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Store</Link>
                       <Link to="/dosha-quiz" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Dosha Quiz</Link>
+                      <Link to="/herb-glossary" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Herb Glossary</Link>
                       <Link to="/lifestyle-tips" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Lifestyle Tips</Link>
+                      <Link to="/store" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Store</Link>
+                      <Link to="/symptom-navigator" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Symptom Navigator</Link>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -1135,7 +1148,10 @@ export default function Navbar() {
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden flex flex-col pl-4 mt-2 mb-2"
                     >
-                      <Link to="/announcements" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Announcements</Link>
+                      <Link to="/announcements" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase flex items-center justify-between">
+                        Announcements
+                        <span className="bg-amber-100 text-amber-800 border border-amber-200 px-2 py-0.5 rounded text-[10px] font-bold tracking-wider flex items-center gap-1 shadow-sm animate-pulse"><span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-ping absolute opacity-75"></span><span className="w-1.5 h-1.5 bg-amber-500 rounded-full relative"></span>OFFER</span>
+                      </Link>
                       <Link to="/videos" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">Video Gallery</Link>
                       <Link to="/news" onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }} className="py-4 border-b border-clinic-border/50 uppercase">News & Updates</Link>
                     </motion.div>

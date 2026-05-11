@@ -9,7 +9,7 @@ export default function News() {
   return (
     <>
       <InsightsNav />
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-40 md:pb-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-16 md:pb-32">
       <SEO 
         title="Ayurvedic News & Updates | Sattvic Life"
         description="Read the latest general news, research, and updates in the world of Ayurveda and holistic wellness."

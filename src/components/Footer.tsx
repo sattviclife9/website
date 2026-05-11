@@ -44,6 +44,7 @@ export default function Footer() {
             <div className="flex flex-col gap-3 text-clinic-white-off/70 text-xs md:text-sm font-medium tracking-wide">
               <Link to="/about" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">About Us</Link>
               <Link to="/treatments" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">Treatments</Link>
+              <Link to="/treatments/journey" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">Treatment Journey</Link>
               <Link to="/services" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">Services</Link>
               <Link to="/about/doctors" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">Meet the Doctors</Link>
               <Link to="/contact" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">Contact Us</Link>
@@ -115,7 +116,14 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-4 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-white/40 text-[9px] md:text-[10px] uppercase tracking-[0.2em] font-bold">
-          <p className="text-center md:text-left">&copy; {new Date().getFullYear()} Sattvic Ayurvedic Centre. All rights reserved.</p>
+          <div className="text-center md:text-left flex flex-col sm:flex-row items-center gap-4">
+            <span>&copy; {new Date().getFullYear()} Sattvic Ayurvedic Centre. All rights reserved.</span>
+            <img 
+              src="https://api.visitorbadge.io/api/visitors?path=ais-pre-nvhh7vffqv6pwj3gerwe4l-548074607693&countColor=%23c6a87c&label=" 
+              alt="Visitors Tracker" 
+              className="h-6 opacity-100 mix-blend-screen"
+            />
+          </div>
           <div className="flex flex-wrap justify-center gap-6">
             <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>

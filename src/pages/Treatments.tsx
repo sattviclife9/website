@@ -15,25 +15,24 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import TreatmentNav from "../components/TreatmentNav";
 
-interface SubItem {
+export interface SubItem {
   name: string;
   path?: string;
 }
 
-interface TreatmentItem {
+export interface TreatmentItem {
   name: string;
   path?: string;
   subItems?: SubItem[];
 }
 
-interface TreatmentCategory {
+export interface TreatmentCategory {
   title: string;
   icon: React.ReactNode;
   items: TreatmentItem[];
 }
 
-export default function Treatments() {
-  const categories: TreatmentCategory[] = [
+export const TREATMENTS_CATEGORIES: TreatmentCategory[] = [
     {
       title: "Musculoskeletal & Joint Care",
       icon: <Activity className="w-6 h-6 text-clinic-teal-900" />,
@@ -380,6 +379,9 @@ export default function Treatments() {
     },
   ];
 
+export default function Treatments() {
+  const categories = TREATMENTS_CATEGORIES;
+
   const location = useLocation();
   useEffect(() => {
     if (location.hash) {
@@ -387,7 +389,8 @@ export default function Treatments() {
         const id = location.hash.replace('#', '');
         const element = document.getElementById(id);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          const y = element.getBoundingClientRect().top + window.scrollY - 160;
+          window.scrollTo({ top: y, behavior: 'smooth' });
         }
       }, 100);
     } else {
@@ -398,12 +401,12 @@ export default function Treatments() {
   return (
     <>
       <TreatmentNav />
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-40 md:pb-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-4 pb-12 md:pt-8 md:pb-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto text-center mb-20 md:mb-28"
+          className="max-w-4xl mx-auto text-center mb-12 md:mb-16"
         >
           <div className="mb-6 md:mb-8 inline-flex items-center gap-4">
             <span className="h-[1px] w-8 bg-clinic-bronze"></span>
@@ -418,10 +421,17 @@ export default function Treatments() {
               Treatments
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-clinic-charcoal font-light leading-relaxed max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-clinic-charcoal font-light leading-relaxed max-w-3xl mx-auto mb-8">
             Comprehensive clinical divisions and specialized diagnostic care
             rooted in traditional Ayurveda.
           </p>
+          
+          <Link to="/treatments/journey">
+            <button className="bg-clinic-teal-900 border border-clinic-teal-900 text-white hover:bg-clinic-teal-800 px-8 py-4 rounded-sm text-[13px] font-bold tracking-widest transition-all uppercase inline-flex items-center gap-2 group shadow-lg">
+              Explore Treatment Journey
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </Link>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">

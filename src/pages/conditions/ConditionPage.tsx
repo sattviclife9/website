@@ -63,7 +63,7 @@ export default function ConditionPage() {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="relative pt-8 pb-12 md:pt-40 md:pb-32 overflow-hidden bg-clinic-paper">
+      <section className="relative pt-8 pb-12 md:pt-16 md:pb-32 overflow-hidden bg-clinic-paper">
         <div className="absolute inset-0 z-0 opacity-10 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-clinic-bronze via-transparent to-transparent"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
