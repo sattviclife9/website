@@ -44,7 +44,7 @@ const THERAPIES = [
     id: 1,
     title: 'Musculoskeletal & Joint Care',
     description: 'Advanced treatments like Viddhakarma and Agnikarma to provide instant and lasting relief from arthritis, sciatica, and muscular stiffness.',
-    image: 'https://images.unsplash.com/photo-1560972550-aba3456b5564?q=80&w=600&auto=format&fit=crop',
+    image: 'https://drive.google.com/thumbnail?id=1FhWwAavrUV07zP-votO8uSljAp0f0WSn&sz=w600',
     icon: <Sun className="w-5 h-5 text-clinic-gold" />,
     duration: 'Rapid Relief',
     path: '/treatments#musculoskeletal-joint-care'
@@ -53,7 +53,7 @@ const THERAPIES = [
     id: 3,
     title: 'Digestive & Metabolic Health',
     description: 'Restoring digestive balance gently and naturally through personalized detox regimens to improve metabolism and overcome discomfort.',
-    image: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=600&auto=format&fit=crop',
+    image: 'https://drive.google.com/thumbnail?id=1IersAK5TZ2WKQuASTaKw8y0zvQ6nQJXl&sz=w600',
     icon: <Leaf className="w-5 h-5 text-clinic-gold" />,
     duration: 'Internal Balance',
     path: '/treatments#digestive-metabolic-health'
@@ -62,7 +62,7 @@ const THERAPIES = [
     id: 4,
     title: 'Mental Health & Neurology',
     description: 'Deeply relaxing therapies including Shirodhara and Nasya to remove deeply-rooted toxins, nourish the mind, and restore emotional stability.',
-    image: 'https://images.unsplash.com/photo-1544161513-01859bf9ec4d?q=80&w=600&auto=format&fit=crop',
+    image: 'https://drive.google.com/thumbnail?id=1jSQ-E6gnKoMksygLjoGggogu3VsXszHa&sz=w600',
     icon: <Wind className="w-5 h-5 text-clinic-gold" />,
     duration: 'Calming',
     path: '/treatments#mental-health-neurology'

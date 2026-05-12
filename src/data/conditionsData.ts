@@ -253,10 +253,10 @@ export function getConditionData(slug: string): ConditionData {
 
   if (/(joint|arthrit|osteo|knee|spine|sciatica|disc|spondylitis|back|neck|shoulder|elbow)/i.test(slug)) {
     categoryStr = "Musculoskeletal & Joint Care";
-    targetImage = "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=1200";
+    targetImage = "https://drive.google.com/thumbnail?id=1FhWwAavrUV07zP-votO8uSljAp0f0WSn&sz=w1200";
   } else if (/(digest|acid|gas|constipation|bowel|diarrhea|piles|fissure|liver|jaundice|cirrhosis|diabetes|thyroid|cholesterol|obesity|apptit)/i.test(slug)) {
     categoryStr = "Digestive & Metabolic Health";
-    targetImage = "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80&w=1200";
+    targetImage = "https://drive.google.com/thumbnail?id=1IersAK5TZ2WKQuASTaKw8y0zvQ6nQJXl&sz=w1200";
   } else if (/(skin|psoriasis|eczema|vitiligo|acne|pigment|allergies|hair|alopecia|dandruff)/i.test(slug)) {
     categoryStr = "Skin, Hair & Aesthetic Wellness";
     targetImage = "https://images.unsplash.com/photo-1615287413695-1f96e4fc3b92?auto=format&fit=crop&q=80&w=1200";
@@ -265,7 +265,7 @@ export function getConditionData(slug: string): ConditionData {
     targetImage = "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=1200";
   } else if (/(stress|anxiety|insomnia|irritability|migraine|epilepsy|parkinson|stroke|paralysis|memory|concentration|adhd|autism|brain|neuro)/i.test(slug)) {
     categoryStr = "Mental Health & Neurology";
-    targetImage = "https://images.unsplash.com/photo-1536623975707-c4b3b2af565d?auto=format&fit=crop&q=80&w=1200";
+    targetImage = "https://drive.google.com/thumbnail?id=1jSQ-E6gnKoMksygLjoGggogu3VsXszHa&sz=w1200";
   } else if (/(sinus|cold|flu|asthma|bronchitis|allerg|respiratory|breath)/i.test(slug)) {
     categoryStr = "Respiratory & Immune Health";
     targetImage = "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&q=80&w=1200";
