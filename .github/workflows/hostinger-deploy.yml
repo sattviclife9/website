@@ -42,7 +42,7 @@ jobs:
         if: success()
         run: |
           if [ -n "${{ env.WEBHOOK }}" ]; then
-            curl -X POST -d '' "${{ env.WEBHOOK }}"
+            curl -X POST -H "Content-Type: application/json" -d '{"ref": "refs/heads/hostinger-build"}' "${{ env.WEBHOOK }}"
             echo "Webhook triggered"
           else
             echo "No webhook configured. Please set HOSTINGER_WEBHOOK_URL in GitHub Secrets."

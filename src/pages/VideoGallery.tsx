@@ -7,7 +7,7 @@ export default function VideoGallery() {
   return (
     <>
       <InsightsNav />
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-16 md:pb-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-4 pb-12 md:pt-8 md:pb-32">
         <SEO 
           title="Video Gallery | Sattvic Life"
           description="Watch our latest videos on Ayurvedic health, treatments, and wellness tips."

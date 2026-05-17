@@ -14,7 +14,7 @@ export default function AboutUs() {
       />
       
       {/* Hero section */}
-      <section className="bg-clinic-teal-50 pt-8 md:pt-16 pb-16 md:pb-24 border-b border-clinic-border relative overflow-hidden">
+      <section className="bg-clinic-teal-50 pt-4 md:pt-8 pb-16 md:pb-24 border-b border-clinic-border relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-clinic-gold/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
           <motion.div
@@ -23,7 +23,7 @@ export default function AboutUs() {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <div className="mb-6 md:mb-8 inline-flex items-center gap-4">
+            <div className="mb-3 md:mb-8 inline-flex items-center gap-4">
               <span className="h-[1px] w-8 bg-clinic-bronze"></span>
               <span className="text-clinic-bronze font-serif italic text-lg md:text-xl">Our Philosophy</span>
               <span className="h-[1px] w-8 bg-clinic-bronze"></span>

@@ -54,7 +54,7 @@ export default function SymptomChecker() {
   return (
     <>
       <WellnessNav />
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-16 md:pb-32 relative">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-4 pb-12 md:pt-8 md:pb-32 relative">
         <div className="absolute top-40 right-20 w-[600px] h-[600px] bg-clinic-sea/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
       
         <motion.div

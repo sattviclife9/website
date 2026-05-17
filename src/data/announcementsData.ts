@@ -3,7 +3,7 @@ export const ANNOUNCEMENTS = [
     id: 'takra-dhara',
     badge: 'Limited Time Offer',
     category: 'Cooling Therapy',
-    date: 'Announced Today',
+    date: '15th April to 15th June',
     title: 'Medicated Takra Dhara - Special Offer',
     description: 'Tired of internal heat, acidity or burning sensation? Relief from acidity, burning & body heat naturally with our clinically proven deep cooling therapy.',
     image: 'https://drive.google.com/thumbnail?id=16Qs9mwjpknCEqSRgG7eO-4fnO7HSn3hz&sz=w1200',

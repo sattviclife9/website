@@ -9,31 +9,31 @@ import OptimizedImage from '../components/OptimizedImage';
 const TESTIMONIALS = [
   {
     name: "Rajesh Kumar",
-    testimonial: "I was suffering from chronic lower back pain for years. The Agnikarma treatment provided immediate relief that I couldn't find elsewhere. Truly life-changing experience.",
+    testimonial: "I was suffering from chronic lower back pain for years. Dr Aqsa's Agnikarma treatment provided immediate relief that I couldn't find elsewhere. Truly life-changing experience.",
     rating: 5,
     condition: "Lower Back Pain"
   },
   {
     name: "Priya Sharma",
-    testimonial: "The Panchakarma detox helped me clear my skin and improved my digestion tremendously. The doctors are very knowledgeable and compassionate.",
+    testimonial: "The Panchakarma detox recommended by Dr Aqsa Ma'am helped me clear my skin and improved my digestion tremendously. She is very knowledgeable and compassionate.",
     rating: 5,
     condition: "Digestive Issues"
   },
   {
     name: "Sunita Reddy",
-    testimonial: "Shirodhara was the most relaxing experience of my life. It helped me manage my stress and insomnia naturally. I highly recommend Sattvic for authentic Ayurvedic care.",
+    testimonial: "Shirodhara under the doctor's guidance was the most relaxing experience of my life. It helped me manage my stress and insomnia naturally. I highly recommend Sattvic for authentic Ayurvedic care.",
     rating: 5,
     condition: "Insomnia & Stress"
   },
   {
     name: "Vikram Singh",
-    testimonial: "Agnikarma effectively fixed my frozen shoulder when other therapies failed. I regained full mobility within a few sessions. Very grateful to the team.",
+    testimonial: "Agnikarma effectively fixed my frozen shoulder when other therapies failed. I regained full mobility within a few sessions. Very grateful to Dr Aqsa and the team.",
     rating: 5,
     condition: "Frozen Shoulder"
   },
   {
     name: "Anjali Gupta",
-    testimonial: "The Janu Basti treatment for my knee osteoarthritis was incredible. It relieved my pain and allowed me to walk comfortably again without relying on painkillers.",
+    testimonial: "The Janu Basti treatment for my knee osteoarthritis was incredible. It relieved my pain and allowed me to walk comfortably again without relying on painkillers. Dr Aqsa Ma'am's expertise is highly recommended.",
     rating: 5,
     condition: "Knee Pain (OA)"
   }
@@ -447,44 +447,52 @@ export default function Home() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
-                  <motion.div 
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    whileHover={{ scale: 1.05 }}
-                    className="aspect-square bg-white/10 rounded-2xl flex flex-col items-center justify-center p-6 text-center backdrop-blur-sm border border-white/10 shadow-lg cursor-pointer hover:bg-white/20 transition-colors"
-                  >
-                    <Utensils className="w-8 h-8 text-clinic-gold mb-3" />
-                    <span className="text-sm font-medium">Sattvic Diet</span>
-                  </motion.div>
-                  <motion.div 
-                    animate={{ y: [0, 8, 0] }}
-                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                    whileHover={{ scale: 1.05 }}
-                    className="aspect-[4/5] bg-clinic-gold/20 rounded-2xl flex flex-col items-center justify-center p-6 text-center border border-clinic-gold/20 shadow-lg cursor-pointer hover:bg-clinic-gold/30 transition-colors"
-                  >
-                    <Brain className="w-8 h-8 text-clinic-gold mb-3" />
-                    <span className="text-sm font-medium">Mindfulness</span>
-                  </motion.div>
+                  <Link to="/lifestyle-tips" className="block">
+                    <motion.div 
+                      animate={{ y: [0, -10, 0] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                      whileHover={{ scale: 1.05 }}
+                      className="aspect-square bg-white/10 rounded-2xl flex flex-col items-center justify-center p-6 text-center backdrop-blur-sm border border-white/10 shadow-lg cursor-pointer hover:bg-white/20 transition-colors"
+                    >
+                      <Utensils className="w-8 h-8 text-clinic-gold mb-3" />
+                      <span className="text-sm font-medium">Sattvic Diet</span>
+                    </motion.div>
+                  </Link>
+                  <Link to="/lifestyle-tips" className="block">
+                    <motion.div 
+                      animate={{ y: [0, 8, 0] }}
+                      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                      whileHover={{ scale: 1.05 }}
+                      className="aspect-[4/5] bg-clinic-gold/20 rounded-2xl flex flex-col items-center justify-center p-6 text-center border border-clinic-gold/20 shadow-lg cursor-pointer hover:bg-clinic-gold/30 transition-colors"
+                    >
+                      <Brain className="w-8 h-8 text-clinic-gold mb-3" />
+                      <span className="text-sm font-medium">Mindfulness</span>
+                    </motion.div>
+                  </Link>
                 </div>
                 <div className="space-y-4 pt-8">
-                  <motion.div 
-                    animate={{ y: [0, -8, 0] }}
-                    transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                    whileHover={{ scale: 1.05 }}
-                    className="aspect-[4/5] bg-white/5 rounded-2xl flex flex-col items-center justify-center p-6 text-center border border-white/10 shadow-lg cursor-pointer hover:bg-white/15 transition-colors"
-                  >
-                    <Sun className="w-8 h-8 text-clinic-gold mb-3" />
-                    <span className="text-sm font-medium">Daily Rhythms</span>
-                  </motion.div>
-                  <motion.div 
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                    whileHover={{ scale: 1.05 }}
-                    className="aspect-square bg-white/10 rounded-2xl flex flex-col items-center justify-center p-6 text-center backdrop-blur-sm border border-white/10 shadow-lg cursor-pointer hover:bg-white/20 transition-colors"
-                  >
-                    <Heart className="w-8 h-8 text-clinic-gold mb-3" />
-                    <span className="text-sm font-medium">Holistic Joy</span>
-                  </motion.div>
+                  <Link to="/lifestyle-tips" className="block">
+                    <motion.div 
+                      animate={{ y: [0, -8, 0] }}
+                      transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                      whileHover={{ scale: 1.05 }}
+                      className="aspect-[4/5] bg-white/5 rounded-2xl flex flex-col items-center justify-center p-6 text-center border border-white/10 shadow-lg cursor-pointer hover:bg-white/15 transition-colors"
+                    >
+                      <Sun className="w-8 h-8 text-clinic-gold mb-3" />
+                      <span className="text-sm font-medium">Daily Rhythms</span>
+                    </motion.div>
+                  </Link>
+                  <Link to="/lifestyle-tips" className="block">
+                    <motion.div 
+                      animate={{ y: [0, 10, 0] }}
+                      transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                      whileHover={{ scale: 1.05 }}
+                      className="aspect-square bg-white/10 rounded-2xl flex flex-col items-center justify-center p-6 text-center backdrop-blur-sm border border-white/10 shadow-lg cursor-pointer hover:bg-white/20 transition-colors"
+                    >
+                      <Heart className="w-8 h-8 text-clinic-gold mb-3" />
+                      <span className="text-sm font-medium">Holistic Joy</span>
+                    </motion.div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -529,7 +537,7 @@ export default function Home() {
              </div>
 
              {/* Testimonial Active Card */}
-             <div className="relative h-[380px] sm:h-[320px] md:h-[280px]">
+             <div className="relative min-h-[320px] flex items-center justify-center">
                <AnimatePresence mode="wait">
                  <motion.div
                    key={currentTestimonial}
@@ -545,7 +553,7 @@ export default function Home() {
                      if (swipe < -100) nextTestimonial();
                      else if (swipe > 100) prevTestimonial();
                    }}
-                   className="absolute inset-0 bg-white p-8 md:p-12 rounded-[2rem] border border-clinic-border shadow-md flex flex-col items-center text-center max-w-3xl mx-auto my-auto h-full cursor-grab active:cursor-grabbing"
+                   className="relative bg-white p-8 md:p-12 rounded-[2rem] border border-clinic-border shadow-md flex flex-col items-center text-center max-w-3xl mx-auto my-auto w-full cursor-grab active:cursor-grabbing"
                  >
                    <Quote className="w-10 h-10 text-clinic-gold/30 absolute top-6 left-6" />
                    <div className="flex gap-1 mb-6 mt-4">

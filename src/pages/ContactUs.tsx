@@ -23,7 +23,7 @@ export default function ContactUs() {
   return (
     <>
       <AboutNav />
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-16 md:pb-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-4 pb-12 md:pt-8 md:pb-32">
       <SEO 
         title="Contact Us | Book Your Ayurvedic Consultation"
         description="Get in touch with Sattvic Advanced Ayurveda in Pune. Book your appointment for Nadi Parikshan, Panchakarma, or pain management therapies today."
@@ -152,7 +152,7 @@ export default function ContactUs() {
                 <span className="text-lg">@</span>
                 <span>sattviclife9@gmail.com</span>
               </a>
-              <a href="https://wa.me/919404417145" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-3 text-[13px] uppercase tracking-[0.1em] font-bold text-green-700 border border-green-700/20 bg-green-50/30 px-6 py-4 rounded-xl shadow-sm transition-all hover:bg-green-50 hover:border-green-700/40">
+              <a href="https://wa.me/919404417145?text=Hello!%20I%20would%20like%20to%20book%20a%20consultation%20at%20Sattvic%20Advanced%20Ayurveda." target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-3 text-[13px] uppercase tracking-[0.1em] font-bold text-green-700 border border-green-700/20 bg-green-50/30 px-6 py-4 rounded-xl shadow-sm transition-all hover:bg-green-50 hover:border-green-700/40">
                 <WhatsAppIcon className="w-4 h-4" />
                 <span>Message on WhatsApp</span>
               </a>

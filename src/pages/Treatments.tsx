@@ -33,351 +33,396 @@ export interface TreatmentCategory {
 }
 
 export const TREATMENTS_CATEGORIES: TreatmentCategory[] = [
-    {
-      title: "Musculoskeletal & Joint Care",
-      icon: <Activity className="w-6 h-6 text-clinic-teal-900" />,
-      items: [
-        {
-          name: "Arthritis & Joint Care",
-          subItems: [
-            {
-              name: "Osteoarthritis (Sandhivat)",
-              path: "/conditions/osteoarthritis",
-            },
-            {
-              name: "Rheumatoid Arthritis (Amavata)",
-              path: "/conditions/rheumatoid-arthritis",
-            },
-          ],
-        },
-        {
-          name: "Spine Health",
-          subItems: [
-            { name: "Sciatica (Gridhrasi)", path: "/conditions/sciatica" },
-            { name: "Slip Disc (Katigraha)", path: "/conditions/slip-disc" },
-            {
-              name: "Cervical & Lumbar Spondylitis (Manyastambha & Katigraha)",
-              path: "/conditions/cervical-lumbar-spondylitis",
-            },
-          ],
-        },
-        {
-          name: "Chronic Pain",
-          subItems: [
-            { name: "Knee Pain (Janu Shula)", path: "/conditions/knee-pain" },
-            { name: "Back Pain (Kati Shula)", path: "/conditions/back-pain" },
-            { name: "Neck Pain (Manya Shula)", path: "/conditions/neck-pain" },
-          ],
-        },
-        {
-          name: "Sports & Occupational Injuries",
-          subItems: [
-            { name: "Frozen Shoulder (Apabahnuka)", path: "/conditions/frozen-shoulder" },
-            { name: "Tennis Elbow (Kurpara Shula)", path: "/conditions/tennis-elbow" },
-          ],
-        },
-      ],
-    },
-    {
-      title: "Digestive & Metabolic Health",
-      icon: <Droplets className="w-6 h-6 text-clinic-teal-900" />,
-      items: [
-        {
-          name: "Digestive Disorders",
-          subItems: [
-            { name: "Acidity (Amlapitta)", path: "/conditions/acidity" },
-            { name: "Gas & Indigestion (Adhmana & Ajirna)", path: "/conditions/gas-indigestion" },
-            { name: "Constipation (Vibandha)", path: "/conditions/constipation" },
-          ],
-        },
-        {
-          name: "Gut Health",
-          subItems: [
-            {
-              name: "Irritable Bowel Syndrome (IBS)",
-              path: "/conditions/irritable-bowel-syndrome",
-            },
-            { name: "Diarrhea (Atisara)", path: "/conditions/diarrhea" },
-            { name: "Piles & Fissure (Arsha & Parikartika)", path: "/conditions/piles-fissure" },
-          ],
-        },
-        {
-          name: "Liver Care",
-          subItems: [
-            { name: "Fatty Liver (Yakrit Roga)", path: "/conditions/fatty-liver" },
-            { name: "Jaundice (Kamala)", path: "/conditions/jaundice" },
-            { name: "Liver Cirrhosis (Yakritodara)", path: "/conditions/liver-cirrhosis" },
-          ],
-        },
-        {
-          name: "Metabolic Support",
-          subItems: [
-            {
-              name: "Diabetes Management (Prameha)",
-              path: "/conditions/diabetes-management",
-            },
-            {
-              name: "Thyroid Dysfunction (Galaganda)",
-              path: "/conditions/thyroid-dysfunction",
-            },
-            {
-              name: "Cholesterol Management (Medoroga)",
-              path: "/conditions/cholesterol-management",
-            },
-          ],
-        },
-        {
-          name: "Weight Management",
-          subItems: [
-            { name: "Obesity (Sthaulya)", path: "/conditions/obesity" },
-            {
-              name: "Heart Health Support (Hrid Roga)",
-              path: "/conditions/heart-health-support",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: "Skin, Hair & Aesthetic Wellness",
-      icon: <Sparkles className="w-6 h-6 text-clinic-teal-900" />,
-      items: [
-        {
-          name: "Chronic Skin Conditions",
-          subItems: [
-            { name: "Psoriasis (Eka Kushta)", path: "/conditions/psoriasis" },
-            { name: "Eczema (Vicharchika)", path: "/conditions/eczema" },
-            { name: "Vitiligo (Shvitra)", path: "/conditions/vitiligo" },
-          ],
-        },
-        {
-          name: "Daily Care",
-          subItems: [
-            {
-              name: "Acne & Pigmentation (Yauvanapidika & Vyanga)",
-              path: "/conditions/acne-pigmentation",
-            },
-            {
-              name: "Chronic Allergies (Sheetapitta)",
-              path: "/conditions/chronic-allergies",
-            },
-          ],
-        },
-        {
-          name: "Trichology",
-          subItems: [
-            { name: "Hair Fall (Khalitya)", path: "/conditions/hair-fall" },
-            { name: "Alopecia (Indralupta)", path: "/conditions/alopecia" },
-            { name: "Dandruff (Darunaka)", path: "/conditions/dandruff" },
-          ],
-        },
-      ],
-    },
-    {
-      title: "Women’s Health & Fertility",
-      icon: <Baby className="w-6 h-6 text-clinic-teal-900" />,
-      items: [
-        {
-          name: "Hormonal Care",
-          subItems: [
-            { name: "PCOD / PCOS (Artava Kshaya)", path: "/conditions/pcod-pcos" },
-            {
-              name: "Menstrual Irregularities (Artava Dosha)",
-              path: "/conditions/menstrual-irregularities",
-            },
-          ],
-        },
-        {
-          name: "Reproductive Health",
-          subItems: [
-            {
-              name: "Fertility Support (Vandhyatva)",
-              path: "/conditions/fertility-support",
-            },
-            {
-              name: "Repeated Miscarriages Support (Garbhasrava)",
-              path: "/conditions/repeated-miscarriages-support",
-            },
-          ],
-        },
-        {
-          name: "Maternal Wellness",
-          subItems: [
-            { name: "Postpartum Care (Sutika Paricharya)", path: "/conditions/postpartum-care" },
-            {
-              name: "Lactation Support",
-              path: "/conditions/lactation-support",
-            },
-          ],
-        },
-        {
-          name: "General Care",
-          subItems: [
-            { name: "White Discharge (Shveta Pradara)", path: "/conditions/white-discharge" },
-            { name: "Dysmenorrhea (Kashtartava)", path: "/conditions/dysmenorrhea" },
-          ],
-        },
-      ],
-    },
-    {
-      title: "Mental Health & Neurology",
-      icon: <Brain className="w-6 h-6 text-clinic-teal-900" />,
-      items: [
-        {
-          name: "Stress Management",
-          subItems: [
-            {
-              name: "Anxiety & Insomnia (Chittodvega & Anidra)",
-              path: "/conditions/anxiety-insomnia",
-            },
-            { name: "Irritability", path: "/conditions/irritability" },
-          ],
-        },
-        {
-          name: "Neurological Support",
-          subItems: [
-            { name: "Migraine (Ardhavabhedaka)", path: "/conditions/migraine" },
-            { name: "Epilepsy (Apasmara)", path: "/conditions/epilepsy" },
-            {
-              name: "Parkinson’s Disease (Kampavata)",
-              path: "/conditions/parkinson-s-disease",
-            },
-          ],
-        },
-        {
-          name: "Recovery",
-          subItems: [
-            {
-              name: "Stroke & Paralysis Rehabilitation (Pakshaghata)",
-              path: "/conditions/stroke-paralysis-rehabilitation",
-            },
-          ],
-        },
-        {
-          name: "Developmental Support",
-          subItems: [
-            {
-              name: "Memory & Concentration",
-              path: "/conditions/memory-concentration",
-            },
-            {
-              name: "Ayurvedic Support for ADHD/Autism",
-              path: "/conditions/ayurvedic-support-for-adhd-autism",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: "Respiratory & Immune Health",
-      icon: <Wind className="w-6 h-6 text-clinic-teal-900" />,
-      items: [
-        {
-          name: "Allergy Management",
-          subItems: [
-            {
-              name: "Chronic Sinusitis (Dushta Pratishyaya)",
-              path: "/conditions/chronic-sinusitis",
-            },
-            { name: "Cold & Flu (Pratishyaya)", path: "/conditions/cold-flu" },
-          ],
-        },
-        {
-          name: "Respiratory Care",
-          subItems: [
-            { name: "Asthma (Tamaka Shvasa)", path: "/conditions/asthma" },
-            { name: "Bronchitis (Kasa)", path: "/conditions/bronchitis" },
-          ],
-        },
-        {
-          name: "Autoimmune Support",
-          subItems: [
-            {
-              name: "Specialized protocols for SLE, Hashimoto’s, and IBD",
-              path: "/conditions/specialized-protocols-for-sle-hashimoto-s-and-ibd",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: "Men’s Health & Urology",
-      icon: <Stethoscope className="w-6 h-6 text-clinic-teal-900" />,
-      items: [
-        {
-          name: "Reproductive Wellness",
-          subItems: [
-            {
-              name: "Erectile Dysfunction (Klaibya)",
-              path: "/conditions/erectile-dysfunction",
-            },
-            {
-              name: "Premature Ejaculation (Shukragata Vata)",
-              path: "/conditions/premature-ejaculation",
-            },
-            { name: "Low Sperm Count (Kshinashukra)", path: "/conditions/low-sperm-count" },
-          ],
-        },
-        {
-          name: "Urinary Health",
-          subItems: [
-            { name: "Kidney Stones (Ashmari)", path: "/conditions/kidney-stones" },
-            { name: "UTI (Mutrakrichra)", path: "/conditions/uti" },
-            { name: "Prostate Issues (Mutraghata)", path: "/conditions/prostate-issues" },
-          ],
-        },
-        {
-          name: "Bladder Support",
-          subItems: [
-            {
-              name: "Urinary Incontinence (Mutratisara)",
-              path: "/conditions/urinary-incontinence",
-            },
-            {
-              name: "Neurogenic Bladder",
-              path: "/conditions/neurogenic-bladder",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: "Pediatric (Child) Healthcare",
-      icon: <ShieldAlert className="w-6 h-6 text-clinic-teal-900" />,
-      items: [
-        {
-          name: "Immunity",
-          subItems: [
-            { name: "Recurrent Colds", path: "/conditions/recurrent-colds" },
-            {
-              name: "Seasonal Allergies",
-              path: "/conditions/seasonal-allergies",
-            },
-          ],
-        },
-        {
-          name: "Growth",
-          subItems: [
-            { name: "Poor Appetite (Agnimandya)", path: "/conditions/poor-appetite" },
-            {
-              name: "Digestive Weakness",
-              path: "/conditions/digestive-weakness",
-            },
-          ],
-        },
-        {
-          name: "Development",
-          subItems: [
-            {
-              name: "Concentration Support",
-              path: "/conditions/concentration-support",
-            },
-            { name: "Bed Wetting (Shayya Mutra)", path: "/conditions/bed-wetting" },
-          ],
-        },
-      ],
-    },
-  ];
+  {
+    title: "Musculoskeletal & Joint Care",
+    icon: <Activity className="w-6 h-6 text-clinic-teal-900" />,
+    items: [
+      {
+        name: "Arthritis & Joint Care",
+        subItems: [
+          {
+            name: "Osteoarthritis (Sandhivat)",
+            path: "/conditions/osteoarthritis",
+          },
+          {
+            name: "Rheumatoid Arthritis (Amavata)",
+            path: "/conditions/rheumatoid-arthritis",
+          },
+        ],
+      },
+      {
+        name: "Spine Health",
+        subItems: [
+          { name: "Sciatica (Gridhrasi)", path: "/conditions/sciatica" },
+          { name: "Slip Disc (Katigraha)", path: "/conditions/slip-disc" },
+          {
+            name: "Cervical & Lumbar Spondylitis (Manyastambha & Katigraha)",
+            path: "/conditions/cervical-lumbar-spondylitis",
+          },
+        ],
+      },
+      {
+        name: "Chronic Pain",
+        subItems: [
+          { name: "Knee Pain (Janu Shula)", path: "/conditions/knee-pain" },
+          { name: "Back Pain (Kati Shula)", path: "/conditions/back-pain" },
+          { name: "Neck Pain (Manya Shula)", path: "/conditions/neck-pain" },
+        ],
+      },
+      {
+        name: "Sports & Occupational Injuries",
+        subItems: [
+          {
+            name: "Frozen Shoulder (Apabahnuka)",
+            path: "/conditions/frozen-shoulder",
+          },
+          {
+            name: "Tennis Elbow (Kurpara Shula)",
+            path: "/conditions/tennis-elbow",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Digestive & Metabolic Health",
+    icon: <Droplets className="w-6 h-6 text-clinic-teal-900" />,
+    items: [
+      {
+        name: "Digestive Disorders",
+        subItems: [
+          { name: "Acidity (Amlapitta)", path: "/conditions/acidity" },
+          {
+            name: "Gas & Indigestion (Adhmana & Ajirna)",
+            path: "/conditions/gas-indigestion",
+          },
+          { name: "Constipation (Vibandha)", path: "/conditions/constipation" },
+        ],
+      },
+      {
+        name: "Gut Health",
+        subItems: [
+          {
+            name: "Irritable Bowel Syndrome (IBS)",
+            path: "/conditions/irritable-bowel-syndrome",
+          },
+          { name: "Diarrhea (Atisara)", path: "/conditions/diarrhea" },
+          {
+            name: "Piles & Fissure (Arsha & Parikartika)",
+            path: "/conditions/piles-fissure",
+          },
+        ],
+      },
+      {
+        name: "Liver Care",
+        subItems: [
+          {
+            name: "Fatty Liver (Yakrit Roga)",
+            path: "/conditions/fatty-liver",
+          },
+          { name: "Jaundice (Kamala)", path: "/conditions/jaundice" },
+          {
+            name: "Liver Cirrhosis (Yakritodara)",
+            path: "/conditions/liver-cirrhosis",
+          },
+        ],
+      },
+      {
+        name: "Metabolic Support",
+        subItems: [
+          {
+            name: "Diabetes Management (Prameha)",
+            path: "/conditions/diabetes-management",
+          },
+          {
+            name: "Thyroid Dysfunction (Galaganda)",
+            path: "/conditions/thyroid-dysfunction",
+          },
+          {
+            name: "Cholesterol Management (Medoroga)",
+            path: "/conditions/cholesterol-management",
+          },
+        ],
+      },
+      {
+        name: "Weight Management",
+        subItems: [
+          { name: "Obesity (Sthaulya)", path: "/conditions/obesity" },
+          {
+            name: "Heart Health Support (Hrid Roga)",
+            path: "/conditions/heart-health-support",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Skin, Hair & Aesthetic Wellness",
+    icon: <Sparkles className="w-6 h-6 text-clinic-teal-900" />,
+    items: [
+      {
+        name: "Chronic Skin Conditions",
+        subItems: [
+          { name: "Psoriasis (Eka Kushta)", path: "/conditions/psoriasis" },
+          { name: "Eczema (Vicharchika)", path: "/conditions/eczema" },
+          { name: "Vitiligo (Shvitra)", path: "/conditions/vitiligo" },
+        ],
+      },
+      {
+        name: "Daily Care",
+        subItems: [
+          {
+            name: "Acne & Pigmentation (Yauvanapidika & Vyanga)",
+            path: "/conditions/acne-pigmentation",
+          },
+          {
+            name: "Chronic Allergies (Sheetapitta)",
+            path: "/conditions/chronic-allergies",
+          },
+        ],
+      },
+      {
+        name: "Trichology",
+        subItems: [
+          { name: "Hair Fall (Khalitya)", path: "/conditions/hair-fall" },
+          { name: "Alopecia (Indralupta)", path: "/conditions/alopecia" },
+          { name: "Dandruff (Darunaka)", path: "/conditions/dandruff" },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Women’s Health & Fertility",
+    icon: <Baby className="w-6 h-6 text-clinic-teal-900" />,
+    items: [
+      {
+        name: "Hormonal Care",
+        subItems: [
+          {
+            name: "PCOD / PCOS (Artava Kshaya)",
+            path: "/conditions/pcod-pcos",
+          },
+          {
+            name: "Menstrual Irregularities (Artava Dosha)",
+            path: "/conditions/menstrual-irregularities",
+          },
+        ],
+      },
+      {
+        name: "Reproductive Health",
+        subItems: [
+          {
+            name: "Fertility Support (Vandhyatva)",
+            path: "/conditions/fertility-support",
+          },
+          {
+            name: "Repeated Miscarriages Support (Garbhasrava)",
+            path: "/conditions/repeated-miscarriages-support",
+          },
+        ],
+      },
+      {
+        name: "Maternal Wellness",
+        subItems: [
+          {
+            name: "Postpartum Care (Sutika Paricharya)",
+            path: "/conditions/postpartum-care",
+          },
+          {
+            name: "Lactation Support",
+            path: "/conditions/lactation-support",
+          },
+        ],
+      },
+      {
+        name: "General Care",
+        subItems: [
+          {
+            name: "White Discharge (Shveta Pradara)",
+            path: "/conditions/white-discharge",
+          },
+          {
+            name: "Dysmenorrhea (Kashtartava)",
+            path: "/conditions/dysmenorrhea",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Mental Health & Neurology",
+    icon: <Brain className="w-6 h-6 text-clinic-teal-900" />,
+    items: [
+      {
+        name: "Stress Management",
+        subItems: [
+          {
+            name: "Anxiety & Insomnia (Chittodvega & Anidra)",
+            path: "/conditions/anxiety-insomnia",
+          },
+          { name: "Irritability", path: "/conditions/irritability" },
+        ],
+      },
+      {
+        name: "Neurological Support",
+        subItems: [
+          { name: "Migraine (Ardhavabhedaka)", path: "/conditions/migraine" },
+          { name: "Epilepsy (Apasmara)", path: "/conditions/epilepsy" },
+          {
+            name: "Parkinson’s Disease (Kampavata)",
+            path: "/conditions/parkinson-s-disease",
+          },
+        ],
+      },
+      {
+        name: "Recovery",
+        subItems: [
+          {
+            name: "Stroke & Paralysis Rehabilitation (Pakshaghata)",
+            path: "/conditions/stroke-paralysis-rehabilitation",
+          },
+        ],
+      },
+      {
+        name: "Developmental Support",
+        subItems: [
+          {
+            name: "Memory & Concentration",
+            path: "/conditions/memory-concentration",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Respiratory & Immune Health",
+    icon: <Wind className="w-6 h-6 text-clinic-teal-900" />,
+    items: [
+      {
+        name: "Allergy Management",
+        subItems: [
+          {
+            name: "Chronic Sinusitis (Dushta Pratishyaya)",
+            path: "/conditions/chronic-sinusitis",
+          },
+          { name: "Cold & Flu (Pratishyaya)", path: "/conditions/cold-flu" },
+        ],
+      },
+      {
+        name: "Respiratory Care",
+        subItems: [
+          { name: "Asthma (Tamaka Shvasa)", path: "/conditions/asthma" },
+          { name: "Bronchitis (Kasa)", path: "/conditions/bronchitis" },
+        ],
+      },
+      {
+        name: "Autoimmune Support",
+        subItems: [
+          {
+            name: "Specialized protocols for SLE, Hashimoto’s, and IBD",
+            path: "/conditions/specialized-protocols-for-sle-hashimoto-s-and-ibd",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Men’s Health & Urology",
+    icon: <Stethoscope className="w-6 h-6 text-clinic-teal-900" />,
+    items: [
+      {
+        name: "Reproductive Wellness",
+        subItems: [
+          {
+            name: "Erectile Dysfunction (Klaibya)",
+            path: "/conditions/erectile-dysfunction",
+          },
+          {
+            name: "Premature Ejaculation (Shukragata Vata)",
+            path: "/conditions/premature-ejaculation",
+          },
+          {
+            name: "Low Sperm Count (Kshinashukra)",
+            path: "/conditions/low-sperm-count",
+          },
+        ],
+      },
+      {
+        name: "Urinary Health",
+        subItems: [
+          {
+            name: "Kidney Stones (Ashmari)",
+            path: "/conditions/kidney-stones",
+          },
+          { name: "UTI (Mutrakrichra)", path: "/conditions/uti" },
+          {
+            name: "Prostate Issues (Mutraghata)",
+            path: "/conditions/prostate-issues",
+          },
+        ],
+      },
+      {
+        name: "Bladder Support",
+        subItems: [
+          {
+            name: "Urinary Incontinence (Mutratisara)",
+            path: "/conditions/urinary-incontinence",
+          },
+          {
+            name: "Neurogenic Bladder",
+            path: "/conditions/neurogenic-bladder",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Pediatric (Child) Healthcare",
+    icon: <ShieldAlert className="w-6 h-6 text-clinic-teal-900" />,
+    items: [
+      {
+        name: "Immunity",
+        subItems: [
+          { name: "Recurrent Colds", path: "/conditions/recurrent-colds" },
+          {
+            name: "Seasonal Allergies",
+            path: "/conditions/seasonal-allergies",
+          },
+        ],
+      },
+      {
+        name: "Growth",
+        subItems: [
+          {
+            name: "Poor Appetite (Agnimandya)",
+            path: "/conditions/poor-appetite",
+          },
+          {
+            name: "Digestive Weakness",
+            path: "/conditions/digestive-weakness",
+          },
+        ],
+      },
+      {
+        name: "Development",
+        subItems: [
+          {
+            name: "Concentration Support",
+            path: "/conditions/concentration-support",
+          },
+          {
+            name: "ADHD & Autism Support",
+            path: "/conditions/ayurvedic-support-for-adhd-autism",
+          },
+          {
+            name: "Bed Wetting (Shayya Mutra)",
+            path: "/conditions/bed-wetting",
+          },
+        ],
+      },
+    ],
+  },
+];
 
 export default function Treatments() {
   const categories = TREATMENTS_CATEGORIES;
@@ -386,15 +431,15 @@ export default function Treatments() {
   useEffect(() => {
     if (location.hash) {
       setTimeout(() => {
-        const id = location.hash.replace('#', '');
+        const id = location.hash.replace("#", "");
         const element = document.getElementById(id);
         if (element) {
           const y = element.getBoundingClientRect().top + window.scrollY - 160;
-          window.scrollTo({ top: y, behavior: 'smooth' });
+          window.scrollTo({ top: y, behavior: "smooth" });
         }
       }, 100);
     } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [location.hash]);
 
@@ -425,7 +470,7 @@ export default function Treatments() {
             Comprehensive clinical divisions and specialized diagnostic care
             rooted in traditional Ayurveda.
           </p>
-          
+
           <Link to="/treatments/journey">
             <button className="bg-clinic-teal-900 border border-clinic-teal-900 text-white hover:bg-clinic-teal-800 px-8 py-4 rounded-sm text-[13px] font-bold tracking-widest transition-all uppercase inline-flex items-center gap-2 group shadow-lg">
               Explore Treatment Journey
@@ -438,7 +483,10 @@ export default function Treatments() {
           {categories.map((category, index) => (
             <motion.div
               key={index}
-              id={category.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}
+              id={category.title
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/(^-|-$)/g, "")}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

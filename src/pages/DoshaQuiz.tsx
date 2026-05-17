@@ -121,7 +121,7 @@ export default function DoshaQuiz() {
   return (
     <>
       <WellnessNav />
-      <div className="min-h-[80vh] pt-8 pb-12 md:pt-16 md:pb-32 px-6 max-w-4xl mx-auto flex flex-col justify-center">
+      <div className="min-h-[80vh] pt-4 pb-12 md:pt-8 md:pb-32 px-6 max-w-4xl mx-auto flex flex-col justify-center">
       <AnimatePresence mode="wait">
         
         {/* INTRO STEP */}

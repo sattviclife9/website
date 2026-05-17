@@ -3,9 +3,9 @@ import { Phone, MessageCircle } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export default function FloatingActions() {
-  const phoneNumber = "919923880447";
-  const whatsappNumber = "919923880447";
-  const whatsappMessage = "Namaste! I would like to book a consultation at Sattvic Advanced Ayurveda.";
+  const phoneNumber = "919404417145";
+  const whatsappNumber = "919404417145";
+  const whatsappMessage = "Hello! I would like to book a consultation at Sattvic Advanced Ayurveda.";
 
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-4">

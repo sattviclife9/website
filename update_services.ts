@@ -1,26 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { motion, AnimatePresence } from 'motion/react';
-import { useLocation } from 'react-router-dom';
-import { X, Maximize2 } from 'lucide-react';
-import SEO from '../components/SEO';
-import TreatmentNav from '../components/TreatmentNav';
-import { useScrollLock } from '../hooks/useScrollLock';
+import * as fs from 'fs';
 
-interface ServiceItem {
-  name: string;
-  desc: string;
-  details?: string;
-  image?: string;
-}
+const content = fs.readFileSync('src/pages/Services.tsx', 'utf8');
 
-interface ServiceSection {
-  category: string;
-  desc?: string;
-  items: ServiceItem[];
-}
+// Extract all existing items and their descriptions based on name match
+const existingItems: any[] = [];
+const itemRegex = /{\s*name:\s*"([^"]+)",\s*desc:\s*"([^"]+)"(?:,\s*image:\s*"([^"]+)")?(?:,\s*details:\s*"([^"]+)")?\s*}/g;
+let match;
+const detailsRegex = /name:\s*"([^"]+)".*?details:\s*(`[^`]+`|"([^"\\]|\\.)+")/gs;
+// It's a bit tricky to parse the whole AST with regex. Let's just do a naive replacement since we have the data.
 
-export const PROCEDURES: ServiceSection[] = [
+const newProcedures = `export const PROCEDURES: ServiceSection[] = [
   {
     category: "Consultation & Diagnostic Services",
     items: [
@@ -38,7 +27,6 @@ export const PROCEDURES: ServiceSection[] = [
     items: [
       { 
         name: "Vamana (Therapeutic Emesis)", 
-        image: "https://drive.google.com/thumbnail?id=1NxInI6ywmTFj9IPhM_fMhXQehwuIcyCd&sz=w800",
         desc: "Detoxifies Kapha-dominant conditions like asthma, allergies, and vitiligo through therapeutic vomiting.",
         details: "In this treatment, the patient undergoes internal and external oleation and fomentation for a few days, which include specific therapies and Ayurvedic medicines. This process liquefies the toxins and causes them to accumulate in the upper cavities of the body. The patient is then given emetic medicines and decoctions, which induce therapeutic vomiting and help eliminate toxins from the body tissues. Vamana treatment thus detoxifies and is particularly recommended for Kapha-dominant conditions such as weight gain, asthma, allergies, vitiligo, psoriasis, and hyperacidity."
       },
@@ -54,25 +42,21 @@ export const PROCEDURES: ServiceSection[] = [
       },
       { 
         name: "Nasya (Nasal Cleansing Therapy)", 
-        image: "https://drive.google.com/thumbnail?id=1ZriV-qvOLRfP7BRFhwoSmAfbj_KAbmNc&sz=w800",
         desc: "Cleanses nasal passages and sinuses, balancing Vata and Kapha. Good for allergies, headaches, and mental clarity.",
         details: "Nasya is an Ayurvedic OPD procedure, usually completed within 15 minutes, and is an integral part of the Dinacharya (daily regimen) described in Ayurveda. It involves the administration of medicated oil or herbal preparations through the nostrils and is especially beneficial for maintaining the health of the head and neck region. Nasya helps cleanse the nasal passages and sinuses, improves breathing, and supports proper oxygen supply to the brain. It is effective in overcoming allergies, nasal dryness, irritation, and congestion, while providing relief from sinusitis, headaches, and respiratory discomfort. Regular practice of Nasya helps balance Vata and Kapha doshas, reduces dryness, strengthens the nose, eyes, ears, throat, and brain, improves mental clarity, and supports overall sensory organ health and well-being."
       },
       { 
         name: "Raktamokshana (Bloodletting Detox Therapy)", 
-        image: "https://drive.google.com/thumbnail?id=1T-rhCosd_Ud6T5X4CxrSVplo8w2dCEDx&sz=w800",
         desc: "Bloodletting therapy (e.g. leech therapy) to remove impure blood. Highly effective for acne, psoriasis, gout, and sciatica.",
         details: "Raktamokshan is an Ayurvedic purification therapy in which impure or vitiated blood is removed from the body. It is especially beneficial in conditions related to Pitta dosha imbalance and helps in cleansing and purifying the blood. This therapy helps reduce skin disorders such as acne, rashes, itching, boils, and inflammation. It also relieves pain and swelling, improves blood circulation, reduces acidity, decreases excess heat and toxins in the body, and supports overall immunity. Raktamokshan is commonly used in conditions such as varicose veins, sciatica, arthritis, and other joint disorders, back pain, neck pain, headaches and migraines, muscle stiffness and spasms, and general pain or swelling. It is also indicated in burning sensation, suppuration, gout (Vatarakta), elephantiasis, toxic blood conditions, fibroid, tumors, mastitis, debility, heaviness of the body, conjunctivitis, sinusitis, herpes, liver or spleen abscess, bleeding disorders, and other conditions arising from vitiated blood. Raktamokshan can be performed through different methods such as leech therapy (Jalaukavacharan), venesection (Siravyadha), or cupping, depending on the patient’s condition, body constitution, and the doctor’s advice."
       },
       { 
         name: "Swedana (Herbal Steam Therapy)", 
-        image: "https://drive.google.com/thumbnail?id=1QF0kbRglidVTducA3MB0rz1d2BrsZkpw&sz=w800",
         desc: "Induces gentle sweating to dilate body channels and eliminate toxins, typically following Abhyanga.",
         details: "Swedan is an Ayurvedic therapy that induces gentle sweating using medicated steam or warmth and is commonly performed after Abhyanga (oil therapy) to enhance its effects. It can be applied to the entire body or locally on specific areas such as the knees, neck, back, hands, and legs, as advised by the doctor and according to the disease condition. Swedan helps by dilating body channels (Srotas), liquefying toxins (Ama) for easy elimination, and reducing stiffness, heaviness, and coldness in the body. It relieves joint pain, muscle stiffness, and swelling; balances Vata and Kapha dosha; improves blood circulation; delays aging; reduces body heaviness; enhances flexibility and mobility; supports detoxification; improves the effectiveness of Panchakarma therapies; improves vision; reduces tiredness and fatigue; nourishes body tissues (Dhatus); promotes longevity; induces sound sleep; and enhances skin tone and complexion. Swedan is especially useful in conditions such as arthritis and joint disorders, back pain, neck pain, frozen shoulder, muscle spasms and stiffness, cold-related disorders, and as a post-Abhyanga therapy to open body channels."
       },
       {
         name: "Dhoopan (Ayurvedic Herbal Fumigation)",
-        image: "https://drive.google.com/thumbnail?id=1k6kBILBeGB2MduWeMzo0QhI_ldd2VM0h&sz=w800",
         desc: "Fumigation with medicinal herbs to purify, disinfect, and promote healing of specific body areas.",
         details: "Dhoopan is a classical Ayurvedic procedure in which medicinal herbs are burned to produce therapeutic smoke that is directed over specific body areas to purify, disinfect, and promote healing. Among its commonly practiced forms are Kesha Dhoopan (hair fumigation), Karna Dhoopan (ear fumigation), Yoni Dhoopan (vaginal fumigation), and Vrana Dhoopan (wound fumigation). Kesha Dhoopan is beneficial for preventing hair fall, reducing dandruff, and improving hair strength and scalp health. Karna Dhoopan helps reduce ear itching, infections, discharge, and irritation, and supports healing. Yoni Dhoopan promotes vaginal hygiene, reduces infections, discharge, and odor, and is especially useful in postpartum care, aiding uterine recovery and healing of vaginal stitches after normal delivery. Vrana Dhoopan is used for infected wounds, non-healing ulcers, and post-surgical wounds, where it helps reduce pus, foul smell, and microbial growth, disinfects the wound, promotes faster healing, dries moist wounds, and relieves pain and itching. Overall, Dhoopan therapies help cleanse the body, improve healing, and promote overall well-being."
       }
@@ -93,25 +77,21 @@ export const PROCEDURES: ServiceSection[] = [
       },
       { 
         name: "Kati Basti (Lower Back Therapy)", 
-        image: "https://drive.google.com/thumbnail?id=10xeEpDPg3IQ-W74R-tkt1q8KrRbYCfSG&sz=w800",
         desc: "Localized oil-retention therapy over the lower back to relieve pain, stiffness, spasms, and inflammation.",
         details: "Kati Basti is an Ayurvedic treatment where warm medicated oil is retained over the lumbosacral (lower back) region using a dough reservoir. Kati denotes the waist or lower back, and this therapy is highly effective in pacifying Vata disorders affecting the spine and nerves. The warmth and medicinal properties of the oil penetrate deeply into muscles, intervertebral joints, and nerves, helping relieve pain, stiffness, spasms, and inflammation. Kati Basti is indicated in chronic low back pain, lumbar spondylosis, disc degeneration, sciatica, muscle spasms, sacroiliac joint disorders, and postural strain. It improves circulation, strengthens spinal muscles, nourishes nerves, and restores flexibility, making it valuable for both degenerative and stress-related spinal conditions."
       },
       { 
         name: "Janu Basti (Knee Therapy)", 
-        image: "https://drive.google.com/thumbnail?id=18delcsmlVHVZtxXvAQOYgcDCgski4o88&sz=w800",
         desc: "Localized oil-retention therapy over the knees to nourish joints and relieve chronic pain.",
         details: "Janu Basti is an Ayurvedic localized oil-retention therapy in which warm, medicated herbal oil is retained over the knee joint within a dough ring made of black gram flour. Janu refers to the knee, and Basti means to retain, signifying deep nourishment of the joint structures through sustained oil contact. This therapy pacifies aggravated Vata dosha, which is the primary cause of joint degeneration and pain. Janu Basti lubricates the joint, strengthens cartilage, ligaments, and tendons, reduces swelling and pain, and improves range of motion. It is especially beneficial in osteoarthritis, degenerative knee disorders, chronic knee pain, post-injury pain, ligament weakness, ligament tear, and age-related joint wear. Janu Basti also delays joint degeneration, improves synovial fluid quality, and enhances overall knee stability and mobility."
       },
       { 
         name: "Greeva Basti (Neck & Cervical Therapy)", 
-        image: "https://drive.google.com/thumbnail?id=17u9KYJjXk7ngAEafMUimAZFux1rGwC1m&sz=w800",
         desc: "Localized oil-retention therapy over the neck to relieve pain and improve mobility.",
         details: "Greeva Basti is a localized oil-retention therapy performed over the neck and cervical spine region, where warm medicated oil is retained within a dough boundary. Greeva means neck, and this therapy is especially effective for cervical disorders. Greeva Basti nourishes cervical vertebrae, intervertebral discs, nerves, and surrounding muscles, helping relieve pain, numbness, and restricted neck movement. It is indicated in cervical spondylosis, cervical disc issues, tension headaches, vertigo, shoulder pain, and postural neck strain, commonly seen due to prolonged screen use. This therapy improves flexibility, strengthens neck muscles, enhances nerve function, and prevents the progression of degenerative cervical conditions."
       },
       { 
         name: "Prishta Basti (Spinal Therapy)", 
-        image: "https://drive.google.com/thumbnail?id=1IVOWz48g3FcubCWCXLeAi0Xu-iKBeVjW&sz=w800",
         desc: "Localized oil-retention therapy over the spine to relieve chronic back pain, spine stiffness, and weakness.",
         details: "Prishta Basti is an Ayurvedic therapy in which warm medicated oil is retained over the spine using a herbal dough ring. The warmth allows the oil to penetrate deeper tissues, helping nourish the muscles and balance Vata dosha. It is commonly used for chronic back pain, spine stiffness, spine disorders, and weakness of the back. The therapy helps reduce pain and inflammation, relax muscles, improve circulation, and support spinal strength and mobility."
       },
@@ -122,7 +102,6 @@ export const PROCEDURES: ServiceSection[] = [
       },
       { 
         name: "Upanaha Sweda (Herbal Poultice Therapy)", 
-        image: "https://drive.google.com/thumbnail?id=17AhT2g3K1iQzw2ylL18ea3YejAILBvfV&sz=w800",
         desc: "Warm herbal poultice applied over painful areas to reduce stiffness and inflammation in joints.",
         details: "Upanaha is a traditional Ayurvedic therapeutic procedure in which a warm herbal poultice is applied over a painful or affected area of the body and then covered and retained for a specific duration. The poultice is prepared using medicinal powders mixed with substances such as warm oils, ghee, herbal decoctions, fermented liquids, or animal fats, selected according to the aggravated dosha. Upanaha provides sustained warmth (Swedana) and allows the medicinal substances to penetrate deeply into the tissues, making it especially useful in musculoskeletal and joint disorders. The importance of Upanaha lies in its ability to reduce pain, stiffness, swelling, and inflammation, particularly in conditions like osteoarthritis, rheumatoid arthritis, lower back pain, cervical and lumbar spondylosis, frozen shoulder, and sports injuries. The continuous warmth improves local circulation, relaxes muscles, softens contracted tissues, and facilitates the removal of Ama (toxins)."
       }
@@ -133,19 +112,16 @@ export const PROCEDURES: ServiceSection[] = [
     items: [
       { 
         name: "Abhyanga (Full Body Ayurvedic Massage)", 
-        image: "https://drive.google.com/thumbnail?id=1LtSvQ1zHcwUuGUKMLmEtWtHwV_PsJgSt&sz=w800",
         desc: "Luxurious massage using medicated oils tailored to your dosha to liquify toxins and nourish tissues.",
         details: "Abhyanga is an important Ayurvedic therapy in which medicated oils or ghee are gently applied and massaged over the body. It helps liquify toxins (Ama) from the tissues, prepares the body for detoxification therapies such as Panchakarma, and slows down the aging process by nourishing the body tissues (Dhatus). The oil used for Abhyanga is customized by the doctor based on the individual’s body constitution and disease condition, ensuring maximum therapeutic benefit. Ayurvedic Abhyanga is different from routine home massage, as it focuses on using specific oils tailored according to an individual’s Prakriti, season, and the purpose of the massage, and it involves specific pressure, direction, and therapeutic points, making it a targeted and healing procedure rather than simple relaxation. Abhyanga provides relief from body pain, reduces dryness of the skin and joints, improves blood circulation, calms the nervous system, reduces stress, enhances sleep quality, strengthens muscles and joints, and improves overall softness and flexibility of the body."
       },
       { 
         name: "Shirodhara", 
-        image: "https://drive.google.com/thumbnail?id=1PvC73g63_vYVsrHjRjgKigIESUU6lKVD&sz=w800",
         desc: "Continuous pouring of warm medicated oil over the forehead to deeply relax the nervous system and relieve stress.",
         details: "Shirodhara is a classical Ayurvedic therapy in which a continuous stream of warm medicated oil, milk, or other herbal liquids is gently poured over the forehead. It deeply relaxes the mind and nervous system, helping balance mainly Vata and Pitta doshas. Shirodhara is highly beneficial for stress, anxiety, insomnia, mental fatigue, headaches, migraines, and hypertension (high blood pressure), as it calms the nervous system and reduces mental overactivity. It is also helpful in hormonal imbalances, PMS (premenstrual syndrome), pre-menopause, and post-menopausal symptoms such as mood swings, irritability, anxiety, hot flashes, and disturbed sleep. Additionally, Shirodhara improves sleep quality, concentration, and emotional stability, supports neurological and endocrine balance, nourishes the scalp and hair, and is effective in psychosomatic and stress-related disorders."
       },
       { 
         name: "Dhara Therapy", 
-        image: "https://drive.google.com/thumbnail?id=1EtfdUuWaJstsiBOAOsTrs-NmQef0qsU3&sz=w800",
         desc: "Continuous stream of warm medicated liquid over the body or specific part to induce deep relaxation and healing.",
         details: "In Ayurveda, Dhara refers to a therapeutic procedure in which a warm, medicated liquid is poured in a steady and continuous stream over the body or a specific part of the body. It may be performed as Sarvanga Dhara, where the medicated liquid is poured over the entire body, or as Ekanga (localized) Dhara, in which the stream is applied to specific areas. Based on the individual’s doshic imbalance and health condition, the physician may prescribe different forms of Dhara, such as Taila Dhara (medicated oils), Ghrita Dhara (medicated ghee), Kashaya Dhara (herbal decoctions), Dhanyamla Dhara (fermented liquids), Ksheera Dhara (medicated milk), and Takra Dhara (medicated buttermilk)."
       },
@@ -161,7 +137,6 @@ export const PROCEDURES: ServiceSection[] = [
       },
       { 
         name: "Hrid Basti", 
-        image: "https://drive.google.com/thumbnail?id=10N6hkr7iAYGcVdYWuh2sQJjlXuffKUbN&sz=w800",
         desc: "Localized oil therapy performed over the heart region to deeply nourish heart muscles and calm the nervous system.",
         details: "Hrida refers to the heart, which in Ayurveda is regarded as the seat of Prana, Ojas, and Mana. Hrida Basti is an Ayurvedic localized oil therapy performed over the heart (chest) region. In this therapy, a small ring made of herbal dough is placed on the chest, and warm medicated oil is gently poured into it and retained for a specific duration while maintaining a constant warm temperature. This treatment deeply nourishes and strengthens the heart muscles, improves blood circulation, and calms the nervous system."
       },
@@ -206,14 +181,14 @@ export const PROCEDURES: ServiceSection[] = [
     category: "Skin, Hair & Beauty Therapies",
     items: [
       { 
-        name: "Mukhalepam (Herbal Face Therapy)", 
-        desc: "Application of medicinal herbal pastes (Lepas) on the face for radiant and blemish-free skin.",
-        details: "Mukhalepam is a traditional Ayurvedic facial therapy wherein customized herbal pastes are applied to the face. These lepas are prepared using various Ayurvedic herbs selected according to the individual's skin type and the specific conditions they are trying to manage, such as acne, pigmentation, or early signs of aging. It deeply cleanses, detoxifies, and nourishes the skin, imparting a natural and healthy glow."
-      },
-      { 
         name: "Ayurvedic Facial Therapies", 
         desc: "Customized natural facials to cleanse, nourish, and rejuvenate the skin based on individual constitution.",
         details: "An Ayurvedic facial is a natural, customized therapy based on an individual’s skin constitution (Prakriti) and Ayurvedic principles, designed to cleanse, nourish, and rejuvenate the skin for a healthy glow. It uses herbal powders, medicated oils, natural pastes, steam, and gentle massage to deeply cleanse the pores, remove toxins (Ama), enhance skin glow, improve complexion and texture, and reduce acne, pimples, pigmentation, and dark spots."
+      },
+      { 
+        name: "Mukhalepam (Herbal Face Therapy)", 
+        desc: "Application of medicinal herbal pastes (Lepas) on the face for radiant and blemish-free skin.",
+        details: "Mukhalepam is a traditional Ayurvedic facial therapy wherein customized herbal pastes are applied to the face. These lepas are prepared using various Ayurvedic herbs selected according to the individual's skin type and the specific conditions they are trying to manage, such as acne, pigmentation, or early signs of aging. It deeply cleanses, detoxifies, and nourishes the skin, imparting a natural and healthy glow."
       },
       { 
         name: "Hair & Scalp Therapies", 
@@ -269,168 +244,25 @@ export const PROCEDURES: ServiceSection[] = [
         name: "Postpartum Wellness Program", 
         desc: "Restorative therapies, massages, and diet to help the mother regain strength and balance after delivery.",
         details: "Sutika Paricharya or postpartum care involves appropriate Ayurvedic medicines, herbal decoctions, and nourishing formulations to help the body regain strength lost during childbirth, support lactation, and reduce fatigue and weakness. Care includes medicated oil bathing and herbal practices for optimal recovery."
+      },
+      { 
+        name: "Personalized Diet & Lifestyle Guidance", 
+        desc: "A customized dietary regimen and lifestyle guide based on your Prakriti to ensure sustained vitality and holistic well-being.",
+        details: "An individual assessment is conducted to understand one’s Prakriti (body constitution) and health status. Based on this, personalized recommendations for diet, daily routines, and lifestyle adjustments are provided to support long-term wellness."
       }
     ]
-
   }
-];
+];`;
 
+const startIdx = content.indexOf('export const PROCEDURES: ServiceSection[] = [');
+const endMarker = '];\n\nexport default function Services() {';
+const endIdx = content.indexOf(endMarker);
 
-export default function Services() {
-  const location = useLocation();
-  const [selectedService, setSelectedService] = useState<{name: string, desc: string, details?: string, image?: string} | null>(null);
-  const [isImageExpanded, setIsImageExpanded] = useState(false);
-
-  useScrollLock(!!selectedService);
-
-  useEffect(() => {
-    if (location.hash) {
-      setTimeout(() => {
-        const id = location.hash.replace('#', '');
-        const element = document.getElementById(id);
-        if (element) {
-          const y = element.getBoundingClientRect().top + window.scrollY - 160;
-          window.scrollTo({ top: y, behavior: 'smooth' });
-        }
-      }, 100);
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  }, [location.hash]);
-
-  return (
-    <>
-      <TreatmentNav />
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-4 pb-12 md:pt-8 md:pb-32">
-      <SEO 
-        title="Ayurvedic Treatments & Panchakarma"
-        description="Explore our authentic Ayurvedic treatments in Pune. Specialized services include Agnikarma for chronic pain, Viddhakarma, and traditional Panchakarma detox therapies."
-        keywords="Ayurvedic treatments, Agnikarma Pune, Viddhakarma technique, Panchakarma therapy, Ayurvedic detox, Nadi Pariksha Pune"
-      />
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-4xl mx-auto text-center mb-12 md:mb-16"
-      >
-        <div className="mb-6 md:mb-8 inline-flex items-center gap-4">
-          <span className="h-[1px] w-8 bg-clinic-bronze"></span>
-          <span className="text-clinic-bronze font-serif italic text-lg md:text-xl">Healing Protocols</span>
-          <span className="h-[1px] w-8 bg-clinic-bronze"></span>
-        </div>
-        <h1 className="text-5xl md:text-7xl font-serif text-clinic-teal-900 leading-[0.9] mb-8 font-light">
-          Ayurvedic <span className="italic font-medium text-clinic-teal-900/80">Services</span>
-        </h1>
-        <p className="text-xl md:text-2xl text-clinic-charcoal font-light leading-relaxed max-w-3xl mx-auto">
-          The core procedures of traditional healing. From Panchakarma to specialized para-surgical therapies.
-        </p>
-      </motion.div>
-
-      <div className="space-y-24 md:space-y-32">
-        {PROCEDURES.map((section: ServiceSection, idx) => {
-          const sectionId = section.category.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-          return (
-          <div key={idx} id={sectionId} className="scroll-mt-[190px] lg:scroll-mt-[160px]">
-            <h2 className="text-3xl md:text-4xl font-serif text-clinic-teal-900 mb-6 border-b border-clinic-border pb-6 uppercase tracking-wider">{section.category}</h2>
-            {section.desc && (
-              <p className="text-lg md:text-xl text-clinic-charcoal font-light mb-10 leading-relaxed max-w-4xl">{section.desc}</p>
-            )}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {section.items.map((item, idxi) => (
-                <motion.div 
-                   initial={{ opacity: 0, y: 10 }}
-                   whileInView={{ opacity: 1, y: 0 }}
-                   viewport={{ once: true }}
-                   transition={{ duration: 0.4 }}
-                   key={idxi} 
-                   id={item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}
-                   onClick={() => setSelectedService(item)}
-                   className={`p-8 rounded-[2rem] shadow-sm border border-clinic-border cursor-pointer hover:shadow-lg transition-all duration-300 group overflow-hidden relative flex flex-col ${item.image ? 'min-h-[320px] justify-end border-none' : 'bg-white'}`}
-                >
-                  {item.image && (
-                    <div className="absolute inset-0 z-0">
-                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/95 via-gray-900/60 to-black/20 group-hover:via-gray-900/70 transition-colors duration-500 z-10" />
-                      <img src={item.image} alt={item.name} referrerPolicy="no-referrer" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    </div>
-                  )}
-                  <div className="relative z-10">
-                    <h3 className={`text-xl md:text-2xl font-serif mb-4 transition-colors ${item.image ? 'text-white drop-shadow-md group-hover:text-clinic-gold/90' : 'text-clinic-teal-900 group-hover:text-clinic-gold'}`}>{item.name}</h3>
-                    <p className={`text-base font-light leading-relaxed ${item.image ? 'text-gray-200 drop-shadow' : 'text-clinic-muted'}`}>{item.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        )})}
-      </div>
-      {createPortal(
-        <AnimatePresence>
-          {selectedService && (
-            <div className="fixed inset-0 z-[100] flex items-start justify-center p-4 pt-20 md:items-center md:pt-4 md:p-6" style={{ zIndex: 99999 }}>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={() => setSelectedService(null)}
-                className="absolute inset-0 bg-clinic-teal-900/60 backdrop-blur-sm"
-              />
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className={`w-full ${isImageExpanded ? 'max-w-6xl h-[90vh]' : 'max-w-2xl max-h-[85vh]'} bg-white rounded-2xl shadow-2xl z-10 relative overflow-hidden flex flex-col transition-all duration-500`}
-              >
-                <div className={`p-8 md:p-10 overflow-y-auto flex-1 ${isImageExpanded ? 'flex flex-col' : ''}`}>
-                  <button
-                    onClick={() => {
-                      if (isImageExpanded) {
-                        setIsImageExpanded(false);
-                      } else {
-                        setSelectedService(null);
-                      }
-                    }}
-                    className={`absolute top-4 right-4 md:top-6 md:right-6 text-clinic-muted hover:text-clinic-teal-900 transition-colors ${isImageExpanded ? 'bg-white/80 backdrop-blur-sm pl-2 pt-2' : 'bg-clinic-teal-50'} shadow-sm p-2 rounded-full z-[100]`}
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                  <div className={`mb-6 md:mb-8 inline-flex items-center gap-4 ${!isImageExpanded ? 'mt-4 md:mt-0' : ''}`}>
-                    <span className="h-[1px] w-8 bg-clinic-bronze"></span>
-                    <span className="text-clinic-bronze font-serif italic text-sm">Treatment Details</span>
-                  </div>
-                  <h3 className="text-3xl font-serif text-clinic-teal-900 mb-6 pr-12 leading-tight">
-                    {selectedService.name}
-                  </h3>
-                  {selectedService.image && (
-                    <div 
-                      className={`relative w-full cursor-pointer group rounded-xl overflow-hidden ${isImageExpanded ? 'flex-1 h-full min-h-0 bg-clinic-teal-50 mb-0' : 'aspect-video mb-8'}`}
-                      onClick={() => setIsImageExpanded(!isImageExpanded)}
-                    >
-                      <img 
-                        src={selectedService.image} 
-                        alt={selectedService.name} 
-                        referrerPolicy="no-referrer" 
-                        className={`w-full h-full ${isImageExpanded ? 'object-contain bg-black/5' : 'object-cover hover:scale-105 transition-transform duration-500'}`} 
-                      />
-                      {!isImageExpanded && (
-                        <div className="absolute top-4 left-4 bg-black/40 backdrop-blur-sm text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                          <Maximize2 className="w-5 h-5" />
-                        </div>
-                      )}
-                    </div>
-                  )}
-                  {!isImageExpanded && (
-                    <div className="prose prose-teal max-w-none text-clinic-charcoal/80 text-lg leading-relaxed whitespace-pre-line">
-                      {selectedService.details || selectedService.desc}
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            </div>
-          )}
-        </AnimatePresence>,
-        document.body
-      )}
-    </div>
-    </>
-  );
+if (startIdx !== -1 && endIdx !== -1) {
+  const newContent = content.slice(0, startIdx) + newProcedures + '\n\n' + content.slice(endIdx + 3);
+  fs.writeFileSync('src/pages/Services.tsx', newContent, 'utf8');
+  console.log('Successfully updated PROCEDURES array in Services.tsx');
+} else {
+  console.error('Could not find the PROCEDURES array limits');
 }
+

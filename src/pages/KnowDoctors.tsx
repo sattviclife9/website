@@ -7,7 +7,7 @@ export default function KnowDoctors() {
   return (
     <>
       <AboutNav />
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-12 md:pt-16 md:pb-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-4 pb-12 md:pt-8 md:pb-32">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -116,7 +116,7 @@ export default function KnowDoctors() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="lg:col-span-4 order-1 lg:order-2"
         >
-          <div className="sticky top-40 space-y-8">
+          <div className="sticky space-y-8" style={{ top: 'calc(var(--header-height, 145px) + 2rem)' }}>
             <div className="bg-clinic-teal-50 rounded-2xl overflow-hidden shadow-xl border border-clinic-border">
               <OptimizedImage
                 src="https://lh3.googleusercontent.com/d/1g206DwQZZlSr3ddAFXvdATkJU77qFk1K"
