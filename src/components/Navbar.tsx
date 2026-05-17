@@ -945,7 +945,7 @@ export default function Navbar() {
                         to="/store"
                         className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors"
                       >
-                        Store
+                        Ayurvedic Store
                       </Link>
                       <Link
                         to="/symptom-navigator"
@@ -2352,7 +2352,7 @@ export default function Navbar() {
                         }}
                         className="py-4 border-b border-clinic-border/50 uppercase"
                       >
-                        Store
+                        Ayurvedic Store
                       </Link>
                       <Link
                         to="/symptom-navigator"

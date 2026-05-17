@@ -19,7 +19,7 @@ export default function Store() {
           <span className="h-[1px] w-8 bg-clinic-bronze"></span>
         </div>
         <h1 className="text-5xl md:text-7xl font-serif text-clinic-teal-900 leading-[0.9] mb-8 font-light">
-          Online <span className="italic font-medium text-clinic-teal-900/80">Store</span>
+          Ayurvedic <span className="italic font-medium text-clinic-teal-900/80">Store</span>
         </h1>
         <p className="text-xl md:text-2xl text-clinic-charcoal font-light leading-relaxed max-w-3xl mx-auto">
           Authentic medicated oils, herbal supplements, and self-care tools derived from classical Ayurvedic texts. Coming soon.
