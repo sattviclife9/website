@@ -43,10 +43,17 @@ jobs:
         if: success()
         run: |
           if [ -n "${{ env.WEBHOOK }}" ]; then
-            curl -X POST -H "Content-Type: application/json" -d '{"ref": "refs/heads/hostinger-build"}' "${{ env.WEBHOOK }}"
-            echo "Webhook triggered"
+            # Hostinger accepts standard GitHub Webhook payloads. We fake a push event to the hostinger-build branch.
+            curl -X POST -H "Content-Type: application/json" -H "X-GitHub-Event: push" -d '{"ref": "refs/heads/hostinger-build", "repository": { "default_branch": "main" }}' "${{ env.WEBHOOK }}"
+            echo "Webhook triggered to Hostinger!"
           else
-            echo "No webhook configured. Please set HOSTINGER_WEBHOOK_URL in GitHub Secrets."
+            echo "======================================================================"
+            echo "WARNING: HOSTINGER_WEBHOOK_URL secret is not set!"
+            echo "Your GitHub webhook triggered for 'main', but Hostinger needs to"
+            echo "know that 'hostinger-build' was updated."
+            echo "Please add your Hostinger Auto Deploy Webhook URL as a GitHub Secret"
+            echo "named HOSTINGER_WEBHOOK_URL in this repository."
+            echo "======================================================================"
           fi
         env:
           WEBHOOK: ${{ secrets.HOSTINGER_WEBHOOK_URL }}
