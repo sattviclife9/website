@@ -100,7 +100,7 @@ export const specificConditions: Record<string, ConditionData> = {
         {
           title: "Shashtika Shali Pinda Sweda",
           desc: "A nourishing sweat therapy using a special type of rice cooked in milk and herbal decoctions to rebuild muscle strength and tone.",
-          icon: "Heart",
+          icon: "Activity",
         },
       ],
     },
@@ -146,7 +146,7 @@ export const specificConditions: Record<string, ConditionData> = {
         {
           title: "Shirodhara",
           desc: "A continuous stream of warm, medicated oil poured over the forehead (third eye) to profoundly relax the central nervous system.",
-          icon: "Drop",
+          icon: "Droplets",
         },
         {
           title: "Nasya",
@@ -156,7 +156,7 @@ export const specificConditions: Record<string, ConditionData> = {
         {
           title: "Lifestyle & Diet",
           desc: "Guidance on sleep hygiene, stress management (Yoga/Pranayama), and a diet rich in sattvic (pure) foods.",
-          icon: "Heart",
+          icon: "Activity",
         },
       ],
     },
@@ -202,7 +202,7 @@ export const specificConditions: Record<string, ConditionData> = {
         {
           title: "Gut-Brain Diet",
           desc: "Correcting digestive fire (Agni) with a tailored diet that eliminates highly processed foods, sugars, and incompatible food combinations.",
-          icon: "Heart",
+          icon: "Activity",
         },
         {
           title: "Shirodhara & Abhyanga",
@@ -212,7 +212,7 @@ export const specificConditions: Record<string, ConditionData> = {
         {
           title: "Medhya Herbs",
           desc: "Careful administration of mild brain tonics (like Mandukaparni and Vacha) in child-friendly formulations like medicated ghee.",
-          icon: "Drop",
+          icon: "Droplets",
         },
       ],
     },
