@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Leaf, ChevronRight, ChevronLeft, ArrowRight, Sun, Droplets, Wind, Activity, Stethoscope, Star, MessageCircle, Utensils, Heart, Brain, Quote } from 'lucide-react';
+import { Leaf, ChevronRight, ChevronLeft, ArrowRight, Sun, Droplets, Wind, Activity, Stethoscope, Star, MessageCircle, Utensils, Heart, Brain, Quote, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import BackToTopButton from '../components/BackToTopButton';
@@ -71,14 +71,22 @@ const THERAPIES = [
 
 export default function Home() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [testimonialDirection, setTestimonialDirection] = useState(0);
   const [currentTherapy, setCurrentTherapy] = useState(0);
 
   const nextTestimonial = () => {
+    setTestimonialDirection(1);
     setCurrentTestimonial((prev) => (prev + 1) % TESTIMONIALS.length);
   };
 
   const prevTestimonial = () => {
+    setTestimonialDirection(-1);
     setCurrentTestimonial((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+  };
+
+  const goToTestimonial = (idx: number) => {
+    setTestimonialDirection(idx > currentTestimonial ? 1 : -1);
+    setCurrentTestimonial(idx);
   };
 
   const nextTherapy = () => {
@@ -138,39 +146,69 @@ export default function Home() {
       <section className="pt-8 md:pt-16 max-w-7xl mx-auto px-6 md:px-12 mb-20 md:mb-28 text-center md:text-left relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { 
+                opacity: 1, 
+                transition: { staggerChildren: 0.15, delayChildren: 0.1 } 
+              }
+            }}
             className="max-w-2xl mx-auto md:mx-0 lg:col-span-5"
           >
-            <div className="mb-6 md:mb-8 inline-flex items-center gap-4">
+            <motion.div 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } }
+              }}
+              className="mb-6 md:mb-8 inline-flex items-center gap-4"
+            >
               <span className="h-[1px] w-8 bg-clinic-bronze"></span>
               <span className="text-clinic-bronze font-serif italic text-lg md:text-xl">
                 Expert Ayurvedic Care
               </span>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-serif text-clinic-teal-900 leading-[0.9] mb-6 md:mb-8 font-light">
+            </motion.div>
+            <motion.h1 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } }
+              }}
+              className="text-4xl md:text-6xl font-serif text-clinic-teal-900 leading-[0.9] mb-6 md:mb-8 font-light"
+            >
               Relief from Chronic Illness with <br className="hidden md:block" />
               <span className="italic font-medium text-clinic-teal-900/80">Authentic Ayurveda</span>
-            </h1>
-            <p className="text-lg md:text-xl text-clinic-muted leading-relaxed max-w-xl mx-auto md:mx-0 mb-10">
+            </motion.h1>
+            <motion.p 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } }
+              }}
+              className="text-lg md:text-xl text-clinic-muted leading-relaxed max-w-xl mx-auto md:mx-0 mb-10"
+            >
               We specialize in personalized Panchakarma and natural Ayurvedic treatments to address the root cause of your pain. Start your healing journey today.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center gap-4">
+            </motion.p>
+            <motion.div 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } }
+              }}
+              className="flex flex-col sm:flex-row items-center gap-4"
+            >
               <a href="https://admin.ayurgrid.com/doctor/websiteappointments/createAppointment?doctor_id=945" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto block">
                 <button className="group w-full justify-center flex items-center gap-2 bg-clinic-gold text-clinic-teal-900 px-8 py-4 rounded-sm text-[13px] font-bold tracking-widest hover:bg-clinic-bronze hover:text-white transition-all uppercase shadow-[0_4px_14px_0_rgba(212,175,55,0.39)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.23)] hover:-translate-y-0.5 border border-transparent">
                   Book Consultation
                   <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
               </a>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Hero Visual showing Clinic */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 }}
             className="relative lg:col-span-7"
           >
             <div className="w-full aspect-video md:aspect-[4/3] bg-clinic-teal-50 rounded-2xl md:rounded-[2.5rem] border border-clinic-border shadow-xl relative overflow-hidden">
@@ -191,12 +229,18 @@ export default function Home() {
       {/* Patient Experience / Qualitative Trust Signal */}
       <section className="bg-white py-16 md:py-24 border-y border-clinic-border mb-16 md:mb-24 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-           <div className="text-center mb-12 md:mb-16">
+           <motion.div 
+             initial={{ opacity: 0, y: 20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: false, amount: 0.8 }}
+             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+             className="text-center mb-12 md:mb-16"
+           >
              <h2 className="text-3xl md:text-4xl font-serif text-clinic-teal-900 mb-4">The Sattvic Experience</h2>
              <p className="text-clinic-muted font-light text-lg">What to expect when you choose us for your healing journey.</p>
-           </div>
+           </motion.div>
            
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-8" style={{ perspective: "1200px" }}>
              {[
                { icon: <Activity className="w-6 h-6" />, title: "Thorough Consultations", desc: "We spend time understanding your complete health history, lifestyle, and diet, not just treating your immediate symptoms." },
                { icon: <Leaf className="w-6 h-6" />, title: "Authentic Treatments", desc: "All our therapies use traditional Kerala Panchakarma methods and pure, unadulterated herbal formulations." },
@@ -204,17 +248,26 @@ export default function Home() {
              ].map((feature, idx) => (
                 <motion.div 
                   key={idx} 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1, duration: 0.5 }}
-                  className="group bg-clinic-teal-50 p-8 rounded-2xl border border-clinic-border relative shadow-sm flex flex-col items-start hover:-translate-y-2 hover:shadow-md hover:bg-clinic-ivory transition-all duration-300"
+                  initial={{ opacity: 0, rotateX: 45, rotateY: -10, y: 40, z: -50 }}
+                  whileInView={{ opacity: 1, rotateX: 0, rotateY: 0, y: 0, z: 0 }}
+                  viewport={{ once: false, margin: "-50px" }}
+                  transition={{ delay: idx * 0.15, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                  whileHover={{ 
+                    rotateX: 6, 
+                    rotateY: -4, 
+                    y: -12, 
+                    scale: 1.02,
+                    z: 20, 
+                    boxShadow: "20px 30px 40px -15px rgba(15, 118, 110, 0.2), -10px -10px 20px -5px rgba(255,255,255,0.9)" 
+                  }}
+                  className="group bg-gradient-to-br from-white to-clinic-ivory p-8 rounded-[2rem] border border-clinic-border relative shadow-sm flex flex-col items-start preserve-3d"
+                  style={{ transformStyle: "preserve-3d" }}
                 >
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-clinic-gold border border-clinic-border mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-clinic-gold border border-clinic-border mb-6 group-hover:scale-110 transition-transform duration-500 group-hover:bg-clinic-teal-900 shadow-sm" style={{ transform: "translateZ(40px)" }}>
                     {feature.icon}
                   </div>
-                  <h3 className="font-serif text-xl text-clinic-teal-900 mb-3 group-hover:text-clinic-gold transition-colors duration-300">{feature.title}</h3>
-                  <p className="text-clinic-charcoal leading-relaxed">{feature.desc}</p>
+                  <h3 className="font-serif text-xl border-b border-transparent pb-1 text-clinic-teal-900 mb-3 group-hover:text-clinic-teal-800 transition-colors duration-300" style={{ transform: "translateZ(30px)" }}>{feature.title}</h3>
+                  <p className="text-clinic-charcoal font-light leading-relaxed text-sm lg:text-base selection:bg-clinic-teal-900/10" style={{ transform: "translateZ(20px)" }}>{feature.desc}</p>
                 </motion.div>
              ))}
            </div>
@@ -225,10 +278,10 @@ export default function Home() {
       <section className="bg-clinic-teal-900 text-clinic-white-off py-16 md:py-28 mt-16 md:mt-24">
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-16 lg:gap-24">
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="w-full md:w-1/3 text-center md:text-left"
           >
             <div className="mb-6 md:mb-8 inline-flex items-center justify-center md:justify-start gap-4">
@@ -241,51 +294,79 @@ export default function Home() {
              <p className="text-white/70 text-lg font-light leading-relaxed">Experience safe, effective, and trusted Ayurvedic care that prioritizes natural root-cause healing and personalized attention.</p>
            </motion.div>
            <motion.div 
-             initial={{ opacity: 0, x: 20 }}
+             initial={{ opacity: 0, x: 30 }}
              whileInView={{ opacity: 1, x: 0 }}
-             viewport={{ once: true }}
-             transition={{ duration: 0.6, staggerChildren: 0.1 }}
+             viewport={{ once: false, amount: 0.3 }}
+             transition={{ duration: 0.8, staggerChildren: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
              className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6"
            >
-             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-start gap-4">
+             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} className="flex items-start gap-4">
                <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
-                 <span className="text-clinic-gold text-sm font-bold">✓</span>
+                 <motion.div initial={{ scale: 0, rotate: -45 }} whileInView={{ scale: 1, rotate: 0 }} viewport={{ once: false }} transition={{ type: "spring", bounce: 0.5, delay: 0.2 }}>
+                   <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 0.8, ease: "easeInOut", delay: 0.2 }}>
+                     <Check className="w-4 h-4 text-clinic-gold" strokeWidth={3} />
+                   </motion.div>
+                 </motion.div>
                </div>
                <span className="text-white/90 text-lg font-light">Instant pain management</span>
              </motion.div>
-             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-start gap-4">
+             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} className="flex items-start gap-4">
                <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
-                 <span className="text-clinic-gold text-sm font-bold">✓</span>
+                 <motion.div initial={{ scale: 0, rotate: -45 }} whileInView={{ scale: 1, rotate: 0 }} viewport={{ once: false }} transition={{ type: "spring", bounce: 0.5, delay: 0.3 }}>
+                   <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 0.8, ease: "easeInOut", delay: 0.3 }}>
+                     <Check className="w-4 h-4 text-clinic-gold" strokeWidth={3} />
+                   </motion.div>
+                 </motion.div>
                </div>
                <span className="text-white/90 text-lg font-light">Integrated mind-body approach</span>
              </motion.div>
-             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-start gap-4">
+             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} className="flex items-start gap-4">
                <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
-                 <span className="text-clinic-gold text-sm font-bold">✓</span>
+                 <motion.div initial={{ scale: 0, rotate: -45 }} whileInView={{ scale: 1, rotate: 0 }} viewport={{ once: false }} transition={{ type: "spring", bounce: 0.5, delay: 0.4 }}>
+                   <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 0.8, ease: "easeInOut", delay: 0.4 }}>
+                     <Check className="w-4 h-4 text-clinic-gold" strokeWidth={3} />
+                   </motion.div>
+                 </motion.div>
                </div>
                <span className="text-white/90 text-lg font-light">Personalized treatment plans</span>
              </motion.div>
-             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-start gap-4">
+             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} className="flex items-start gap-4">
                <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
-                 <span className="text-clinic-gold text-sm font-bold">✓</span>
+                 <motion.div initial={{ scale: 0, rotate: -45 }} whileInView={{ scale: 1, rotate: 0 }} viewport={{ once: false }} transition={{ type: "spring", bounce: 0.5, delay: 0.5 }}>
+                   <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 0.8, ease: "easeInOut", delay: 0.5 }}>
+                     <Check className="w-4 h-4 text-clinic-gold" strokeWidth={3} />
+                   </motion.div>
+                 </motion.div>
                </div>
                <span className="text-white/90 text-lg font-light">Expertise in chronic disorders</span>
              </motion.div>
-             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-start gap-4">
+             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} className="flex items-start gap-4">
                <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
-                 <span className="text-clinic-gold text-sm font-bold">✓</span>
+                 <motion.div initial={{ scale: 0, rotate: -45 }} whileInView={{ scale: 1, rotate: 0 }} viewport={{ once: false }} transition={{ type: "spring", bounce: 0.5, delay: 0.6 }}>
+                   <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 0.8, ease: "easeInOut", delay: 0.6 }}>
+                     <Check className="w-4 h-4 text-clinic-gold" strokeWidth={3} />
+                   </motion.div>
+                 </motion.div>
                </div>
                <span className="text-white/90 text-lg font-light">Natural healing methods</span>
              </motion.div>
-             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-start gap-4">
+             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} className="flex items-start gap-4">
                <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
-                 <span className="text-clinic-gold text-sm font-bold">✓</span>
+                 <motion.div initial={{ scale: 0, rotate: -45 }} whileInView={{ scale: 1, rotate: 0 }} viewport={{ once: false }} transition={{ type: "spring", bounce: 0.5, delay: 0.7 }}>
+                   <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 0.8, ease: "easeInOut", delay: 0.7 }}>
+                     <Check className="w-4 h-4 text-clinic-gold" strokeWidth={3} />
+                   </motion.div>
+                 </motion.div>
                </div>
                <span className="text-white/90 text-lg font-light">Long-term preventive care</span>
              </motion.div>
-             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-start gap-4 sm:col-span-2">
+             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} className="flex items-start gap-4 sm:col-span-2">
                <div className="w-8 h-8 rounded-full bg-clinic-gold/10 flex items-center justify-center shrink-0 border border-clinic-gold/30">
-                 <span className="text-clinic-gold text-sm font-bold">✓</span>
+                 <motion.div initial={{ scale: 0, rotate: -45 }} whileInView={{ scale: 1, rotate: 0 }} viewport={{ once: false }} transition={{ type: "spring", bounce: 0.5, delay: 0.8 }}>
+                   <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 0.8, ease: "easeInOut", delay: 0.8 }}>
+                     <Check className="w-4 h-4 text-clinic-gold" strokeWidth={3} />
+                   </motion.div>
+                 </motion.div>
                </div>
                <span className="text-white/90 text-lg font-light">Doctor-guided therapies based on proven protocols</span>
              </motion.div>
@@ -296,7 +377,13 @@ export default function Home() {
        {/* What We Treat */}
       <section className="py-16 md:py-24 bg-white border-b border-clinic-border">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-           <div className="text-center mb-16 md:mb-20">
+           <motion.div 
+             initial={{ opacity: 0, y: 20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: false, amount: 0.5 }}
+             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+             className="text-center mb-16 md:mb-20"
+           >
              <div className="mb-6 md:mb-8 inline-flex items-center gap-4">
                <span className="h-[1px] w-8 bg-clinic-bronze"></span>
                <span className="text-clinic-bronze font-serif italic text-lg md:text-xl">Our Expertise</span>
@@ -306,17 +393,17 @@ export default function Home() {
                Conditions We <span className="italic font-medium text-clinic-teal-900/80">Treat</span>
              </h2>
              <p className="text-clinic-muted font-light text-lg max-w-2xl mx-auto">Discover the root-cause Ayurvedic solutions we provide for various chronic lifestyle disorders.</p>
-           </div>
+           </motion.div>
            
            {/* Desktop Grid */}
            <div className="hidden md:grid md:grid-cols-3 gap-8">
              {THERAPIES.map((therapy, idx) => (
                <motion.div 
                  key={therapy.id}
-                 initial={{ opacity: 0, y: 20 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 viewport={{ once: true }}
-                 transition={{ delay: idx * 0.1 }}
+                 initial={{ opacity: 0, y: 30, scale: 0.98 }}
+                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                 viewport={{ once: false, amount: 0.2 }}
+                 transition={{ delay: idx * 0.15, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
                  className="group flex flex-col bg-clinic-ivory rounded-[2rem] overflow-hidden border border-clinic-border h-full"
                >
                  <div className="relative h-48 overflow-hidden">
@@ -390,7 +477,13 @@ export default function Home() {
              </div>
            </div>
            
-           <div className="text-center mt-16 flex flex-col sm:flex-row items-center justify-center gap-4">
+           <motion.div 
+             initial={{ opacity: 0, y: 20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: false }}
+             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+             className="text-center mt-16 flex flex-col sm:flex-row items-center justify-center gap-4"
+           >
              <Link to="/treatments/journey">
                <button className="bg-clinic-teal-900 border border-clinic-teal-900 text-white hover:bg-clinic-teal-800 px-8 py-4 rounded-sm text-[13px] font-bold tracking-widest transition-all uppercase flex items-center gap-2 group shadow-lg">
                  Explore Treatment Journey
@@ -402,23 +495,70 @@ export default function Home() {
                  View All Treatments
                </button>
              </Link>
-           </div>
+           </motion.div>
         </div>
       </section>
 
       {/* Dosha Quiz Banner */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 mb-16 md:mb-24">
-        <div className="bg-clinic-teal-50 rounded-2xl md:rounded-[2.5rem] p-10 md:p-16 border border-clinic-border text-center flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 shadow-sm">
-          <div className="text-center md:text-left max-w-2xl">
-            <h3 className="text-3xl md:text-4xl font-serif text-clinic-teal-900 mb-4 md:mb-6 leading-tight">What's Your Ayurvedic Body Type?</h3>
-            <p className="text-clinic-muted font-light text-lg">Take our quick dosha quiz to uncover your unique mind-body constitution and receive personalized insight into your health.</p>
+        <motion.div 
+          initial={{ opacity: 0, y: 30, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+          className="bg-clinic-teal-50 rounded-2xl md:rounded-[2.5rem] p-10 md:p-16 border border-clinic-border flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 shadow-sm overflow-hidden relative"
+        >
+          {/* Decorative background elements */}
+          <motion.div 
+            animate={{ rotate: 360 }}
+            transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
+            className="absolute -top-32 -right-32 w-64 h-64 bg-clinic-gold/10 rounded-full blur-3xl pointer-events-none"
+          />
+          <motion.div 
+            animate={{ rotate: -360 }}
+            transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
+            className="absolute -bottom-32 -left-32 w-80 h-80 bg-clinic-teal-900/5 rounded-full blur-3xl pointer-events-none"
+          />
+
+          <div className="text-center md:text-left max-w-2xl relative z-10">
+            <motion.h3 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-3xl md:text-4xl font-serif text-clinic-teal-900 mb-4 md:mb-6 leading-tight"
+            >
+              What's Your Ayurvedic Body Type?
+            </motion.h3>
+            <motion.p 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="text-clinic-muted font-light text-lg"
+            >
+              Take our quick dosha quiz to uncover your unique mind-body constitution and receive personalized insight into your health.
+            </motion.p>
           </div>
-          <Link to="/dosha-quiz" className="w-full md:w-auto">
-            <button className="w-full md:w-auto whitespace-nowrap bg-clinic-gold text-clinic-charcoal px-8 py-4 rounded-xl text-[13px] font-bold tracking-widest shadow-sm hover:bg-clinic-bronze transition-colors uppercase">
-              Take the Quiz
-            </button>
-          </Link>
-        </div>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: false }}
+            transition={{ delay: 0.4, type: "spring", bounce: 0.5 }}
+            className="w-full md:w-auto relative z-10"
+          >
+            <Link to="/dosha-quiz" className="block w-full md:w-auto">
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full md:w-auto whitespace-nowrap bg-clinic-gold text-clinic-charcoal px-8 py-4 rounded-xl text-[13px] font-bold tracking-widest shadow-sm hover:bg-clinic-bronze transition-colors uppercase relative overflow-hidden group"
+              >
+                <span className="relative z-10">Take the Quiz</span>
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
+              </motion.button>
+            </Link>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Lifestyle Tips Teaser */}
@@ -429,7 +569,12 @@ export default function Home() {
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
-              <div>
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+              >
                 <span className="text-clinic-gold font-serif italic text-lg md:text-xl mb-6 md:mb-8 block">Ayurvedic Living</span>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif mb-6 md:mb-8 leading-[0.9]">
                   Nourish Your Body,<br />
@@ -439,13 +584,23 @@ export default function Home() {
                   Discover practical wisdom for daily rituals, mindful eating, and mental clarity through the Sattvic lifestyle. Small changes, profound impact.
                 </p>
                 <Link to="/lifestyle-tips" className="inline-block">
-                  <button className="bg-clinic-gold hover:bg-clinic-gold/90 text-clinic-teal-900 px-8 py-4 rounded-full transition-all font-bold flex items-center gap-2 group shadow-lg">
+                  <motion.button 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-clinic-gold hover:bg-clinic-gold/90 text-clinic-teal-900 px-8 py-4 rounded-full transition-all font-bold flex items-center gap-2 group shadow-lg"
+                  >
                     Explore Lifestyle Tips
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </motion.button>
                 </Link>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                className="grid grid-cols-2 gap-4"
+              >
                 <div className="space-y-4">
                   <Link to="/lifestyle-tips" className="block">
                     <motion.div 
@@ -494,7 +649,7 @@ export default function Home() {
                     </motion.div>
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -503,7 +658,13 @@ export default function Home() {
       {/* Testimonials Section */}
       <section className="bg-clinic-ivory py-16 md:py-24 border-y border-clinic-border overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-           <div className="text-center mb-16 md:mb-20">
+           <motion.div 
+             initial={{ opacity: 0, y: 20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: false, amount: 0.5 }}
+             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+             className="text-center mb-16 md:mb-20"
+           >
              <div className="mb-6 md:mb-8 inline-flex items-center gap-4">
                <span className="h-[1px] w-8 bg-clinic-bronze"></span>
                <span className="text-clinic-bronze font-serif italic text-lg md:text-xl">Patient Voices</span>
@@ -512,9 +673,15 @@ export default function Home() {
              <h2 className="text-4xl md:text-5xl font-serif text-clinic-teal-900 mb-4 font-light leading-[0.9]">
                Healing <span className="italic font-medium text-clinic-teal-900/80">Journeys</span>
              </h2>
-           </div>
+           </motion.div>
            
-           <div className="relative max-w-4xl mx-auto">
+           <motion.div 
+             initial={{ opacity: 0, y: 30 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: false, amount: 0.3 }}
+             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+             className="relative max-w-4xl mx-auto"
+           >
              {/* Slider Navigation Buttons */}
              <div className="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-12 z-20 hidden md:block">
                <button 
@@ -537,40 +704,58 @@ export default function Home() {
              </div>
 
              {/* Testimonial Active Card */}
-             <div className="relative min-h-[320px] flex items-center justify-center">
-               <AnimatePresence mode="wait">
-                 <motion.div
-                   key={currentTestimonial}
-                   initial={{ opacity: 0, x: 20 }}
-                   animate={{ opacity: 1, x: 0 }}
-                   exit={{ opacity: 0, x: -20 }}
-                   transition={{ duration: 0.5, ease: "anticipate" }}
-                   drag="x"
-                   dragConstraints={{ left: 0, right: 0 }}
-                   dragElastic={0.2}
-                   onDragEnd={(e, { offset, velocity }) => {
-                     const swipe = Math.abs(offset.x) * velocity.x;
-                     if (swipe < -100) nextTestimonial();
-                     else if (swipe > 100) prevTestimonial();
-                   }}
-                   className="relative bg-white p-8 md:p-12 rounded-[2rem] border border-clinic-border shadow-md flex flex-col items-center text-center max-w-3xl mx-auto my-auto w-full cursor-grab active:cursor-grabbing"
-                 >
-                   <Quote className="w-10 h-10 text-clinic-gold/30 absolute top-6 left-6" />
-                   <div className="flex gap-1 mb-6 mt-4">
-                     {[...Array(TESTIMONIALS[currentTestimonial].rating)].map((_, i) => (
-                       <Star key={i} className="w-5 h-5 fill-clinic-gold text-clinic-gold" />
-                     ))}
-                   </div>
-                   <p className="text-clinic-charcoal italic leading-relaxed md:text-lg md:leading-loose mb-8 flex-1">
-                     "{TESTIMONIALS[currentTestimonial].testimonial}"
-                   </p>
-                   <div className="mt-auto">
-                     <h4 className="font-serif text-clinic-teal-900 text-lg mb-1">{TESTIMONIALS[currentTestimonial].name}</h4>
-                     <p className="text-xs text-clinic-muted font-medium mb-1">Treated for: {TESTIMONIALS[currentTestimonial].condition}</p>
-                     <p className="text-[10px] text-clinic-gold uppercase tracking-widest font-bold">Verified Patient</p>
-                   </div>
-                 </motion.div>
-               </AnimatePresence>
+             <div className="relative min-h-[320px] md:min-h-[380px] w-full flex items-center justify-center overflow-hidden" style={{ perspective: "1000px" }}>
+               {TESTIMONIALS.map((t, idx) => {
+                 let offset = idx - currentTestimonial;
+                 if (offset < -1) offset += TESTIMONIALS.length;
+                 if (offset > 1) offset -= TESTIMONIALS.length;
+                 // Handle edge case if there are more than 3 elements
+                 if (offset > 1 || offset < -1) return null;
+
+                 const isVisible = Math.abs(offset) <= 1;
+
+                 return (
+                   <motion.div
+                     key={idx}
+                     initial={false}
+                     animate={{ 
+                       opacity: offset === 0 ? 1 : isVisible ? 0.5 : 0,
+                       scale: offset === 0 ? 1 : 0.85,
+                       rotateY: offset === 0 ? 0 : offset > 0 ? -55 : 55,
+                       x: offset === 0 ? "0%" : offset > 0 ? "60%" : "-60%",
+                       z: offset === 0 ? 40 : -400,
+                       zIndex: offset === 0 ? 10 : 0,
+                       boxShadow: offset === 0 ? "0 25px 50px -12px rgba(15, 118, 110, 0.15)" : "0 4px 6px -1px rgba(0, 0, 0, 0.05)"
+                     }}
+                     transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+                     style={{ transformStyle: "preserve-3d" }}
+                     drag="x"
+                     dragConstraints={{ left: 0, right: 0 }}
+                     dragElastic={0.2}
+                     onDragEnd={(e, { offset: dragOffset, velocity }) => {
+                       const swipe = Math.abs(dragOffset.x) * velocity.x;
+                       if (swipe < -100) nextTestimonial();
+                       else if (swipe > 100) prevTestimonial();
+                     }}
+                     className={`absolute bg-white p-6 md:p-12 rounded-[2rem] border border-clinic-border flex flex-col items-center text-center max-w-2xl mx-auto w-full cursor-grab active:cursor-grabbing ${offset === 0 ? '' : 'pointer-events-none'}`}
+                   >
+                     <Quote className="w-10 h-10 text-clinic-gold/30 absolute top-6 left-6" />
+                     <div className="flex gap-1 mb-6 mt-4">
+                       {[...Array(t.rating)].map((_, i) => (
+                         <Star key={i} className="w-5 h-5 fill-clinic-gold text-clinic-gold" />
+                       ))}
+                     </div>
+                     <p className="text-clinic-charcoal italic leading-relaxed md:text-lg md:leading-loose mb-8 flex-1">
+                       "{t.testimonial}"
+                     </p>
+                     <div className="mt-auto">
+                       <h4 className="font-serif text-clinic-teal-900 text-lg mb-1">{t.name}</h4>
+                       <p className="text-xs text-clinic-muted font-medium mb-1">Treated for: {t.condition}</p>
+                       <p className="text-[10px] text-clinic-gold uppercase tracking-widest font-bold">Verified Patient</p>
+                     </div>
+                   </motion.div>
+                 );
+               })}
              </div>
 
              {/* Slider Pagination Indicators */}
@@ -578,7 +763,7 @@ export default function Home() {
                {TESTIMONIALS.map((_, idx) => (
                  <button
                    key={idx}
-                   onClick={() => setCurrentTestimonial(idx)}
+                   onClick={() => goToTestimonial(idx)}
                    className={`h-2 rounded-full transition-all duration-300 ${
                      idx === currentTestimonial ? 'w-8 bg-clinic-bronze' : 'w-2 bg-clinic-border hover:bg-clinic-bronze/50'
                    }`}
@@ -586,7 +771,7 @@ export default function Home() {
                  />
                ))}
              </div>
-           </div>
+           </motion.div>
         </div>
       </section>
 
@@ -594,32 +779,82 @@ export default function Home() {
 
       {/* CTA Banner */}
       <section className="py-20 md:py-32 max-w-5xl mx-auto px-6 md:px-12 relative">
-        <div className="bg-clinic-teal-900 rounded-[2.5rem] p-10 md:p-20 text-center text-clinic-white-off relative overflow-hidden shadow-2xl">
+        <motion.div 
+          initial={{ opacity: 0, y: 40, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+          className="bg-clinic-teal-900 rounded-[2.5rem] p-10 md:p-20 text-center text-clinic-white-off relative overflow-hidden shadow-2xl"
+        >
           {/* Soft decorative shapes */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[60px] transform translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-clinic-gold/10 rounded-full blur-[60px] transform -translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.2, 1],
+              x: ["0%", "5%", "0%"],
+              y: ["0%", "5%", "0%"]
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[60px] transform translate-x-1/2 -translate-y-1/2 pointer-events-none"
+          />
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.3, 1],
+              x: ["0%", "-5%", "0%"],
+              y: ["0%", "-5%", "0%"]
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute bottom-0 left-0 w-64 h-64 bg-clinic-gold/10 rounded-full blur-[60px] transform -translate-x-1/2 translate-y-1/2 pointer-events-none"
+          />
 
-          <div className="mb-6 md:mb-8 inline-flex items-center gap-4 relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="mb-6 md:mb-8 inline-flex items-center gap-4 relative z-10"
+          >
             <span className="h-[1px] w-8 bg-clinic-gold"></span>
             <span className="text-clinic-gold font-serif italic text-lg md:text-xl">Your Next Step</span>
             <span className="h-[1px] w-8 bg-clinic-gold"></span>
-          </div>
+          </motion.div>
           
-          <h2 className="text-4xl md:text-5xl font-serif mb-6 relative z-10 font-light">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="text-4xl md:text-5xl font-serif mb-6 relative z-10 font-light"
+          >
             Begin Your <span className="italic font-medium text-white/90">Healing</span> Journey
-          </h2>
-          <p className="text-center text-white/80 max-w-xl mx-auto mb-10 text-lg relative z-10 font-light">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="text-center text-white/80 max-w-xl mx-auto mb-10 text-lg relative z-10 font-light"
+          >
             Schedule an in-depth Pulse Diagnosis (Nadi Pariksha) consultation to uncover your natural doshic balance.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+          </motion.p>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: false }}
+            transition={{ delay: 0.5, type: "spring", bounce: 0.5 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10"
+          >
             <a href="https://admin.ayurgrid.com/doctor/websiteappointments/createAppointment?doctor_id=945" target="_blank" rel="noopener noreferrer">
-              <button className="group flex items-center gap-2 bg-clinic-gold text-clinic-teal-900 border border-transparent hover:bg-clinic-bronze hover:text-white px-8 py-4 rounded-sm text-[13px] font-bold tracking-widest transition-all uppercase shadow-[0_4px_14px_0_rgba(212,175,55,0.39)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.23)] hover:-translate-y-0.5">
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group flex items-center gap-2 bg-clinic-gold text-clinic-teal-900 border border-transparent hover:bg-clinic-bronze hover:text-white px-8 py-4 rounded-sm text-[13px] font-bold tracking-widest transition-all uppercase shadow-[0_4px_14px_0_rgba(212,175,55,0.39)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.23)]"
+              >
                 Book Consultation
                 <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
-              </button>
+              </motion.button>
             </a>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
     </>
   );

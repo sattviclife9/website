@@ -43,7 +43,7 @@ jobs:
         run: |
           if [ -n "${{ env.WEBHOOK }}" ]; then
             # Hostinger accepts standard GitHub Webhook payloads. We fake a push event to the hostinger-build branch.
-            curl -X POST -H "Content-Type: application/json" -H "X-GitHub-Event: push" -d '{"ref": "refs/heads/hostinger-build", "repository": { "default_branch": "main" }}' "${{ env.WEBHOOK }}"
+            curl -X POST -H "Content-Type: application/json" -H "X-GitHub-Event: push" -d "{\"ref\": \"refs/heads/hostinger-build\", \"repository\": { \"full_name\": \"${{ github.repository }}\" }}" "${{ env.WEBHOOK }}"
             echo "Webhook triggered to Hostinger!"
           else
             echo "======================================================================"

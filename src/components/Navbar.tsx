@@ -122,7 +122,9 @@ export default function Navbar() {
           <div className="max-w-7xl mx-auto w-full px-6 md:px-12 flex items-center justify-between">
             <div className="flex lg:flex-1 justify-start">
               <Link to="/">
-                <SattvicLogo type="full" className="mr-4" inHeader={true} />
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <SattvicLogo type="full" className="mr-4" inHeader={true} />
+                </motion.div>
               </Link>
             </div>
 
@@ -1127,7 +1129,24 @@ export default function Navbar() {
             className="fixed inset-0 z-[60] bg-clinic-white-off p-6 lg:hidden flex flex-col overflow-y-auto"
           >
             <div className="flex justify-between items-center mb-12">
-              <SattvicLogo type="icon" />
+              <motion.div
+                animate={{ 
+                  scale: [1, 1.15, 1],
+                  rotate: [0, 8, -8, 0],
+                  filter: [
+                    "drop-shadow(0px 0px 0px rgba(212,175,55,0))", 
+                    "drop-shadow(0px 0px 12px rgba(212,175,55,0.6))", 
+                    "drop-shadow(0px 0px 0px rgba(212,175,55,0))"
+                  ]
+                }}
+                transition={{ 
+                  duration: 2.5, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+              >
+                <SattvicLogo type="icon" />
+              </motion.div>
               <button onClick={() => setMobileMenuOpen(false)}>
                 <X className="w-6 h-6 text-clinic-teal-900" />
               </button>

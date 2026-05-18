@@ -36,26 +36,43 @@ export default function KnowDoctors() {
             <p className="text-clinic-gold font-bold uppercase tracking-widest text-sm md:text-base">M.D Kayachikitsa (Medicine)</p>
           </div>
           <p>
-            Dr. Khan Aqsa Zarin is a dedicated Ayurvedic physician known for her deep commitment to natural healing and personalized patient care. She holds an <strong className="text-clinic-teal-900 font-medium">M.D. in Kayachikitsa (Medicine)</strong> from Dr. D. Y. Patil College of Ayurveda, Pune, and completed her graduation (<strong className="text-clinic-teal-900 font-medium">B.A.M.S.</strong>) from <strong className="text-clinic-teal-900 font-medium">Government Ayurvedic College and Hospital Nanded</strong>. She has further enhanced her expertise with a <strong className="text-clinic-teal-900 font-medium">Diploma in Nutrition</strong>, along with <strong className="text-clinic-teal-900 font-medium">certifications in Panchakarma and Yoga</strong>, and <strong className="text-clinic-teal-900 font-medium">fellowship training in Viddhakarma and Agnikarma</strong>.
+            Dr. Khan Aqsa Zarin is a dedicated Ayurvedic physician known for her deep commitment to natural healing and personalized patient care. She holds an <strong className="text-clinic-teal-900 font-medium">M.D. in Kayachikitsa (Medicine)</strong> from Dr. D. Y. Patil College of Ayurveda, Pune, and completed her graduation (<strong className="text-clinic-teal-900 font-medium">B.A.M.S.</strong>) from <strong className="text-clinic-teal-900 font-medium">Government Ayurvedic College and Hospital, Nanded</strong>. She has further enhanced her expertise with a <strong className="text-clinic-teal-900 font-medium">Diploma in Nutrition</strong>, along with <strong className="text-clinic-teal-900 font-medium">certifications in Panchakarma and Yoga</strong>, and <strong className="text-clinic-teal-900 font-medium">fellowship training in Viddhakarma and Agnikarma</strong>.
+          </p>
+
+          <div className="bg-clinic-teal-50/50 p-8 md:p-10 rounded-[2rem] border border-clinic-border">
+            <p className="mb-6">
+              She has earned extensive recognition at both the national and international levels. Her notable academic and professional achievements include:
+            </p>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span><strong className="text-clinic-teal-900 font-medium">3 International Scopus-indexed (JAIM)</strong> research papers.</span></li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span><strong className="text-clinic-teal-900 font-medium">1 Patent Published</strong>.</span></li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span><strong className="text-clinic-teal-900 font-medium">1 Book Publishing Underway</strong> (Advances in Kayachikitsa).</span></li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span><strong className="text-clinic-teal-900 font-medium">4 National Paper Presentations</strong> and <strong className="text-clinic-teal-900 font-medium">6 National Poster Presentations</strong>.</span></li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span><strong className="text-clinic-teal-900 font-medium">1 International Poster Presentation</strong>.</span></li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span><strong className="text-clinic-teal-900 font-medium">Member of the International Academy of Ayurved (IAA)</strong>, Pune.</span></li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span>Delivered <strong className="text-clinic-teal-900 font-medium">international guest lectures</strong> in Canada.</span></li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span>Conducted extensive <strong className="text-clinic-teal-900 font-medium">clinical and theoretical lectures</strong> for undergraduates.</span></li>
+            </ul>
+          </div>
+
+          <div className="bg-clinic-teal-50/50 p-8 md:p-10 rounded-[2rem] border border-clinic-border">
+            <p className="mb-6">
+              Beyond academic excellence, her practical clinical milestones and contributions include:
+            </p>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span><strong className="text-clinic-teal-900 font-medium">8+ Years of Clinical Experience</strong> in authentic Ayurvedic practice.</span></li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span><strong className="text-clinic-teal-900 font-medium">Successfully treated over 500 patients</strong> for chronic pain management, lifestyle disorders, and various systemic ailments.</span></li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span>Achieved a <strong className="text-clinic-teal-900 font-medium">90–95% success rate</strong> in non-surgical joint pain recovery utilizing highly specialized therapeutic protocols.</span></li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span><strong className="text-clinic-teal-900 font-medium">Organized and contributed to 50+ free medical camps</strong> across rural areas, actively championing community health and wellbeing.</span></li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span><strong className="text-clinic-teal-900 font-medium">Developed advanced post-COVID recovery protocols</strong> for hundreds of patients, focusing on personalized internal rehabilitation.</span></li>
+            </ul>
+          </div>
+
+          <p>
+            With extensive clinical exposure across Kayachikitsa, Gynaecology, and community healthcare, Dr. Khan Aqsa Zarin has managed a wide array of patients in both outpatient (OPD) and inpatient (IPD) settings. She is highly skilled in performing specialized therapies such as <strong className="text-clinic-teal-900 font-medium">Viddhakarma, Agnikarma, and Cupping Therapy</strong>—known for providing immediate and effective relief in pain-related conditions.
           </p>
           <p>
-            She has earned extensive recognition at both national and international levels. Her notable academic and professional achievements include:
-          </p>
-          <ul className="list-disc pl-5 space-y-2 mt-4 mb-6">
-            <li><strong className="text-clinic-teal-900 font-medium">3 International Scopus-indexed (JAIM)</strong> research papers.</li>
-            <li><strong className="text-clinic-teal-900 font-medium">1 Patent Published</strong>.</li>
-            <li><strong className="text-clinic-teal-900 font-medium">1 Book Publishing Underway</strong> (Advances in Kayachikitsa).</li>
-            <li><strong className="text-clinic-teal-900 font-medium">4 National Paper Presentations</strong> and <strong className="text-clinic-teal-900 font-medium">6 National Poster Presentations</strong>.</li>
-            <li><strong className="text-clinic-teal-900 font-medium">1 International Poster Presentation</strong>.</li>
-            <li><strong className="text-clinic-teal-900 font-medium">Member of International Academy of Ayurved (IAA)</strong>, Pune.</li>
-            <li><strong className="text-clinic-teal-900 font-medium">International guest lectures</strong> in Canada.</li>
-            <li>Taken <strong className="text-clinic-teal-900 font-medium">clinical and theoretical lectures</strong> for undergraduates.</li>
-          </ul>
-          <p>
-            With extensive clinical exposure across Kayachikitsa, Gynaecology, and community healthcare, Dr. Khan Aqsa Zarin has managed a wide range of patients in both OPD and IPD settings. She is skilled in performing specialized therapies such as <strong className="text-clinic-teal-900 font-medium">Viddhakarma, Agnikarma, and cupping</strong>, known for providing effective and often immediate relief in pain-related conditions. Her experience also includes participation in medical camps and dedicated patient care during critical times such as the COVID-19 pandemic.
-          </p>
-          <p>
-            She believes in identifying the root cause (Nidana) of disease through precise diagnosis, including <strong className="text-clinic-teal-900 font-medium">Nadi Parikshan</strong>, and providing targeted, individualized treatment. She carefully plans every treatment based on the patient's body constitution (Prakriti), seasonal variations, and specific health needs. Her approach integrates Ayurvedic medicines, therapies, diet, and lifestyle modifications, with the goal of achieving complete and sustainable healing. She emphasizes guiding patients in such a way that, over time, they become independent of long-term medications and are able to maintain their health naturally.
+            She believes in identifying the systemic root cause (<span className="italic">Nidana</span>) of a disease through precise diagnostic methods, prominently including <strong className="text-clinic-teal-900 font-medium">Nadi Parikshan (Pulse Diagnosis)</strong>. Every treatment is thoughtfully designed based on the patient's intrinsic body constitution (<span className="italic">Prakriti</span>), seasonal variations, and specific physiological needs. Her holistic approach seamlessly integrates functional herbal medicines, traditional therapies, and personalized diet and lifestyle modifications. She emphasizes empowering patients through their health journey so that, over time, they become self-reliant, reducing their dependency on long-term medications, and maintaining optimal health naturally.
           </p>
 
           <blockquote className="mt-16 p-10 md:p-12 bg-clinic-teal-50 rounded-[2.5rem] border-l-4 border-clinic-gold text-clinic-teal-900 font-serif italic text-2xl md:text-3xl leading-snug">
