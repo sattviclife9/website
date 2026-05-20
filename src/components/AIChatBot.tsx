@@ -5,8 +5,18 @@ import { MessageCircle, X, Send, User, Bot, Loader2 } from "lucide-react";
 import { GoogleGenAI } from "@google/genai";
 import Markdown from "react-markdown";
 
-// Initialize Gemini via the SDK
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+// Initialize Gemini via the SDK safely
+let ai: GoogleGenAI | null = null;
+try {
+  const apiKey = typeof process !== "undefined" && process?.env ? process.env.GEMINI_API_KEY : undefined;
+  if (apiKey && apiKey.trim() !== "") {
+    ai = new GoogleGenAI({ apiKey });
+  } else {
+    console.warn("GEMINI_API_KEY is missing/empty. AI chat will run in offline information-only mode.");
+  }
+} catch (error) {
+  console.warn("Could not load GoogleGenAI SDK directly:", error);
+}
 
 // Dynamically load all page contents so the bot is always up-to-date
 const rawPages = import.meta.glob("../pages/**/*.tsx", {
@@ -142,12 +152,28 @@ export default function AIChatBot() {
 
   useEffect(() => {
     // Initialize the chat session
-    chatRef.current = ai.chats.create({
-      model: "gemini-2.5-flash",
-      config: {
-        systemInstruction: SYSTEM_INSTRUCTION,
-      },
-    });
+    if (ai) {
+      try {
+        chatRef.current = ai.chats.create({
+          model: "gemini-2.5-flash",
+          config: {
+            systemInstruction: SYSTEM_INSTRUCTION,
+          },
+        });
+      } catch (e) {
+        console.error("Failed to initialize chat session:", e);
+      }
+    } else {
+      // Show notice to let the user know the AI is offline, without breaking the website.
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: "missing-key-notice",
+          role: "model",
+          text: "### Note from Sattvic Center:\nOur AI assistant is temporarily in offline/information-only mode. \n\nYou can still call, WhatsApp, or schedule appointments directly:\n- **[Book Appointment Direct Link](https://admin.ayurgrid.com/doctor/websiteappointments/createAppointment?doctor_id=945)**\n- **WhatsApp / Call**: +91-9404417145 \n- **Visit us**: C Building, Girme Heights, Salunke Vihar, Pune",
+        },
+      ]);
+    }
   }, []);
 
   const handleSend = async () => {
@@ -167,7 +193,7 @@ export default function AIChatBot() {
 
     try {
       if (!chatRef.current) {
-        throw new Error("Chat not initialized");
+        throw new Error("Our AI assistant is currently offline because the `GEMINI_API_KEY` has not been configured for this deployment. Please contact Pune clinic directly at +91-9404417145 or click below to find customized Ayurvedic guides or book online!");
       }
 
       const response = await chatRef.current.sendMessage({ message: userText });
