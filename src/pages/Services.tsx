@@ -44,6 +44,7 @@ export const PROCEDURES: ServiceSection[] = [
       },
       { 
         name: "Virechana (Purgation Therapy)", 
+        image: "https://drive.google.com/thumbnail?id=1vU8mXps9AZCz1mniaH68HNmsfBjXO136&sz=w800",
         desc: "Eliminates accumulated toxins and clears the bowels. Primarily prescribed for Pitta conditions like jaundice, gastritis, and skin diseases.",
         details: "In Virechana, detoxification occurs through therapeutic purgation by eliminating accumulated toxins and clearing the bowels. The procedure begins with internal and external oleation and fomentation therapies. Thereafter, a natural purgative is administered to promote bowel evacuation, which helps purify the body by removing toxins. Virechana is primarily prescribed for Pitta-dominant conditions such as herpes zoster, jaundice, gastritis, IBS, kidney problems, asthma, fever, skin diseases, bleeding disorders, headaches, burning sensation in the eyes, chronic cough, rhinitis, gout, gynecological disorders, rheumatic conditions, loss of appetite, etc."
       },
@@ -83,11 +84,13 @@ export const PROCEDURES: ServiceSection[] = [
     items: [
       { 
         name: "Agnikarma (Therapeutic Heat Therapy)", 
+        image: "https://drive.google.com/thumbnail?id=1qBGPw5BujZ_ZbDLnN2zcO46tg0gsW3fa&sz=w800",
         desc: "Cauterization of specific points using a heated Shalaka to provide long-lasting relief from chronic joint and muscle pain.",
         details: "In Agnikarma therapy, specific points on the body are gently cauterized using a specially designed heated instrument known as a Shalaka. Based on the patient’s condition and the nature of the disease, different types of Shalaka, such as gold, iron, copper, Naga, or Mruttika, are selected to achieve the desired therapeutic effect. The controlled application of heat provides quick and long-lasting pain relief, reduces stiffness and inflammation, improves local blood circulation, relieves nerve compression, and helps prevent the recurrence of chronic pain conditions. Agnikarma is highly effective in conditions such as cervical and lumbar spondylosis, slip disc and sciatica, frozen shoulder, tennis elbow, heel pain (plantar fasciitis), knee pain and osteoarthritis, joint stiffness and inflammation, muscle spasms, sacroiliac joint pain, and trigeminal neuralgia. In addition to pain management, it is also used in certain eye-related conditions and cosmetic procedures, such as the removal of warts, moles, corns, and lipomas, and in the supportive management of conditions like PCOD and hernia."
       },
       { 
         name: "Viddhakarma Therapy", 
+        image: "https://drive.google.com/thumbnail?id=10fBzTiNbe-frN27R4Hqre4iKe7uV_Hnm&sz=w800",
         desc: "A para-surgical therapy involving therapeutic puncturing of Marma points for instant pain relief and nerve stimulation.",
         details: "Viddhakarma is an Ayurvedic para-surgical therapy that involves therapeutic puncturing of specific body points with respect to Marma (energy points), using a fine needle for immediate pain relief and overall healing. It works by releasing obstructed Vata, draining impure blood, and stimulating nerve endings, thereby improving circulation and restoring normal physiological function. In pain management, Viddhakarma provides instant and effective relief in conditions such as joint pain, back pain, neck pain, sciatica, frozen shoulder, and muscular stiffness by reducing inflammation, relieving pressure, and enhancing nerve conduction. Beyond pain relief, it is also beneficial in psychosomatic disorders, stress, sleep disturbances, autism, and helps improve concentration and memory. Additionally, it supports skin health, promotes hair growth, and improves reproductive health. Overall, Viddhakarma acts as a holistic therapy that balances doshas, relieves pain, and enhances overall well-being when performed under proper Ayurvedic guidance."
       },
@@ -117,12 +120,13 @@ export const PROCEDURES: ServiceSection[] = [
       },
       { 
         name: "Pinda Sweda (Herbal Bolus Therapy)", 
+        image: "https://drive.google.com/thumbnail?id=1bxuU1F1mPy3N0uNTQ4jLseX9RIb30UC7&sz=w800",
         desc: "Warm herbal bundles massaged over the body to induce sweating, relieve pain, and nourish muscles.",
         details: "Pinda Sweda is an Ayurvedic therapy in which warm herbal bundles (potli) made of medicinal herbs or powders are heated and applied to the body to induce sweating, relieve pain, and reduce stiffness. The boluses are prepared by tying herbal ingredients in cloth, heating them in medicated oil, and gently massaging over the affected area, usually after a light oil massage. This combined action improves blood circulation, relaxes muscles, and helps remove Ama (toxins) from the tissues. There are various types of Pinda Sweda, including Patra Pinda Sweda, Churna Pinda Sweda, Shashtika Shali Pinda Sweda, Jambira Pinda Sweda, Valuka Sweda, Mamsa Pinda Sweda, and Kukkut Pinda Sweda, chosen according to the patient’s condition. Among these, Shashtika Shali Pinda Sweda is a nourishing therapy using rice cooked in herbal decoction and milk, which strengthens muscles, improves circulation, and acts as a rejuvenative. It is especially beneficial for joint pain, muscle stiffness, arthritis, and other musculoskeletal conditions, helping improve mobility and promote overall healing and relaxation."
       },
       { 
         name: "Upanaha Sweda (Herbal Poultice Therapy)", 
-        image: "https://drive.google.com/thumbnail?id=17AhT2g3K1iQzw2ylL18ea3YejAILBvfV&sz=w800",
+        image: "https://drive.google.com/thumbnail?id=183HAKfAWlwRvcYm0DZaZDMTHBHwWU2wg&sz=w800",
         desc: "Warm herbal poultice applied over painful areas to reduce stiffness and inflammation in joints.",
         details: "Upanaha is a traditional Ayurvedic therapeutic procedure in which a warm herbal poultice is applied over a painful or affected area of the body and then covered and retained for a specific duration. The poultice is prepared using medicinal powders mixed with substances such as warm oils, ghee, herbal decoctions, fermented liquids, or animal fats, selected according to the aggravated dosha. Upanaha provides sustained warmth (Swedana) and allows the medicinal substances to penetrate deeply into the tissues, making it especially useful in musculoskeletal and joint disorders. The importance of Upanaha lies in its ability to reduce pain, stiffness, swelling, and inflammation, particularly in conditions like osteoarthritis, rheumatoid arthritis, lower back pain, cervical and lumbar spondylosis, frozen shoulder, and sports injuries. The continuous warmth improves local circulation, relaxes muscles, softens contracted tissues, and facilitates the removal of Ama (toxins)."
       }
@@ -151,11 +155,13 @@ export const PROCEDURES: ServiceSection[] = [
       },
       { 
         name: "Udvartana (Herbal Powder Massage)", 
+        image: "https://drive.google.com/thumbnail?id=18sSB7SUV6fQivCJgO6nQ6J9MFmK5Hndo&sz=w800",
         desc: "Herbal powder massage in an upward direction to mobilize toxins, reduce fat, and improve skin tone.",
         details: "Udvartana is a classical Ayurvedic therapy in which a herbal powder massage is applied in a downward-to-upward direction. This method is different from conventional oil massage and is useful for mobilizing accumulated toxins (Ama) and stagnant fat, while stimulating blood circulation and metabolic activity. It is especially beneficial for weight management and body contouring, as brisk upward massage helps to liquefy excess fat, support metabolism, and improve body shape. The medicinal powders act like natural scrubs, cleansing the skin, removing dead cells, and enhancing skin texture and glow."
       },
       { 
         name: "Padabhyanga (Foot Massage Therapy)", 
+        image: "https://drive.google.com/thumbnail?id=1Bs6OtPCatfI5IRm1vQI_0CnMf5CvqtnK&sz=w800",
         desc: "Traditional foot massage using a special bronze bowl to draw out excess heat and balance Pitta dosha.",
         details: "Padabhyanga is a traditional Ayurvedic foot massage that focuses on the soles of the feet to promote relaxation, circulation, and overall well-being. In the Kansa Thali variation, a special bronze alloy bowl made of copper, tin, and zinc is used. This metal interacts with the skin’s natural acidity, and the grey residue that appears during the massage is not dirt but a sign of neutralization of excess acidity, helping to balance energy and heat in the body."
       },
@@ -167,16 +173,19 @@ export const PROCEDURES: ServiceSection[] = [
       },
       { 
         name: "Karnapoorana (Ear Nourishment Therapy)", 
+        image: "https://drive.google.com/thumbnail?id=1aw4Zmy2G2qvZLy1MDMMWkjBPIU98KSNz&sz=w800",
         desc: "Warm medicated oil instilled into the ears to pacify Vata, nourish ears, and soothe the mind.",
         details: "Karnapoorana is a classical Ayurvedic ear therapy in which warm medicated oil is gently instilled into the ears to pacify Vata dosha and nourish the ears and nervous system. It strengthens the ear structures, soothes the mind, and supports overall neurological balance. Karnapoorana is beneficial for ear pain, dryness, excess wax, tinnitus, impaired hearing, ear infections, dizziness, vertigo, headache, migraine, stress, sleeplessness, and mental fatigue."
       },
       { 
         name: "Netra Tarpana (Eye Rejuvenation Therapy)", 
+        image: "https://drive.google.com/thumbnail?id=12OM8NRbHwr6eBU5legYQ-ssCYz2rbWF1&sz=w800",
         desc: "Warm medicated ghee or herbal oil gently retained over the eyes to directly nourish the eye tissues.",
         details: "Netra Tarpana is a classical Ayurvedic eye therapy derived from Netra (eyes) and Tarpana (nourishment). In this procedure, a soft dough ring is carefully formed around the eye sockets, and protective eye goggles are placed to ensure safety and proper retention. Warm medicated ghee or herbal oil is then gently retained over the eyes for a specific duration, allowing direct nourishment of the eye tissues. This therapy aims to lubricate, nourish, strengthen, and rejuvenate the eyes while supporting overall eye health."
       },
       {
         name: "Netra Dhawana (Eye Cleansing Therapy)",
+        image: "https://drive.google.com/thumbnail?id=1YYvIRHURQs5wyamWMfOa4yOz2FU3B4-3&sz=w800",
         desc: "Gentle washing of the eyes with medicated liquid to refresh and improve vision.",
         details: "Netra Dhawan is a traditional Ayurvedic eye cleansing and care therapy. In this procedure, the eyes are gently washed with a stream of medicated liquid or a specially prepared herbal solution to cleanse them. This helps remove accumulated dust, strain, fatigue, redness, itching, and irritation. Netra Dhawan refreshes the eyes, improves blood circulation, and supports clear vision."
       }
@@ -187,6 +196,7 @@ export const PROCEDURES: ServiceSection[] = [
     items: [
       { 
         name: "Uttarbasti Therapy", 
+        image: "https://drive.google.com/thumbnail?id=1KhjD5KCbQeNU_e8alcR53uPSjCalMzXn&sz=w800",
         desc: "Administered through the urethral or vaginal route to cleanse and strengthen the urogenital system.",
         details: "Uttara Basti is a specialized Ayurvedic Panchakarma procedure in which medicated oils or herbal decoctions are administered through the urethral passage in men and women, or through the vaginal route in women, to directly act on the urinary and reproductive organs. This therapy helps cleanse, nourish, and strengthen the organs of the urogenital system, thereby restoring their normal function and improving reproductive and urinary health."
       }
@@ -197,6 +207,7 @@ export const PROCEDURES: ServiceSection[] = [
     items: [
       { 
         name: "Swarna Prashana", 
+        image: "https://drive.google.com/thumbnail?id=17vGlDXERDmyLElLNqwPJOvfQ6fniCOvk&sz=w800",
         desc: "Traditional Ayurvedic remedy to boost immunity, intelligence, and overall growth in children.",
         details: "Swarna Prashana is an Ayurvedic immunity-boosting practice in which purified gold (Swarna Bhasma) is combined with honey, ghee, and selected herbal extracts and administered in small, age-appropriate doses to infants and children from birth up to 16 years. This traditional practice supports overall growth and development, strengthens immunity, and improves resistance to infections."
       }
@@ -207,26 +218,31 @@ export const PROCEDURES: ServiceSection[] = [
     items: [
       { 
         name: "Mukhalepam (Herbal Face Therapy)", 
+        image: "https://drive.google.com/thumbnail?id=136tjtKmUqF3YylYxyErbGYMsm8x7QxGv&sz=w800",
         desc: "Application of medicinal herbal pastes (Lepas) on the face for radiant and blemish-free skin.",
         details: "Mukhalepam is a traditional Ayurvedic facial therapy wherein customized herbal pastes are applied to the face. These lepas are prepared using various Ayurvedic herbs selected according to the individual's skin type and the specific conditions they are trying to manage, such as acne, pigmentation, or early signs of aging. It deeply cleanses, detoxifies, and nourishes the skin, imparting a natural and healthy glow."
       },
       { 
         name: "Ayurvedic Facial Therapies", 
+        image: "https://drive.google.com/thumbnail?id=1b2r5-4ACvGY0TbDUHRWqiQknB8tqga2Y&sz=w800",
         desc: "Customized natural facials to cleanse, nourish, and rejuvenate the skin based on individual constitution.",
         details: "An Ayurvedic facial is a natural, customized therapy based on an individual’s skin constitution (Prakriti) and Ayurvedic principles, designed to cleanse, nourish, and rejuvenate the skin for a healthy glow. It uses herbal powders, medicated oils, natural pastes, steam, and gentle massage to deeply cleanse the pores, remove toxins (Ama), enhance skin glow, improve complexion and texture, and reduce acne, pimples, pigmentation, and dark spots."
       },
       { 
         name: "Hair & Scalp Therapies", 
+        image: "https://drive.google.com/thumbnail?id=1XtGLSzeFviUC43IuLslUoePKi6znS0nI&sz=w800",
         desc: "Holistic support for hair fall, dandruff, thinning hair, premature greying, and scalp health through Ayurvedic treatments.",
         details: "Holistic support is provided for hair fall, dandruff, thinning hair, premature greying, and overall scalp health through Ayurvedic treatments. Therapies focus on nourishing hair roots, strengthening follicles, improving scalp circulation, and balancing the Doshas to reduce hair loss naturally."
       },
       { 
         name: "Shiro Abhyanga (Head Massage Therapy)", 
+        image: "https://drive.google.com/thumbnail?id=1g_SB1WUDmEbAQjsKJTdJoDqGee-3v5Is&sz=w800",
         desc: "Therapeutic head massage using medicated oils to relieve stress and nourish hair roots.",
         details: "Shiro Abhyanga is a deeply relaxing head, neck, and shoulder massage using warm Ayurvedic oils. It stimulates the Marma points on the scalp, which helps pacify Vata, reduce stress, prevent hair fall, and improve overall mental clarity and relaxation."
       },
       { 
         name: "Anti-Ageing Rejuvenation Therapies", 
+        image: "https://drive.google.com/thumbnail?id=1zt60-N6KT3IYTO50C5ckzyhuLX0begih&sz=w800",
         desc: "Natural Ayurvedic therapies for pigmentation, wrinkles, tanning, uneven skin tone, and early signs of ageing.",
         details: "Treatment for pigmentation, wrinkles, tanning, uneven skin tone, and early signs of ageing is provided through natural Ayurvedic therapies to promote healthier, brighter, and more youthful-looking skin."
       }
@@ -237,6 +253,7 @@ export const PROCEDURES: ServiceSection[] = [
     items: [
       { 
         name: "Rasayana Therapy (Rejuvenation & Immunity Enhancement)", 
+        image: "https://drive.google.com/thumbnail?id=15C81rD-JhzLEqP0suc1qfG3kyul6dgDn&sz=w800",
         desc: "Holistic rejuvenation therapies, antioxidant-rich formulations, and lifestyle regimens to strengthen immunity and vitality.",
         details: "Rasayana Chikitsa in Ayurveda focuses on rejuvenation, strengthening immunity, and promoting overall wellness. Suitable Rasayana formulations such as Chyawanprash, Ashwagandha, and Shatavari are prescribed to slow the aging process, increase strength and vitality, and maintain long-term health."
       }

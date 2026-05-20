@@ -204,7 +204,7 @@ export default function AIChatBot() {
     <>
       <div
         ref={containerRef}
-        className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40 flex flex-col items-start"
+        className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-[999] flex flex-col items-start"
       >
         <AnimatePresence>
           {isOpen && (

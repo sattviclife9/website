@@ -1004,6 +1004,30 @@ export function getConditionData(slug: string): ConditionData {
     categoryStr = "Respiratory & Immune Health";
     targetImage =
       "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&q=80&w=1200";
+  } else if (slug === "erectile-dysfunction") {
+    categoryStr = "Men’s Health & Urology";
+    targetImage =
+      "https://drive.google.com/thumbnail?id=1KcS2UL7kwn2NLfNXi7SvdQ5gx7h-7XFJ&sz=w1200";
+  } else if (slug === "premature-ejaculation") {
+    categoryStr = "Men’s Health & Urology";
+    targetImage =
+      "https://drive.google.com/thumbnail?id=1al7F4mxkRBQsPFjE-TtBwGe2oAd8DBu4&sz=w1200";
+  } else if (slug === "low-sperm-count") {
+    categoryStr = "Men’s Health & Urology";
+    targetImage =
+      "https://drive.google.com/thumbnail?id=1MhVQGwp2mPQLh9uEMGTXUWXmlDMVJlhi&sz=w1200";
+  } else if (slug === "kidney-stones") {
+    categoryStr = "Men’s Health & Urology";
+    targetImage =
+      "https://drive.google.com/thumbnail?id=1Kiw5mDdt9zX0ieWIDe705SukJRZa9rRH&sz=w1200";
+  } else if (slug === "uti") {
+    categoryStr = "Men’s Health & Urology";
+    targetImage =
+      "https://drive.google.com/thumbnail?id=1M463qaCdOtKV7Q0CcMZf7cFllYTlgUo8&sz=w1200";
+  } else if (slug === "prostate-issues") {
+    categoryStr = "Men’s Health & Urology";
+    targetImage =
+      "https://drive.google.com/thumbnail?id=1VbNhqSBl84tLizBy87WZ9D-t5CSAwBx_&sz=w1200";
   } else if (
     /(erect|ejaculat|sperm|kidney|uti|prostate|bladder|urinary|incontin)/i.test(
       slug,

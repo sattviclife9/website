@@ -683,23 +683,23 @@ export default function Home() {
              className="relative max-w-4xl mx-auto"
            >
              {/* Slider Navigation Buttons */}
-             <div className="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-12 z-20 hidden md:block">
+             <div className="absolute top-1/2 -translate-y-1/2 -left-3 md:-left-12 z-20">
                <button 
                  onClick={prevTestimonial}
-                 className="w-12 h-12 rounded-full bg-white border border-clinic-border shadow-sm flex items-center justify-center text-clinic-teal-900 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors"
+                 className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white border border-clinic-border shadow-sm flex items-center justify-center text-clinic-teal-900 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors"
                  aria-label="Previous Testimonial"
                >
-                 <ChevronLeft className="w-6 h-6" />
+                 <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
                </button>
              </div>
              
-             <div className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-12 z-20 hidden md:block">
+             <div className="absolute top-1/2 -translate-y-1/2 -right-3 md:-right-12 z-20">
                <button 
                  onClick={nextTestimonial}
-                 className="w-12 h-12 rounded-full bg-white border border-clinic-border shadow-sm flex items-center justify-center text-clinic-teal-900 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors"
+                 className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white border border-clinic-border shadow-sm flex items-center justify-center text-clinic-teal-900 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors"
                  aria-label="Next Testimonial"
                >
-                 <ChevronRight className="w-6 h-6" />
+                 <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
                </button>
              </div>
 
