@@ -5,6 +5,44 @@ import { Instagram, Facebook, Linkedin, Youtube, MapPin, Phone, Mail } from 'luc
 import GoogleTranslate from './GoogleTranslate';
 
 export default function Footer() {
+  const [badgeSrc, setBadgeSrc] = React.useState<string>('');
+
+  React.useEffect(() => {
+    const cached = sessionStorage.getItem('sattvic_visitor_badge');
+    if (cached) {
+      setBadgeSrc(cached);
+    } else {
+      const liveUrl = "https://api.visitorbadge.io/api/visitors?path=sattviclife-in-v2&countColor=%23c6a87c&label=";
+      fetch(liveUrl)
+        .then(res => {
+          if (!res.ok) throw new Error("Badge fetch failed");
+          return res.blob();
+        })
+        .then(blob => {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            const base64data = reader.result as string;
+            // Ensure we got a valid data URL
+            if (base64data && base64data.startsWith('data:image')) {
+              try {
+                sessionStorage.setItem('sattvic_visitor_badge', base64data);
+              } catch (e) {
+                console.warn("Storage quota exceeded or unavailable:", e);
+              }
+              setBadgeSrc(base64data);
+            } else {
+              setBadgeSrc(liveUrl);
+            }
+          };
+          reader.readAsDataURL(blob);
+        })
+        .catch(err => {
+          console.warn("Could not cache visitor badge via CORS, using fallback:", err);
+          setBadgeSrc(liveUrl);
+        });
+    }
+  }, []);
+
   const handleLanguageChange = (code: string) => {
     const select = document.querySelector('.goog-te-combo') as HTMLSelectElement | null;
     if (select) {
@@ -118,11 +156,13 @@ export default function Footer() {
         <div className="pt-4 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-white/40 text-[9px] md:text-[10px] uppercase tracking-[0.2em] font-bold">
           <div className="text-center md:text-left flex flex-col sm:flex-row items-center gap-4">
             <span>&copy; {new Date().getFullYear()} Sattvic Ayurvedic Centre. All rights reserved.</span>
-            <img 
-              src="https://api.visitorbadge.io/api/visitors?path=sattviclife-in-v1&countColor=%23c6a87c&label=" 
-              alt="Visitors Tracker" 
-              className="h-6 opacity-100 mix-blend-screen"
-            />
+            {badgeSrc && (
+              <img 
+                src={badgeSrc} 
+                alt="Visitors Tracker" 
+                className="h-6 opacity-100 mix-blend-screen"
+              />
+            )}
           </div>
           <div className="flex flex-wrap justify-center gap-6">
             <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
