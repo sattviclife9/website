@@ -119,7 +119,7 @@ export default function Footer() {
           <div className="text-center md:text-left flex flex-col sm:flex-row items-center gap-4">
             <span>&copy; {new Date().getFullYear()} Sattvic Ayurvedic Centre. All rights reserved.</span>
             <img 
-              src="https://api.visitorbadge.io/api/visitors?path=sattvic-ayurvedic-centre-v1&countColor=%23c6a87c&label=" 
+              src="https://api.visitorbadge.io/api/visitors?path=sattviclife-in-v1&countColor=%23c6a87c&label=" 
               alt="Visitors Tracker" 
               className="h-6 opacity-100 mix-blend-screen"
             />
