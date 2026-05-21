@@ -24,12 +24,12 @@ export const PROCEDURES: ServiceSection[] = [
   {
     category: "Consultation & Diagnostic Services",
     items: [
-      { name: "Ayurvedic Consultation", desc: "Expert assessment to understand your unique health needs." },
+      { name: "Ayurvedic Consultation", desc: "Personalized consultations focused on understanding root causes and creating natural treatment plans tailored to your body, lifestyle, and health goals." },
       { name: "Clinical Assessment", desc: "Comprehensive evaluation including Detailed Case History, Nadi Parikshan (Pulse Diagnosis), Prakriti & Vikriti Analysis, Agni Assessment, and Manas Assessment." },
       { name: "Prakriti Analysis (Mind–Body Constitution Assessment)", desc: "Detailed assessment of your unique dosha profile for personalized diet and lifestyle planning." },
       { name: "Lifestyle & Wellness Evaluation", desc: "In-depth analysis of daily routines (Dinacharya Assessment) combined with personalized Dietary Mapping and Guidance." },
       { name: "Personalized Treatment Planning", desc: "Tailored Home Regimen Guidance and Personalized Yoga Planning designed specifically for your constitution and health goals." },
-      { name: "Diet & Lifestyle Counseling", desc: "Nutritional guidance tailored to to restore dosha balance." },
+      { name: "Diet & Lifestyle Counseling", desc: "Personalized Ayurvedic nutrition and lifestyle guidance designed to improve digestion, energy, sleep, immunity, and overall well-being through sustainable daily habits." },
       { name: "Integrative Ayurvedic Diagnostics", desc: "Modern Diagnostic Support bridging contemporary medical testing with classical Ayurvedic insights for accurate diagnosis." }
     ]
   },

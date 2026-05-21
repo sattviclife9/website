@@ -1130,19 +1130,21 @@ export default function Navbar() {
           >
             <div className="flex justify-between items-center mb-12">
               <motion.div
+                style={{ perspective: 600, transformStyle: "preserve-3d" }}
                 animate={{ 
-                  scale: [1, 1.15, 1],
-                  rotate: [0, 8, -8, 0],
+                  rotateY: [0, 180, 360],
+                  y: [0, -8, 0],
+                  scale: [1, 1.06, 1],
                   filter: [
-                    "drop-shadow(0px 0px 0px rgba(212,175,55,0))", 
-                    "drop-shadow(0px 0px 12px rgba(212,175,55,0.6))", 
-                    "drop-shadow(0px 0px 0px rgba(212,175,55,0))"
+                    "drop-shadow(0px 4px 8px rgba(212,175,55,0.2))", 
+                    "drop-shadow(0px 10px 30px rgba(212,175,55,0.65))", 
+                    "drop-shadow(0px 4px 8px rgba(212,175,55,0.2))"
                   ]
                 }}
                 transition={{ 
-                  duration: 2.5, 
+                  duration: 6.5, 
                   repeat: Infinity, 
-                  ease: "easeInOut" 
+                  ease: "easeInOut"
                 }}
               >
                 <SattvicLogo type="icon" />

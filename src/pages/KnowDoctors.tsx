@@ -2,10 +2,16 @@ import React from 'react';
 import { motion } from 'motion/react';
 import AboutNav from '../components/AboutNav';
 import OptimizedImage from '../components/OptimizedImage';
+import SEO from '../components/SEO';
 
 export default function KnowDoctors() {
   return (
     <>
+      <SEO 
+        title="Know Your Doctor | Dr. Khan Aqsa Zarin"
+        description="Learn more about Dr. Khan Aqsa Zarin, an internationally recognized Ayurvedic physician, specialized in classical Ayurveda, clinical research, and holistic healing."
+        keywords="khan aqsa zarin, dr khan aqsa zarin, aqsa khan, aqsa zarin, ayurvedic doctor pune, best ayurveda doctor"
+      />
       <AboutNav />
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-4 pb-12 md:pt-8 md:pb-32">
       <motion.div
@@ -44,13 +50,13 @@ export default function KnowDoctors() {
               She has earned extensive recognition at both the national and international levels. Her notable academic and professional achievements include:
             </p>
             <ul className="space-y-4">
-              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span><strong className="text-clinic-teal-900 font-medium">3 International Scopus-indexed (JAIM)</strong> research papers.</span></li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span><strong className="text-clinic-teal-900 font-medium">3 International Scopus-indexed (JAIM)</strong> research papers (check links below).</span></li>
               <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span><strong className="text-clinic-teal-900 font-medium">1 Patent Published</strong>.</span></li>
               <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span><strong className="text-clinic-teal-900 font-medium">1 Book Publishing Underway</strong> (Advances in Kayachikitsa).</span></li>
               <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span><strong className="text-clinic-teal-900 font-medium">4 National Paper Presentations</strong> and <strong className="text-clinic-teal-900 font-medium">6 National Poster Presentations</strong>.</span></li>
               <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span><strong className="text-clinic-teal-900 font-medium">1 International Poster Presentation</strong>.</span></li>
               <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span><strong className="text-clinic-teal-900 font-medium">Member of the International Academy of Ayurved (IAA)</strong>, Pune.</span></li>
-              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span>Delivered <strong className="text-clinic-teal-900 font-medium">international guest lectures</strong> in Canada.</span></li>
+              <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span>Delivered <strong className="text-clinic-teal-900 font-medium">international online guest lectures</strong> in Canada and UAE.</span></li>
               <li className="flex items-start gap-4"><span className="text-clinic-gold mt-1">✦</span><span>Conducted extensive <strong className="text-clinic-teal-900 font-medium">clinical and theoretical lectures</strong> for undergraduates.</span></li>
             </ul>
           </div>
