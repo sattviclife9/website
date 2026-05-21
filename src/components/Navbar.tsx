@@ -741,11 +741,11 @@ export default function Navbar() {
                             Autoimmune Support
                           </div>
                           <Link
-                            to="/conditions/specialized-protocols-for-sle-hashimoto-s-and-ibd"
+                            to="/conditions/specialized-protocols-for-sle-hashimotos-and-ibd"
                             className="px-5 py-2 hover:bg-clinic-teal-50 hover:text-clinic-bronze transition-colors flex items-center gap-2 capitalize text-xs font-medium border-b border-clinic-border/10 leading-snug"
                           >
                             <span className="w-1 h-1 rounded-full bg-clinic-bronze flex-shrink-0"></span>
-                            Specialized protocols for SLE, Hashimoto’s, and IBD
+                            Specialized Protocols for SLE Hashimoto's and IBD
                           </Link>
                         </div>
                       </div>
@@ -2066,7 +2066,7 @@ export default function Navbar() {
                             Autoimmune Support
                           </div>
                           <Link
-                            to="/conditions/specialized-protocols-for-sle-hashimoto-s-and-ibd"
+                            to="/conditions/specialized-protocols-for-sle-hashimotos-and-ibd"
                             onClick={() => {
                               setMobileMenuOpen(false);
                               setMobileExpanded(null);
@@ -2075,8 +2075,7 @@ export default function Navbar() {
                           >
                             <span className="w-1 h-1 rounded-full bg-clinic-border flex-shrink-0 mt-[6px]"></span>
                             <span>
-                              Specialized protocols for SLE, Hashimoto’s, and
-                              IBD
+                              Specialized Protocols for SLE Hashimoto's and IBD
                             </span>
                           </Link>
                         </div>

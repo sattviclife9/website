@@ -48,6 +48,747 @@ export interface ConditionData {
 }
 
 export const specificConditions: Record<string, ConditionData> = {
+  "bed-wetting": {
+    id: "bed-wetting",
+    name: "Bed Wetting",
+    ayurvedicName: "Shayya Mutra",
+    category: "Pediatric Healthcare",
+    seo: {
+      title: "Ayurvedic Treatment for Bed Wetting in Children | Shayya Mutra",
+      description: "Treat bed wetting (Shayya Mutra) naturally with Ayurvedic therapies. Strengthen urinary control, calm the nervous system, and build your child's confidence.",
+      keywords: "Ayurvedic treatment for bed wetting, Shayya Mutra, natural remedy for enuresis, kids bed wetting solutions, strengthen bladder control in children",
+    },
+    hero: {
+      title: "Natural Solutions for Bed Wetting",
+      description: "Address the physical and psychological root causes of nighttime bed wetting (Enuresis). Our Ayurvedic approach strengthens bladder control and calms the nervous system without harsh medications.",
+      image: "https://drive.google.com/thumbnail?id=1w5N4Unq14N19AmyjpIGUlWm-KUGmGGez&sz=w1200",
+    },
+    about: {
+      title: "Understanding Bed Wetting (Shayya Mutra)",
+      paragraphs: [
+        "Bed wetting (Nocturnal Enuresis) is an involuntary leakage of urine during sleep. While common in very young children, persistent bed wetting in older children can cause distress, anxiety, and impact their self-esteem.",
+        "Ayurveda identifies bed wetting as 'Shayya Mutra'. It is often linked to an imbalance of Apana Vata (which controls urine elimination), a weak bladder sphincter, or deep-seated fear and psychological stress (aggravated Prana Vata). Other underlying factors can include intestinal worms or chronic constipation."
+      ],
+      symptomsTitle: "Common Underlying Causes",
+      symptoms: [
+        "Deep sleep patterns preventing the child from waking up to a full bladder",
+        "A physically small or weak bladder capacity",
+        "Psychological stress, anxiety, or changes in home/school routines",
+        "Constipation putting pressure on the bladder",
+        "Presence of intestinal worms (Krimi) causing irritation"
+      ]
+    },
+    treatments: {
+      title: "Ayurvedic Approach to Bed Wetting",
+      subtitle: "Strengthening the bladder and relieving underlying stress.",
+      items: [
+        {
+          title: "Nerve & Muscle Tonics",
+          desc: "Herbs like Shilajit, Ashwagandha, and Brahmi that nourish the nervous system, reduce anxiety, and improve nerve control over the bladder sphincter.",
+          icon: "Brain"
+        },
+        {
+          title: "Addressing Digestion & Krimi (Worms)",
+          desc: "If intestinal worms or constipation are the root cause, gentle de-worming therapies and digestive correctors (like Vidangarishta) are administered.",
+          icon: "Activity"
+        },
+        {
+          title: "Counseling & Lifestyle Adjustments",
+          desc: "Guidance on fluid intake management before bedtime, establishing regular bathroom routines, and providing emotional support without shaming the child.",
+          icon: "Stethoscope"
+        },
+        {
+          title: "Warm Oil Applications",
+          desc: "Very gentle massage of warm Vata-pacifying oils on the lower abdomen and lower back to strengthen the local muscles and calm Apana Vata.",
+          icon: "Droplets"
+        }
+      ]
+    }
+  },
+  "concentration-support": {
+    id: "concentration-support",
+    name: "Concentration Support",
+    ayurvedicName: "Medhya Rasayana",
+    category: "Pediatric Healthcare",
+    seo: {
+      title: "Ayurvedic Treatment for Concentration Support in Children",
+      description: "Enhance your child's memory, focus, and concentration naturally with Ayurvedic Medhya Rasayana treatments. Safe and effective herbal support for brain health.",
+      keywords: "Ayurvedic herbs for child concentration, Medhya Rasayana, improve kids focus naturally, brain tonics for children, memory booster for kids",
+    },
+    hero: {
+      title: "Enhancing Focus and Cognitive Potential",
+      description: "Support your child's learning abilities, memory, and attention span with safe, natural Ayurvedic brain tonics and therapies designed to nourish the nervous system.",
+      image: "https://drive.google.com/thumbnail?id=1b3MZxc-QQ4vrOgNSld2m-zqENArJrtQV&sz=w1200",
+    },
+    about: {
+      title: "Understanding Concentration Issues in Children",
+      paragraphs: [
+        "Many children experience difficulties with focus, short attention spans, or memory retention. These challenges can cause frustration in learning environments and impact academic performance and self-esteem.",
+        "In Ayurveda, cognitive functions like learning (Dhi), retention (Dhriti), and memory (Smriti) are governed by Vata dosha and supported by pure Kapha (Ojas). When excess Vata creates restlessness, or when Ama (toxins) blocks the mind's clarity, it results in poor concentration. Ayurvedic treatments aim to ground Vata and nourish the brain tissues (Majja Dhatu)."
+      ],
+      symptomsTitle: "Common Signs of Poor Concentration",
+      symptoms: [
+        "Difficulty staying focused on a single task or schoolwork",
+        "Easily distracted by external stimuli",
+        "Forgetfulness or trouble retaining new information",
+        "Restlessness and inability to sit still",
+        "Frequent daydreaming or spacing out during conversations"
+      ]
+    },
+    treatments: {
+      title: "Ayurvedic Approach to Cognitive Support",
+      subtitle: "Nourishing the brain and calming a restless mind.",
+      items: [
+        {
+          title: "Medhya Rasayana (Brain Tonics)",
+          desc: "Potent herbs known as 'Medhya' like Brahmi, Shankhpushpi, and Ashwagandha are used to naturally enhance intelligence, memory, and focus.",
+          icon: "Brain"
+        },
+        {
+          title: "Swarnaprashana",
+          desc: "A classical Ayurvedic immunization that is highly effective in promoting intellect, memory, and overall developmental milestones in children.",
+          icon: "ShieldAlert"
+        },
+        {
+          title: "Shirodhara (Relaxation Therapy)",
+          desc: "For highly anxious or hyperactive older children, a gentle pouring of warm herbal oil on the forehead helps profoundly calm the central nervous system.",
+          icon: "Droplets"
+        },
+        {
+          title: "Dietary Adjustments",
+          desc: "Emphasizing brain-nourishing foods like clarified butter (Ghee), almonds, and walnuts, while reducing processed sugars that cause energy and focus crashes.",
+          icon: "Activity"
+        }
+      ]
+    }
+  },
+  "digestive-weakness": {
+    id: "digestive-weakness",
+    name: "Digestive Weakness",
+    ayurvedicName: "Agnimandya / Grahani",
+    category: "Pediatric Healthcare",
+    seo: {
+      title: "Ayurvedic Treatment for Digestive Weakness in Children",
+      description: "Treat your child's digestive weakness naturally with Ayurveda. Resolve tummy aches, poor metabolism, and indigestion safely and effectively.",
+      keywords: "Ayurvedic treatment for digestive weakness in kids, Agnimandya, child digestion problems, natural remedy for stomach ache in children",
+    },
+    hero: {
+      title: "Gentle Care for Little Tummies",
+      description: "Resolve frequent stomach aches, irregular bowel movements, and overall digestive weakness in children with safe, natural Ayurvedic therapies.",
+      image: "https://drive.google.com/thumbnail?id=1Brj67G2V4x0Im57Usb0PK9hgoLhXUId6&sz=w1200",
+    },
+    about: {
+      title: "Understanding Digestive Weakness in Children",
+      paragraphs: [
+        "Digestive weakness in children can manifest as frequent tummy aches, gas, bloating, and irregular bowel habits (either constipation or loose stools). It disrupts their comfort, sleep, and nutrient absorption.",
+        "In Ayurveda, optimal health begins in the gut. Digestive weakness is known as 'Agnimandya' (low digestive fire). When a child's Agni fluctuates due to incorrect eating habits, stress, or eating heavily processed foods, it leads to the creation of 'Ama' (toxins). This Ama blocks the body's channels, causing discomfort and preventing proper nourishment."
+      ],
+      symptomsTitle: "Common Symptoms",
+      symptoms: [
+        "Frequent stomach aches or cramps",
+        "Excessive gas and bloating",
+        "Irregular bowel movements (constipation or diarrhea)",
+        "Nausea or feeling uncomfortably full",
+        "Undigested food particles in stools"
+      ]
+    },
+    treatments: {
+      title: "Ayurvedic Approach to Digestive Weakness",
+      subtitle: "Restoring the digestive fire and clearing toxins smoothly.",
+      items: [
+        {
+          title: "Deepana & Pachana",
+          desc: "Carminative and digestive herbs to safely stimulate the child's digestive fire (Agni) and burn away accumulated toxins (Ama).",
+          icon: "Activity"
+        },
+        {
+          title: "Mild Cleansing (Vatanulomana)",
+          desc: "Using gentle herbs like Triphala or fennel to ensure proper downward movement of Vata, relieving gas, bloating, and constipation.",
+          icon: "Baby"
+        },
+        {
+          title: "Gut-Healing Formulations",
+          desc: "Custom herbal preparations that soothe the irritated stomach lining and promote the growth of healthy gut fora.",
+          icon: "ShieldAlert"
+        },
+        {
+          title: "Dietary Modifications",
+          desc: "Transitioning to warm, freshly cooked, easily digestible foods while minimizing heavy, cold, and processed items.",
+          icon: "Activity"
+        }
+      ]
+    }
+  },
+  "poor-appetite": {
+    id: "poor-appetite",
+    name: "Poor Appetite",
+    ayurvedicName: "Agnimandya / Aruchi",
+    category: "Pediatric Healthcare",
+    seo: {
+      title: "Ayurvedic Treatment for Poor Appetite in Children | Agnimandya",
+      description: "Improve your child's appetite naturally with Ayurvedic treatments for Agnimandya. Safe, effective herbs to boost digestion and enhance healthy growth.",
+      keywords: "Ayurvedic treatment for poor appetite in kids, Agnimandya, child not eating, increase kids appetite naturally, digestive health for children",
+    },
+    hero: {
+      title: "Boost Healthy Appetite Naturally",
+      description: "Address sluggish digestion and low appetite in children with gentle Ayurvedic care. We help rekindle their natural hunger and support optimal growth and nourishment.",
+      image: "https://drive.google.com/thumbnail?id=1KYkeovZO-X7IG45pxneMou-ww8MjZjFH&sz=w1200",
+    },
+    about: {
+      title: "Understanding Poor Appetite (Agnimandya)",
+      paragraphs: [
+        "A consistently poor appetite in children can be a significant cause of concern for parents. It can lead to nutritional deficiencies, stunted growth, fatigue, and lowered immunity if left unaddressed.",
+        "In Ayurveda, poor appetite is primarily linked to 'Agnimandya'—a weakened or sluggish digestive fire (Jatharagni). This often results from imbalances in Kapha dosha or the accumulation of poorly digested food (Ama), which suppresses natural hunger signals."
+      ],
+      symptomsTitle: "Common Signs of Sluggish Digestion",
+      symptoms: [
+        "Lack of interest in food or pushing meals away",
+        "Feeling full after eating a very small amount",
+        "Complaints of a heavy or bloated stomach",
+        "Lethargy, unexplained tiredness, or crankiness",
+        "Irregular bowel movements or minor stomach aches"
+      ]
+    },
+    treatments: {
+      title: "Ayurvedic Approach to Improving Appetite",
+      subtitle: "Rekindling the digestive fire and clearing metabolic blockages.",
+      items: [
+        {
+          title: "Deepana & Pachana (Digestive Herbs)",
+          desc: "Gentle herbal formulations containing mild spices like Musta, Jeera (Cumin), and Pipalli to safely stimulate Agni and digest Ama.",
+          icon: "Activity"
+        },
+        {
+          title: "Taste Enhancement (Rochana)",
+          desc: "Use of palatable herbal syrups and digestive drops that enhance taste perception and naturally trigger saliva and stomach acids.",
+          icon: "Baby"
+        },
+        {
+          title: "Detoxifying Therapies",
+          desc: "Very mild, kid-friendly detoxification practices if necessary to clear excess Kapha from the upper digestive tract.",
+          icon: "Droplets"
+        },
+        {
+          title: "Dietary & Routine Corrections",
+          desc: "Establishing fixed meal times and removing frequent unhealthy snacking to allow the digestive fire to build naturally between meals.",
+          icon: "Brain"
+        }
+      ]
+    }
+  },
+  "seasonal-allergies": {
+    id: "seasonal-allergies",
+    name: "Seasonal Allergies",
+    ayurvedicName: "Vata-Kapha Pratishyaya / Asatmya",
+    category: "Pediatric Healthcare",
+    seo: {
+      title: "Ayurvedic Treatment for Seasonal Allergies in Children",
+      description: "Effectively manage your child's seasonal allergies with natural Ayurvedic treatments. Reduce sensitivities and build respiratory resistance safely.",
+      keywords: "Ayurvedic treatment for kids allergies, seasonal allergies natural remedy, Asatmya, pediatric immunity, allergy prevention",
+    },
+    hero: {
+      title: "Natural Relief from Seasonal Allergies",
+      description: "Help your child enjoy every season safely. Our Ayurvedic therapies focus on reducing hypersensitivity and strengthening their natural respiratory defenses against allergens.",
+      image: "https://drive.google.com/thumbnail?id=1NYru04O-hsCgk1oJwNA3lnLvrU8Qpaxv&sz=w1200",
+    },
+    about: {
+      title: "Understanding Seasonal Allergies in Children",
+      paragraphs: [
+        "Seasonal allergies occur when a child's immune system overreacts to outdoor allergens like pollen, mold, or dust, usually during spring, summer, or fall. This heightens histamine release, causing uncomfortable and disruptive symptoms.",
+        "In Ayurveda, allergies are a sign of 'Asatmya' (intolerance) and altered immunity (Ojas). When children have accumulated Ama (toxins) and imbalanced Kapha/Vata doshas, they become highly susceptible to changing weather conditions, leading to hyper-reactive respiratory responses."
+      ],
+      symptomsTitle: "Common Symptoms",
+      symptoms: [
+        "Itchy, watery, or red eyes",
+        "Frequent sneezing and a runny or stuffy nose",
+        "Scratchy throat and dry cough",
+        "Dark circles under the eyes (allergic shiners)",
+        "Tiredness or trouble sleeping due to congestion"
+      ]
+    },
+    treatments: {
+      title: "Ayurvedic Approach to Seasonal Allergies",
+      subtitle: "Desensitizing the body naturally and balancing the immune response.",
+      items: [
+        {
+          title: "Detoxification (Ama Pachana)",
+          desc: "Gentle elimination of accumulated toxins that aggravate the immune system, making the child less prone to allergic flare-ups.",
+          icon: "Activity"
+        },
+        {
+          title: "Immuno-modulator Herbs",
+          desc: "Usage of specific herbs like Turmeric (Haridra), Neem, and Guduchi to stabilize the immune reaction and reduce histamine release naturally.",
+          icon: "ShieldAlert"
+        },
+        {
+          title: "Nasya (Nasal Drops)",
+          desc: "Application of mild medicated oils in the nostrils to physically block allergens, soothe inflamed nasal passages, and clear congestion.",
+          icon: "Droplets"
+        },
+        {
+          title: "Respiratory Tonics",
+          desc: "Nourishing formulations that heal and strengthen the mucosal lining of the respiratory tract over time.",
+          icon: "Wind"
+        }
+      ]
+    }
+  },
+  "recurrent-colds": {
+    id: "recurrent-colds",
+    name: "Recurrent Colds",
+    ayurvedicName: "Punah Punah Pratishyaya / Bala Kshaya",
+    category: "Pediatric Healthcare",
+    seo: {
+      title: "Ayurvedic Treatment for Recurrent Colds in Children",
+      description: "Boost your child's immunity and prevent recurrent colds naturally with Ayurvedic treatments. Safe, effective, and long-lasting relief from frequent infections.",
+      keywords: "Ayurvedic treatment for recurrent colds in children, pediatric immunity, natural cold prevention, Bala Kshaya, kids immunity booster",
+    },
+    hero: {
+      title: "Building Strong Immunity Against Colds",
+      description: "Protect your child from frequent seasonal sickness. Our Ayurvedic approach builds robust natural immunity, strengthening respiratory health and preventing recurrent infections.",
+      image: "https://drive.google.com/thumbnail?id=1fCrB41bvlRVzc8UK6ULcKDdRwE8guIXU&sz=w1200",
+    },
+    about: {
+      title: "Understanding Recurrent Colds",
+      paragraphs: [
+        "Children are especially susceptible to recurrent colds due to their developing immune systems. Frequent exposure at school or daycare can lead to persistent cycles of runny noses, coughs, and fevers, disrupting their sleep and daily activities.",
+        "In Ayurveda, a pediatric tendency for frequent colds indicates a lowered 'Bala' (natural vitality/immunity) and an imbalance in Kapha dosha, which naturally dominates early childhood. Treatment focuses on strengthening the 'Agni' (digestion) and nourishing the 'Ojas' (pure essence of tissues) to build a resilient defense mechanism."
+      ],
+      symptomsTitle: "Common Symptoms",
+      symptoms: [
+        "Catching colds frequently (more than typical seasonal changes)",
+        "Prolonged recovery times from minor illnesses",
+        "Persistent runny or stuffy nose",
+        "Frequent low-grade fevers and lethargy",
+        "Poor appetite and recurring mild coughs"
+      ]
+    },
+    treatments: {
+      title: "Ayurvedic Approach to Pediatric Immunity",
+      subtitle: "Gentle, safe, and effective methods to build your child's resilience.",
+      items: [
+        {
+          title: "Swarnaprashana (Gold Bhasma Drops)",
+          desc: "An ancient Ayurvedic immunization technique using medicated ghee and pure gold ash to significantly enhance memory, digestion, and physical strength.",
+          icon: "ShieldAlert"
+        },
+        {
+          title: "Agnideepana (Digestive Correction)",
+          desc: "Gentle herbal preparations to ensure optimal digestion, as a strong gut is the foundation of a robust immune system in Ayurveda.",
+          icon: "Activity"
+        },
+        {
+          title: "Rasayana (Rejuvenative Tonics)",
+          desc: "Kid-friendly, palatable herbal jams like specific formulations of Chyawanprash to nourish tissues and defend against respiratory pathogens.",
+          icon: "Baby"
+        },
+        {
+          title: "Diet & Lifestyle Guidance",
+          desc: "Simple dietary adjustments, emphasizing warm and freshly cooked meals while reducing processed sugars and cold dairy products that accumulate Kapha.",
+          icon: "Brain"
+        }
+      ]
+    }
+  },
+  "neurogenic-bladder": {
+    id: "neurogenic-bladder",
+    name: "Neurogenic Bladder",
+    ayurvedicName: "Vataja Mutrakrichra / Mutraghata",
+    category: "Kidney Health",
+    seo: {
+      title: "Ayurvedic Treatment for Neurogenic Bladder | Mutraghata",
+      description: "Manage Neurogenic Bladder effectively with Ayurvedic treatments. Restore neurological control and improve bladder function naturally.",
+      keywords: "Ayurvedic treatment for neurogenic bladder, Mutraghata, natural bladder control, Basti treatment, Vataja Mutrakrichra",
+    },
+    hero: {
+      title: "Holistic Care for Neurogenic Bladder",
+      description: "Restore healthy bladder function and neurological communication. Our Ayurvedic treatments focus on nourishing the nervous system and regulating Apana Vata for better control.",
+      image: "https://drive.google.com/thumbnail?id=1hFrygrVVpSqPybEry-JglrCWQCf-18i3&sz=w1200",
+    },
+    about: {
+      title: "Understanding Neurogenic Bladder",
+      paragraphs: [
+        "Neurogenic Bladder is a lack of bladder control caused by brain, spinal cord, or nerve problems. This can result in either urinary retention (inability to empty the bladder) or an overactive bladder.",
+        "In Ayurveda, this condition represents a severe impairment of 'Apana Vata' (which governs downward movement and elimination), often complicated by damage or weakness in the 'Majja Dhatu' (nervous system). Treatment focuses on reviving nerve communication and restoring standard Vata function."
+      ],
+      symptomsTitle: "Common Symptoms",
+      symptoms: [
+        "Inability to sense when the bladder is full",
+        "Frequent urinary tract infections (UTIs)",
+        "Urinary leakage (incontinence)",
+        "Inability to empty the bladder completely (retention)",
+        "A constant need to urinate"
+      ]
+    },
+    treatments: {
+      title: "Ayurvedic Approach to Neurogenic Bladder",
+      subtitle: "Rejuvenating the nervous system and regulating bladder elimination.",
+      items: [
+        {
+          title: "Basti (Medicated Enema)",
+          desc: "The most vital treatment to correct Apana Vata. Specialized Bastis nourish the pelvic nerves and regulate bladder tone.",
+          icon: "Activity"
+        },
+        {
+          title: "Shirodhara & Nasya",
+          desc: "Therapies directed at stabilizing the central nervous system, reducing stress, and improving brain-to-bladder signaling.",
+          icon: "Brain"
+        },
+        {
+          title: "Neuro-tonic Herbs (Medhya Rasayana)",
+          desc: "Herbs like Ashwagandha, Brahmi, and Vacha to strengthen nerve tissues and improve neural conductivity.",
+          icon: "ShieldAlert"
+        },
+        {
+          title: "Abhyanga & Katibasti",
+          desc: "Warm oil therapies applied to the lower back and pelvis to relieve nerve compression and pacify localized Vata.",
+          icon: "Droplets"
+        }
+      ]
+    }
+  },
+  "urinary-incontinence": {
+    id: "urinary-incontinence",
+    name: "Urinary Incontinence",
+    ayurvedicName: "Mutratisara",
+    category: "Kidney Health",
+    seo: {
+      title: "Ayurvedic Treatment for Urinary Incontinence | Mutratisara",
+      description: "Manage Urinary Incontinence (Mutratisara) naturally with Ayurvedic treatments. Strengthen pelvic muscles, balance Apana Vata, and regain control over your bladder.",
+      keywords: "Ayurvedic treatment for urinary incontinence, Mutratisara, bladder control, natural remedies for incontinence, Apana Vata, pelvic floor strengthening",
+    },
+    hero: {
+      title: "Regain Confidence and Bladder Control",
+      description: "Effectively address the root cause of urinary incontinence with targeted Ayurvedic therapies. We help strengthen your pelvic floor and calm bladder hyper-reactivity.",
+      image: "https://drive.google.com/thumbnail?id=1hFrygrVVpSqPybEry-JglrCWQCf-18i3&sz=w1200",
+    },
+    about: {
+      title: "Understanding Urinary Incontinence (Mutratisara)",
+      paragraphs: [
+        "Urinary Incontinence involves the unintentional loss of urine due to a weakened bladder sphincter or overactive bladder muscles. It can significantly impact normal daily life and confidence.",
+        "In Ayurveda, this relates to 'Mutratisara' and an imbalance of 'Apana Vata', the dosha responsible for downward elimination. When Apana Vata is aggravated, it leads to a loss of tone and control over the urinary sphincter and bladder tissues."
+      ],
+      symptomsTitle: "Common Symptoms",
+      symptoms: [
+        "Leakage of urine upon coughing, sneezing, or laughing",
+        "A sudden, intense urge to urinate",
+        "Frequent urination, especially during the night",
+        "Feeling that the bladder is never fully empty",
+        "Inability to hold urine long enough to reach a restroom"
+      ]
+    },
+    treatments: {
+      title: "Ayurvedic Approach to Urinary Incontinence",
+      subtitle: "Strengthening tissues and calming the hyperactive Apana Vata.",
+      items: [
+        {
+          title: "Basti (Medicated Enema)",
+          desc: "Targeted administration of herbal oils and decoctions to directly nourish the pelvic region and rapidly pacify Apana Vata.",
+          icon: "Droplets"
+        },
+        {
+          title: "Pelvic Muscle Strengthening (Yoga & Exercises)",
+          desc: "Specific Asanas like Mula Bandha (Root Lock) and Kegel-like exercises to tone the pelvic floor and improve sphincter control.",
+          icon: "Activity"
+        },
+        {
+          title: "Herbal Remedies",
+          desc: "Potent Ayurvedic herbs like Gokshura, Ashwagandha, and Shilajit that strengthen the urinary tract and nourish reproductive tissues.",
+          icon: "ShieldAlert"
+        },
+        {
+          title: "Dietary Adjustments",
+          desc: "A Vata-pacifying diet avoiding excessive caffeine, alcohol, and spicy foods that can irritate the bladder.",
+          icon: "Activity"
+        }
+      ]
+    }
+  },
+  "specialized-protocols-for-sle-hashimotos-and-ibd": {
+    id: "specialized-protocols-for-sle-hashimotos-and-ibd",
+    name: "Specialized Protocols for SLE Hashimoto's and IBD",
+    ayurvedicName: "Autoimmune Management",
+    category: "Autoimmune Support",
+    seo: {
+      title: "Ayurvedic Treatment for SLE, Hashimoto's, and IBD",
+      description: "Manage Autoimmune Conditions (SLE, Hashimoto's, IBD) effectively with our specialized Ayurvedic protocols. Balance doshas, clear toxins, and boost natural immunity.",
+      keywords: "Ayurvedic treatment for autoimmune diseases, SLE, Hashimoto's, IBD, systemic lupus erythematosus, inflammatory bowel disease, natural autoimmune relief",
+    },
+    hero: {
+      title: "Holistic Relief for Autoimmune Conditions",
+      description: "Our specialized Ayurvedic protocols for Systemic Lupus Erythematosus (SLE), Hashimoto's Thyroiditis, and Inflammatory Bowel Disease (IBD) focus on deeply correcting the immune system's response by pacifying aggravated doshas and cleansing accumulated toxins (Ama).",
+      image: "https://drive.google.com/thumbnail?id=1u_dSJs2GUYUpbZVl9C6FwpeDxpRhAng-&sz=w1200",
+    },
+    about: {
+      title: "Understanding Autoimmune Conditions",
+      paragraphs: [
+        "Autoimmune diseases like SLE, Hashimoto's, and IBD occur when the immune system mistakenly attacks healthy cells. These conditions cause systemic inflammation and long-term tissue damage, often presenting with diverse and complex symptoms.",
+        "In Ayurveda, autoimmune disorders are primarily viewed as a consequence of deeply accumulated toxins (Ama) mixing with aggravated doshas to form 'Amavisha'. This toxic complex confusing the immune system (Ojas) and depositing in different tissues, leading to varied manifestations like joint pain (SLE), thyroid dysfunction (Hashimoto's), or gut inflammation (IBD)."
+      ],
+      symptomsTitle: "Common Symptoms",
+      symptoms: [
+        "Chronic fatigue and unexplained weakness",
+        "Joint pain and systemic inflammation",
+        "Digestive disturbances and chronic gut issues (IBD)",
+        "Unexplained weight changes and metabolism issues (Hashimoto's)",
+        "Skin rashes and heightened sensitivity (SLE)"
+      ]
+    },
+    treatments: {
+      title: "Our Specialized Autoimmune Protocols",
+      subtitle: "Detoxification, immunomodulation, and restoring cellular intelligence.",
+      items: [
+        {
+          title: "Ama Pachana & Deepana",
+          desc: "Correcting the digestive fire (Agni) and digesting systemic toxins (Ama) through customized herbal formulations to stop further autoimmune triggers.",
+          icon: "Activity"
+        },
+        {
+          title: "Panchakarma Detoxification",
+          desc: "Deep cleansing therapies like Virechana and Basti to safely eliminate Amavisha (toxic complexes) from the deep tissues, reducing systemic inflammation.",
+          icon: "Droplets"
+        },
+        {
+          title: "Rasayana (Immunomodulators)",
+          desc: "Potent rejuvenating herbs (like Ashwagandha, Guduchi, and Turmeric) designed to balance the immune response and strengthen healthy tissues.",
+          icon: "ShieldAlert"
+        },
+        {
+          title: "Diet & Lifestyle Correction",
+          desc: "Personalized anti-inflammatory diets and stress-management practices to prevent flare-ups and sustain long-term remission.",
+          icon: "Brain"
+        }
+      ]
+    }
+  },
+  "bronchitis": {
+    id: "bronchitis",
+    name: "Bronchitis",
+    ayurvedicName: "Kasa",
+    category: "Respiratory & Immune Health",
+    seo: {
+      title: "Ayurvedic Treatment for Bronchitis | Kasa",
+      description: "Effective Ayurvedic treatment for Bronchitis (Kasa). Relieve chest congestion, chronic cough, and lung inflammation naturally with our holistic therapies.",
+      keywords: "Ayurvedic treatment for bronchitis, Kasa, natural remedies for chest congestion, Ayurveda for chronic cough, lung health",
+    },
+    hero: {
+      title: "Natural Relief from Bronchitis",
+      description: "Soothe bronchial inflammation and relieve chronic cough. Our Ayurvedic treatments clear respiratory pathways, eliminate excess mucus, and strengthen lung function for comfortable breathing.",
+      image: "https://drive.google.com/thumbnail?id=11FFiXrLPyB6NLOS-a-JQAexByxORjIMq&sz=w1200",
+    },
+    about: {
+      title: "Understanding Bronchitis (Kasa)",
+      paragraphs: [
+        "Bronchitis is the inflammation of the bronchial tubes, which carry air to and from the lungs. This inflammation causes a persistent cough, often accompanied by thickened mucus (phlegm), chest discomfort, and fatigue.",
+        "In Ayurveda, Bronchitis aligns closely with 'Kasa'. It typically arises from an imbalance of Vata and Kapha doshas, which obstruct the respiratory channels (Pranavaha Srotas). Accumulated toxins (Ama) and aggravated doshas lead to inflammation and mucus production."
+      ],
+      symptomsTitle: "Common Symptoms",
+      symptoms: [
+        "Persistent, hacking cough (dry or productive)",
+        "Production of clear, white, yellowish, or green mucus",
+        "Chest congestion or a feeling of fullness",
+        "Shortness of breath or wheezing",
+        "Fatigue and mild fever"
+      ]
+    },
+    treatments: {
+      title: "Ayurvedic Approach to Bronchitis",
+      subtitle: "Clearing congestion, soothing inflammation, and restoring respiratory health.",
+      items: [
+        {
+          title: "Herbal Decoctions (Kashayas)",
+          desc: "Potent formulations containing herbs like Vasaka, Licorice (Mulethi), and Ginger to help liquefy and expel stubborn mucus.",
+          icon: "Activity"
+        },
+        {
+          title: "Swedana (Medicated Steam)",
+          desc: "Inhalation of steam infused with essential oils like Eucalyptus or Camphor to rapidly dilate bronchial tubes and relieve chest tightness.",
+          icon: "Droplets"
+        },
+        {
+          title: "Vamana (Therapeutic Emesis)",
+          desc: "A Panchakarma procedure for chronic or severe cases to completely eliminate deep-seated Kapha from the upper respiratory tract.",
+          icon: "Activity"
+        },
+        {
+          title: "Dietary Modifications",
+          desc: "Focus on warm, easily digestible foods, avoiding cold, dairy, and heavy meals to prevent further mucus accumulation and support the digestive fire (Agni).",
+          icon: "ShieldAlert"
+        }
+      ]
+    }
+  },
+  "asthma": {
+    id: "asthma",
+    name: "Asthma",
+    ayurvedicName: "Tamaka Shvasa",
+    category: "Respiratory & Immune Health",
+    seo: {
+      title: "Ayurvedic Treatment for Asthma | Tamaka Shvasa",
+      description: "Manage Asthma (Tamaka Shvasa) effectively with Ayurvedic treatments. Clear your airways, reduce inflammation, and breathe freely again naturally.",
+      keywords: "Ayurvedic treatment for Asthma, Tamaka Shvasa, natural asthma relief, Vamana therapy, Ayurveda for respiratory health",
+    },
+    hero: {
+      title: "Holistic Relief from Asthma",
+      description: "Experience easier breathing and reduced dependency on inhalers. Our Ayurvedic approach targets the root cause, clearing airway blockages and strengthening your lungs.",
+      image: "https://drive.google.com/thumbnail?id=1qP81dw6eV98yT22_AiubHxxadTPg_W5X&sz=w1200",
+    },
+    about: {
+      title: "Understanding Asthma (Tamaka Shvasa)",
+      paragraphs: [
+        "Asthma is a chronic respiratory condition characterized by airway inflammation and constriction, leading to episodes of wheezing, breathlessness, and coughing. Triggers can include allergens, stress, weather changes, and exertion.",
+        "In Ayurveda, Asthma correlates predominantly with 'Tamaka Shvasa'. It is viewed as an imbalance where aggravated Vata dosha pushes Kapha dosha into the respiratory channels (Pranavaha Srotas), causing obstruction, inflammation, and difficulty in breathing."
+      ],
+      symptomsTitle: "Common Symptoms",
+      symptoms: [
+        "Shortness of breath or difficulty breathing",
+        "Wheezing (a whistling sound when breathing out)",
+        "Chest tightness or pain",
+        "Chronic coughing, especially at night or early morning",
+        "Worsening of symptoms during cold weather or exertion"
+      ]
+    },
+    treatments: {
+      title: "Ayurvedic Approach to Asthma",
+      subtitle: "Clearing airway obstructions, pacifying doshas, and rejuvenating lung tissues.",
+      items: [
+        {
+          title: "Vamana & Virechana",
+          desc: "Panchakarma therapies customized to expel deep-seated Kapha (mucus) and toxins, providing long-term relief from airway obstruction.",
+          icon: "Activity"
+        },
+        {
+          title: "Uro Basti",
+          desc: "Retaining warm medicated oil over the chest area to relieve muscle stiffness, ease bronchospasm, and nourish the lung tissues.",
+          icon: "Activity"
+        },
+        {
+          title: "Dhumapana",
+          desc: "Inhalation of medicated herbal smoke to instantly dilate airways, reduce bronchial spasm, and clear phlegm.",
+          icon: "Wind"
+        },
+        {
+          title: "Rasayana (Rejuvenation)",
+          desc: "Potent lung-strengthening herbs and formulations to build robust respiratory immunity and reduce hypersensitivity to triggers.",
+          icon: "ShieldAlert"
+        }
+      ]
+    }
+  },
+  "cold-flu": {
+    id: "cold-flu",
+    name: "Cold & Flu",
+    ayurvedicName: "Pratishyaya",
+    category: "Respiratory & Immune Health",
+    seo: {
+      title: "Ayurvedic Treatment for Cold and Flu | Pratishyaya",
+      description: "Effective and natural Ayurvedic treatment for Cold & Flu. Boost your immunity and alleviate symptoms quickly and naturally.",
+      keywords: "Ayurvedic treatment for cold, flu remedies, Pratishyaya, natural immunity boost, Ayurveda for flu",
+    },
+    hero: {
+      title: "Natural Relief from Cold & Flu",
+      description: "Quickly overcome common cold and flu symptoms with our traditional Ayurvedic approach, focusing on deeply clearing respiratory pathways and robustly boosting the immune system.",
+      image: "https://drive.google.com/thumbnail?id=1HgE8Y6rm48LXmftZXTBiMP_FEJDh7y_R&sz=w1200",
+    },
+    about: {
+      title: "Understanding Cold & Flu (Pratishyaya)",
+      paragraphs: [
+        "Cold and Flu, frequently manifesting during seasonal transitions or due to weak immunity, are highly infectious viral ailments that directly affect the upper respiratory system.",
+        "In Ayurveda, these corelate with 'Pratishyaya'. They often begin with an imbalance in Vata and Kapha doshas, exacerbated by a weak digestive fire (Agni), causing the accumulation of toxins (Ama) that impair respiratory health."
+      ],
+      symptomsTitle: "Common Symptoms",
+      symptoms: [
+        "Nasal congestion or a runny nose",
+        "Sore throat and persistent dry or wet cough",
+        "Fever, chills, and body aches",
+        "Lethargy, fatigue, and general weakness",
+        "Sneezing and headaches"
+      ]
+    },
+    treatments: {
+      title: "Ayurvedic Approach to Cold & Flu",
+      subtitle: "Alleviating symptoms effectively and strengthening natural bodily defenses.",
+      items: [
+        {
+          title: "Diet & Lifestyle (Ahara-Vihara)",
+          desc: "Guidance on warm, light, and easily digestible foods to balance Kapha and ignite digestive Agni.",
+          icon: "Activity"
+        },
+        {
+          title: "Herbal Remedies",
+          desc: "Potent Ayurvedic herbs like Tulsi, Ginger, and Liquorice integrated into formulations to soothe coughs and clear congestion.",
+          icon: "Activity"
+        },
+        {
+          title: "Swedana (Steam Therapy)",
+          desc: "Medicated herbal steaming to instantly open up congested nasal and respiratory pathways for comfortable breathing.",
+          icon: "Droplets"
+        },
+        {
+          title: "Immunity Boosters (Rasayana)",
+          desc: "Powerful formulations such as Chyawanprash variants tailored to reinforce immunity and prevent seasonal recurrence.",
+          icon: "ShieldAlert"
+        }
+      ]
+    }
+  },
+  "chronic-sinusitis": {
+    id: "chronic-sinusitis",
+    name: "Chronic Sinusitis",
+    ayurvedicName: "Dushta Pratishyaya",
+    category: "Respiratory & Immune Health",
+    seo: {
+      title: "Ayurvedic Treatment for Chronic Sinusitis | Dushta Pratishyaya",
+      description: "Manage and treat Chronic Sinusitis (Dushta Pratishyaya) naturally with Ayurveda. Long-lasting relief through immunity boosting and detoxification.",
+      keywords: "Ayurvedic treatment for sinusitis, Dushta Pratishyaya, natural remedies for sinus, Kapha dosha, Nasya therapy",
+    },
+    hero: {
+      title: "Holistic Relief from Chronic Sinusitis",
+      description: "Breathe easier and eliminate recurrent sinus congestion. Our Ayurvedic treatment addresses the root cause by balancing Doshas, clearing blockages, and reinforcing respiratory immunity.",
+      image: "https://drive.google.com/thumbnail?id=1nv6thAp1fYH5J3_QPlS7R49IBS4eRTGn&sz=w1200",
+    },
+    about: {
+      title: "Understanding Chronic Sinusitis (Dushta Pratishyaya)",
+      paragraphs: [
+        "Chronic Sinusitis is a persistent inflammation of the sinuses, leading to blocked nasal passages, facial pain, and frequent mucosal discharge. Unlike a typical cold, it lasts for weeks or months.",
+        "In Ayurveda, this is closely linked to 'Dushta Pratishyaya', where aggravated Kapha and Vata doshas accumulate in the head and respiratory channels (Pranavaha Srotas), causing chronic blockage and susceptibility to recurrent infections. Managing it involves clearing the channels, and pacifying Kapha dosha."
+      ],
+      symptomsTitle: "Common Symptoms",
+      symptoms: [
+        "Persistent nasal blockage or congestion",
+        "Thick, discolored nasal discharge",
+        "Facial pain or pressure, especially around the eyes and forehead",
+        "Reduced sense of smell and taste",
+        "Frequent headaches and fatigue"
+      ]
+    },
+    treatments: {
+      title: "Ayurvedic Approach to Sinusitis",
+      subtitle: "Clearing nasal blockages and boosting upper respiratory immunity.",
+      items: [
+        {
+          title: "Nasya Therapy",
+          desc: "Administration of potent herbal oils or juices through the nasal passages to clear deeply embedded toxins from the sinuses.",
+          icon: "Wind"
+        },
+        {
+          title: "Dhumapana & Swedana",
+          desc: "Herbal smoke inhalation and facial steam using medicated decoctions to instantly relieve congestion and melt Kapha.",
+          icon: "Activity"
+        },
+        {
+          title: "Deepana & Pachana",
+          desc: "Herbal supplements to correct digestion and metabolism (Agni), preventing further mucus (Ama) formation.",
+          icon: "Droplets"
+        },
+        {
+          title: "Rasayana & Immune Support",
+          desc: "Immunity-boosting formulations to prevent seasonal recurrences and improve respiratory resistance.",
+          icon: "ShieldAlert"
+        }
+      ]
+    }
+  },
 
   "stroke-paralysis-rehabilitation": {
     id: "stroke-paralysis-rehabilitation",

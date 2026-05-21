@@ -319,8 +319,8 @@ export const TREATMENTS_CATEGORIES: TreatmentCategory[] = [
         name: "Autoimmune Support",
         subItems: [
           {
-            name: "Specialized protocols for SLE, Hashimoto’s, and IBD",
-            path: "/conditions/specialized-protocols-for-sle-hashimoto-s-and-ibd",
+            name: "Specialized Protocols for SLE Hashimoto's and IBD",
+            path: "/conditions/specialized-protocols-for-sle-hashimotos-and-ibd",
           },
         ],
       },
