@@ -10,7 +10,7 @@ export default function KnowDoctors() {
       <SEO 
         title="Know Your Doctor | Dr. Khan Aqsa Zarin"
         description="Learn more about Dr. Khan Aqsa Zarin, an internationally recognized Ayurvedic physician, specialized in classical Ayurveda, clinical research, and holistic healing."
-        keywords="khan aqsa zarin, dr khan aqsa zarin, aqsa khan, aqsa zarin, ayurvedic doctor pune, best ayurveda doctor"
+        keywords="khan aqsa zarin, dr khan aqsa zarin, aqsa khan, khan aqsa, aqsa zarin, ayurvedic doctor pune, best ayurveda doctor"
       />
       <AboutNav />
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-4 pb-12 md:pt-8 md:pb-32">

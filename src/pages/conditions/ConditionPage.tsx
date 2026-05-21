@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
-import { Activity, CheckCircle2, ArrowRight, ShieldAlert, Phone, Calendar, Droplets, Brain, Wind, Baby, Stethoscope } from 'lucide-react';
+import { Activity, CheckCircle2, ArrowRight, ShieldAlert, Phone, Calendar, Droplets, Brain, Wind, Baby, Stethoscope, ChevronDown, MapPin, Star, Award } from 'lucide-react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { getConditionData } from '../../data/conditionsData';
 import OptimizedImage from '../../components/OptimizedImage';
@@ -16,6 +16,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 export default function ConditionPage() {
   const { slug } = useParams<{ slug: string }>();
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
   
   if (!slug) {
     return <Navigate to="/treatments" replace />;
@@ -39,9 +40,9 @@ export default function ConditionPage() {
   return (
     <>
       <Helmet>
-        <title>{data.seo.title}</title>
-        <meta name="description" content={data.seo.description} />
-        <meta name="keywords" content={`${data.seo.keywords}, Ayurvedic treatment for ${data.name}, Panchakarma for ${data.name}, natural remedies, holistic healing, Sattvic Ayurveda Pune, Nadi Parikshan, pain management`} />
+        <title>{data.seo.title.includes('Pune') ? data.seo.title : `${data.seo.title} in Pune | Sattvic Ayurveda`}</title>
+        <meta name="description" content={data.seo.description.includes('Pune') ? data.seo.description : `${data.seo.description} Visit Sattvic Advanced Ayurveda & Panchakarma Centre in Pune for expert care.`} />
+        <meta name="keywords" content={`${data.seo.keywords}, Ayurvedic treatment for ${data.name} in Pune, Best Ayurvedic clinic for ${data.name} in Pune, Panchakarma for ${data.name}, natural remedies, holistic healing, Sattvic Ayurveda Pune, Dr. Khan Aqsa Zarin, Ayurvedic Doctor Pune`} />
         
         {/* Open Graph Tags */}
         <meta property="og:title" content={data.seo.title} />
@@ -53,20 +54,52 @@ export default function ConditionPage() {
         {/* Canonical Link */}
         <link rel="canonical" href={`https://sattvicadvancedayurveda.com/conditions/${slug}`} />
 
-        {/* Structured JSON-LD Data for MedicalCondition */}
+        {/* Structured JSON-LD Data for MedicalCondition & FAQ */}
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "MedicalCondition",
-            "name": data.name,
-            "alternateName": data.ayurvedicName || "",
-            "description": data.seo.description,
-            "image": data.hero.image,
-            "possibleTreatment": {
-              "@type": "Ayurvedic",
-              "name": data.treatments.title
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "MedicalCondition",
+              "name": data.name,
+              "alternateName": data.ayurvedicName || "",
+              "description": data.seo.description,
+              "image": data.hero.image,
+              "possibleTreatment": {
+                "@type": "Ayurvedic",
+                "name": data.treatments.title
+              }
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": `Can Ayurveda help with ${data.name}?`,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": `Yes, Ayurveda offers holistic, root-cause treatments for ${data.name}. At Sattvic Advanced Ayurveda in Pune, we use customized herbal medicines, lifestyle modifications, and Panchakarma therapies to provide effective and natural relief.`
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": `Which is the best Ayurvedic treatment for ${data.name} in Pune?`,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": `The best Ayurvedic treatment involves a personalized approach. At our Pune clinic, Dr. Khan Aqsa Zarin assesses your mind-body constitution (Prakriti) and the root cause of ${data.name} to recommend specific Panchakarma therapies like Shirodhara, Basti, or Abhyanga, along with dietary counseling.`
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": `How long does Ayurvedic treatment take for ${data.name}?`,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": `The duration of Ayurvedic treatment for ${data.name} varies depending on the severity of the condition, chronicity, and the patient's individual constitution. Most patients start noticing improvements within a few weeks of beginning their customized regimen and Panchakarma therapies.`
+                  }
+                }
+              ]
             }
-          })}
+          ])}
         </script>
       </Helmet>
 
@@ -210,6 +243,136 @@ export default function ConditionPage() {
             ))}
           </div>
 
+        </div>
+      </section>
+
+      {/* Local SEO & EEAT Section */}
+      <section className="py-16 md:py-24 bg-clinic-paper border-t border-clinic-teal-900/10">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <div className="inline-flex items-center gap-3 px-4 py-2 bg-clinic-bronze/10 rounded-full text-clinic-bronze font-medium text-sm mb-6">
+                <MapPin className="w-4 h-4" />
+                Trusted Ayurvedic Care in Pune
+              </div>
+              <h2 className="text-3xl md:text-5xl font-serif text-clinic-teal-900 mb-6 leading-tight">
+                Why Choose Sattvic Ayurveda for {data.name} in Pune?
+              </h2>
+              <p className="text-lg text-clinic-muted mb-8 leading-relaxed">
+                Led by Dr. Khan Aqsa Zarin, Sattvic Advanced Ayurveda & Panchakarma Centre is Pune's leading destination for holistic, root-cause healing. We don't just treat symptoms; we restore your body's natural balance through classical Ayurvedic protocols and evidence-based therapies.
+              </p>
+              
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 shrink-0 rounded-full bg-clinic-teal-50 flex items-center justify-center text-clinic-teal-900 mt-1">
+                    <Stethoscope className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-serif text-clinic-teal-900 mb-2">Expert & Personalized Diagnosis</h4>
+                    <p className="text-clinic-muted">In-depth Nadi Parikshan (Pulse Diagnosis) and Prakriti analysis to identify the exact root cause of your {data.name}.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 shrink-0 rounded-full bg-clinic-teal-50 flex items-center justify-center text-clinic-teal-900 mt-1">
+                    <Droplets className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-serif text-clinic-teal-900 mb-2">Authentic Panchakarma</h4>
+                    <p className="text-clinic-muted">Classical detoxification therapies tailored specifically to reverse chronic conditions precisely and naturally.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 shrink-0 rounded-full bg-clinic-teal-50 flex items-center justify-center text-clinic-teal-900 mt-1">
+                    <Star className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-serif text-clinic-teal-900 mb-2">High Conversion of Successful Outcomes</h4>
+                    <p className="text-clinic-muted">Hundreds of patients across Pune have experienced remarkable recoveries from {data.name} without relying on long-term daily medications.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="relative">
+              <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative">
+                <OptimizedImage 
+                  src="https://images.unsplash.com/photo-1542840410-3092f99611a3?q=80&w=2787&auto=format&fit=crop" 
+                  alt={`Ayurvedic Treatment for ${data.name} in Pune`} 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-clinic-teal-900/80 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 p-8 sm:p-10 w-full">
+                  <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="flex">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <Star key={star} className="w-5 h-5 text-clinic-bronze fill-clinic-bronze" />
+                        ))}
+                      </div>
+                      <span className="text-white font-medium">5.0 Rated Clinic</span>
+                    </div>
+                    <p className="text-white/90 italic text-lg leading-relaxed">
+                      "The most thorough and genuine Ayurvedic treatment in Pune. My condition improved remarkably after consulting Dr. Khan Aqsa Zarin."
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Frequently Asked Questions */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-6 md:px-12">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-serif text-clinic-teal-900 mb-4">Frequently Asked Questions</h2>
+            <p className="text-lg text-clinic-muted">Expert insights about managing {data.name} with Ayurveda.</p>
+          </div>
+          
+          <div className="space-y-4">
+            {[
+              {
+                q: `Can Ayurveda help cure ${data.name}?`,
+                a: `Ayurveda provides highly effective, root-cause holistic treatments for ${data.name}. By balancing your unique Doshas (Vata, Pitta, Kapha) and eliminating internal toxins (Ama) through Panchakarma, we treat the underlying cause rather than just suppressing the symptoms.`
+              },
+              {
+                q: `Which is the best Ayurvedic treatment for ${data.name} in Pune?`,
+                a: `The ideal treatment requires a personalized approach. At Sattvic Advanced Ayurveda in Pune, we begin with a deep diagnostic Nadi Parikshan. Based on your constitution, we prescribe customized herbal formulations, dietary changes, and highly effective Panchakarma therapies like Basti or Shirodhara.`
+              },
+              {
+                q: `Is Panchakarma necessary for ${data.name}?`,
+                a: `For chronic or severe cases of ${data.name}, Panchakarma is highly recommended. It detoxifies the body at a cellular level, clears blocked channels, and accelerates the profound healing process, allowing our herbal medicines to absorb perfectly.`
+              },
+              {
+                q: `How long does the Ayurvedic treatment take to show results?`,
+                a: `While acute symptoms can often be managed within a few weeks, chronic conditions require a dedicated approach over a period of 1 to 3 months. Every patient's journey is different, but natural, sustainable recovery is always our ultimate goal.`
+              }
+            ].map((faq, idx) => (
+              <div key={idx} className="border border-clinic-teal-900/10 rounded-2xl overflow-hidden transition-all bg-clinic-sand/10">
+                <button 
+                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                  className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                >
+                  <span className="text-lg font-serif text-clinic-teal-900 font-medium">{faq.q}</span>
+                  <div className={`w-8 h-8 rounded-full border border-clinic-teal-900/20 flex items-center justify-center shrink-0 transition-transform duration-300 ${openFaq === idx ? 'rotate-180 bg-clinic-teal-900 text-white' : 'text-clinic-teal-900'}`}>
+                    <ChevronDown className="w-5 h-5" />
+                  </div>
+                </button>
+                <motion.div 
+                  initial={false}
+                  animate={{ height: openFaq === idx ? 'auto' : 0, opacity: openFaq === idx ? 1 : 0 }}
+                  className="overflow-hidden"
+                >
+                  <div className="p-6 pt-0 text-clinic-muted leading-relaxed">
+                    {faq.a}
+                  </div>
+                </motion.div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
