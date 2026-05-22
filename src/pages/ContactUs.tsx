@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Phone, ArrowRight, MapPin, CheckCircle, AlertCircle, X } from 'lucide-react';
 import SEO from '../components/SEO';
 import AboutNav from '../components/AboutNav';
-import Breadcrumbs from '../components/Breadcrumbs';
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={className} fill="currentColor">
@@ -25,7 +24,6 @@ export default function ContactUs() {
     <>
       <AboutNav />
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-4 pb-12 md:pt-8 md:pb-32">
-        <div className="mb-6"><Breadcrumbs items={[{ label: 'Contact Us' }]} /></div>
       <SEO 
         title="Contact Us | Book Your Ayurvedic Consultation"
         description="Get in touch with Sattvic Advanced Ayurveda in Pune. Book your appointment for Nadi Parikshan, Panchakarma, or pain management therapies today."

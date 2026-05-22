@@ -15,6 +15,48 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const getCategoryAnchor = (category: string): string => {
+  const normalized = category.toLowerCase().trim();
+  if (normalized.includes("pediatric")) {
+    return "pediatric-child-healthcare";
+  }
+  if (normalized.includes("kidney")) {
+    return "men-s-health-urology";
+  }
+  if (normalized.includes("autoimmune")) {
+    return "respiratory-immune-health";
+  }
+  if (normalized.includes("neurological")) {
+    return "mental-health-neurology";
+  }
+  if (normalized.includes("spine")) {
+    return "musculoskeletal-joint-care";
+  }
+  if (normalized.includes("women")) {
+    return "women-s-health-fertility";
+  }
+  if (normalized.includes("skin") || normalized.includes("hair") || normalized.includes("aesthetic")) {
+    return "skin-hair-aesthetic-wellness";
+  }
+  if (normalized.includes("musculoskeletal") || normalized.includes("joint")) {
+    return "musculoskeletal-joint-care";
+  }
+  if (normalized.includes("digestive") || normalized.includes("metabolic")) {
+    return "digestive-metabolic-health";
+  }
+  if (normalized.includes("respiratory") || normalized.includes("immune")) {
+    return "respiratory-immune-health";
+  }
+  if (normalized.includes("men") || normalized.includes("uro")) {
+    return "men-s-health-urology";
+  }
+  if (normalized.includes("mental") || normalized.includes("neuro")) {
+    return "mental-health-neurology";
+  }
+  // Fallback
+  return category.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+};
+
 export default function ConditionPage() {
   const { slug } = useParams<{ slug: string }>();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -114,7 +156,7 @@ export default function ConditionPage() {
               { label: 'Treatments', path: '/treatments' },
               { 
                 label: data.category, 
-                path: `/treatments#${data.category.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}` 
+                path: `/treatments#${getCategoryAnchor(data.category)}` 
               },
               { label: data.name }
             ]} 
@@ -125,9 +167,17 @@ export default function ConditionPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="inline-flex items-center gap-4 mb-8">
+              <div className="inline-flex flex-wrap items-center gap-3 md:gap-4 mb-8">
                 <span className="h-[1px] w-8 bg-clinic-bronze"></span>
                 <span className="text-clinic-bronze font-serif italic text-lg md:text-xl">{data.category}</span>
+                {data.ayurvedicName && (
+                  <>
+                    <span className="w-1.5 h-1.5 rounded-full bg-clinic-bronze/40"></span>
+                    <span className="text-clinic-bronze font-serif italic text-lg md:text-xl">
+                      Sanskrit: <span className="font-sans font-medium text-clinic-teal-900 not-italic">{data.ayurvedicName}</span>
+                    </span>
+                  </>
+                )}
               </div>
               
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-clinic-teal-900 leading-[1.1] mb-6 lg:mb-8 font-light">

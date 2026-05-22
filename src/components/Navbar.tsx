@@ -332,7 +332,7 @@ export default function Navbar() {
                             className="px-5 py-2 hover:bg-clinic-teal-50 hover:text-clinic-bronze transition-colors flex items-center gap-2 capitalize text-xs font-medium border-b border-clinic-border/10 leading-snug"
                           >
                             <span className="w-1 h-1 rounded-full bg-clinic-bronze flex-shrink-0"></span>
-                            Frozen Shoulder (Apabahnuka)
+                            Frozen Shoulder (Avabahuka)
                           </Link>
                           <Link
                             to="/conditions/tennis-elbow"
@@ -384,7 +384,7 @@ export default function Navbar() {
                             className="px-5 py-2 hover:bg-clinic-teal-50 hover:text-clinic-bronze transition-colors flex items-center gap-2 capitalize text-xs font-medium border-b border-clinic-border/10 leading-snug"
                           >
                             <span className="w-1 h-1 rounded-full bg-clinic-bronze flex-shrink-0"></span>
-                            Irritable Bowel Syndrome (IBS)
+                            Irritable Bowel Syndrome (Grahani Roga)
                           </Link>
                           <Link
                             to="/conditions/diarrhea"
@@ -601,7 +601,7 @@ export default function Navbar() {
                             className="px-5 py-2 hover:bg-clinic-teal-50 hover:text-clinic-bronze transition-colors flex items-center gap-2 capitalize text-xs font-medium border-b border-clinic-border/10 leading-snug"
                           >
                             <span className="w-1 h-1 rounded-full bg-clinic-bronze flex-shrink-0"></span>
-                            Lactation Support
+                            Lactation Support (Stanya Janana)
                           </Link>
                           <div className="px-4 py-2 text-clinic-teal-900 font-bold border-b border-clinic-border/30 bg-clinic-teal-50/50">
                             General Care
@@ -821,7 +821,7 @@ export default function Navbar() {
                             className="px-5 py-2 hover:bg-clinic-teal-50 hover:text-clinic-bronze transition-colors flex items-center gap-2 capitalize text-xs font-medium border-b border-clinic-border/10 leading-snug"
                           >
                             <span className="w-1 h-1 rounded-full bg-clinic-bronze flex-shrink-0"></span>
-                            Neurogenic Bladder
+                            Neurogenic Bladder (Vataja Mutrakrichra)
                           </Link>
                         </div>
                       </div>
@@ -866,7 +866,7 @@ export default function Navbar() {
                             className="px-5 py-2 hover:bg-clinic-teal-50 hover:text-clinic-bronze transition-colors flex items-center gap-2 capitalize text-xs font-medium border-b border-clinic-border/10 leading-snug"
                           >
                             <span className="w-1 h-1 rounded-full bg-clinic-bronze flex-shrink-0"></span>
-                            Digestive Weakness
+                            Digestive Weakness (Manda Agni)
                           </Link>
                           <div className="px-4 py-2 text-clinic-teal-900 font-bold border-b border-clinic-border/30 bg-clinic-teal-50/50">
                             Development
@@ -876,7 +876,7 @@ export default function Navbar() {
                             className="px-5 py-2 hover:bg-clinic-teal-50 hover:text-clinic-bronze transition-colors flex items-center gap-2 capitalize text-xs font-medium border-b border-clinic-border/10 leading-snug"
                           >
                             <span className="w-1 h-1 rounded-full bg-clinic-bronze flex-shrink-0"></span>
-                            Concentration Support
+                            Concentration Support (Medhya Rasayana)
                           </Link>
                           <Link
                             to="/conditions/ayurvedic-support-for-adhd-autism"
@@ -1468,7 +1468,7 @@ export default function Navbar() {
                             className="pl-2 capitalize text-clinic-muted hover:text-clinic-teal-900 flex items-start pt-[2px] gap-2 text-[13px] leading-snug"
                           >
                             <span className="w-1 h-1 rounded-full bg-clinic-border flex-shrink-0 mt-[6px]"></span>
-                            <span>Frozen Shoulder (Apabahnuka)</span>
+                            <span>Frozen Shoulder (Avabahuka)</span>
                           </Link>
                           <Link
                             to="/conditions/tennis-elbow"
@@ -1543,7 +1543,7 @@ export default function Navbar() {
                             className="pl-2 capitalize text-clinic-muted hover:text-clinic-teal-900 flex items-start pt-[2px] gap-2 text-[13px] leading-snug"
                           >
                             <span className="w-1 h-1 rounded-full bg-clinic-border flex-shrink-0 mt-[6px]"></span>
-                            <span>Irritable Bowel Syndrome (IBS)</span>
+                            <span>Irritable Bowel Syndrome (Grahani Roga)</span>
                           </Link>
                           <Link
                             to="/conditions/diarrhea"
@@ -1866,7 +1866,7 @@ export default function Navbar() {
                             className="pl-2 capitalize text-clinic-muted hover:text-clinic-teal-900 flex items-start pt-[2px] gap-2 text-[13px] leading-snug"
                           >
                             <span className="w-1 h-1 rounded-full bg-clinic-border flex-shrink-0 mt-[6px]"></span>
-                            <span>Lactation Support</span>
+                            <span>Lactation Support (Stanya Janana)</span>
                           </Link>
                           <div className="text-clinic-bronze font-medium capitalize text-[11px] leading-snug mt-2">
                             General Care
@@ -2189,7 +2189,7 @@ export default function Navbar() {
                             className="pl-2 capitalize text-clinic-muted hover:text-clinic-teal-900 flex items-start pt-[2px] gap-2 text-[13px] leading-snug"
                           >
                             <span className="w-1 h-1 rounded-full bg-clinic-border flex-shrink-0 mt-[6px]"></span>
-                            <span>Neurogenic Bladder</span>
+                            <span>Neurogenic Bladder (Vataja Mutrakrichra)</span>
                           </Link>
                         </div>
                       </div>
@@ -2253,7 +2253,7 @@ export default function Navbar() {
                             className="pl-2 capitalize text-clinic-muted hover:text-clinic-teal-900 flex items-start pt-[2px] gap-2 text-[13px] leading-snug"
                           >
                             <span className="w-1 h-1 rounded-full bg-clinic-border flex-shrink-0 mt-[6px]"></span>
-                            <span>Digestive Weakness</span>
+                            <span>Digestive Weakness (Manda Agni)</span>
                           </Link>
                           <div className="text-clinic-bronze font-medium capitalize text-[11px] leading-snug mt-2">
                             Development
@@ -2267,7 +2267,7 @@ export default function Navbar() {
                             className="pl-2 capitalize text-clinic-muted hover:text-clinic-teal-900 flex items-start pt-[2px] gap-2 text-[13px] leading-snug"
                           >
                             <span className="w-1 h-1 rounded-full bg-clinic-border flex-shrink-0 mt-[6px]"></span>
-                            <span>Concentration Support</span>
+                            <span>Concentration Support (Medhya Rasayana)</span>
                           </Link>
                           <Link
                             to="/conditions/ayurvedic-support-for-adhd-autism"

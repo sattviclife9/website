@@ -5,7 +5,6 @@ import { useLocation } from 'react-router-dom';
 import { X, Maximize2 } from 'lucide-react';
 import SEO from '../components/SEO';
 import TreatmentNav from '../components/TreatmentNav';
-import Breadcrumbs from '../components/Breadcrumbs';
 import { useScrollLock } from '../hooks/useScrollLock';
 
 interface ServiceItem {
@@ -320,9 +319,6 @@ export default function Services() {
     <>
       <TreatmentNav />
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-4 pb-12 md:pt-8 md:pb-32">
-        <div className="mb-6">
-          <Breadcrumbs items={[{ label: 'Services' }]} />
-        </div>
       <SEO 
         title="Ayurvedic Treatments & Panchakarma"
         description="Explore our authentic Ayurvedic treatments in Pune. Specialized services include Agnikarma for chronic pain, Viddhakarma, and traditional Panchakarma detox therapies."

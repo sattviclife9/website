@@ -14,7 +14,6 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import TreatmentNav from "../components/TreatmentNav";
-import Breadcrumbs from "../components/Breadcrumbs";
 
 export interface SubItem {
   name: string;
@@ -74,7 +73,7 @@ export const TREATMENTS_CATEGORIES: TreatmentCategory[] = [
         name: "Sports & Occupational Injuries",
         subItems: [
           {
-            name: "Frozen Shoulder (Apabahnuka)",
+            name: "Frozen Shoulder (Avabahuka)",
             path: "/conditions/frozen-shoulder",
           },
           {
@@ -104,7 +103,7 @@ export const TREATMENTS_CATEGORIES: TreatmentCategory[] = [
         name: "Gut Health",
         subItems: [
           {
-            name: "Irritable Bowel Syndrome (IBS)",
+            name: "Irritable Bowel Syndrome (Grahani Roga)",
             path: "/conditions/irritable-bowel-syndrome",
           },
           { name: "Diarrhea (Atisara)", path: "/conditions/diarrhea" },
@@ -230,7 +229,7 @@ export const TREATMENTS_CATEGORIES: TreatmentCategory[] = [
             path: "/conditions/postpartum-care",
           },
           {
-            name: "Lactation Support",
+            name: "Lactation Support (Stanya Janana)",
             path: "/conditions/lactation-support",
           },
         ],
@@ -370,7 +369,7 @@ export const TREATMENTS_CATEGORIES: TreatmentCategory[] = [
             path: "/conditions/urinary-incontinence",
           },
           {
-            name: "Neurogenic Bladder",
+            name: "Neurogenic Bladder (Vataja Mutrakrichra)",
             path: "/conditions/neurogenic-bladder",
           },
         ],
@@ -399,7 +398,7 @@ export const TREATMENTS_CATEGORIES: TreatmentCategory[] = [
             path: "/conditions/poor-appetite",
           },
           {
-            name: "Digestive Weakness",
+            name: "Digestive Weakness (Manda Agni)",
             path: "/conditions/digestive-weakness",
           },
         ],
@@ -408,7 +407,7 @@ export const TREATMENTS_CATEGORIES: TreatmentCategory[] = [
         name: "Development",
         subItems: [
           {
-            name: "Concentration Support",
+            name: "Concentration Support (Medhya Rasayana)",
             path: "/conditions/concentration-support",
           },
           {
@@ -432,22 +431,24 @@ export default function Treatments() {
   useEffect(() => {
     if (location.hash) {
       const id = decodeURIComponent(location.hash.replace("#", ""));
-      const scrollWithRetry = (retries = 5, initialDelay = 150) => {
-        setTimeout(() => {
-          const element = document.getElementById(id);
-          if (element) {
-            // Use 190px offset on mobile to clear the sticky headers
-            const offset = window.innerWidth < 1024 ? 190 : 160;
-            const y = element.getBoundingClientRect().top + window.scrollY - offset;
-            window.scrollTo({ top: y, behavior: "smooth" });
-          } else if (retries > 0) {
-            // Keep trying if element isn't found yet
-            scrollWithRetry(retries - 1, 300);
-          }
-        }, initialDelay);
-      };
       
-      scrollWithRetry();
+      const performScroll = () => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      };
+
+      // 1) Fast scroll for early feedback
+      const t1 = setTimeout(performScroll, 100);
+      
+      // 2) Staggered second scroll to align perfectly after the 600ms page entry animation and layout reflows complete
+      const t2 = setTimeout(performScroll, 650);
+
+      return () => {
+        clearTimeout(t1);
+        clearTimeout(t2);
+      };
     } else {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -457,13 +458,6 @@ export default function Treatments() {
     <>
       <TreatmentNav />
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-4 pb-12 md:pt-8 md:pb-32">
-        <div className="mb-6">
-          <Breadcrumbs 
-            items={[
-              { label: 'Treatments' }
-            ]} 
-          />
-        </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
