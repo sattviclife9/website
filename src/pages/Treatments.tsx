@@ -14,6 +14,7 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import TreatmentNav from "../components/TreatmentNav";
+import Breadcrumbs from "../components/Breadcrumbs";
 
 export interface SubItem {
   name: string;
@@ -430,14 +431,23 @@ export default function Treatments() {
   const location = useLocation();
   useEffect(() => {
     if (location.hash) {
-      setTimeout(() => {
-        const id = location.hash.replace("#", "");
-        const element = document.getElementById(id);
-        if (element) {
-          const y = element.getBoundingClientRect().top + window.scrollY - 160;
-          window.scrollTo({ top: y, behavior: "smooth" });
-        }
-      }, 100);
+      const id = decodeURIComponent(location.hash.replace("#", ""));
+      const scrollWithRetry = (retries = 5, initialDelay = 150) => {
+        setTimeout(() => {
+          const element = document.getElementById(id);
+          if (element) {
+            // Use 190px offset on mobile to clear the sticky headers
+            const offset = window.innerWidth < 1024 ? 190 : 160;
+            const y = element.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top: y, behavior: "smooth" });
+          } else if (retries > 0) {
+            // Keep trying if element isn't found yet
+            scrollWithRetry(retries - 1, 300);
+          }
+        }, initialDelay);
+      };
+      
+      scrollWithRetry();
     } else {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -447,6 +457,13 @@ export default function Treatments() {
     <>
       <TreatmentNav />
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-4 pb-12 md:pt-8 md:pb-32">
+        <div className="mb-6">
+          <Breadcrumbs 
+            items={[
+              { label: 'Treatments' }
+            ]} 
+          />
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

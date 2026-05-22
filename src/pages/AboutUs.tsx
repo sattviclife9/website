@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import SEO from '../components/SEO';
 import AboutNav from '../components/AboutNav';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export default function AboutUs() {
   return (
@@ -17,6 +18,7 @@ export default function AboutUs() {
       <section className="bg-clinic-teal-50 pt-4 md:pt-8 pb-16 md:pb-24 border-b border-clinic-border relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-clinic-gold/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+          <div className="mb-6 invisible md:visible"><Breadcrumbs items={[{ label: 'About Us' }]} /></div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

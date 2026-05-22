@@ -5,6 +5,7 @@ import { Activity, CheckCircle2, ArrowRight, ShieldAlert, Phone, Calendar, Dropl
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { getConditionData } from '../../data/conditionsData';
 import OptimizedImage from '../../components/OptimizedImage';
+import Breadcrumbs from '../../components/Breadcrumbs';
 
 import DemographicsChart from '../../components/DemographicsChart';
 
@@ -108,6 +109,16 @@ export default function ConditionPage() {
         <div className="absolute inset-0 z-0 opacity-10 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-clinic-bronze via-transparent to-transparent"></div>
         
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+          <Breadcrumbs 
+            items={[
+              { label: 'Treatments', path: '/treatments' },
+              { 
+                label: data.category, 
+                path: `/treatments#${data.category.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}` 
+              },
+              { label: data.name }
+            ]} 
+          />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
