@@ -57,6 +57,397 @@ const getCategoryAnchor = (category: string): string => {
   return category.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 };
 
+const getWhyChooseFeatures = (category: string, name: string) => {
+  const normalized = category.toLowerCase().trim();
+  
+  // 1) Pediatric Healthcare
+  if (normalized.includes("pediatric")) {
+    return [
+      {
+        icon: <Baby className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Gentle Child-Friendly Diagnosis",
+        desc: "Stress-free pulse reading (Nadi Parikshan) and customized constitution analysis specifically adapted to understand your child's sensitive Prakriti."
+      },
+      {
+        icon: <Droplets className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Safe & Non-Invasive Therapies",
+        desc: "Child-safe herbal formulations and mild, comforting external therapies that improve cognitive focus, digestion, and immunity without any side effects."
+      },
+      {
+        icon: <Star className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Empowering Guidance for Parents",
+        desc: "Practical daily routine (Dinacharya) modifications, diet plans (Ahara), and positive reinforcement guidance to nurture safe growth at home."
+      }
+    ];
+  }
+
+  // 2) Women's Health & Fertility
+  if (normalized.includes("women")) {
+    return [
+      {
+        icon: <Award className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Personalized Hormonal Alignment",
+        desc: "In-depth analysis of biological rhythms and reproductive channels (Artava Srotas) to address the root causes of PCOD, irregular cycles, and hot flashes."
+      },
+      {
+        icon: <Droplets className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Uterine & Pelvic Detoxification",
+        desc: "Classical Panchakarma treatments like gentle Basti and Uttarabasti designed to purify biological pathways, strengthen uterine muscles, and naturally support fertility."
+      },
+      {
+        icon: <Star className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Empathetic Multi-Phase Support",
+        desc: "Specialized natural rejuvenation therapies tailored to support women through every major milestone, from puberty to postpartum care and menopause."
+      }
+    ];
+  }
+
+  // 3) Musculoskeletal & Spinal / Joint Care
+  if (normalized.includes("spine") || normalized.includes("musculoskeletal") || normalized.includes("joint") || normalized.includes("injury")) {
+    return [
+      {
+        icon: <Activity className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Instant Pain Relief (Agnikarma & Viddhakarma)",
+        desc: `Highly specialized, outpatient, micro-acupuncture and thermal therapies providing rapid, drug-free relief from severe pain and stiffness in ${name}.`
+      },
+      {
+        icon: <Droplets className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Deep Joint & Cartilage Rejuvenation",
+        desc: "Targeted local poolings (like Kati Basti, Janu Basti, and Griva Basti) to restore synovial fluids, nourish worn out cartilage, and strengthen spinal nerves."
+      },
+      {
+        icon: <Star className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Natural Avoidance of Major Surgery",
+        desc: "Proven non-surgical protocols to successfully mend slip discs, osteophytic spurs, and arthritis, allowing you to regain full painless mobility naturally."
+      }
+    ];
+  }
+
+  // 4) Mental Health & Neurology
+  if (normalized.includes("mental") || normalized.includes("neuro") || normalized.includes("brain") || normalized.includes("stroke")) {
+    return [
+      {
+        icon: <Brain className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Grounding Prana Vata and Calm Mind",
+        desc: "Targeted regulation of the central nervous system to calm hyperactivity, alleviate chronic insomnia, and clear cognitive fog without dependency."
+      },
+      {
+        icon: <Droplets className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Restorative Sirodhara & Nasya",
+        desc: "Classical herbal oil dripping and nasal oil administration that deeply relax high-stress centers, nourish the Majja Dhatu (brain tissue), and promote mental clarity."
+      },
+      {
+        icon: <Star className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Pioneering Neuro-Rehabilitation",
+        desc: "Evidence-based clinical protocols designed to support motor recovery, speech coordination, and neural plasticity for stroke and paralysis survivors."
+      }
+    ];
+  }
+
+  // 5) Urinary & Men's Health
+  if (normalized.includes("men") || normalized.includes("uro") || normalized.includes("kidney") || normalized.includes("urinary")) {
+    return [
+      {
+        icon: <Activity className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Regulating Apana Vata & Pelvic Tonage",
+        desc: "Specialized therapies to restore the down-ward biological force, strengthening bladder sphincters, reducing prostatic inflammation, and calming overactive pelvic nerves."
+      },
+      {
+        icon: <Droplets className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Natural Kidney & Prostate Decongestion",
+        desc: "Highly targeted herbal alkalizers, litholytic (stone-dissolving) formulations, and comforting local steam elements to wash out recurrent infections."
+      },
+      {
+        icon: <Star className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Pragmatic Vitality & Mojo Rejuvenation",
+        desc: "Confidential, stress-free vajikarana (revitalization) consultations to address physical root causes, clear mental stressors, and restore overall male vigor."
+      }
+    ];
+  }
+
+  // 6) Digestive & Metabolic Health
+  if (normalized.includes("digestive") || normalized.includes("metabolic") || normalized.includes("liver") || normalized.includes("diabetes") || normalized.includes("thyroid") || normalized.includes("gut")) {
+    return [
+      {
+        icon: <Activity className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Reigniting the Digestive Fire (Agni Chikitsa)",
+        desc: "Reversing sluggish gut performance (Manda Agni) — the absolute foundation of Ayurvedic recovery — to eliminate system fermentation."
+      },
+      {
+        icon: <Droplets className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Eradicating Cellular Toxins (Ama)",
+        desc: "Deploying targeted cleansing (Shodhana) and carminative herbs to digest accumulated deep-tissue toxins, relieving chronic IBS patterns, acidity, and flatulence."
+      },
+      {
+        icon: <Star className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Comprehensive Endocrine Reset",
+        desc: "Synergized dietary alignments, specialized herbal, and metabolic therapies to safely adjust fatty liver, insulin resistance, clinical thyroiditis, and lipids."
+      }
+    ];
+  }
+
+  // 7) Skin, Hair & Aesthetic Wellness
+  if (normalized.includes("skin") || normalized.includes("hair") || normalized.includes("aesthetic") || normalized.includes("allergy") || normalized.includes("wellness")) {
+    return [
+      {
+        icon: <Droplets className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Intracellular Blood Purification (Rakta Shodhana)",
+        desc: "Dermatological healing starting from the inside out. Cleansing metabolic impurities from blood & lymph to resolve psoriasis, stubborn eczema, and acne permanently."
+      },
+      {
+        icon: <Activity className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Therapeutic Detox to Intercept Relapses",
+        desc: "Customized Virechana and specialized skin-channel flushes to target chronic allergies, completely resetting immune tolerance to common allergens."
+      },
+      {
+        icon: <Star className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Active Follicular Hair Nourishment",
+        desc: "Nutritive hair therapies (Shirolepa and Kesha Rasayanas) addressing hormonal dynamics, local scalp clean-ups, and root strengthening to combat hair fall."
+      }
+    ];
+  }
+
+  // 8) Respiratory & Immune Health / Autoimmune Support
+  if (normalized.includes("respiratory") || normalized.includes("immune") || normalized.includes("autoimmune") || normalized.includes("allergy") || normalized.includes("sinus")) {
+    return [
+      {
+        icon: <Wind className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Clearing Pulmonary Channels (Pranavaha Srotas)",
+        desc: "Strengthening lung capacity and soothing dry, hypersensitive airway pathways through targeted herbal steam, local chest baths (Uro Basti), and soothing inhalations."
+      },
+      {
+        icon: <ShieldAlert className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Immune-Modulating Rasayanas",
+        desc: "Advanced, natural protocols to gently pacify overactive, hyper-reactive autologous immune responses (for Hashimotos, SLE, IBD, and severe allergies)."
+      },
+      {
+        icon: <Star className="w-6 h-6 text-clinic-teal-900" />,
+        title: "Permanent Allergy Shielding",
+        desc: "Correcting gut-lung microfluidic pathways to permanently strengthen your body's defense, resolving susceptibility to sudden temperature and pollen changes."
+      }
+    ];
+  }
+
+  // Fallback - General / Specialized Treatment
+  return [
+    {
+      icon: <Stethoscope className="w-6 h-6 text-clinic-teal-900" />,
+      title: "Root-Cause Ayurvedic Diagnosis",
+      desc: `Detailed pulse-diagnosis (Nadi Parikshan) and multi-point evaluation to uncover the underlying elemental imbalances causes of ${name}.`
+    },
+    {
+      icon: <Droplets className="w-6 h-6 text-clinic-teal-900" />,
+      title: "Authentic & Scientific Panchakarma",
+      desc: "Precision-scheduled detoxification and restorative physical therapies customized specifically to reverse your clinical condition cleanly."
+    },
+    {
+      icon: <Star className="w-6 h-6 text-clinic-teal-900" />,
+      title: "Specialized Parasurgical Treatments",
+      desc: "Agni/Viddhakarma outpatient therapies that provide immediate, drug-free relief, alongside comprehensive lifestyle coaching to prevent recurrence."
+    }
+  ];
+};
+
+const getConditionFAQs = (category: string, name: string) => {
+  const normalized = category.toLowerCase().trim();
+
+  // 1) Pediatric Healthcare
+  if (normalized.includes("pediatric")) {
+    return [
+      {
+        q: `Is it safe to give Ayurvedic medicines to children for ${name}?`,
+        a: `Yes, absolutely. Children are highly responsive to Ayurvedic treatments as their tissues (Dhatus) are gentle and dynamic. At Sattvic Advanced Ayurveda, we only use purified, non-toxic, age-appropriate herbs and mild natural therapies that are perfectly safe and free of chemical side effects.`
+      },
+      {
+        q: `How does Ayurveda diagnose the root cause of ${name} in kids?`,
+        a: `Through gentle pulse reading (Nadi Parikshan) and an in-depth understanding of your child's constitution (Prakriti). We identify whether ${name} is a result of low digestive fire (Manda Agni) or imbalances in Vata and Kapha doshas, correcting the core physiological cause rather than just suppressing symptoms.`
+      },
+      {
+        q: `Does pediatric treatment for ${name} involve strict dietary restrictions?`,
+        a: `No, we do not believe in harsh restrictions for growing children. We suggest gentle, nourishing, and tasty dietary adjustments (Ahara) along with easy daily routines (Dinacharya) that parents can easily incorporate into school and home life.`
+      },
+      {
+        q: `How fast can we expect improvements in ${name} under Ayurvedic care?`,
+        a: `Many pediatric conditions show noticeable improvements within 2 to 4 weeks because children's bodies self-heal rapidly. Complete resolution typically takes 2 to 3 months of consistent, gentle therapies to strengthen their long-term immunity and overall development.`
+      }
+    ];
+  }
+
+  // 2) Women's Health & Fertility
+  if (normalized.includes("women")) {
+    return [
+      {
+        q: `How does Ayurveda view ${name} differently from allopathy?`,
+        a: `In Ayurveda, women's health is governed by the downward flow of Apana Vata and the purity of gynecological channels (Artava Srotas). Rather than using external synthetic hormones to force temporary relief, we treat ${name} by regulating your natural endocrine rhythm, clearing ovarian blockages, and deeply nourishing reproductive tissues.`
+      },
+      {
+        q: `Is Panchakarma necessary for treating ${name} or fertility struggles?`,
+        a: `Yes, Panchakarma is highly beneficial. Specific treatments such as Basti (medicated oil/decoction enemas) and Uttarabasti (uterine channel purification) are exceptionally effective for clearing obstructions in pelvic channels, balancing hormones, and preparing a healthy uterine wall for natural conception.`
+      },
+      {
+        q: `What dietary changes are advised for women undergoing therapies for ${name}?`,
+        a: `We focus on warm, nourishing, easily digestible cooked foods. We suggest incorporating healthy fats like A2 cow's ghee and spices like cumin, ginger, and turmeric, while minimizing cold, dry, processed, and highly refined foods that cause pelvic stagnation.`
+      },
+      {
+        q: `Can I take Ayurvedic treatments for ${name} alongside modern medical prescriptions?`,
+        a: `Yes, our treatments run safely alongside conventional allopathic medicines. Under our doctors' close supervision, as your natural hormonal balance and organ functions return to normal, the reliance on daily synthetic hormone support can often be gradually and safely reduced.`
+      }
+    ];
+  }
+
+  // 3) Musculoskeletal, Joint, Spine & Injuries
+  if (normalized.includes("spine") || normalized.includes("musculoskeletal") || normalized.includes("joint") || normalized.includes("injury")) {
+    return [
+      {
+        q: `Can Ayurveda really heal severe musculoskeletal conditions like ${name} without surgery?`,
+        a: `Yes. Severe joint and spinal conditions like slip discs, nerve compressions, and osteoarthritis respond remarkably well to classical parasurgical and nourishing therapies. These treatments restore spinal nerve function and joint lubrication naturally, avoiding invasive surgical procedures.`
+      },
+      {
+        q: `How do Agnikarma and Viddhakarma help in relieving pain and stiffness in ${name}?`,
+        a: `Agnikarma (thermal therapy) and Viddhakarma (medical micro-puncture) are specialized outpatient procedures that provide instant, drug-free pain relief. They instantly increase local micro-circulation, digest accumulated metabolic toxins (Ama) in local muscle fibers, and relieve deep tissue spasms.`
+      },
+      {
+        q: `Is complete bed rest required during the recovery phase of ${name}?`,
+        a: `Rarely. While we advise avoiding heavy movements and heavy lifting that strain the spinal channels, we actively encourage mild, restorative stretching and customized movements to keep joints lubricated and prevent muscle stiffness.`
+      },
+      {
+        q: `How long do the therapeutic benefits last for joint and bone conditions?`,
+        a: `Since we target the root cause—by replenishing joint synovial fluid, reducing disc friction, and strengthening supportive muscles—the recovery is long-lasting. Combining treatment with healthy postural habits prevents recurrence and keeps you active for years.`
+      }
+    ];
+  }
+
+  // 4) Mental Health & Neurology
+  if (normalized.includes("mental") || normalized.includes("neuro") || normalized.includes("brain") || normalized.includes("stroke")) {
+    return [
+      {
+        q: `How does Ayurveda explain neurological and psychological imbalances like ${name}?`,
+        a: `All nervous system functions are governed by Vata Dosha (specifically Prana Vata and Vyana Vata). Imbalances like ${name} occur when nervous pathways become congested or dehydrated. We treat this by deeply grounding, lubricating, and nourishing these delicate neural networks.`
+      },
+      {
+        q: `What role do Shirodhara and Nasya play in treating ${name}?`,
+        a: `Shirodhara (continuous warm herbal oil flow on the forehead) works directly on the pituitary gland, soothing stress and deeply calming the nervous system. Nasya (drop-by-drop nasal oil delivery) nourishes brain tissue directly, clearing blockages and improving mental acuity, sleep, and motor functions.`
+      },
+      {
+        q: `Are Ayurvedic mental health and nerve medicines habit-forming?`,
+        a: `Not at all. Ayurvedic nerve-rejuvenators (Medhya Rasayanas) like Brahmi, Shankhapushpi, and Ashwagandha are entirely safe, non-sedating, and non-addictive. They revitalize nerve synapses and enhance natural brain plasticity rather than biochemically suppressing mood artificially.`
+      },
+      {
+        q: `What is the success rate in using Ayurveda for stroke or paralysis rehabilitation?`,
+        a: `Very high, especially when we start rehabilitation early. By combining targeted nerve-stimulating herbs with classical sensory-motor therapies (like Pizhichil and intensive Basti), we help patients recover coordination, muscle tone, and speech path significantly faster.`
+      }
+    ];
+  }
+
+  // 5) Urinary & Men's Health
+  if (normalized.includes("men") || normalized.includes("uro") || normalized.includes("kidney") || normalized.includes("urinary")) {
+    return [
+      {
+        q: `What is the Ayurvedic approach to addressing issues like ${name}?`,
+        a: `These conditions mostly trace back to an imbalance in Apana Vata—the biological energy that controls the pelvic floor, elimination, and sexual pathways. We focus on relaxing pelvic muscles, improving bladder elasticity, reducing prostatic swelling, and clearing urinary tract pathways using purifying, cooling, and strengthening herbs.`
+      },
+      {
+        q: `Are the consultations for men's reproductive and urinary issues confidential?`,
+        a: `Absolutely. At Sattvic advanced Ayurveda, we strictly maintain 100% patient confidentiality and privacy. Your consultation and treatment plan are discussed in a respectful, supportive, and stress-free environment.`
+      },
+      {
+        q: `How does Ayurveda treat recurrent urinary tract infections (UTIs) and kidney stones?`,
+        a: `Instead of continuous antibiotic cycles, we treat UTIs by altering the bladder's internal pH and flushing infectious heat (Pitta) from kidneys. For stones, we use litholytic herbs (Varuna, Pashanbhed) to naturally break stones down into fine sand-like particles for painless flushing through urine.`
+      },
+      {
+        q: `At what age should men start clinical consultations for prostate health?`,
+        a: `Men over 40-50 experiencing slow urine flow, night frequency, or discomfort should seek screening. Natural preventive therapies can arrest benign prostate enlargement (BPH) early, preventing the need for future surgical intervention.`
+      }
+    ];
+  }
+
+  // 6) Digestive & Metabolic Health
+  if (normalized.includes("digestive") || normalized.includes("metabolic") || normalized.includes("liver") || normalized.includes("diabetes") || normalized.includes("thyroid") || normalized.includes("gut")) {
+    return [
+      {
+        q: `Why is gut health considered the foundation of recovery for ${name} in Ayurveda?`,
+        a: `Ayurveda teaches that all core metabolic and systemic diseases start in the gut with low digestive fire (Manda Agni). If your food isn't properly digested, it ferments and produces a toxic, sticky paste called 'Ama'. To treat ${name}, we must first rekindle your metabolic fire and completely clean out these metabolic toxins.`
+      },
+      {
+        q: `Can Ayurveda replace insulin or daily thyroid medication for ${name}?`,
+        a: `For early-stage metabolic conditions, yes. Through extensive lifestyle upgrades, digestive resets, and natural herbs, we have helped numerous patients normalize HbA1c and thyroid levels completely. For long-standing cases, our treatment safely runs alongside modern diagnostics, helping reduce dependency and preventing typical diabetic/thyroid organ damage.`
+      },
+      {
+        q: `What is the role of Panchakarma in metabolic disorders like ${name}?`,
+        a: `Panchakarma therapies like Virechana (therapeutic purgation) are invaluable for metabolic resetting. It flushes stored liver toxins, boosts endocrine receptivity, is highly effective in melting subcutaneous fat, and improves insulin sensitivity across cells.`
+      },
+      {
+        q: `How does your clinic customize diet charts for metabolic recovery?`,
+        a: `Diet is medicine. We do not prescribe standard, boring, starvation diets. We build custom nutritional paths based on your current digestive capability (Agni), your metabolic Prakriti (body-type), and seasonal variations, so you eat foods that naturally digest and nourish you.`
+      }
+    ];
+  }
+
+  // 7) Skin, Hair & Aesthetic Wellness
+  if (normalized.includes("skin") || normalized.includes("hair") || normalized.includes("aesthetic") || normalized.includes("allergy") || normalized.includes("wellness")) {
+    return [
+      {
+        q: `Why do skin and hair issues like ${name} require internal medicine, not just topical creams?`,
+        a: `In Ayurveda, the skin is an external reflection of internal blood purity (Rakta Dhatu) and digestive function. Applying heavy external creams only suppresses skin flare-ups temporarily. To heal ${name} permanently, we must detoxify the blood tissue, balance the liver, and flush systemic toxins (Ama) from deep skin layers.`
+      },
+      {
+        q: `Can chronic and autoimmune skin conditions like Psoriasis or Vitiligo be cured?`,
+        a: `These conditions are managed exceptionally well with Ayurveda. By combining regular, gentle cellular-level detoxification (Virechana/Raktamokshana) with custom immune-modulating herbs, we soothe skin inflammation, stop new flare-ups, and help restore normal skin pigment and texture.`
+      },
+      {
+        q: `How does Ayurveda stop severe hair fall and treat damaged hair follicles?`,
+        a: `Hair is considered a byproduct of bone tissue (Asthi Dhatu). Severe hair fall is caused by excess Pitta heat burning hair follicles, coupled with poor root nourishment. We use soothing scalp therapies (Shirolepa/Dhara), clinical hair vitalizers, and iron/calcium-rich bone-nurturing herbs to stop loss and trigger thick new growth.`
+      },
+      {
+        q: `Are there any immediate home-care guidelines I should follow during the treatment?`,
+        a: `Yes. Avoid compatibility-destroying food combinations (Viruddha Ahara), such as taking seafood with dairy products, or mixing fruits with milk. Also, choose mild, natural, soap-free skin cleansers and chemical-free hair washes to prevent scalp irritation.`
+      }
+    ];
+  }
+
+  // 8) Respiratory, Allergy & Immune Support
+  if (normalized.includes("respiratory") || normalized.includes("immune") || normalized.includes("autoimmune") || normalized.includes("allergy") || normalized.includes("sinus")) {
+    return [
+      {
+        q: `How does Ayurveda address hypersensitivity and chronic sinusitis/asthma?`,
+        a: `These conditions represent a combination of sluggish digestion producing mucous-like toxins (Ama) and high Kapha blockages in respiratory airways (Pranavaha Srotas). We focus on strengthening your gut, melting respiratory phlegm through chest therapies, and clearing nasal pathways using specialized Nasya oils.`
+      },
+      {
+        q: `Is there a way to permanently clear chronic allergies without daily antihistamines?`,
+        a: `Yes. Daily antihistamines only mask the response. Ayurveda strengthens your natural immune tolerance. By purifying blood lymph pathways and regulating immune-stimulating systems, we shield your lungs and respiratory pathways from pollen, dust, and temperature changes permanently.`
+      },
+      {
+        q: `What natural therapies are used to calm autoimmune conditions like SLE or IBD?`,
+        a: `Autoimmune disorders are viewed as a state of 'Tejas' (cellular intelligence) gone wild. Toxins (Ama) coating cells mislead immune fighters. We use gentle, non-irritating, cooling immune-modulatory herbs (like Guduchi, Yashtimadhu) and soothing local therapies to nourish gut mucosal linings, calm flare-ups, and restore somatic balance.`
+      },
+      {
+        q: `Can pediatric allergy and asthma patients be treated under these protocols?`,
+        a: `Yes! Pediatric immunity is delicate and highly responsive. Early, gentle Ayurvedic care helps children grow out of chronic respiratory sensitivity naturally, building a lifelong buffer against bronchial and sinus infections.`
+      }
+    ];
+  }
+
+  // Fallback - General / Specialized Treatment
+  return [
+    {
+      q: `Can Ayurveda help cure ${name}?`,
+      a: `Ayurveda provides highly effective, root-cause holistic treatments for ${name}. By balancing your unique Doshas (Vata, Pitta, Kapha) and eliminating internal toxins (Ama) through Panchakarma, we treat the underlying cause rather than just suppressing the symptoms.`
+    },
+    {
+      q: `Which is the best Ayurvedic treatment for ${name} in Pune?`,
+      a: `The ideal treatment requires a personalized approach. At Sattvic Advanced Ayurveda in Pune, we begin with a deep diagnostic Nadi Parikshan. Based on your constitution, we prescribe customized herbal formulations, dietary changes, and highly effective Panchakarma therapies like Basti or Shirodhara.`
+    },
+    {
+      q: `Is Panchakarma necessary for ${name}?`,
+      a: `For chronic or severe cases of ${name}, Panchakarma is highly recommended. It detoxifies the body at a cellular level, clears blocked channels, and accelerates the profound healing process, allowing our herbal medicines to absorb perfectly.`
+    },
+    {
+      q: `How long does the Ayurvedic treatment take to show results?`,
+      a: `While acute symptoms can often be managed within a few weeks, chronic conditions require a dedicated approach over a period of 1 to 3 months. Every patient's journey is different, but natural, sustainable recovery is always our ultimate goal.`
+    }
+  ];
+};
+
 export default function ConditionPage() {
   const { slug } = useParams<{ slug: string }>();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -66,6 +457,8 @@ export default function ConditionPage() {
   }
 
   const data = getConditionData(slug);
+  const whyChooseFeatures = getWhyChooseFeatures(data.category, data.name);
+  const conditionFAQs = getConditionFAQs(data.category, data.name);
 
   const renderIcon = (name: string) => {
     switch (name) {
@@ -309,78 +702,30 @@ export default function ConditionPage() {
 
       {/* Local SEO & EEAT Section */}
       <section className="py-16 md:py-24 bg-clinic-paper border-t border-clinic-teal-900/10">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="inline-flex items-center gap-3 px-4 py-2 bg-clinic-bronze/10 rounded-full text-clinic-bronze font-medium text-sm mb-6">
-                <MapPin className="w-4 h-4" />
-                Trusted Ayurvedic Care in Pune
-              </div>
-              <h2 className="text-3xl md:text-5xl font-serif text-clinic-teal-900 mb-6 leading-tight">
-                Why Choose Sattvic Ayurveda for {data.name} in Pune?
-              </h2>
-              <p className="text-lg text-clinic-muted mb-8 leading-relaxed">
-                Led by Dr. Khan Aqsa Zarin, Sattvic Advanced Ayurveda & Panchakarma Centre is Pune's leading destination for holistic, root-cause healing. We don't just treat symptoms; we restore your body's natural balance through classical Ayurvedic protocols and evidence-based therapies.
-              </p>
-              
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 shrink-0 rounded-full bg-clinic-teal-50 flex items-center justify-center text-clinic-teal-900 mt-1">
-                    <Stethoscope className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-serif text-clinic-teal-900 mb-2">Expert & Personalized Diagnosis</h4>
-                    <p className="text-clinic-muted">In-depth Nadi Parikshan (Pulse Diagnosis) and Prakriti analysis to identify the exact root cause of your {data.name}.</p>
-                  </div>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
+          <div className="inline-flex items-center gap-3 px-4 py-2 bg-clinic-bronze/10 rounded-full text-clinic-bronze font-medium text-sm mb-6">
+            <MapPin className="w-4 h-4" />
+            Trusted Ayurvedic Care in Pune
+          </div>
+          <h2 className="text-3xl md:text-5xl font-serif text-clinic-teal-900 mb-6 leading-tight max-w-3xl mx-auto">
+            Why Choose Sattvic Ayurveda for {data.name} in Pune?
+          </h2>
+          <p className="text-lg text-clinic-muted mb-12 leading-relaxed max-w-3xl mx-auto">
+            Led by Dr. Khan Aqsa Zarin, Sattvic Advanced Ayurveda & Panchakarma Centre is Pune's leading destination for holistic, root-cause healing. We don't just treat symptoms; we restore your body's natural balance through classical Ayurvedic protocols and evidence-based therapies.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+            {whyChooseFeatures.map((feature, idx) => (
+              <div key={idx} className="bg-white border border-clinic-teal-900/10 rounded-2xl p-6 shadow-sm flex flex-col items-start gap-4">
+                <div className="w-12 h-12 shrink-0 rounded-full bg-clinic-teal-50 flex items-center justify-center text-clinic-teal-900">
+                  {feature.icon}
                 </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 shrink-0 rounded-full bg-clinic-teal-50 flex items-center justify-center text-clinic-teal-900 mt-1">
-                    <Droplets className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-serif text-clinic-teal-900 mb-2">Authentic Panchakarma</h4>
-                    <p className="text-clinic-muted">Classical detoxification therapies tailored specifically to reverse chronic conditions precisely and naturally.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 shrink-0 rounded-full bg-clinic-teal-50 flex items-center justify-center text-clinic-teal-900 mt-1">
-                    <Star className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-serif text-clinic-teal-900 mb-2">High Conversion of Successful Outcomes</h4>
-                    <p className="text-clinic-muted">Hundreds of patients across Pune have experienced remarkable recoveries from {data.name} without relying on long-term daily medications.</p>
-                  </div>
+                <div>
+                  <h4 className="text-xl font-serif text-clinic-teal-900 mb-2">{feature.title}</h4>
+                  <p className="text-clinic-muted text-sm leading-relaxed">{feature.desc}</p>
                 </div>
               </div>
-            </div>
-            
-            <div className="relative">
-              <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative">
-                <OptimizedImage 
-                  src="https://images.unsplash.com/photo-1542840410-3092f99611a3?q=80&w=2787&auto=format&fit=crop" 
-                  alt={`Ayurvedic Treatment for ${data.name} in Pune`} 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-clinic-teal-900/80 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-8 sm:p-10 w-full">
-                  <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <Star key={star} className="w-5 h-5 text-clinic-bronze fill-clinic-bronze" />
-                        ))}
-                      </div>
-                      <span className="text-white font-medium">5.0 Rated Clinic</span>
-                    </div>
-                    <p className="text-white/90 italic text-lg leading-relaxed">
-                      "The most thorough and genuine Ayurvedic treatment in Pune. My condition improved remarkably after consulting Dr. Khan Aqsa Zarin."
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -394,24 +739,7 @@ export default function ConditionPage() {
           </div>
           
           <div className="space-y-4">
-            {[
-              {
-                q: `Can Ayurveda help cure ${data.name}?`,
-                a: `Ayurveda provides highly effective, root-cause holistic treatments for ${data.name}. By balancing your unique Doshas (Vata, Pitta, Kapha) and eliminating internal toxins (Ama) through Panchakarma, we treat the underlying cause rather than just suppressing the symptoms.`
-              },
-              {
-                q: `Which is the best Ayurvedic treatment for ${data.name} in Pune?`,
-                a: `The ideal treatment requires a personalized approach. At Sattvic Advanced Ayurveda in Pune, we begin with a deep diagnostic Nadi Parikshan. Based on your constitution, we prescribe customized herbal formulations, dietary changes, and highly effective Panchakarma therapies like Basti or Shirodhara.`
-              },
-              {
-                q: `Is Panchakarma necessary for ${data.name}?`,
-                a: `For chronic or severe cases of ${data.name}, Panchakarma is highly recommended. It detoxifies the body at a cellular level, clears blocked channels, and accelerates the profound healing process, allowing our herbal medicines to absorb perfectly.`
-              },
-              {
-                q: `How long does the Ayurvedic treatment take to show results?`,
-                a: `While acute symptoms can often be managed within a few weeks, chronic conditions require a dedicated approach over a period of 1 to 3 months. Every patient's journey is different, but natural, sustainable recovery is always our ultimate goal.`
-              }
-            ].map((faq, idx) => (
+            {conditionFAQs.map((faq, idx) => (
               <div key={idx} className="border border-clinic-teal-900/10 rounded-2xl overflow-hidden transition-all bg-clinic-sand/10">
                 <button 
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
