@@ -21,6 +21,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import ErrorPage from './pages/ErrorPage';
 import ScrollToTop from './components/ScrollToTop';
+import GoogleAnalytics from './components/GoogleAnalytics';
 import ErrorBoundary from './components/ErrorBoundary';
 
 import ConditionPage from './pages/conditions/ConditionPage';
@@ -29,6 +30,7 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
+      <GoogleAnalytics />
       <ErrorBoundary>
         <Routes>
           <Route path="/" element={<RootLayout />}>
