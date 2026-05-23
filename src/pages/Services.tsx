@@ -358,11 +358,16 @@ export default function Services() {
                    initial={{ opacity: 0, y: 10 }}
                    whileInView={{ opacity: 1, y: 0 }}
                    viewport={{ once: true }}
-                   transition={{ duration: 0.4 }}
+                   whileHover={{ y: -6, scale: 1.01 }}
+                   transition={{ 
+                     y: { duration: 0.2, ease: "easeInOut" },
+                     scale: { duration: 0.2, ease: "easeInOut" },
+                     opacity: { duration: 0.4 }
+                   }}
                    key={idxi} 
                    id={item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}
                    onClick={() => setSelectedService(item)}
-                   className={`p-8 rounded-[2rem] shadow-sm border border-clinic-border cursor-pointer hover:shadow-lg transition-all duration-300 group overflow-hidden relative flex flex-col ${item.image ? 'min-h-[320px] justify-end border-none' : 'bg-white'}`}
+                   className={`p-8 rounded-[2rem] shadow-sm border border-clinic-border cursor-pointer hover:shadow-lg transition-shadow duration-300 group overflow-hidden relative flex flex-col ${item.image ? 'min-h-[320px] justify-end border-none' : 'bg-white'}`}
                 >
                   {item.image && (
                     <div className="absolute inset-0 z-0">

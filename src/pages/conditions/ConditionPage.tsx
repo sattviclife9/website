@@ -508,32 +508,14 @@ export default function ConditionPage() {
             {
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": `Can Ayurveda help with ${data.name}?`,
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": `Yes, Ayurveda offers holistic, root-cause treatments for ${data.name}. At Sattvic Advanced Ayurveda in Pune, we use customized herbal medicines, lifestyle modifications, and Panchakarma therapies to provide effective and natural relief.`
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": `Which is the best Ayurvedic treatment for ${data.name} in Pune?`,
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": `The best Ayurvedic treatment involves a personalized approach. At our Pune clinic, Dr. Khan Aqsa Zarin assesses your mind-body constitution (Prakriti) and the root cause of ${data.name} to recommend specific Panchakarma therapies like Shirodhara, Basti, or Abhyanga, along with dietary counseling.`
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": `How long does Ayurvedic treatment take for ${data.name}?`,
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": `The duration of Ayurvedic treatment for ${data.name} varies depending on the severity of the condition, chronicity, and the patient's individual constitution. Most patients start noticing improvements within a few weeks of beginning their customized regimen and Panchakarma therapies.`
-                  }
+              "mainEntity": conditionFAQs.map((faq) => ({
+                "@type": "Question",
+                "name": faq.q,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": faq.a
                 }
-              ]
+              }))
             }
           ])}
         </script>
