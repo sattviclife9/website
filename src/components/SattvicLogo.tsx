@@ -13,7 +13,7 @@ export const SattvicLogo = ({ type = "full", className = "", inHeader = false }:
     <OptimizedImage 
       src={imgSrc} 
       alt="Sattvic Ayurveda Logo" 
-      className={`${imgClass} w-auto object-contain flex-shrink-0 ${className}`}
+      className={`${imgClass} w-auto object-contain flex-shrink-0 filter drop-shadow-[0_4px_10px_rgba(20,83,78,0.15)] ${className}`}
     />
   );
 };
