@@ -1,5 +1,18 @@
 export const NEWS_ARTICLES = [
   {
+    id: 2,
+    title: "Ashwagandha industry calls for science-led review to protect farmers, Ayurveda and India's nutraceutical growth",
+    excerpt: "Stakeholders and industry leaders have urged for a comprehensive, science-led review to safeguard the interests of Ashwagandha farmers, preserve Ayurvedic heritage, and secure India's position in global nutraceutical growth.",
+    date: "May 23, 2026",
+    sources: [
+      {
+        name: "Business Standard",
+        link: "https://www.business-standard.com/content/press-releases-ani/ashwagandha-industry-calls-for-science-led-review-to-protect-farmers-ayurveda-and-india-s-nutraceutical-growth-126052300014_1.html"
+      }
+    ],
+    category: "Industry",
+  },
+  {
     id: 1,
     title: "Ayurvedic 'Rasayana' therapy shows promise in advanced pancreatic cancer, Pune study presented at global meet",
     excerpt: "A recent study from Pune highlights the potential of Ayurvedic 'Rasayana' therapy in treating advanced pancreatic cancer. These promising findings were presented at a global meet, showcasing the growing recognition of holistic medicine in oncology.",
