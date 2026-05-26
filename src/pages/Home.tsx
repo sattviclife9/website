@@ -73,6 +73,7 @@ export default function Home() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [testimonialDirection, setTestimonialDirection] = useState(0);
   const [currentTherapy, setCurrentTherapy] = useState(0);
+  const [activeFAQ, setActiveFAQ] = useState<number | null>(null);
 
   const nextTestimonial = () => {
     setTestimonialDirection(1);
@@ -107,56 +108,121 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "MedicalClinic",
-    "name": "Sattvic Advanced Ayurveda & Panchakarma Centre",
-    "alternateName": ["Sattvic Ayurveda", "Sattvic Life", "Sattvic Ayurvedic Clinic"],
-    "description": "Expert Ayurvedic care specializing in Agnikarma, Viddhakarma, and Panchakarma for chronic pain, skin issues, and digestive health.",
-    "url": "https://sattvic.life",
-    "logo": "https://sattvic.life/logo-full.svg",
-    "telephone": "+919404417145",
-    "medicalSpecialty": ["AyurvedicMedicine", "PainManagement", "DigestiveHealth", "Panchakarma"],
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "C Building, 1st Floor, Girme Heights, Salunke Vihar Road",
-      "addressLocality": "Pune",
-      "addressRegion": "Maharashtra",
-      "postalCode": "411040",
-      "addressCountry": "IN"
+  const schema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalClinic",
+      "name": "Sattvic Advanced Ayurveda & Panchakarma Centre",
+      "alternateName": ["Sattvic Ayurveda", "Sattvic Life", "Sattvic Ayurvedic Clinic"],
+      "description": "Consult Dr. Khan Aqsa Zarin, widely regarded as the best Ayurvedic doctor in Pune. Expert Kerala Panchakarma, Nadi Parikshan, Agnikarma, and Viddhakarma therapies for chronic pain relief & holistic wellness.",
+      "url": "https://sattvic.life",
+      "logo": "https://sattvic.life/logo-full.svg",
+      "telephone": "+919404417145",
+      "medicalSpecialty": ["AyurvedicMedicine", "PainManagement", "DigestiveHealth", "Panchakarma"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "C Building, 1st Floor, Girme Heights, Salunke Vihar Road",
+        "addressLocality": "Pune",
+        "addressRegion": "Maharashtra",
+        "postalCode": "411040",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "18.4851",
+        "longitude": "73.8953"
+      },
+      "hasMap": "https://www.google.com/maps/search/Sattvic+Advanced+Ayurveda+and+Panchakarma+Centre",
+      "openingHours": "Mo-Sa 10:00-14:00, 17:00-20:30; Su 10:00-14:00",
+      "image": [
+        "https://sattvic.life/logo-full.svg",
+        "https://lh3.googleusercontent.com/d/1Z5sQpQRsH-JUUuxKU2kYdS4MOflfEFTU"
+      ],
+      "priceRange": "$$",
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61585341523248",
+        "https://www.instagram.com/sattvic_advanced_ayurveda/",
+        "https://www.linkedin.com/in/drkhanaqsazarin/",
+        "https://www.youtube.com/@SattvicAdvancedAyurveda"
+      ],
+      "review": TESTIMONIALS.map(t => ({
+        "@type": "Review",
+        "author": { "@type": "Person", "name": t.name },
+        "reviewBody": t.testimonial,
+        "reviewRating": { "@type": "Rating", "ratingValue": t.rating }
+      }))
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "18.4851",
-      "longitude": "73.8953"
+    {
+      "@context": "https://schema.org",
+      "@type": "Physician",
+      "@id": "https://sattvic.life/#dr-khan-aqsa-zarin",
+      "name": "Dr. Khan Aqsa Zarin",
+      "image": "https://lh3.googleusercontent.com/d/1g206DwQZZlSr3ddAFXvdATkJU77qFk1K",
+      "description": "Dr. Khan Aqsa Zarin is recognized as the best Ayurvedic doctor in Pune. She holds an M.D. in Kayachikitsa with extensive experience in Agnikarma, Viddhakarma, and classical Panchakarma.",
+      "telephone": "+919404417145",
+      "medicalSpecialty": "AyurvedicMedicine",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "C Building, 1st Floor, Girme Heights, Salunke Vihar Road",
+        "addressLocality": "Pune",
+        "addressRegion": "Maharashtra",
+        "postalCode": "411040",
+        "addressCountry": "IN"
+      },
+      "alumniOf": [
+        {
+          "@type": "EducationalOrganization",
+          "name": "Dr. D. Y. Patil College of Ayurveda, Pune"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "Government Ayurvedic College and Hospital, Nanded"
+        }
+      ],
+      "knowsAbout": ["Ayurveda", "Panchakarma", "Agnikarma", "Viddhakarma", "Nadi Parikshan", "Kayachikitsa"],
+      "memberOf": {
+        "@type": "Organization",
+        "name": "International Academy of Ayurved (IAA)"
+      }
     },
-    "hasMap": "https://www.google.com/maps/search/Sattvic+Advanced+Ayurveda+and+Panchakarma+Centre",
-    "openingHours": "Mo-Sa 10:00-14:00, 17:00-20:30; Su 10:00-14:00",
-    "image": [
-      "https://sattvic.life/logo-full.svg",
-      "https://lh3.googleusercontent.com/d/1Z5sQpQRsH-JUUuxKU2kYdS4MOflfEFTU"
-    ],
-    "priceRange": "$$",
-    "sameAs": [
-      "https://www.facebook.com/profile.php?id=61585341523248",
-      "https://www.instagram.com/sattvic_advanced_ayurveda/",
-      "https://www.linkedin.com/in/drkhanaqsazarin/",
-      "https://www.youtube.com/@SattvicAdvancedAyurveda"
-    ],
-    "review": TESTIMONIALS.map(t => ({
-      "@type": "Review",
-      "author": { "@type": "Person", "name": t.name },
-      "reviewBody": t.testimonial,
-      "reviewRating": { "@type": "Rating", "ratingValue": t.rating }
-    }))
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who is the best Ayurvedic Doctor in Pune?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dr. Khan Aqsa Zarin (M.D. Kayachikitsa) is widely regarded as one of the best Ayurvedic doctors in Pune. She specializes in classical Panchakarma, Nadi Parikshan, and advanced pain therapies like her specialty Agnikarma and Viddhakarma, boasting a strong track record of non-surgical pain remedies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which clinic is the best for authentic Panchakarma in Pune?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sattvic Advanced Ayurveda & Panchakarma Centre, headed by Dr. Khan Aqsa Zarin in Pune (Salunke Vihar/NIBM road), is renowned for highly authentic, customized Kerala Panchakarma therapies like Shirodhara, Basti, Janu Basti, and classical body detoxification."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Nadi Parikshan (Ayurvedic Pulse Diagnosis) in Pune?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nadi Parikshan is the traditional pulse-based diagnosis method to identify internal doshic imbalances. Dr. Khan Aqsa Zarin offers expert Nadi Parikshan consultations at her Pune clinic to draft highly customized wellness and recovery schedules."
+          }
+        }
+      ]
+    }
+  ];
 
   return (
     <>
       <SEO 
-        title="Authentic Ayurveda & Chronic Pain Relief"
-        description="Experience the healing power of authentic Ayurveda at Sattvic Advanced Ayurveda & Panchakarma Centre, Pune. Specialized Agnikarma, Viddhakarma, and Panchakarma for chronic pain & joint issues."
-        keywords="Ayurveda Clinic Pune, Ayurveda in Salunke Vihar, Panchakarma in NIBM Pune, Agnikarma therapy Pune, Viddhakarma treatment Pune, Ayurvedic pain relief Wanowrie Kondhwa, Nadi Pariksha Pune, Sattvic Life Ayurveda"
+        title="Best Ayurvedic Doctor in Pune | Dr. Khan Aqsa Zarin"
+        description="Consult Dr. Khan Aqsa Zarin, the best Ayurvedic doctor in Pune. Expert root-cause treatment & traditional Kerala Panchakarma for chronic pain, skin & digestive disorders."
+        keywords="best ayurvedic doctor in Pune, top ayurvedic physician Pune, Ayurveda clinic Pune, Agnikarma Pune, Panchakarma treatment Salunke Vihar, Dr. Khan Aqsa Zarin, chronic pain Ayurvedic relief Pune, Nadi Pariksha Pune"
         schema={schema}
       />
       <section className="pt-8 md:pt-16 max-w-7xl mx-auto px-6 md:px-12 mb-20 md:mb-28 text-center md:text-left relative">
@@ -671,6 +737,97 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Meet Doctor Section - Key Local SEO target */}
+      <section className="py-20 md:py-28 bg-white border-b border-clinic-border">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            
+            {/* Left Col - Image */}
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8 }}
+              className="col-span-1 lg:col-span-5 relative"
+            >
+              <div className="absolute -inset-2 bg-gradient-to-tr from-clinic-gold/20 via-transparent to-clinic-teal-900/10 rounded-3xl blur-xl" />
+              <div className="relative bg-clinic-teal-50 rounded-3xl overflow-hidden shadow-2xl border border-clinic-border">
+                <OptimizedImage
+                  src="https://lh3.googleusercontent.com/d/1g206DwQZZlSr3ddAFXvdATkJU77qFk1K"
+                  alt="Dr. Khan Aqsa Zarin - Best Ayurvedic Doctor in Pune"
+                  className="w-full h-auto block transform hover:scale-[1.01] transition-transform duration-500"
+                />
+              </div>
+              {/* Overlapping stat pill */}
+              <div className="absolute bottom-6 -right-4 md:-right-8 bg-clinic-teal-900 text-white p-6 rounded-2xl border border-white/10 shadow-xl max-w-xs">
+                <p className="text-2xl font-serif text-clinic-gold font-semibold">M.D. Kayachikitsa</p>
+                <p className="text-xs text-white/70 font-mono mt-1">Dr. D. Y. Patil College of Ayurveda, Pune</p>
+              </div>
+            </motion.div>
+
+            {/* Right Col - Story & Credentials */}
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="col-span-1 lg:col-span-7 space-y-6 md:space-y-8 text-left"
+            >
+              <div className="space-y-3">
+                <div className="inline-flex items-center gap-3">
+                  <span className="h-[1px] w-6 bg-clinic-bronze"></span>
+                  <span className="text-clinic-bronze font-serif italic text-base md:text-lg">Pune's Trusted Physician</span>
+                </div>
+                <h2 className="text-4xl md:text-5xl font-serif text-clinic-teal-900 font-light leading-tight">
+                  Meet the <span className="italic font-medium text-clinic-teal-900/80">Best Ayurvedic Doctor</span> in Pune
+                </h2>
+              </div>
+
+              <div className="space-y-4 text-clinic-muted font-light text-base md:text-lg leading-relaxed">
+                <p className="text-clinic-charcoal font-normal text-lg md:text-xl">
+                  Led by <strong className="text-clinic-teal-900 font-medium">Dr. Khan Aqsa Zarin</strong>, Sattvic Advanced Ayurveda is Pune's premium destination for authentic, evidence-based Ayurvedic diagnosis and root-cause healing.
+                </p>
+                <p>
+                  As an accomplished specialist carrying an <strong className="text-clinic-teal-900 font-medium">M.D. in Kayachikitsa (Internal Medicine)</strong>, Dr. Khan Aqsa Zarin is designated as Pune's most dedicated expert for chronic joint disorders, cervical/lumbar spine care, skincare, and metabolic rejuvenation. Her lineage combines extensive clinical achievements, having successfully managed over 500+ complex chronic cases with specialized therapies including <strong className="text-clinic-teal-900 font-medium">Agnikarma</strong>, <strong className="text-clinic-teal-900 font-medium">Viddhakarma</strong>, and traditional <strong className="text-clinic-teal-900 font-medium">Kerala Panchakarma</strong>.
+                </p>
+                <p>
+                  Dr. Aqsa is an active member of the <strong className="text-clinic-teal-900 font-medium">International Academy of Ayurved (IAA)</strong>, with three peer-reviewed, Scopus-indexed research publications in internationally eminent journals. Her pulse diagnosis (<strong className="text-clinic-teal-900 font-medium">Nadi Parikshan</strong>) consultation uncovers deep organic imbalances to restore systemic harmony safely and naturally.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-4 pt-4 border-t border-clinic-border">
+                <div className="flex items-center gap-2">
+                  <span className="text-clinic-gold text-lg">✦</span>
+                  <span className="text-sm font-mono text-clinic-muted">8+ Years Experience</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-clinic-gold text-lg">✦</span>
+                  <span className="text-sm font-mono text-clinic-muted">90%+ Non-Surgical Pain Recovery</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-clinic-gold text-lg">✦</span>
+                  <span className="text-sm font-mono text-clinic-muted">ScienceDirect Published Author</span>
+                </div>
+              </div>
+
+              <div className="pt-2">
+                <Link to="/know-doctors">
+                  <motion.button 
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="inline-flex items-center gap-2 bg-clinic-teal-900 hover:bg-clinic-teal-800 text-white px-8 py-4 rounded-sm text-[12px] font-bold tracking-widest uppercase transition-all shadow-md group"
+                  >
+                    View Doctor Credentials
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </motion.button>
+                </Link>
+              </div>
+
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials Section */}
       <section className="bg-clinic-ivory py-16 md:py-24 border-y border-clinic-border overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -792,6 +949,88 @@ export default function Home() {
       </section>
 
 
+
+      {/* Local SEO FAQ Section targeting "best ayurvedic doctor in pune" */}
+      <section className="py-20 md:py-28 bg-clinic-ivory border-t border-clinic-border overflow-hidden">
+        <div className="max-w-4xl mx-auto px-6 md:px-12 text-left">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <div className="mb-6 inline-flex items-center gap-4">
+              <span className="h-[1px] w-6 bg-clinic-bronze"></span>
+              <span className="text-clinic-bronze font-serif italic text-base md:text-lg">Common Queries Answered</span>
+              <span className="h-[1px] w-6 bg-clinic-bronze"></span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-serif text-clinic-teal-900 font-light leading-tight">
+              Frequently Asked <span className="italic font-medium text-clinic-teal-900/80">Questions</span>
+            </h2>
+            <p className="text-clinic-muted font-light mt-3 text-base md:text-lg">Everything you need to know about traditional healing, our specialists, and treatments in Pune.</p>
+          </motion.div>
+
+          <div className="space-y-4">
+            {[
+              {
+                q: "Who is the best Ayurvedic Doctor in Pune for chronic pain and lifestyle disorders?",
+                a: "Dr. Khan Aqsa Zarin (M.D. Kayachikitsa from Pune) is widely regarded as the best Ayurvedic doctor in Pune. She has over 8 years of clinical experience successfully treating complex diseases without surgery. Dr. Aqsa specializes in specialized pain-relieving treatments like Agnikarma and Viddhakarma, alongside classical Panchakarma and personalized organic therapies, maintaining an excellent success rate of 90-95% in non-surgical joint recovery."
+              },
+              {
+                q: "What types of Ayurvedic treatments are offered at Sattvic Centre in Pune?",
+                a: "Under the medical directorship of Dr. Khan Aqsa Zarin, Sattvic Advanced Ayurveda & Panchakarma Centre offers a wide spectrum of classical Ayurvedic therapies. These include holistic Kerala Panchakarma therapies like Shirodhara, Basti, Janu Basti, and Nasya, alongside advanced immediate-relief therapies like Agnikarma (thermal cautery) and Viddhakarma (acupuncture-style pain management) for severe neurological and musculoskeletal disorders."
+              },
+              {
+                q: "What is Nadi Parikshan, and how does Dr. Khan Aqsa Zarin use it?",
+                a: "Nadi Parikshan is an ancient Ayurvedic pulse diagnosis technique. As a skilled practitioner, Dr. Khan Aqsa Zarin monitors your pulse to diagnose deep cellular blockages, doshic imbalances (Vata, Pitta, Kapha), and root-causes of persistent conditions. Based on this highly personalized assessment, she formulates an exhaustive custom care plan consisting of herbs, therapies, and dietary improvements designed uniquely for your body template."
+              },
+              {
+                q: "Where is the clinic located in Pune and which areas does it serve?",
+                a: "Our clinic is located in C Building, 1st Floor, Girme Heights, Salunke Vihar, Pune - 411040. We proudly serve patients seeking the highest-quality Ayurvedic care across Pune, including Salunke Vihar Road, Wanowrie, NIBM, Kondhwa, Lulla Nagar, Fatima Nagar, Camp, Hadapsar, and nearby regions of Maharashtra."
+              },
+              {
+                q: "How can I book an appointment with Dr. Khan Aqsa Zarin in Pune?",
+                a: "You can book an appointment for pulse diagnosis or treatment under Pune's best Ayurvedic physician, Dr. Khan Aqsa Zarin, quickly and safely: click the 'Book Consultation' action link on this website which connects directly to our booking calendar, contact us on Call or WhatsApp on +91-9404417145, or visit our clean, hygienic centre in Salunke Vihar, Pune."
+              }
+            ].map((item, idx) => {
+              const isOpen = activeFAQ === idx;
+              return (
+                <motion.div 
+                  key={idx}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.05 }}
+                  className="bg-white rounded-2xl border border-clinic-border overflow-hidden transition-all duration-300 shadow-sm"
+                >
+                  <button
+                    onClick={() => setActiveFAQ(isOpen ? null : idx)}
+                    className="w-full text-left p-6 md:p-8 flex items-center justify-between gap-4 font-serif text-lg md:text-xl text-clinic-teal-900 hover:text-clinic-gold transition-colors duration-300"
+                  >
+                    <span>{item.q}</span>
+                    <span className={`text-clinic-gold text-2xl transition-transform duration-300 inline-block ${isOpen ? 'rotate-45' : ''}`}>＋</span>
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <div className="px-6 pb-8 md:px-8 md:pb-10 pt-0 text-clinic-muted font-light leading-relaxed border-t border-clinic-border text-sm md:text-base">
+                          {item.a}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       {/* CTA Banner */}
       <section className="py-20 md:py-32 max-w-5xl mx-auto px-6 md:px-12 relative">

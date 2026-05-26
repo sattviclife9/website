@@ -5,12 +5,79 @@ import OptimizedImage from '../components/OptimizedImage';
 import SEO from '../components/SEO';
 
 export default function KnowDoctors() {
+  const schema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Physician",
+      "@id": "https://sattvic.life/know-doctors/#dr-khan-aqsa-zarin",
+      "name": "Dr. Khan Aqsa Zarin",
+      "image": "https://lh3.googleusercontent.com/d/1g206DwQZZlSr3ddAFXvdATkJU77qFk1K",
+      "description": "Consult Dr. Khan Aqsa Zarin, widely designated as Pune's best Ayurvedic doctor. Specialized in root-cause healing, classical Panchakarma, Agnikarma, and Nadi Parikshan.",
+      "telephone": "+919404417145",
+      "medicalSpecialty": "AyurvedicMedicine",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "C Building, 1st Floor, Girme Heights, Salunke Vihar Road",
+        "addressLocality": "Pune",
+        "addressRegion": "Maharashtra",
+        "postalCode": "411040",
+        "addressCountry": "IN"
+      },
+      "alumniOf": [
+        {
+          "@type": "EducationalOrganization",
+          "name": "Dr. D. Y. Patil College of Ayurveda, Pune"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "Government Ayurvedic College and Hospital, Nanded"
+        }
+      ],
+      "knowsAbout": ["Ayurveda", "Panchakarma", "Agnikarma", "Viddhakarma", "Nadi Parikshan", "Kayachikitsa", "Spine Care", "Joint Pain", "Digestive Health"],
+      "memberOf": {
+        "@type": "Organization",
+        "name": "International Academy of Ayurved (IAA)"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why is Dr. Khan Aqsa Zarin considered the best Ayurvedic doctor in Pune?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dr. Khan Aqsa Zarin is widely recognized as Pune's best Ayurvedic doctor due to her advanced academic credentials (M.D. in Kayachikitsa / Medicine from Dr. D.Y. Patil College of Ayurveda, Pune), Scopus-indexed global research publications, and an outstanding clinic success rate of 90-95% in non-surgical joint and pain recovery using Agnikarma and Viddhakarma."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are Dr. Khan Aqsa Zarin's clinical hours in Pune?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dr. Khan Aqsa Zarin consults at Sattvic Advanced Ayurveda in Salunke Vihar, Pune. Standard clinic timings are Monday through Saturday: 10:00 AM - 2:00 PM and 5:00 PM - 8:30 PM; Sunday: 10:00 AM - 2:00 PM."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Dr. Aqsa perform pulse diagnosis (Nadi Parikshan)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "During a personal session, Dr. Khan Aqsa Zarin performs Nadi Parikshan by sensing the radial pulse. This ancient diagnostic art reveals deep doshic imbalances, toxicity index, and organ function, enabling her to prescribe pin-pointed botanical compounds, customized diet charts, and therapies."
+          }
+        }
+      ]
+    }
+  ];
+
   return (
     <>
       <SEO 
-        title="Know Your Doctor | Dr. Khan Aqsa Zarin"
-        description="Learn more about Dr. Khan Aqsa Zarin, an internationally recognized Ayurvedic physician, specialized in classical Ayurveda, clinical research, and holistic healing."
-        keywords="khan aqsa zarin, dr khan aqsa zarin, aqsa khan, khan aqsa, aqsa zarin, ayurvedic doctor pune, best ayurveda doctor"
+        title="Dr. Khan Aqsa Zarin | Best Ayurvedic Doctor in Pune"
+        description="Meet Dr. Khan Aqsa Zarin, widely regarded as the best Ayurvedic doctor in Pune. Holding an M.D. in Kayachikitsa with extensive clinical research, she specializes in Panchakarma, Viddhakarma, and Agnikarma."
+        keywords="best ayurvedic doctor in Pune, ayurvedic doctor pune, Dr. Khan Aqsa Zarin, M.D. Kayachikitsa doctor Pune, top ayurvedic doctor Pune, Panchakarma doctor Pune, Agnikarma specialist Pune, Nadi Parikshan Salunke Vihar Wanowrie, sattvic ayurveda pune"
+        schema={schema}
       />
       <AboutNav />
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-4 pb-12 md:pt-8 md:pb-32">

@@ -9,9 +9,9 @@ export default function AboutUs() {
     <>
       <AboutNav />
       <SEO 
-        title="Our Philosophy | Expert Ayurveda Doctors in Pune"
-        description="Learn about Sattvic Advanced Ayurveda's mission to provide authentic, root-cause Ayurvedic healing in Pune. Meet our expert practitioners dedicated to traditional Panchakarma, Viddhakarma, and Agnikarma in the Salunke Vihar, NIBM, and Wanowrie regions."
-        keywords="Ayurveda doctors Pune, Ayurvedic physician Salunke Vihar, authentic Ayurveda doctor NIBM road, traditional Panchakarma specialists Kondhwa Pune, Sattvic Life philosophy"
+        title="Best Ayurvedic Doctor and Clinic in Pune | Dr. Khan Aqsa Zarin"
+        description="Learn about Sattvic Advanced Ayurveda's mission to provide authentic, root-cause Ayurvedic healing in Pune. Consult the best Ayurvedic doctor in Pune for customized Panchakarma, Viddhakarma, and Agnikarma."
+        keywords="best ayurvedic doctor in Pune, Ayurveda doctors Pune, Ayurvedic physician Salunke Vihar, authentic Ayurveda doctor NIBM road, traditional Panchakarma specialists Kondhwa Pune, Sattvic Life philosophy"
       />
       
       {/* Hero section */}
