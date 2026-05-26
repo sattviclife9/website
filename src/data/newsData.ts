@@ -28,5 +28,18 @@ export const NEWS_ARTICLES = [
       }
     ],
     category: "Research",
+  },
+  {
+    id: 3,
+    title: "WHO begins global coding of Ayurveda, Siddha, and Unani; paving way for mainstream integration",
+    excerpt: "The World Health Organization (WHO) has commenced global diagnostic coding for Ayurveda, Siddha, and Unani systems under the ICD-11 framework, setting international standards for terminology, clinical outcomes, and research.",
+    date: "December 23, 2025",
+    sources: [
+      {
+        name: "Times of India",
+        link: "https://timesofindia.indiatimes.com/india/who-begins-global-coding-of-ayurveda-siddha-unani-paving-way-for-mainstream-integration/articleshow/126140496.cms"
+      }
+    ],
+    category: "Policy",
   }
 ];
