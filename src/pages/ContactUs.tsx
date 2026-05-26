@@ -20,14 +20,45 @@ export default function ContactUs() {
     setTimeout(() => setNotification(null), 5000);
   };
 
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    "name": "Sattvic Advanced Ayurveda & Panchakarma Centre",
+    "alternateName": ["Sattvic Ayurveda", "Sattvic Life", "Sattvic Ayurvedic Clinic"],
+    "description": "Book a consultation at Sattvic Advanced Ayurveda in Pune for ancient therapies (Panchakarma, Agnikarma, Viddhakarma) and chronic pain relief.",
+    "url": "https://sattvic.life/contact",
+    "telephone": "+919404417145",
+    "logo": "https://sattvic.life/logo-full.svg",
+    "image": [
+      "https://sattvic.life/logo-full.svg",
+      "https://lh3.googleusercontent.com/d/1Z5sQpQRsH-JUUuxKU2kYdS4MOflfEFTU"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "C Building, 1st Floor, Girme Heights, Salunke Vihar Road",
+      "addressLocality": "Pune",
+      "addressRegion": "Maharashtra",
+      "postalCode": "411040",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "18.4851",
+      "longitude": "73.8953"
+    },
+    "hasMap": "https://www.google.com/maps/search/Sattvic+Advanced+Ayurveda+and+Panchakarma+Centre",
+    "openingHours": "Mo-Sa 10:00-14:00, 17:00-20:30; Su 10:00-14:00"
+  };
+
   return (
     <>
       <AboutNav />
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-4 pb-12 md:pt-8 md:pb-32">
       <SEO 
         title="Contact Us | Book Your Ayurvedic Consultation"
-        description="Get in touch with Sattvic Advanced Ayurveda in Pune. Book your appointment for Nadi Parikshan, Panchakarma, or pain management therapies today."
-        keywords="book Ayurveda appointment Pune, contact Sattvic Life, Ayurveda clinic location, Nadi Pariksha appointment"
+        description="Get in touch with Sattvic Advanced Ayurveda in Pune. Book your appointment for Nadi Parikshan, Panchakarma, or pain management therapies in Salunke Vihar, Wanowrie, NIBM, and Kondhwa area."
+        keywords="book Ayurveda appointment Pune, contact Sattvic Life, Ayurveda clinic Salunke Vihar, Ayurveda clinic NIBM road, Panchakarma Pune Kondhwa, Nadi Pariksha appointment Pune"
+        schema={contactSchema}
       />
       <motion.div
         initial={{ opacity: 0, y: 20 }}

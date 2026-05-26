@@ -105,7 +105,11 @@ export default function Footer() {
                 <MapPin className="w-4 h-4 text-clinic-gold group-hover:scale-110 transition-transform flex-shrink-0 sm:mt-1" />
                 <span className="leading-relaxed">
                   Sattvic Advanced Ayurveda<br />
-                  and Panchakarma Centre
+                  & Panchakarma Centre<br />
+                  <span className="text-white/50 text-[10px] md:text-xs font-normal font-sans tracking-normal normal-case block mt-1">
+                    C Building, 1st Floor, Girme Heights,<br />
+                    Salunke Vihar, Pune - 411040
+                  </span>
                 </span>
               </a>
             </div>

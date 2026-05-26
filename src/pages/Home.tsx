@@ -110,23 +110,39 @@ export default function Home() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "MedicalClinic",
-    "name": "Sattvic Ayurveda & Wellness Centre",
-    "alternateName": "Sattvic Life",
+    "name": "Sattvic Advanced Ayurveda & Panchakarma Centre",
+    "alternateName": ["Sattvic Ayurveda", "Sattvic Life", "Sattvic Ayurvedic Clinic"],
     "description": "Expert Ayurvedic care specializing in Agnikarma, Viddhakarma, and Panchakarma for chronic pain, skin issues, and digestive health.",
     "url": "https://sattvic.life",
+    "logo": "https://sattvic.life/logo-full.svg",
     "telephone": "+919404417145",
-    "medicalSpecialty": ["AyurvedicMedicine", "PainManagement", "DigestiveHealth"],
+    "medicalSpecialty": ["AyurvedicMedicine", "PainManagement", "DigestiveHealth", "Panchakarma"],
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Nanded City",
+      "streetAddress": "C Building, 1st Floor, Girme Heights, Salunke Vihar Road",
       "addressLocality": "Pune",
       "addressRegion": "Maharashtra",
-      "postalCode": "411041",
+      "postalCode": "411040",
       "addressCountry": "IN"
     },
-    "openingHours": "Mo-Sa 10:00-20:00",
-    "image": "https://lh3.googleusercontent.com/d/1Z5sQpQRsH-JUUuxKU2kYdS4MOflfEFTU",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "18.4851",
+      "longitude": "73.8953"
+    },
+    "hasMap": "https://www.google.com/maps/search/Sattvic+Advanced+Ayurveda+and+Panchakarma+Centre",
+    "openingHours": "Mo-Sa 10:00-14:00, 17:00-20:30; Su 10:00-14:00",
+    "image": [
+      "https://sattvic.life/logo-full.svg",
+      "https://lh3.googleusercontent.com/d/1Z5sQpQRsH-JUUuxKU2kYdS4MOflfEFTU"
+    ],
     "priceRange": "$$",
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61585341523248",
+      "https://www.instagram.com/sattvic_advanced_ayurveda/",
+      "https://www.linkedin.com/in/drkhanaqsazarin/",
+      "https://www.youtube.com/@SattvicAdvancedAyurveda"
+    ],
     "review": TESTIMONIALS.map(t => ({
       "@type": "Review",
       "author": { "@type": "Person", "name": t.name },
@@ -139,8 +155,8 @@ export default function Home() {
     <>
       <SEO 
         title="Authentic Ayurveda & Chronic Pain Relief"
-        description="Experience the healing power of authentic Ayurveda at Sattvic Life. Specialized Agnikarma, Viddhakarma, and Panchakarma treatments for instant pain relief and holistic wellness."
-        keywords="Ayurveda Clinic Pune, Agnikarma therapy, Viddhakarma treatment, Panchakarma detox, Ayurvedic pain relief, Nadi Pariksha, Sattvic Life Ayurveda"
+        description="Experience the healing power of authentic Ayurveda at Sattvic Advanced Ayurveda & Panchakarma Centre, Pune. Specialized Agnikarma, Viddhakarma, and Panchakarma for chronic pain & joint issues."
+        keywords="Ayurveda Clinic Pune, Ayurveda in Salunke Vihar, Panchakarma in NIBM Pune, Agnikarma therapy Pune, Viddhakarma treatment Pune, Ayurvedic pain relief Wanowrie Kondhwa, Nadi Pariksha Pune, Sattvic Life Ayurveda"
         schema={schema}
       />
       <section className="pt-8 md:pt-16 max-w-7xl mx-auto px-6 md:px-12 mb-20 md:mb-28 text-center md:text-left relative">
