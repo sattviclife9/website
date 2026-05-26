@@ -13,6 +13,19 @@ export const NEWS_ARTICLES = [
     category: "Industry",
   },
   {
+    id: 4,
+    title: "Dharwad-born scientist named global top innovator for nano-Ayurvedic medicine",
+    excerpt: "Prof. Kattesh V. Katti, renowned as the 'Father of Green Nanotechnology', has been recognized as a global top innovator for his groundbreaking work in nano-Ayurvedic medicine, bridging organic green chemistry with traditional Indian medicine on a global scale.",
+    date: "May 6, 2026",
+    sources: [
+      {
+        name: "Times of India",
+        link: "https://timesofindia.indiatimes.com/city/hubballi/dharwad-born-scientist-named-global-top-innovator-for-nano-ayurvedic-medicine/articleshow/130864992.cms"
+      }
+    ],
+    category: "Innovation",
+  },
+  {
     id: 1,
     title: "Ayurvedic 'Rasayana' therapy shows promise in advanced pancreatic cancer, Pune study presented at global meet",
     excerpt: "A recent study from Pune highlights the potential of Ayurvedic 'Rasayana' therapy in treating advanced pancreatic cancer. These promising findings were presented at a global meet, showcasing the growing recognition of holistic medicine in oncology.",
@@ -28,6 +41,19 @@ export const NEWS_ARTICLES = [
       }
     ],
     category: "Research",
+  },
+  {
+    id: 5,
+    title: "Ayurveda Market Size Projected to Reach USD 21.11 Billion by 2032",
+    excerpt: "The global Ayurveda market, valued at USD 8.12 Billion in 2025, is projected to cross USD 21.11 Billion by 2032, registering a CAGR of 11.2% driven by rising consumer preference for organic wellness and natural healthcare therapies.",
+    date: "April 20, 2026",
+    sources: [
+      {
+        name: "Yahoo Finance",
+        link: "https://finance.yahoo.com/sectors/healthcare/articles/ayurveda-market-size-projected-reach-083000617.html"
+      }
+    ],
+    category: "Market",
   },
   {
     id: 3,
