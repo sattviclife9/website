@@ -8,11 +8,16 @@ export default function Footer() {
   const [badgeSrc, setBadgeSrc] = React.useState<string>('');
 
   React.useEffect(() => {
-    const cached = sessionStorage.getItem('sattvic_visitor_badge');
+    const isProduction = typeof window !== 'undefined' && 
+      (window.location.hostname === 'sattvic.life' || window.location.hostname === 'www.sattvic.life');
+    const badgePath = isProduction ? 'sattviclife-in-v2' : 'sattviclife-in-v2-dev';
+    const storageKey = `sattvic_visitor_badge_${badgePath}`;
+    
+    const cached = sessionStorage.getItem(storageKey);
     if (cached) {
       setBadgeSrc(cached);
     } else {
-      const liveUrl = "https://api.visitorbadge.io/api/visitors?path=sattviclife-in-v2&countColor=%23c6a87c&label=";
+      const liveUrl = `https://api.visitorbadge.io/api/visitors?path=${badgePath}&countColor=%23c6a87c&label=`;
       fetch(liveUrl)
         .then(res => {
           if (!res.ok) throw new Error("Badge fetch failed");
@@ -25,7 +30,7 @@ export default function Footer() {
             // Ensure we got a valid data URL
             if (base64data && base64data.startsWith('data:image')) {
               try {
-                sessionStorage.setItem('sattvic_visitor_badge', base64data);
+                sessionStorage.setItem(storageKey, base64data);
               } catch (e) {
                 console.warn("Storage quota exceeded or unavailable:", e);
               }
