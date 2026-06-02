@@ -8,8 +8,12 @@ export default function Footer() {
   const [badgeSrc, setBadgeSrc] = React.useState<string>('');
 
   React.useEffect(() => {
-    const isProduction = typeof window !== 'undefined' && 
-      (window.location.hostname === 'sattvic.life' || window.location.hostname === 'www.sattvic.life');
+    const isLocalOrDev = typeof window !== 'undefined' && 
+      (window.location.hostname === 'localhost' || 
+       window.location.hostname === '127.0.0.1' ||
+       window.location.hostname.includes('ais-dev'));
+       
+    const isProduction = !isLocalOrDev;
     const badgePath = isProduction ? 'sattviclife-in-v2' : 'sattviclife-in-v2-dev';
     const storageKey = `sattvic_visitor_badge_${badgePath}`;
     
