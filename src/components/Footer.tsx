@@ -89,11 +89,11 @@ export default function Footer() {
           <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
             <h4 className="text-clinic-gold text-[10px] md:text-xs uppercase tracking-[0.25em] font-bold mb-4">Quick Links</h4>
             <div className="flex flex-col gap-3 text-clinic-white-off/70 text-xs md:text-sm font-medium tracking-wide">
-              <Link to="/about" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">About Us</Link>
+              <Link to="/about-sattvic-ayurveda" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">About Us</Link>
               <Link to="/treatments" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">Treatments</Link>
               <Link to="/treatments/journey" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">Treatment Journey</Link>
               <Link to="/services" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">Services</Link>
-              <Link to="/about/doctors" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">Meet the Doctors</Link>
+              <Link to="/about-sattvic-ayurveda/doctors" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">Meet the Doctors</Link>
               <Link to="/contact" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">Contact Us</Link>
             </div>
           </div>

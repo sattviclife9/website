@@ -1020,10 +1020,10 @@ export default function Navbar() {
                 onMouseLeave={() => setAboutDropdownOpen(false)}
               >
                 <Link
-                  to="/about"
+                  to="/about-sattvic-ayurveda"
                   className={`flex items-center gap-1 border-b transition-all pb-0.5 ${
-                    isActive("/about") ||
-                    isActive("/about/doctors") ||
+                    isActive("/about-sattvic-ayurveda") ||
+                    isActive("/about-sattvic-ayurveda/doctors") ||
                     isActive("/contact")
                       ? "text-clinic-teal-900 border-clinic-gold"
                       : "hover:text-clinic-teal-900 border-transparent hover:border-clinic-gold"
@@ -1041,19 +1041,19 @@ export default function Navbar() {
                       className="absolute top-full left-0 mt-2 w-48 bg-white border border-clinic-border shadow-xl rounded-sm overflow-hidden flex flex-col py-2 uppercase text-[10px] tracking-wider"
                     >
                       <Link
-                        to="/about"
+                        to="/about-sattvic-ayurveda"
                         className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors"
                       >
                         Our Story
                       </Link>
                       <Link
-                        to="/about/centre"
+                        to="/about-sattvic-ayurveda/centre"
                         className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors"
                       >
                         The Centre
                       </Link>
                       <Link
-                        to="/about/doctors"
+                        to="/about-sattvic-ayurveda/doctors"
                         className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors"
                       >
                         Know Your Doctor
@@ -2467,10 +2467,10 @@ export default function Navbar() {
 
               <div className="flex flex-col">
                 <div
-                  className={`border-b border-clinic-border pb-3 w-full flex justify-between items-center ${isActive("/about") || isActive("/about/centre") || isActive("/about/doctors") || isActive("/contact") ? "text-clinic-teal-900" : "hover:text-clinic-teal-900"}`}
+                  className={`border-b border-clinic-border pb-3 w-full flex justify-between items-center ${isActive("/about-sattvic-ayurveda") || isActive("/about-sattvic-ayurveda/centre") || isActive("/about-sattvic-ayurveda/doctors") || isActive("/contact") ? "text-clinic-teal-900" : "hover:text-clinic-teal-900"}`}
                 >
                   <Link
-                    to="/about"
+                    to="/about-sattvic-ayurveda"
                     onClick={() => setMobileMenuOpen(false)}
                     className="uppercase flex-1 text-left"
                   >
@@ -2502,7 +2502,7 @@ export default function Navbar() {
                       className="overflow-hidden flex flex-col pl-4 mt-2 mb-2"
                     >
                       <Link
-                        to="/about"
+                        to="/about-sattvic-ayurveda"
                         onClick={() => {
                           setMobileMenuOpen(false);
                           setMobileExpanded(null);
@@ -2512,7 +2512,7 @@ export default function Navbar() {
                         Our Story
                       </Link>
                       <Link
-                        to="/about/centre"
+                        to="/about-sattvic-ayurveda/centre"
                         onClick={() => {
                           setMobileMenuOpen(false);
                           setMobileExpanded(null);
@@ -2522,7 +2522,7 @@ export default function Navbar() {
                         The Centre
                       </Link>
                       <Link
-                        to="/about/doctors"
+                        to="/about-sattvic-ayurveda/doctors"
                         onClick={() => {
                           setMobileMenuOpen(false);
                           setMobileExpanded(null);

@@ -3,9 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
 
 const navItems = [
-  { name: 'Philosophy', path: '/about' },
-  { name: 'The Centre', path: '/about/centre' },
-  { name: 'Our Doctors', path: '/about/doctors' },
+  { name: 'Philosophy', path: '/about-sattvic-ayurveda' },
+  { name: 'The Centre', path: '/about-sattvic-ayurveda/centre' },
+  { name: 'Our Doctors', path: '/about-sattvic-ayurveda/doctors' },
   { name: 'Contact Us', path: '/contact' }
 ];
 

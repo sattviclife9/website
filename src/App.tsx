@@ -40,7 +40,7 @@ export default function App() {
             <Route path="dosha-quiz" element={<DoshaQuiz />} />
             <Route path="symptom-navigator" element={<SymptomChecker />} />
             <Route path="herb-glossary" element={<HerbGlossary />} />
-            <Route path="about">
+            <Route path="about-sattvic-ayurveda">
               <Route index element={<AboutUs />} />
               <Route path="centre" element={<AboutCentre />} />
               <Route path="doctors" element={<KnowDoctors />} />

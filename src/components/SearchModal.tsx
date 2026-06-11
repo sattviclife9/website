@@ -22,9 +22,9 @@ interface SearchResult {
 
 const ALL_PAGES = [
   { title: "Home", path: "/", description: "Sattvic Life Ayurveda Home Page", category: "Page" },
-  { title: "About Us", path: "/about", description: "Learn about Sattvic Life story and journey", category: "Page" },
-  { title: "The Centre", path: "/about/centre", description: "Our state of the art Ayurvedic hospital", category: "Page" },
-  { title: "Know Your Doctors", path: "/about/doctors", description: "Meet our Ayurveda expert practitioners", category: "Page" },
+  { title: "About Us", path: "/about-sattvic-ayurveda", description: "Learn about Sattvic Life story and journey", category: "Page" },
+  { title: "The Centre", path: "/about-sattvic-ayurveda/centre", description: "Our state of the art Ayurvedic hospital", category: "Page" },
+  { title: "Know Your Doctors", path: "/about-sattvic-ayurveda/doctors", description: "Meet our Ayurveda expert practitioners", category: "Page" },
   { title: "Services", path: "/services", description: "Ayurvedic treatments, diagnostics and therapies", category: "Page" },
   { title: "Treatments Overview", path: "/treatments", description: "All Ayurvedic treatments provided", category: "Page" },
   { title: "Wellness Hub", path: "/wellness-hub", description: "Holistic resources, daily diet & routines", category: "Page" },
