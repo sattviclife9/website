@@ -93,7 +93,7 @@ export default function Footer() {
               <Link to="/treatments" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">Treatments</Link>
               <Link to="/treatments/journey" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">Treatment Journey</Link>
               <Link to="/services" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">Services</Link>
-              <Link to="/about-sattvic-ayurveda/doctors" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">Meet the Doctors</Link>
+              <Link to="/about-sattvic-ayurveda/doctors/dr-khan-aqsa-zarin" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">Meet the Doctors</Link>
               <Link to="/contact" className="hover:text-white transition-colors w-fit mx-auto sm:mx-0">Contact Us</Link>
             </div>
           </div>

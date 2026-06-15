@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 const navItems = [
   { name: 'Philosophy', path: '/about-sattvic-ayurveda' },
   { name: 'The Centre', path: '/about-sattvic-ayurveda/centre' },
-  { name: 'Our Doctors', path: '/about-sattvic-ayurveda/doctors' },
+  { name: 'Our Doctors', path: '/about-sattvic-ayurveda/doctors/dr-khan-aqsa-zarin' },
   { name: 'Contact Us', path: '/contact' }
 ];
 

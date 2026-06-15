@@ -43,7 +43,7 @@ export default function App() {
             <Route path="about-sattvic-ayurveda">
               <Route index element={<AboutUs />} />
               <Route path="centre" element={<AboutCentre />} />
-              <Route path="doctors" element={<KnowDoctors />} />
+              <Route path="doctors/dr-khan-aqsa-zarin" element={<KnowDoctors />} />
             </Route>
             <Route path="store" element={<Store />} />
             <Route path="news" element={<News />} />
