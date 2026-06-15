@@ -171,7 +171,7 @@ export default function SymptomChecker() {
                       Note: This is a diagnostic guide, not a medical prescription. Please consult our doctors for an accurate diagnosis.
                     </p>
                     <Link
-                      to="/contact"
+                      to="/about-sattvic-ayurveda/contactus"
                       className="inline-flex items-center justify-center w-full px-6 py-4 bg-clinic-gold text-white font-bold uppercase tracking-widest text-xs rounded-full hover:bg-clinic-gold/90 transition-colors"
                     >
                       Book a Consultation

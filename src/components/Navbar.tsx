@@ -1024,7 +1024,7 @@ export default function Navbar() {
                   className={`flex items-center gap-1 border-b transition-all pb-0.5 ${
                     isActive("/about-sattvic-ayurveda") ||
                     isActive("/about-sattvic-ayurveda/doctors/dr-khan-aqsa-zarin") ||
-                    isActive("/contact")
+                    isActive("/about-sattvic-ayurveda/contactus")
                       ? "text-clinic-teal-900 border-clinic-gold"
                       : "hover:text-clinic-teal-900 border-transparent hover:border-clinic-gold"
                   }`}
@@ -1059,7 +1059,7 @@ export default function Navbar() {
                         Know Your Doctor
                       </Link>
                       <Link
-                        to="/contact"
+                        to="/about-sattvic-ayurveda/contactus"
                         className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors"
                       >
                         Contact Us
@@ -2467,7 +2467,7 @@ export default function Navbar() {
 
               <div className="flex flex-col">
                 <div
-                  className={`border-b border-clinic-border pb-3 w-full flex justify-between items-center ${isActive("/about-sattvic-ayurveda") || isActive("/about-sattvic-ayurveda/centre") || isActive("/about-sattvic-ayurveda/doctors/dr-khan-aqsa-zarin") || isActive("/contact") ? "text-clinic-teal-900" : "hover:text-clinic-teal-900"}`}
+                  className={`border-b border-clinic-border pb-3 w-full flex justify-between items-center ${isActive("/about-sattvic-ayurveda") || isActive("/about-sattvic-ayurveda/centre") || isActive("/about-sattvic-ayurveda/doctors/dr-khan-aqsa-zarin") || isActive("/about-sattvic-ayurveda/contactus") ? "text-clinic-teal-900" : "hover:text-clinic-teal-900"}`}
                 >
                   <Link
                     to="/about-sattvic-ayurveda"
@@ -2532,7 +2532,7 @@ export default function Navbar() {
                         Know Your Doctor
                       </Link>
                       <Link
-                        to="/contact"
+                        to="/about-sattvic-ayurveda/contactus"
                         onClick={() => {
                           setMobileMenuOpen(false);
                           setMobileExpanded(null);

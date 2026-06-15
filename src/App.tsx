@@ -44,12 +44,12 @@ export default function App() {
               <Route index element={<AboutUs />} />
               <Route path="centre" element={<AboutCentre />} />
               <Route path="doctors/dr-khan-aqsa-zarin" element={<KnowDoctors />} />
+              <Route path="contactus" element={<ContactUs />} />
             </Route>
             <Route path="store" element={<Store />} />
             <Route path="news" element={<News />} />
             <Route path="videos" element={<VideoGallery />} />
             <Route path="announcements" element={<Announcements />} />
-            <Route path="contact" element={<ContactUs />} />
             <Route path="lifestyle-tips" element={<LifestyleTips />} />
             <Route path="privacy" element={<PrivacyPolicy />} />
             <Route path="terms" element={<TermsOfService />} />

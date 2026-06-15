@@ -35,7 +35,7 @@ const ALL_PAGES = [
   { title: "Video Gallery", path: "/videos", description: "Watch patient stories and informative videos", category: "Page" },
   { title: "Lifestyle Tips", path: "/lifestyle-tips", description: "Practical daily health tips", category: "Page" },
   { title: "Ayurvedic Store", path: "/store", description: "Authentic Ayurvedic medicines", category: "Page" },
-  { title: "Contact Us", path: "/contact", description: "Get in touch with us", category: "Page" }
+  { title: "Contact Us", path: "/about-sattvic-ayurveda/contactus", description: "Get in touch with us", category: "Page" }
 ];
 
 interface SearchModalProps {

@@ -582,7 +582,7 @@ export default function ConditionPage() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/contact" className="inline-flex items-center justify-center bg-clinic-teal-900 text-white px-8 py-4 rounded-full font-medium transition-all hover:bg-clinic-teal-800 hover:shadow-lg">
+                <Link to="/about-sattvic-ayurveda/contactus" className="inline-flex items-center justify-center bg-clinic-teal-900 text-white px-8 py-4 rounded-full font-medium transition-all hover:bg-clinic-teal-800 hover:shadow-lg">
                   Book a Consultation
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
@@ -757,7 +757,7 @@ export default function ConditionPage() {
             Don't let {data.name} control your daily activities. Consult our Ayurvedic experts today to get a personalized treatment plan for lasting relief.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="inline-flex items-center justify-center bg-clinic-bronze text-white px-8 py-4 rounded-full font-medium transition-all hover:bg-[#A66E3A] hover:shadow-lg text-lg">
+            <Link to="/about-sattvic-ayurveda/contactus" className="inline-flex items-center justify-center bg-clinic-bronze text-white px-8 py-4 rounded-full font-medium transition-all hover:bg-[#A66E3A] hover:shadow-lg text-lg">
               <Calendar className="mr-2 w-5 h-5" />
               Book Your Appointment
             </Link>
