@@ -13,68 +13,71 @@ export default function DemographicsChart({ conditionName, category }: Demograph
 
   const [selectedGender, setSelectedGender] = useState<'Female' | 'Male'>(isMaleOnly ? 'Male' : 'Female');
 
-  // Mock data - in a real app, this would come from a database or be specific to the condition
-  const adultData = [
-    {
-      ageGroup: '18-30',
-      Male: Math.floor(Math.random() * 20) + 5,
-      Female: Math.floor(Math.random() * 20) + 5,
-    },
-    {
-      ageGroup: '31-40',
-      Male: Math.floor(Math.random() * 30) + 15,
-      Female: Math.floor(Math.random() * 30) + 15,
-    },
-    {
-      ageGroup: '41-50',
-      Male: Math.floor(Math.random() * 40) + 25,
-      Female: Math.floor(Math.random() * 40) + 25,
-    },
-    {
-      ageGroup: '51-60',
-      Male: Math.floor(Math.random() * 50) + 30,
-      Female: Math.floor(Math.random() * 50) + 40,
-    },
-    {
-      ageGroup: '61+',
-      Male: Math.floor(Math.random() * 45) + 35,
-      Female: Math.floor(Math.random() * 45) + 45,
-    },
-  ];
+  let data;
 
-  const childData = [
-    {
-      ageGroup: '0-3',
-      Male: Math.floor(Math.random() * 20) + 5,
-      Female: Math.floor(Math.random() * 20) + 5,
-    },
-    {
-      ageGroup: '4-7',
-      Male: Math.floor(Math.random() * 30) + 15,
-      Female: Math.floor(Math.random() * 30) + 15,
-    },
-    {
-      ageGroup: '8-12',
-      Male: Math.floor(Math.random() * 40) + 25,
-      Female: Math.floor(Math.random() * 40) + 25,
-    },
-    {
-      ageGroup: '13-17',
-      Male: Math.floor(Math.random() * 50) + 30,
-      Female: Math.floor(Math.random() * 50) + 40,
-    },
-  ];
-
-  const data = isChildOnly ? childData : adultData;
+  if (isChildOnly) {
+    data = [
+      { ageGroup: '0-3', Male: 15, Female: 12 },
+      { ageGroup: '4-7', Male: 25, Female: 22 },
+      { ageGroup: '8-12', Male: 35, Female: 30 },
+      { ageGroup: '13-17', Male: 25, Female: 36 },
+    ];
+  } else if (conditionName.includes("PCOD") || conditionName.includes("PCOS") || conditionName.includes("Menstrual") || conditionName.includes("Fertility") || conditionName.includes("Endometriosis")) {
+    // Reproductive age conditions
+    data = [
+      { ageGroup: '13-17', Male: 0, Female: 15 },
+      { ageGroup: '18-30', Male: 0, Female: 45 },
+      { ageGroup: '31-40', Male: 0, Female: 30 },
+      { ageGroup: '41-50', Male: 0, Female: 10 },
+      { ageGroup: '51-60', Male: 0, Female: 0 },
+      { ageGroup: '61+', Male: 0, Female: 0 },
+    ];
+  } else if (conditionName.includes("Arthritis") || conditionName.includes("Osteoarthritis") || conditionName.includes("Spondylosis") || conditionName.includes("Sciatica") || conditionName.includes("Joint")) {
+    // Degenerative / older age conditions
+    data = [
+      { ageGroup: '18-30', Male: 5, Female: 5 },
+      { ageGroup: '31-40', Male: 15, Female: 15 },
+      { ageGroup: '41-50', Male: 25, Female: 30 },
+      { ageGroup: '51-60', Male: 30, Female: 40 },
+      { ageGroup: '61+', Male: 40, Female: 50 },
+    ];
+  } else if (category?.includes("Skin") || category?.includes("Hair")) {
+    // Skin and hair conditions (psoriasis, acne, hair fall)
+    data = [
+      { ageGroup: '13-17', Male: 15, Female: 20 },
+      { ageGroup: '18-30', Male: 40, Female: 45 },
+      { ageGroup: '31-40', Male: 25, Female: 30 },
+      { ageGroup: '41-50', Male: 15, Female: 15 },
+      { ageGroup: '51-60', Male: 10, Female: 10 },
+      { ageGroup: '61+', Male: 5, Female: 5 },
+    ];
+  } else if (conditionName.includes("Men's") || conditionName.includes("Prostate") || conditionName.includes("Erectile")) {
+    data = [
+      { ageGroup: '18-30', Male: 15, Female: 0 },
+      { ageGroup: '31-40', Male: 25, Female: 0 },
+      { ageGroup: '41-50', Male: 35, Female: 0 },
+      { ageGroup: '51-60', Male: 45, Female: 0 },
+      { ageGroup: '61+', Male: 50, Female: 0 },
+    ];
+  } else {
+    // General typical adult data
+    data = [
+      { ageGroup: '18-30', Male: 20, Female: 25 },
+      { ageGroup: '31-40', Male: 35, Female: 30 },
+      { ageGroup: '41-50', Male: 40, Female: 45 },
+      { ageGroup: '51-60', Male: 35, Female: 40 },
+      { ageGroup: '61+', Male: 30, Female: 35 },
+    ];
+  }
 
   return (
     <div className="w-full flex justify-center pb-2 md:pb-4">
       <div className="w-full bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-clinic-sand">
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
           <div>
-            <h3 className="text-2xl font-serif text-clinic-teal-900 mb-2">Patient Demographics</h3>
+            <h3 className="text-2xl font-serif text-clinic-teal-900 mb-2">Global Prevalence Demographics</h3>
             <p className="text-clinic-muted text-sm md:text-base">
-              Typical distribution of patients seeking treatment for {conditionName} by age.
+              Estimated global distribution for {conditionName} by age.
             </p>
           </div>
           
@@ -145,6 +148,9 @@ export default function DemographicsChart({ conditionName, category }: Demograph
               </Bar>
             </BarChart>
           </ResponsiveContainer>
+        </div>
+        <div className="mt-6 text-xs text-slate-400 italic text-center text-balance max-w-4xl mx-auto">
+          * Disclaimer: This chart represents estimated demographic distributions based on general clinical observations and broad medical trends. It is intended for illustrative and educational purposes only and does not reflect specific epidemiological statistics or patient data from Sattvic Ayurveda.
         </div>
       </div>
     </div>

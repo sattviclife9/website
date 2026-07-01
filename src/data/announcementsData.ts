@@ -1,5 +1,19 @@
 export const ANNOUNCEMENTS = [
   {
+    id: 'august-special-offer',
+    badge: 'Limited Time Offer',
+    category: 'Special Offer',
+    date: '1st July to 30th August',
+    title: 'Unlock Your Ultimate Wellness Journey!',
+    description: 'Transform your well-being with our exclusive Ayurvedic offer! Dive into holistic healing and rejuvenate your mind, body, and soul. Don’t miss out—this limited-time opportunity to elevate your health ends on August 30th. Book your session today and feel the difference!',
+    image: 'https://drive.google.com/thumbnail?id=1NCnvDkygU6ERoXeH2qThsmoHEqHwWdYc&sz=w1200',
+    imageAlt: 'Special Offer valid from 1st July to 30th Aug',
+    price: '₹2,799',
+    oldPrice: '₹4,300',
+    duration: '60-80 Mins',
+    recommended: 'Recommended: 3-5 days',
+  },
+  {
     id: 'takra-dhara',
     badge: 'Limited Time Offer',
     category: 'Cooling Therapy',
