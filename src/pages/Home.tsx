@@ -6,6 +6,7 @@ import BackToTopButton from '../components/BackToTopButton';
 import SEO from '../components/SEO';
 import OptimizedImage from '../components/OptimizedImage';
 import { ANNOUNCEMENTS } from '../data/announcementsData';
+import TiltCard from '../components/TiltCard';
 
 const TESTIMONIALS = [
   {
@@ -382,35 +383,19 @@ export default function Home() {
              <p className="text-clinic-muted font-light text-lg">What to expect when you choose us for your healing journey.</p>
            </motion.div>
            
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-8" style={{ perspective: "1200px" }}>
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 pb-8" style={{ perspective: "2000px" }}>
              {[
                { icon: <Activity className="w-6 h-6" />, title: "Thorough Consultations", desc: "We spend time understanding your complete health history, lifestyle, and diet, not just treating your immediate symptoms." },
                { icon: <Leaf className="w-6 h-6" />, title: "Authentic Treatments", desc: "All our therapies use traditional Kerala Panchakarma methods and pure, unadulterated herbal formulations." },
                { icon: <Stethoscope className="w-6 h-6" />, title: "Root-Cause Focus", desc: "We aim to carefully treat the underlying imbalance in your doshas to provide sustainable, long-term health benefits." }
              ].map((feature, idx) => (
-                <motion.div 
-                  key={idx} 
-                  initial={{ opacity: 0, rotateX: 45, rotateY: -10, y: 40, z: -50 }}
-                  whileInView={{ opacity: 1, rotateX: 0, rotateY: 0, y: 0, z: 0 }}
-                  viewport={{ once: false, margin: "-50px" }}
-                  transition={{ delay: idx * 0.15, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-                  whileHover={{ 
-                    rotateX: 6, 
-                    rotateY: -4, 
-                    y: -12, 
-                    scale: 1.02,
-                    z: 20, 
-                    boxShadow: "20px 30px 40px -15px rgba(15, 118, 110, 0.2), -10px -10px 20px -5px rgba(255,255,255,0.9)" 
-                  }}
-                  className="group bg-gradient-to-br from-white to-clinic-ivory p-8 rounded-[2rem] border border-clinic-border relative shadow-sm flex flex-col items-start preserve-3d"
-                  style={{ transformStyle: "preserve-3d" }}
-                >
-                  <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-clinic-gold border border-clinic-border mb-6 group-hover:scale-110 transition-transform duration-500 group-hover:bg-clinic-teal-900 shadow-sm" style={{ transform: "translateZ(40px)" }}>
-                    {feature.icon}
-                  </div>
-                  <h3 className="font-serif text-xl border-b border-transparent pb-1 text-clinic-teal-900 mb-3 group-hover:text-clinic-teal-800 transition-colors duration-300" style={{ transform: "translateZ(30px)" }}>{feature.title}</h3>
-                  <p className="text-clinic-charcoal font-light leading-relaxed text-sm lg:text-base selection:bg-clinic-teal-900/10" style={{ transform: "translateZ(20px)" }}>{feature.desc}</p>
-                </motion.div>
+               <TiltCard
+                 key={idx}
+                 idx={idx}
+                 icon={feature.icon}
+                 title={feature.title}
+                 desc={feature.desc}
+               />
              ))}
            </div>
         </div>
