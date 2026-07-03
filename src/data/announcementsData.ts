@@ -11,7 +11,8 @@ export const ANNOUNCEMENTS = [
     price: '₹2,799',
     oldPrice: '₹4,300',
     duration: '60-80 Mins',
-    recommended: 'Recommended: 3-5 days',
+    recommended: 'Recommended: Minimum 5 days',
+    expired: false,
   },
   {
     id: 'takra-dhara',
@@ -26,6 +27,7 @@ export const ANNOUNCEMENTS = [
     price: '₹2,799',
     duration: '90-110 mins',
     recommended: '5 days recommended',
+    expired: true,
   },
   {
     id: 'womens-day-camp',
@@ -40,5 +42,6 @@ export const ANNOUNCEMENTS = [
     price: 'Free',
     duration: '10am - 7pm',
     recommended: 'Advance Booking Required',
+    expired: true,
   }
 ];

@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Leaf, ChevronRight, ChevronLeft, ArrowRight, Sun, Droplets, Wind, Activity, Stethoscope, Star, MessageCircle, Utensils, Heart, Brain, Quote, Check } from 'lucide-react';
+import { Leaf, ChevronRight, ChevronLeft, ArrowRight, Sun, Droplets, Wind, Activity, Stethoscope, Star, MessageCircle, Utensils, Heart, Brain, Quote, Check, Megaphone } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import BackToTopButton from '../components/BackToTopButton';
 import SEO from '../components/SEO';
 import OptimizedImage from '../components/OptimizedImage';
+import { ANNOUNCEMENTS } from '../data/announcementsData';
 
 const TESTIMONIALS = [
   {
@@ -225,6 +226,65 @@ export default function Home() {
         keywords="best ayurvedic doctor in Pune, top ayurvedic physician Pune, Ayurveda clinic Pune, Agnikarma Pune, Panchakarma treatment Salunke Vihar, Dr. Khan Aqsa Zarin, chronic pain Ayurvedic relief Pune, Nadi Pariksha Pune"
         schema={schema}
       />
+
+      {/* Modern Scrolling Updates Marquee */}
+      <div className="w-full bg-clinic-teal-900 text-white py-3 border-y border-clinic-gold/30 flex items-center overflow-hidden relative select-none font-sans z-30">
+        {/* Left pinned badge */}
+        <div className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-clinic-teal-900 via-clinic-teal-900 to-transparent pr-10 pl-4 md:pl-6 flex items-center z-20">
+          <div className="bg-clinic-gold text-clinic-teal-900 text-[10px] md:text-xs font-bold px-2.5 py-1 rounded-sm tracking-wider uppercase flex items-center gap-1.5 shadow-md">
+            <Megaphone className="w-3.5 h-3.5 animate-bounce" />
+            <span>Updates</span>
+          </div>
+        </div>
+
+        {/* Rolling items container */}
+        <div className="flex-1 overflow-hidden flex items-center ml-24 md:ml-32 pr-28 md:pr-36">
+          <motion.div
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              ease: "linear",
+              duration: 25,
+              repeat: Infinity,
+            }}
+            className="flex gap-16 whitespace-nowrap text-xs md:text-sm text-clinic-white-off font-medium tracking-wide py-0.5"
+          >
+            {Array(2).fill(null).map((_, groupIdx) => (
+              <div key={groupIdx} className="flex gap-16 shrink-0 items-center">
+                {ANNOUNCEMENTS.filter(ann => !ann.expired).map((ann) => (
+                  <Link
+                    key={`${ann.id}-${groupIdx}`}
+                    to="/announcements"
+                    className="hover:text-clinic-gold flex items-center gap-3 transition-colors duration-200 cursor-pointer shrink-0"
+                  >
+                    <span className="inline-block w-2 h-2 rounded-full bg-clinic-gold animate-pulse shrink-0"></span>
+                    <span className="font-serif font-semibold text-clinic-white-off tracking-normal">{ann.title}</span>
+                    <span className="text-clinic-gold/90 font-bold shrink-0">({ann.date})</span>
+                    {ann.price && (
+                      <span className="text-emerald-400 font-bold bg-emerald-950/40 px-2 py-0.5 rounded-sm border border-emerald-800/30 text-[11px] shrink-0">
+                        OFFER: {ann.price} <span className="line-through text-slate-400 text-[10px] ml-1">{ann.oldPrice}</span>
+                      </span>
+                    )}
+                    {ann.duration && <span className="text-slate-300 shrink-0">[{ann.duration}]</span>}
+                    {ann.recommended && <span className="text-clinic-gold/80 italic shrink-0">{ann.recommended}</span>}
+                  </Link>
+                ))}
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Right pinned navigation action */}
+        <div className="absolute right-0 top-0 bottom-0 bg-gradient-to-l from-clinic-teal-900 via-clinic-teal-900 to-transparent pl-10 pr-4 md:pr-6 flex items-center z-20">
+          <Link
+            to="/announcements"
+            className="text-[10px] md:text-xs text-clinic-gold hover:text-white font-bold tracking-wider uppercase flex items-center gap-1 bg-clinic-teal-950/60 px-2.5 py-1 rounded-sm border border-clinic-gold/20 hover:border-clinic-gold transition-all shadow-sm"
+          >
+            <span>View All</span>
+            <ArrowRight className="w-3 h-3" />
+          </Link>
+        </div>
+      </div>
+
       <section className="pt-8 md:pt-16 max-w-7xl mx-auto px-6 md:px-12 mb-20 md:mb-28 text-center md:text-left relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <motion.div

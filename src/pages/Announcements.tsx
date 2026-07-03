@@ -5,7 +5,9 @@ import { X, Check, Share2, Copy, Maximize2 } from 'lucide-react';
 import { createPortal } from 'react-dom';
 import SEO from '../components/SEO';
 import InsightsNav from '../components/InsightsNav';
-import { ANNOUNCEMENTS as announcements } from '../data/announcementsData';
+import { ANNOUNCEMENTS } from '../data/announcementsData';
+
+const announcements = ANNOUNCEMENTS.filter(ann => !ann.expired);
 
 import { useScrollLock } from '../hooks/useScrollLock';
 
