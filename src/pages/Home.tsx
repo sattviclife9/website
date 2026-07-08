@@ -856,7 +856,7 @@ export default function Home() {
               </div>
 
               <div className="pt-2">
-                <Link to="/know-doctors">
+                <Link to="/about-sattvic-ayurveda/doctors/dr-khan-aqsa-zarin">
                   <motion.button 
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.98 }}
