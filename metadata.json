@@ -2,5 +2,7 @@
   "name": "Sattvic Clinic Therapies",
   "description": "A new page for Sattvic Advanced Ayurveda & Panchakarma Centre.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
