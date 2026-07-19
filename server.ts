@@ -40,6 +40,12 @@ async function startServer() {
   const app = express();
   const PORT = 3000;
 
+  // Logging middleware
+  app.use((req, res, next) => {
+    console.log(`[Request] ${req.method} ${req.url}`);
+    next();
+  });
+
   app.use(express.json());
 
   // Initialize website knowledge once at startup
@@ -65,6 +71,7 @@ Limitations & Guidelines (CRITICAL):
 5. Structure information with bullet points or bold text if it helps readability.
 6. If a patient expresses any doubt, fear, frustration, or skepticism about treatments or their effectiveness, respond in an incredibly positive, calming manner. Actively reassure them by sharing a brief, relevant success story (from the list below) or a general anecdote of healing from the clinic to build their confidence and hope.
 7. For ANY booking-related queries, you MUST provide the user with this direct consultation booking link formatted EXACTLY like this: [Book Appointment](https://admin.ayurgrid.com/doctor/websiteappointments/createAppointment?doctor_id=945)
+8. Do NOT use the greeting "Hari Om" or any similar religious/sectarian phrases in your responses. Keep greetings and general tone neutral, professional, warm, and Ayurvedic (e.g., "Namaste", "Greetings", or "Welcome to Sattvic Advanced Ayurveda").
 
 Success Stories to Share (Use these when patients have doubts or are frustrated):
 - Joint Pain/Arthritis: A 55-year-old patient suffering from severe knee joint pain and restricted mobility was advised joint replacement. After completing a 21-day Janu Basti and localized Abhyanga Panchakarma regimen at Sattvic Centre, their pain reduced by 80%, and they regained the ability to walk comfortably without surgery.
