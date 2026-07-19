@@ -8,11 +8,12 @@ import { GoogleGenAI } from "@google/genai";
 // Initialize Gemini via the SDK safely on the client as a fallback
 let clientAI: GoogleGenAI | null = null;
 try {
-  const apiKey = typeof process !== "undefined" && process?.env ? process.env.GEMINI_API_KEY : undefined;
+  const apiKey = (import.meta.env?.VITE_GEMINI_API_KEY as string) || 
+                 (typeof process !== "undefined" && process?.env ? process.env.GEMINI_API_KEY : undefined);
   if (apiKey && apiKey.trim() !== "") {
     clientAI = new GoogleGenAI({ apiKey });
   } else {
-    console.warn("GEMINI_API_KEY is missing/empty. Direct client-side AI chat is unavailable.");
+    console.warn("GEMINI_API_KEY / VITE_GEMINI_API_KEY is missing/empty. Direct client-side AI chat is unavailable.");
   }
 } catch (error) {
   console.warn("Could not load GoogleGenAI SDK directly on the client:", error);
@@ -201,6 +202,7 @@ export default function AIChatBot() {
     try {
       let dataText = "";
       let fetchedSuccessfully = false;
+      let fetchErrorDetails = "";
 
       // 1. Try to fetch from the server-side route
       try {
@@ -223,19 +225,28 @@ export default function AIChatBot() {
             dataText = data.text;
             fetchedSuccessfully = true;
           } else {
+            fetchErrorDetails = `Unexpected content type: ${contentType || "none"}`;
             console.warn("Unexpected response format or content type from server:", contentType);
           }
         } else {
+          fetchErrorDetails = `Server responded with status ${response.status}`;
           console.warn("Server responded with error status:", response.status);
+          try {
+            const errJson = await response.json();
+            if (errJson && errJson.error) {
+              fetchErrorDetails += ` (${errJson.error})`;
+            }
+          } catch (_) {}
         }
       } catch (err) {
+        fetchErrorDetails = err instanceof Error ? err.message : String(err);
         console.warn("Server API fetch failed, falling back to client-side direct SDK...", err);
       }
 
       // 2. If server API failed (or was redirected by the auth cookie check), fall back to direct browser SDK
       if (!fetchedSuccessfully) {
         if (!clientAI) {
-          throw new Error("Our AI assistant is temporarily offline. Please contact Pune clinic directly at +91-9404417145 or book online!");
+          throw new Error(`Our AI assistant is temporarily offline (Details: ${fetchErrorDetails}). Please contact Pune clinic directly at +91-9404417145 or book online!`);
         }
 
         const chatHistory = messages
