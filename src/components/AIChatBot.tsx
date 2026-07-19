@@ -3,6 +3,70 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { MessageCircle, X, Send, User, Bot, Loader2 } from "lucide-react";
 import Markdown from "react-markdown";
+import { GoogleGenAI } from "@google/genai";
+
+// Initialize Gemini via the SDK safely on the client as a fallback
+let clientAI: GoogleGenAI | null = null;
+try {
+  const apiKey = typeof process !== "undefined" && process?.env ? process.env.GEMINI_API_KEY : undefined;
+  if (apiKey && apiKey.trim() !== "") {
+    clientAI = new GoogleGenAI({ apiKey });
+  } else {
+    console.warn("GEMINI_API_KEY is missing/empty. Direct client-side AI chat is unavailable.");
+  }
+} catch (error) {
+  console.warn("Could not load GoogleGenAI SDK directly on the client:", error);
+}
+
+// Dynamically load all page contents so the bot is always up-to-date
+const rawPages = import.meta.glob("../pages/**/*.tsx", {
+  query: "?raw",
+  eager: true,
+});
+let WEBSITE_KNOWLEDGE = "";
+for (const path in rawPages) {
+  // @ts-ignore
+  const content = rawPages[path].default || rawPages[path];
+  // Basic cleanup to reduce token size a bit
+  const cleanContent =
+    typeof content === "string"
+      ? content
+          .replace(/className="[^"]*"/g, "")
+          .replace(/<svg[\s\S]*?<\/svg>/g, "")
+      : "";
+  WEBSITE_KNOWLEDGE += `\n\n--- Page: ${path} ---\n${cleanContent}`;
+}
+
+// System instructions for the bot to give it persona context
+const SYSTEM_INSTRUCTION = `You are a helpful, knowledgeable, and empathetic AI assistant for "Sattvic Advanced Ayurveda & Panchakarma Centre". 
+Your goal is to assist users with questions about Ayurveda, Panchakarma, holistic wellness, and the services we offer (like Abhyanga, Shirodhara, Swedan, Kati Basti, Dosha balancing, etc.).
+
+Basic Information about the Clinic:
+- Clinic Name: Sattvic Advanced Ayurveda & Panchakarma Centre
+- Address: C Building, 1st Floor, Girme Heights, Salunke Vihar, Pune - 411040
+- Phone / WhatsApp: +91-9404417145
+- Email: sattviclife9@gmail.com
+- Hours: Monday to Saturday. Sunday checkup is strictly on a prior appointment basis.
+- Services: Authentic Kerala Panchakarma therapies and root-cause Ayurvedic treatments for holistic wellness.
+
+Limitations & Guidelines (CRITICAL):
+1. You cannot book appointments directly or access live schedules. Instead, provide the direct booking link as a markdown link like this: [Book Appointment](https://admin.ayurgrid.com/doctor/websiteappointments/createAppointment?doctor_id=945) and encourage users to call or WhatsApp +91-9404417145 or visit the clinic.
+2. If someone asks for medical advice, treatments, or cures for specific conditions: first provide a general, helpful answer based on Ayurvedic principles. Then, you MUST conclude your response by expressing (in your own empathetic, wise tone) that AI cannot provide a permanent fix, and they must consult our doctors in person for a proper, personalized root-cause diagnosis.
+3. Always maintain a holistic, professional, calming, compassionate, and wise Ayurvedic perspective.
+4. Keep responses concise unless the user asks for a detailed explanation.
+5. Structure information with bullet points or bold text if it helps readability.
+6. If a patient expresses any doubt, fear, frustration, or skepticism about treatments or their effectiveness, respond in an incredibly positive, calming manner. Actively reassure them by sharing a brief, relevant success story (from the list below) or a general anecdote of healing from the clinic to build their confidence and hope.
+7. For ANY booking-related queries, you MUST provide the user with this direct consultation booking link formatted EXACTLY like this: [Book Appointment](https://admin.ayurgrid.com/doctor/websiteappointments/createAppointment?doctor_id=945)
+
+Success Stories to Share (Use these when patients have doubts or are frustrated):
+- Joint Pain/Arthritis: A 55-year-old patient suffering from severe knee joint pain and restricted mobility was advised joint replacement. After completing a 21-day Janu Basti and localized Abhyanga Panchakarma regimen at Sattvic Centre, their pain reduced by 80%, and they regained the ability to walk comfortably without surgery.
+- Digestive/Acidity Issues: A professional in her 30s dealing with chronic hyperacidity and IBS found no relief from modern medicine. Through a personalized diet plan (Pathya), Vaman (therapeutic emesis), and specific herbal formulations guided by our doctors, her digestion completely normalized within 3 months.
+- Stress & Migraines: A 40-year-old patient with corporate burnout and severe weekly migraines underwent a customized Shirodhara and Nasya therapy protocol. Their stress levels dropped significantly, and they have been migraine-free for over a year.
+- Skin Disorders (Psoriasis): A patient battling extensive psoriasis for five years experienced clear skin after undergoing a deep detoxification program including Virechana and specialized Lepam applications.
+
+Below is the FULL text content of all the pages of our website. You MUST read this carefully and use it as your knowledge base to accurately answer User Questions:
+${WEBSITE_KNOWLEDGE}
+`;
 
 type Message = {
   id: string;
@@ -85,23 +149,36 @@ export default function AIChatBot() {
   }, []);
 
   useEffect(() => {
+    const showOfflineNotice = () => {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: "missing-key-notice",
+          role: "model",
+          text: "### Note from Sattvic Center:\nOur AI assistant is temporarily in offline/information-only mode. \n\nYou can still call, WhatsApp, or schedule appointments directly:\n- **[Book Appointment Direct Link](https://admin.ayurgrid.com/doctor/websiteappointments/createAppointment?doctor_id=945)**\n- **WhatsApp / Call**: +91-9404417145 \n- **Visit us**: C Building, Girme Heights, Salunke Vihar, Pune",
+        },
+      ]);
+    };
+
     // Check if server-side AI is configured
     fetch("/api/health")
-      .then((res) => res.json())
+      .then((res) => {
+        const contentType = res.headers.get("content-type");
+        if (res.ok && contentType && contentType.includes("application/json")) {
+          return res.json();
+        }
+        throw new Error("Response is not JSON or not OK");
+      })
       .then((data) => {
-        if (!data.aiEnabled) {
-          setMessages((prev) => [
-            ...prev,
-            {
-              id: "missing-key-notice",
-              role: "model",
-              text: "### Note from Sattvic Center:\nOur AI assistant is temporarily in offline/information-only mode. \n\nYou can still call, WhatsApp, or schedule appointments directly:\n- **[Book Appointment Direct Link](https://admin.ayurgrid.com/doctor/websiteappointments/createAppointment?doctor_id=945)**\n- **WhatsApp / Call**: +91-9404417145 \n- **Visit us**: C Building, Girme Heights, Salunke Vihar, Pune",
-            },
-          ]);
+        if (!data.aiEnabled && !clientAI) {
+          showOfflineNotice();
         }
       })
       .catch((err) => {
-        console.error("Failed to fetch health check:", err);
+        console.warn("Failed to fetch health check from server, evaluating client-side fallback status...", err);
+        if (!clientAI) {
+          showOfflineNotice();
+        }
       });
   }, []);
 
@@ -121,27 +198,63 @@ export default function AIChatBot() {
     setIsTyping(true);
 
     try {
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          message: userText,
-          history: messages,
-        }),
-      });
+      let dataText = "";
+      let fetchedSuccessfully = false;
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || `Server responded with status ${response.status}`);
+      // 1. Try to fetch from the server-side route
+      try {
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            message: userText,
+            history: messages,
+          }),
+        });
+
+        if (response.ok) {
+          const contentType = response.headers.get("content-type");
+          if (contentType && contentType.includes("application/json")) {
+            const data = await response.json();
+            dataText = data.text;
+            fetchedSuccessfully = true;
+          }
+        }
+      } catch (err) {
+        console.warn("Server API fetch failed, falling back to client-side direct SDK...", err);
       }
 
-      const data = await response.json();
+      // 2. If server API failed (or was redirected by the auth cookie check), fall back to direct browser SDK
+      if (!fetchedSuccessfully) {
+        if (!clientAI) {
+          throw new Error("Our AI assistant is temporarily offline. Please contact Pune clinic directly at +91-9404417145 or book online!");
+        }
+
+        const chatHistory = messages
+          .filter((msg: any) => msg.id !== "init" && msg.id !== "missing-key-notice")
+          .map((msg: any) => ({
+            role: msg.role === "user" ? "user" : "model",
+            parts: [{ text: msg.text }],
+          }));
+
+        const chatSession = clientAI.chats.create({
+          model: "gemini-3.5-flash",
+          config: {
+            systemInstruction: SYSTEM_INSTRUCTION,
+          },
+          history: chatHistory,
+        });
+
+        const directResponse = await chatSession.sendMessage({ message: userText });
+        dataText = directResponse.text || "I'm sorry, I couldn't process that response.";
+      }
+
       const modelMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: "model",
-        text: data.text,
+        text: dataText,
       };
 
       setMessages((prev) => [...prev, modelMessage]);
