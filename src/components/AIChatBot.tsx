@@ -19,6 +19,31 @@ try {
   console.warn("Could not load GoogleGenAI SDK directly on the client:", error);
 }
 
+// Helper to determine the backend API base URL.
+// When hosted on custom static domains (like Hostinger www.sattviclife.in), 
+// it points directly to the deployed Cloud Run service with the configured Gemini API key.
+const getApiUrl = (path: string): string => {
+  const envApiUrl = import.meta.env.VITE_API_URL;
+  if (envApiUrl && envApiUrl.trim() !== "") {
+    const base = envApiUrl.endsWith("/") ? envApiUrl.slice(0, -1) : envApiUrl;
+    return `${base}${path}`;
+  }
+
+  const currentHost = typeof window !== "undefined" ? window.location.hostname : "";
+  if (
+    currentHost &&
+    currentHost !== "localhost" &&
+    currentHost !== "127.0.0.1" &&
+    !currentHost.includes("run.app") &&
+    !currentHost.includes("aistudio-build.com")
+  ) {
+    // Return the stable deployed Cloud Run service URL
+    return `https://ais-pre-nvhh7vffqv6pwj3gerwe4l-548074607693.asia-east1.run.app${path}`;
+  }
+
+  return path;
+};
+
 // Dynamically load all page contents so the bot is always up-to-date
 const rawPages = import.meta.glob("../pages/**/*.tsx", {
   query: "?raw",
@@ -163,7 +188,7 @@ export default function AIChatBot() {
     };
 
     // Check if server-side AI is configured
-    fetch("/api/health", { credentials: "include" })
+    fetch(getApiUrl("/api/health"), { credentials: "include" })
       .then((res) => {
         const contentType = res.headers.get("content-type");
         if (res.ok && contentType && contentType.includes("application/json")) {
@@ -206,7 +231,7 @@ export default function AIChatBot() {
 
       // 1. Try to fetch from the server-side route
       try {
-        const response = await fetch("/api/chat", {
+        const response = await fetch(getApiUrl("/api/chat"), {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
