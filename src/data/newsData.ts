@@ -1,5 +1,18 @@
 export const NEWS_ARTICLES = [
   {
+    id: 6,
+    title: "AYUSH Minister urges Rajnath Singh to expand AYUSH services in military hospitals",
+    excerpt: "Union Minister of State (Independent Charge) for AYUSH Prataprao Jadhav called on Defence Minister Rajnath Singh, proposing the expansion of AYUSH healthcare services across military hospitals, armed forces medical establishments, and cantonment boards nationwide.",
+    date: "July 22, 2026",
+    sources: [
+      {
+        name: "The Hindu",
+        link: "https://www.thehindu.com/news/national/ayush-minister-urges-rajnath-singh-to-expand-ayush-services-in-military-hospitals/article71253584.ece/amp/"
+      }
+    ],
+    category: "Policy",
+  },
+  {
     id: 2,
     title: "Ashwagandha industry calls for science-led review to protect farmers, Ayurveda and India's nutraceutical growth",
     excerpt: "Stakeholders and industry leaders have urged for a comprehensive, science-led review to safeguard the interests of Ashwagandha farmers, preserve Ayurvedic heritage, and secure India's position in global nutraceutical growth.",
