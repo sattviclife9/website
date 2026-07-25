@@ -170,12 +170,14 @@ export default function SymptomChecker() {
                     <p className="text-sm text-white/60 italic mb-4">
                       Note: This is a diagnostic guide, not a medical prescription. Please consult our doctors for an accurate diagnosis.
                     </p>
-                    <Link
-                      to="/about-sattvic-ayurveda/contactus"
-                      className="inline-flex items-center justify-center w-full px-6 py-4 bg-clinic-gold text-white font-bold uppercase tracking-widest text-xs rounded-full hover:bg-clinic-gold/90 transition-colors"
+                    <a
+                      href="https://wa.me/919404417145?text=Hello!%20I%20used%20the%20Symptom%20Checker%20on%20your%20website%20and%20would%20like%20to%20consult%20an%20Ayurvedic%20doctor."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center w-full px-6 py-4 bg-[#25D366] text-white font-bold uppercase tracking-widest text-xs rounded-full hover:bg-[#20BE5C] transition-colors"
                     >
-                      Book a Consultation
-                    </Link>
+                      WhatsApp Us
+                    </a>
                   </div>
                 </motion.div>
               ) : (

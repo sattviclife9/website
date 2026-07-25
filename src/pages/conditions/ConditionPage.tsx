@@ -582,11 +582,16 @@ export default function ConditionPage() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/about-sattvic-ayurveda/contactus" className="inline-flex items-center justify-center bg-clinic-teal-900 text-white px-8 py-4 rounded-full font-medium transition-all hover:bg-clinic-teal-800 hover:shadow-lg">
-                  Book a Consultation
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-                <a href="tel:+1234567890" className="inline-flex items-center justify-center border-2 border-clinic-teal-900 text-clinic-teal-900 px-8 py-4 rounded-full font-medium transition-all hover:bg-clinic-teal-50">
+                <a 
+                  href={`https://wa.me/919404417145?text=${encodeURIComponent(`Hello! I would like to consult regarding ${data.name} at Sattvic Advanced Ayurveda.`)}`} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center justify-center bg-[#25D366] text-white px-8 py-4 rounded-full font-medium transition-all hover:bg-[#20BE5C] hover:shadow-lg"
+                >
+                  <WhatsAppIcon className="mr-2 w-5 h-5" />
+                  WhatsApp Us
+                </a>
+                <a href="tel:+919404417145" className="inline-flex items-center justify-center border-2 border-clinic-teal-900 text-clinic-teal-900 px-8 py-4 rounded-full font-medium transition-all hover:bg-clinic-teal-50">
                   <Phone className="mr-2 w-5 h-5" />
                   Call Now
                 </a>
@@ -757,13 +762,13 @@ export default function ConditionPage() {
             Don't let {data.name} control your daily activities. Consult our Ayurvedic experts today to get a personalized treatment plan for lasting relief.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/about-sattvic-ayurveda/contactus" className="inline-flex items-center justify-center bg-clinic-bronze text-white px-8 py-4 rounded-full font-medium transition-all hover:bg-[#A66E3A] hover:shadow-lg text-lg">
-              <Calendar className="mr-2 w-5 h-5" />
-              Book Your Appointment
-            </Link>
             <a href={`https://wa.me/919404417145?text=${encodeURIComponent(`Hello! I would like to know more about the Ayurvedic treatment for ${data.name} at Sattvic Advanced Ayurveda.`)}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-[#25D366] text-white px-8 py-4 rounded-full font-medium transition-all hover:bg-[#20BE5C] hover:shadow-lg text-lg">
               <WhatsAppIcon className="mr-2 w-5 h-5" />
               WhatsApp Us
+            </a>
+            <a href="tel:+919404417145" className="inline-flex items-center justify-center border-2 border-clinic-teal-900 text-clinic-teal-900 px-8 py-4 rounded-full font-medium transition-all hover:bg-clinic-teal-50 text-lg">
+              <Phone className="mr-2 w-5 h-5" />
+              Call Now
             </a>
           </div>
         </div>
