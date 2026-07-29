@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, RefreshCw, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -67,6 +67,23 @@ export default function DoshaQuiz() {
   const [currentStep, setCurrentStep] = useState(-1); // -1 is intro
   const [answers, setAnswers] = useState<Record<number, Dosha>>({});
   const [result, setResult] = useState<Dosha | null>(null);
+
+  // Handle mobile Back button during quiz steps
+  useEffect(() => {
+    if (currentStep >= 0) {
+      window.history.pushState({ isDoshaQuizStep: currentStep }, "");
+
+      const handlePopState = () => {
+        setCurrentStep((prev) => (prev > 0 ? prev - 1 : -1));
+      };
+
+      window.addEventListener("popstate", handlePopState);
+
+      return () => {
+        window.removeEventListener("popstate", handlePopState);
+      };
+    }
+  }, [currentStep]);
 
   const handleStart = () => setCurrentStep(0);
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Check, Share2, Copy, Maximize2 } from 'lucide-react';
@@ -16,6 +16,25 @@ export default function Announcements() {
   const currentModalId = searchParams.get('id');
   const [copied, setCopied] = useState<string | null>(null);
   const [isImageExpanded, setIsImageExpanded] = useState(false);
+
+  useEffect(() => {
+    if (isImageExpanded) {
+      window.history.pushState({ isAnnouncementImageExpanded: true }, "");
+
+      const handlePopState = () => {
+        setIsImageExpanded(false);
+      };
+
+      window.addEventListener("popstate", handlePopState);
+
+      return () => {
+        window.removeEventListener("popstate", handlePopState);
+        if (window.history.state?.isAnnouncementImageExpanded) {
+          window.history.back();
+        }
+      };
+    }
+  }, [isImageExpanded]);
 
   const openModal = (id: string) => {
     setIsImageExpanded(false);

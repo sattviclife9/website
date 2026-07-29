@@ -33,6 +33,53 @@ export default function Navbar() {
 
   useScrollLock(mobileMenuOpen);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setMobileExpanded(null);
+  }, [location.pathname]);
+
+  // Intercept mobile Back button when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      window.history.pushState({ isMobileMenuOpen: true }, "");
+
+      const handlePopState = () => {
+        setMobileMenuOpen(false);
+        setMobileExpanded(null);
+      };
+
+      window.addEventListener("popstate", handlePopState);
+
+      return () => {
+        window.removeEventListener("popstate", handlePopState);
+        if (window.history.state?.isMobileMenuOpen) {
+          window.history.back();
+        }
+      };
+    }
+  }, [mobileMenuOpen]);
+
+  // Intercept mobile Back button when search modal is open
+  useEffect(() => {
+    if (searchModalOpen) {
+      window.history.pushState({ isSearchModalOpen: true }, "");
+
+      const handlePopState = () => {
+        setSearchModalOpen(false);
+      };
+
+      window.addEventListener("popstate", handlePopState);
+
+      return () => {
+        window.removeEventListener("popstate", handlePopState);
+        if (window.history.state?.isSearchModalOpen) {
+          window.history.back();
+        }
+      };
+    }
+  }, [searchModalOpen]);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);

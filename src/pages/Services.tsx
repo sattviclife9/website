@@ -300,6 +300,47 @@ export default function Services() {
 
   useScrollLock(!!selectedService);
 
+  // Handle mobile Back button for selected service modal
+  useEffect(() => {
+    if (selectedService) {
+      window.history.pushState({ isServiceModalOpen: true }, "");
+
+      const handlePopState = () => {
+        setSelectedService(null);
+        setIsImageExpanded(false);
+      };
+
+      window.addEventListener("popstate", handlePopState);
+
+      return () => {
+        window.removeEventListener("popstate", handlePopState);
+        if (window.history.state?.isServiceModalOpen) {
+          window.history.back();
+        }
+      };
+    }
+  }, [selectedService]);
+
+  // Handle mobile Back button for expanded image modal
+  useEffect(() => {
+    if (isImageExpanded) {
+      window.history.pushState({ isImageExpanded: true }, "");
+
+      const handlePopState = () => {
+        setIsImageExpanded(false);
+      };
+
+      window.addEventListener("popstate", handlePopState);
+
+      return () => {
+        window.removeEventListener("popstate", handlePopState);
+        if (window.history.state?.isImageExpanded) {
+          window.history.back();
+        }
+      };
+    }
+  }, [isImageExpanded]);
+
   useEffect(() => {
     if (location.hash) {
       setTimeout(() => {

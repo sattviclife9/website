@@ -148,6 +148,26 @@ export default function AIChatBot() {
     };
   }, [isOpen]);
 
+  // Intercept mobile Back button when chatbot drawer is open
+  useEffect(() => {
+    if (isOpen) {
+      window.history.pushState({ isChatBotOpen: true }, "");
+
+      const handlePopState = () => {
+        setIsOpen(false);
+      };
+
+      window.addEventListener("popstate", handlePopState);
+
+      return () => {
+        window.removeEventListener("popstate", handlePopState);
+        if (window.history.state?.isChatBotOpen) {
+          window.history.back();
+        }
+      };
+    }
+  }, [isOpen]);
+
   useEffect(() => {
     // Scroll to bottom whenever messages change
     if (messagesEndRef.current) {
