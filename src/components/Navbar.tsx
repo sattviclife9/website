@@ -1091,13 +1091,7 @@ export default function Navbar() {
                         to="/about-sattvic-ayurveda"
                         className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors"
                       >
-                        Our Story
-                      </Link>
-                      <Link
-                        to="/about-sattvic-ayurveda/centre"
-                        className="px-4 py-2 hover:bg-clinic-teal-50 hover:text-clinic-teal-900 transition-colors"
-                      >
-                        The Centre
+                        Our Story & Centre
                       </Link>
                       <Link
                         to="/about-sattvic-ayurveda/doctors/dr-khan-aqsa-zarin"
@@ -2556,17 +2550,7 @@ export default function Navbar() {
                         }}
                         className="py-4 border-b border-clinic-border/50 uppercase"
                       >
-                        Our Story
-                      </Link>
-                      <Link
-                        to="/about-sattvic-ayurveda/centre"
-                        onClick={() => {
-                          setMobileMenuOpen(false);
-                          setMobileExpanded(null);
-                        }}
-                        className="py-4 border-b border-clinic-border/50 uppercase"
-                      >
-                        The Centre
+                        Our Story & Centre
                       </Link>
                       <Link
                         to="/about-sattvic-ayurveda/doctors/dr-khan-aqsa-zarin"

@@ -23,8 +23,8 @@ interface SearchResult {
 
 const ALL_PAGES = [
   { title: "Home", path: "/", description: "Sattvic Life Ayurveda Home Page", category: "Page" },
-  { title: "About Us", path: "/about-sattvic-ayurveda", description: "Learn about Sattvic Life story and journey", category: "Page" },
-  { title: "The Centre", path: "/about-sattvic-ayurveda/centre", description: "Our state of the art Ayurvedic hospital", category: "Page" },
+  { title: "Our Story & Centre", path: "/about-sattvic-ayurveda", description: "Learn about Sattvic Life story, philosophy, and our healing sanctuary", category: "Page" },
+  { title: "The Centre & Sanctuary", path: "/about-sattvic-ayurveda#centre-sanctuary", description: "Our state-of-the-art Ayurvedic clinic and Panchakarma facility tour", category: "Page" },
   { title: "Know Your Doctors", path: "/about-sattvic-ayurveda/doctors/dr-khan-aqsa-zarin", description: "Meet our Ayurveda expert practitioners", category: "Page" },
   { title: "Services", path: "/services", description: "Ayurvedic treatments, diagnostics and therapies", category: "Page" },
   { title: "Treatments Overview", path: "/treatments", description: "All Ayurvedic treatments provided", category: "Page" },
