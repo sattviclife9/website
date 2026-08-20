@@ -64,8 +64,61 @@ export default function Store() {
   const [activeTab, setActiveTab] = useState<'benefits' | 'ingredients' | 'indications' | 'usage' | 'faqs'>('benefits');
   const [isImageExpanded, setIsImageExpanded] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
   const modalScrollRef = useRef<HTMLDivElement>(null);
   const touchStartY = useRef<number | null>(null);
+
+  // Auto-dismiss toast after 3 seconds
+  useEffect(() => {
+    if (toastMessage) {
+      const timer = setTimeout(() => setToastMessage(null), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [toastMessage]);
+
+  const handleShareProduct = async (product: Product, e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+
+    const shareUrl = `${window.location.origin}/store?product=${product.id}`;
+    const shareTitle = `${product.name} | Sattvic Advanced Ayurveda`;
+    const shareText = `Check out ${product.name} (${product.hindiName || ''}) - ${product.tagline} at Sattvic Advanced Ayurveda, Pune.`;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: shareTitle,
+          text: shareText,
+          url: shareUrl,
+        });
+        setToastMessage(`Shared ${product.name}!`);
+        return;
+      } catch (err: any) {
+        // If user cancelled share sheet, do nothing
+        if (err.name === 'AbortError') return;
+      }
+    }
+
+    // Fallback: Copy to clipboard
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(shareUrl);
+        setToastMessage(`Link to ${product.name} copied to clipboard!`);
+      } else {
+        const input = document.createElement('input');
+        input.value = shareUrl;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        setToastMessage(`Link to ${product.name} copied!`);
+      }
+    } catch {
+      setToastMessage(`Product URL: ${shareUrl}`);
+    }
+  };
 
   // Lock body scroll when a product modal or image lightbox is active
   useScrollLock(Boolean(activeProduct) || isImageExpanded);
@@ -343,7 +396,7 @@ export default function Store() {
                 </div>
 
                 {/* Actions & Button Bar */}
-                <div className="pt-4 border-t border-stone-100 flex items-center justify-between gap-3">
+                <div className="pt-4 border-t border-stone-100 flex items-center justify-between gap-2.5">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
@@ -351,8 +404,17 @@ export default function Store() {
                     }}
                     className="flex-1 inline-flex items-center justify-center gap-2 bg-clinic-teal-900 hover:bg-clinic-teal-800 text-white px-4 py-2.5 rounded-full text-xs font-semibold shadow-xs hover:shadow-md transition-all cursor-pointer"
                   >
-                    <span>View Details & Patient Info</span>
+                    <span>View Details</span>
                     <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+
+                  <button
+                    onClick={(e) => handleShareProduct(prod, e)}
+                    className="shrink-0 p-2.5 rounded-full bg-stone-100 text-stone-700 hover:bg-clinic-teal-900 hover:text-white transition-all cursor-pointer shadow-2xs active:scale-95"
+                    title={`Share ${prod.name}`}
+                    aria-label={`Share ${prod.name}`}
+                  >
+                    <Share2 className="w-4 h-4" />
                   </button>
 
                   <a
@@ -453,7 +515,7 @@ export default function Store() {
                   </button>
 
                   {/* Center Title */}
-                  <div className="text-center truncate px-2 max-w-[45%] sm:max-w-[55%]">
+                  <div className="text-center truncate px-2 max-w-[40%] sm:max-w-[50%]">
                     <h3 className="text-xs sm:text-sm font-bold text-clinic-teal-900 font-serif truncate">
                       {activeProduct.name} {activeProduct.hindiName && `(${activeProduct.hindiName})`}
                     </h3>
@@ -462,16 +524,28 @@ export default function Store() {
                     </span>
                   </div>
 
-                  {/* Right: Big Prominent Close Button */}
-                  <button
-                    onClick={handleCloseProduct}
-                    className="inline-flex items-center gap-1.5 bg-stone-800 hover:bg-red-600 text-white px-4 py-2 rounded-full text-xs font-bold transition-all shadow-xs active:scale-95 cursor-pointer"
-                    title="Close details (Esc)"
-                    aria-label="Close details"
-                  >
-                    <span>Close</span>
-                    <X className="w-4 h-4" />
-                  </button>
+                  {/* Right: Share + Big Prominent Close Button */}
+                  <div className="flex items-center gap-2 shrink-0">
+                    <button
+                      onClick={(e) => handleShareProduct(activeProduct, e)}
+                      className="inline-flex items-center gap-1.5 bg-white hover:bg-stone-100 text-stone-700 border border-stone-300 px-3.5 py-2 rounded-full text-xs font-semibold transition-all shadow-xs active:scale-95 cursor-pointer"
+                      title="Share this product"
+                      aria-label="Share this product"
+                    >
+                      <Share2 className="w-3.5 h-3.5 text-clinic-bronze" />
+                      <span className="hidden sm:inline">Share</span>
+                    </button>
+
+                    <button
+                      onClick={handleCloseProduct}
+                      className="inline-flex items-center gap-1.5 bg-stone-800 hover:bg-red-600 text-white px-4 py-2 rounded-full text-xs font-bold transition-all shadow-xs active:scale-95 cursor-pointer"
+                      title="Close details (Esc)"
+                      aria-label="Close details"
+                    >
+                      <span>Close</span>
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
 
               {/* Scrollable Modal Content */}
@@ -625,6 +699,15 @@ export default function Store() {
                         <WhatsAppIcon className="w-4 h-4" />
                         Inquire as Sattvic Patient (WhatsApp)
                       </a>
+
+                      <button
+                        onClick={(e) => handleShareProduct(activeProduct, e)}
+                        className="inline-flex items-center gap-1.5 border border-stone-300 text-stone-700 hover:text-clinic-teal-900 hover:border-clinic-teal-900 px-4 py-2.5 rounded-full font-semibold text-xs transition-all cursor-pointer active:scale-95 shadow-2xs"
+                        title="Share formulation link"
+                      >
+                        <Share2 className="w-3.5 h-3.5 text-clinic-bronze" />
+                        <span>Share Product</span>
+                      </button>
 
                       <a
                         href="tel:+919404417145"
@@ -809,20 +892,29 @@ export default function Store() {
               </AnimatePresence>
 
               {/* Mobile Fixed Bottom Action Bar */}
-              <div className="sm:hidden absolute bottom-0 inset-x-0 bg-white/98 backdrop-blur-md border-t border-stone-200 p-3.5 flex items-center gap-2.5 z-30 shadow-lg">
+              <div className="sm:hidden absolute bottom-0 inset-x-0 bg-white/98 backdrop-blur-md border-t border-stone-200 p-3 flex items-center gap-2 z-30 shadow-lg">
                 <a
                   href={getWhatsappLink(activeProduct)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BE5C] text-white py-3 rounded-full font-semibold text-xs shadow-md active:scale-98"
+                  className="flex-1 inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BE5C] text-white py-2.5 rounded-full font-semibold text-xs shadow-md active:scale-98"
                 >
                   <WhatsAppIcon className="w-4 h-4" />
-                  Inquire as Sattvic Patient
+                  <span>Inquire (WhatsApp)</span>
                 </a>
 
                 <button
+                  onClick={(e) => handleShareProduct(activeProduct, e)}
+                  className="p-2.5 rounded-full bg-stone-100 text-stone-700 hover:bg-clinic-teal-900 hover:text-white border border-stone-300 active:scale-95 transition-all flex items-center justify-center"
+                  title="Share formulation"
+                  aria-label="Share formulation"
+                >
+                  <Share2 className="w-4 h-4" />
+                </button>
+
+                <button
                   onClick={handleCloseProduct}
-                  className="px-4 py-3 rounded-full bg-stone-800 text-white font-medium text-xs hover:bg-stone-900 active:scale-95"
+                  className="px-4 py-2.5 rounded-full bg-stone-800 text-white font-medium text-xs hover:bg-stone-900 active:scale-95"
                 >
                   Close
                 </button>
@@ -853,13 +945,23 @@ export default function Store() {
                 onClick={(e) => e.stopPropagation()}
                 className="relative max-w-4xl max-h-[90vh] bg-white rounded-3xl overflow-hidden shadow-2xl p-4 md:p-6 flex flex-col items-center"
               >
-                <button
-                  onClick={() => setIsImageExpanded(false)}
-                  className="absolute top-4 right-4 z-10 bg-stone-800 hover:bg-red-600 text-white p-2.5 rounded-full transition-colors cursor-pointer"
-                  aria-label="Close modal"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+                <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
+                  <button
+                    onClick={(e) => handleShareProduct(activeProduct, e)}
+                    className="bg-stone-800/80 hover:bg-clinic-teal-900 text-white p-2.5 rounded-full transition-colors cursor-pointer"
+                    title="Share product"
+                    aria-label="Share product"
+                  >
+                    <Share2 className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => setIsImageExpanded(false)}
+                    className="bg-stone-800 hover:bg-red-600 text-white p-2.5 rounded-full transition-colors cursor-pointer"
+                    aria-label="Close modal"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
 
                 <div className="w-full flex-1 overflow-auto flex items-center justify-center">
                   <img 
@@ -887,6 +989,24 @@ export default function Store() {
                   </p>
                 </div>
               </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
+
+      {/* Floating Share Toast Notification */}
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {toastMessage && (
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
+              className="fixed top-6 left-1/2 -translate-x-1/2 z-[10002] bg-clinic-teal-900 text-white px-5 py-3 rounded-full shadow-2xl flex items-center gap-2.5 text-xs font-semibold border border-clinic-gold/30"
+            >
+              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+              <span>{toastMessage}</span>
             </motion.div>
           )}
         </AnimatePresence>,
