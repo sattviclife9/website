@@ -1,0 +1,214 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <radialGradient id="bgGlowShatavari" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="60%" stop-color="#F7F3EE" />
+      <stop offset="100%" stop-color="#EAE2D5" />
+    </radialGradient>
+
+    <!-- Container Jar Gradient (Deep Jade / Emerald / Forest Frosted Jar) -->
+    <linearGradient id="jarGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#082A26" />
+      <stop offset="15%" stop-color="#0E443F" />
+      <stop offset="35%" stop-color="#18635C" />
+      <stop offset="60%" stop-color="#114C46" />
+      <stop offset="85%" stop-color="#0A322E" />
+      <stop offset="100%" stop-color="#051C1A" />
+    </linearGradient>
+
+    <!-- Jar Highlight Reflection -->
+    <linearGradient id="jarReflection" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0" />
+      <stop offset="25%" stop-color="#FFFFFF" stop-opacity="0.3" />
+      <stop offset="45%" stop-color="#FFFFFF" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Metallic Rose Gold / Gold Cap Gradient -->
+    <linearGradient id="goldCapShatavari" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7B502C" />
+      <stop offset="25%" stop-color="#DDA16E" />
+      <stop offset="50%" stop-color="#FCE5D0" />
+      <stop offset="75%" stop-color="#C98B58" />
+      <stop offset="100%" stop-color="#694020" />
+    </linearGradient>
+
+    <!-- Label Gradient -->
+    <linearGradient id="labelBgShatavari" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFCF8" />
+      <stop offset="100%" stop-color="#F9F4EB" />
+    </linearGradient>
+
+    <!-- Rose-Bronze Accent Gradient -->
+    <linearGradient id="roseBronzeAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9C5A2B" />
+      <stop offset="100%" stop-color="#B87333" />
+    </linearGradient>
+
+    <!-- Drop Shadow Filter -->
+    <filter id="jarShadow" x="-20%" y="-10%" width="140%" height="130%">
+      <feDropShadow dx="0" dy="25" stdDeviation="20" flood-color="#142B28" flood-opacity="0.25" />
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity="0.15" />
+    </filter>
+
+    <filter id="labelShadowShatavari" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.1" />
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="600" height="750" rx="24" fill="url(#bgGlowShatavari)" />
+
+  <!-- Subtle Botanical Ambient Background Watermark -->
+  <g opacity="0.04" stroke="#9C5A2B" stroke-width="2" fill="none">
+    <circle cx="300" cy="390" r="230" />
+    <circle cx="300" cy="390" r="180" stroke-dasharray="6,6" />
+    <path d="M300,160 Q360,280 300,390 Q240,280 300,160" />
+    <path d="M300,620 Q360,500 300,390 Q240,500 300,620" />
+  </g>
+
+  <!-- Jar Ground Shadow -->
+  <ellipse cx="300" cy="650" rx="155" ry="25" fill="#1A2D2A" opacity="0.25" filter="blur(10px)" />
+  <ellipse cx="300" cy="646" rx="105" ry="14" fill="#091413" opacity="0.38" filter="blur(4px)" />
+
+  <!-- Main Jar Group -->
+  <g filter="url(#jarShadow)">
+    
+    <!-- Wide Apothecary Jar Body -->
+    <rect x="160" y="220" width="280" height="400" rx="38" fill="url(#jarGradient)" />
+    
+    <!-- Jar Highlights / Glass Reflections -->
+    <rect x="180" y="225" width="32" height="385" rx="16" fill="url(#jarReflection)" />
+    <rect x="385" y="225" width="20" height="385" rx="10" fill="url(#jarReflection)" opacity="0.6" />
+
+    <!-- Jar Screw Neck Rim -->
+    <rect x="200" y="155" width="200" height="20" rx="5" fill="url(#goldCapShatavari)" />
+
+    <!-- Wide Heavy Metallic Cap -->
+    <rect x="180" y="90" width="240" height="75" rx="12" fill="url(#goldCapShatavari)" />
+    
+    <!-- Cap Ridges / Texture -->
+    <g opacity="0.25" stroke="#46250E" stroke-width="1.5">
+      <line x1="200" y1="92" x2="200" y2="160" />
+      <line x1="220" y1="92" x2="220" y2="160" />
+      <line x1="240" y1="92" x2="240" y2="160" />
+      <line x1="260" y1="92" x2="260" y2="160" />
+      <line x1="280" y1="92" x2="280" y2="160" />
+      <line x1="300" y1="92" x2="300" y2="160" />
+      <line x1="320" y1="92" x2="320" y2="160" />
+      <line x1="340" y1="92" x2="340" y2="160" />
+      <line x1="360" y1="92" x2="360" y2="160" />
+      <line x1="380" y1="92" x2="380" y2="160" />
+      <line x1="400" y1="92" x2="400" y2="160" />
+    </g>
+    <rect x="180" y="85" width="240" height="10" rx="4" fill="#FCE5D0" opacity="0.85" />
+
+    <!-- ============================================================= -->
+    <!-- PRODUCT LABEL                                                 -->
+    <!-- ============================================================= -->
+    <g filter="url(#labelShadowShatavari)">
+      <!-- Label Background Container -->
+      <rect x="175" y="255" width="250" height="335" rx="16" fill="url(#labelBgShatavari)" stroke="#C98B58" stroke-width="1.5" />
+      
+      <!-- Label Inner Bronze Border -->
+      <rect x="181" y="261" width="238" height="323" rx="12" fill="none" stroke="#B87333" stroke-width="0.8" stroke-dasharray="4,2" opacity="0.75" />
+
+      <!-- Top Header Brand Crest -->
+      <g transform="translate(300, 290)">
+        <!-- Elegant Lotus / Rejuvenation Bloom -->
+        <path d="M0,-14 C-6,-6 -8,0 0,6 C8,0 6,-6 0,-14 Z" fill="#C98B58" />
+        <path d="M-2,-2 C-10,-5 -14,2 -6,7 C-2,5 -1,1 -2,-2 Z" fill="#B87333" />
+        <path d="M2,-2 C10,-5 14,2 6,7 C2,5 1,1 2,-2 Z" fill="#B87333" />
+      </g>
+
+      <!-- Brand Name -->
+      <text x="300" y="312" font-family="serif" font-size="10.5" font-weight="700" letter-spacing="2.5" fill="#0E443F" text-anchor="middle">
+        SATTVIC ADVANCED AYURVEDA
+      </text>
+      <text x="300" y="324" font-family="sans-serif" font-size="6.5" font-weight="600" letter-spacing="1.5" fill="#9C5A2B" text-anchor="middle">
+        CLASSICAL RASAYANA SERIES
+      </text>
+
+      <!-- Horizontal Divider Line -->
+      <line x1="220" y1="332" x2="380" y2="332" stroke="#C98B58" stroke-width="1" />
+      <circle cx="300" cy="332" r="2.5" fill="#C98B58" />
+
+      <!-- Main Product Name (English) -->
+      <text x="300" y="372" font-family="serif" font-size="28" font-weight="bold" letter-spacing="2" fill="#0E443F" text-anchor="middle">
+        SHATAVARI
+      </text>
+
+      <!-- Product Name in Devanagari (Hindi) -->
+      <text x="300" y="396" font-family="sans-serif" font-size="16" font-weight="bold" fill="#9C5A2B" text-anchor="middle">
+        शतावरी
+      </text>
+
+      <!-- Formulation Category Banner -->
+      <rect x="200" y="408" width="200" height="22" rx="11" fill="url(#roseBronzeAccent)" />
+      <text x="300" y="423" font-family="sans-serif" font-size="7.5" font-weight="bold" letter-spacing="1" fill="#FFFFFF" text-anchor="middle">
+        WOMEN’S REJUVENATIVE RASAYANA
+      </text>
+
+      <!-- Subtitle / Clinical Function -->
+      <text x="300" y="450" font-family="serif" font-size="8.5" font-style="italic" fill="#2E4A44" text-anchor="middle">
+        Asparagus Racemosus Pure Root Formulation
+      </text>
+      <text x="300" y="463" font-family="sans-serif" font-size="7" fill="#555555" text-anchor="middle">
+        Hormonal Harmony • Lactation • Vitality &amp; Immunity
+      </text>
+
+      <!-- Decorative Divider -->
+      <line x1="230" y1="476" x2="370" y2="476" stroke="#E5D9C8" stroke-width="0.8" />
+
+      <!-- Key Botanical Highlights -->
+      <text x="300" y="490" font-family="sans-serif" font-size="6.5" font-weight="600" fill="#0E443F" text-anchor="middle">
+        Rich in Shatavarins • Pitta Shamak • Stree Roga Chikitsa
+      </text>
+
+      <!-- Bottom Badges Strip -->
+      <g transform="translate(190, 508)">
+        <rect x="0" y="0" width="70" height="25" rx="4" fill="#F4EFE6" />
+        <text x="35" y="11" font-family="sans-serif" font-size="5.5" font-weight="bold" fill="#8B4E22" text-anchor="middle">NET WEIGHT</text>
+        <text x="35" y="21" font-family="sans-serif" font-size="8" font-weight="bold" fill="#0E443F" text-anchor="middle">250 GM</text>
+
+        <rect x="76" y="0" width="70" height="25" rx="4" fill="#F4EFE6" />
+        <text x="111" y="11" font-family="sans-serif" font-size="5.5" font-weight="bold" fill="#8B4E22" text-anchor="middle">PURITY</text>
+        <text x="111" y="21" font-family="sans-serif" font-size="7.5" font-weight="bold" fill="#0E443F" text-anchor="middle">100% Pure</text>
+
+        <rect x="152" y="0" width="68" height="25" rx="4" fill="#F4EFE6" />
+        <text x="186" y="11" font-family="sans-serif" font-size="5.5" font-weight="bold" fill="#8B4E22" text-anchor="middle">GRADE</text>
+        <text x="186" y="21" font-family="sans-serif" font-size="7.5" font-weight="bold" fill="#0E443F" text-anchor="middle">Therapeutic</text>
+      </g>
+
+      <!-- Exclusivity Footer Banner on Label -->
+      <rect x="181" y="546" width="238" height="24" rx="0" fill="#0E443F" />
+      <text x="300" y="562" font-family="sans-serif" font-size="7" font-weight="bold" letter-spacing="1" fill="#FCE5D0" text-anchor="middle">
+        EXCLUSIVE FOR SATTVIC PATIENTS
+      </text>
+    </g>
+  </g>
+
+  <!-- Ambient Floating Botanical Accents -->
+  <g transform="translate(105, 530) rotate(-20)">
+    <!-- Delicate Herb Accent -->
+    <path d="M0,0 Q20,-35 45,-15 Q20,15 0,0 Z" fill="#4B8563" opacity="0.85" />
+    <path d="M0,0 Q20,-18 45,-15" stroke="#2D5C3E" stroke-width="1.2" fill="none" />
+  </g>
+  <g transform="translate(485, 560) rotate(30)">
+    <!-- Delicate Herb Accent -->
+    <path d="M0,0 Q-25,-30 -50,-10 Q-25,18 0,0 Z" fill="#3D7554" opacity="0.85" />
+    <path d="M0,0 Q-25,-15 -50,-10" stroke="#1D442C" stroke-width="1.2" fill="none" />
+  </g>
+
+  <!-- Corner Trust Pill -->
+  <g transform="translate(30, 30)">
+    <rect width="180" height="34" rx="17" fill="#0E443F" />
+    <circle cx="18" cy="17" r="8" fill="#DDA16E" />
+    <path d="M15,17 L17.5,19.5 L22,14" stroke="#0E443F" stroke-width="1.8" fill="none" />
+    <text x="34" y="21" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF" letter-spacing="0.5">
+      PATIENT EXCLUSIVE
+    </text>
+  </g>
+
+</svg>

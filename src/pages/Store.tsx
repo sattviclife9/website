@@ -276,7 +276,17 @@ export default function Store() {
                     <img 
                       src={prod.image} 
                       alt={prod.name} 
+                      referrerPolicy="no-referrer"
+                      loading="lazy"
                       className="w-full h-full object-contain"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        if (target.src.includes('drive.google.com') || target.src.includes('googleusercontent.com')) {
+                          target.src = `/${prod.id}.webp`;
+                        } else if (!target.src.endsWith('.svg')) {
+                          target.src = `/${prod.id}.svg`;
+                        }
+                      }}
                     />
                     <span className="absolute bottom-1.5 right-1.5 bg-clinic-teal-900 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md uppercase">
                       {prod.quantity}
@@ -480,7 +490,16 @@ export default function Store() {
                       <img 
                         src={activeProduct.image} 
                         alt={`${activeProduct.name} - ${activeProduct.tagline}`}
+                        referrerPolicy="no-referrer"
                         className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                        onError={(e) => {
+                          const target = e.currentTarget;
+                          if (target.src.includes('drive.google.com') || target.src.includes('googleusercontent.com')) {
+                            target.src = `/${activeProduct.id}.webp`;
+                          } else if (!target.src.endsWith('.svg')) {
+                            target.src = `/${activeProduct.id}.svg`;
+                          }
+                        }}
                       />
 
                       {/* Expand Image Button */}
@@ -846,7 +865,16 @@ export default function Store() {
                   <img 
                     src={activeProduct.image} 
                     alt={`${activeProduct.name} packaging`}
+                    referrerPolicy="no-referrer"
                     className="max-h-[75vh] w-auto object-contain rounded-xl"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (target.src.includes('drive.google.com') || target.src.includes('googleusercontent.com')) {
+                        target.src = `/${activeProduct.id}.webp`;
+                      } else if (!target.src.endsWith('.svg')) {
+                        target.src = `/${activeProduct.id}.svg`;
+                      }
+                    }}
                   />
                 </div>
 
