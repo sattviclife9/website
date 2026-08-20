@@ -9,6 +9,9 @@ export interface Product {
   price?: string;
   inStock: boolean;
   featured: boolean;
+  exclusiveForPatients?: boolean;
+  exclusivityNotice?: string;
+  patientBadge?: string;
   shortDescription: string;
   fullDescription: string;
   keyBenefits: {
@@ -41,6 +44,9 @@ export const PRODUCTS: Product[] = [
     price: "Consult for Pricing / Dispensation",
     inStock: true,
     featured: true,
+    exclusiveForPatients: true,
+    patientBadge: "Exclusive for Sattvic Patients",
+    exclusivityNotice: "Formulated and dispensed exclusively for registered patients of Sattvic Advanced Ayurveda under physician evaluation.",
     shortDescription: "A potent, classical Ayurvedic formulation designed to purify the bloodstream (Rakta Dhatu), pacify aggravated Pitta-Kapha doshas, and provide lasting relief from psoriasis, eczema, dermatitis, acne, and chronic pruritus.",
     fullDescription: "Sattvic Rakta-B is a specialized classical Ayurvedic blood-purifying formulation (Rakta Shodhaka) crafted with time-honored botanical extracts at Sattvic Advanced Ayurveda & Panchakarma Centre. Formulated specifically to eliminate deep-seated metabolic endotoxins (Ama) circulating in the microvascular network, Rakta-B addresses the root etiology of chronic dermatological diseases (Kushtha Roga). By soothing internal metabolic heat, supporting hepatic and splenic clearance, and optimizing dermal microcirculation, it restores the skin's natural barrier, promotes cellular renewal, and delivers clear, radiant skin.",
     keyBenefits: [
@@ -138,6 +144,9 @@ export const PRODUCTS: Product[] = [
     price: "Consult for Pricing / Dispensation",
     inStock: true,
     featured: true,
+    exclusiveForPatients: true,
+    patientBadge: "Exclusive for Sattvic Patients",
+    exclusivityNotice: "Formulated and dispensed exclusively for registered patients of Sattvic Advanced Ayurveda under physician evaluation.",
     shortDescription: "Pure, premium classical Shatavari (Asparagus racemosus) formulation specifically crafted to support women's reproductive health, hormonal balance, lactation, digestive cooling, and full-body vitality (Rasayana).",
     fullDescription: "Sattvic Shatavari (शतावरी - Asparagus racemosus) is revered in classical Ayurvedic literature as the 'Queen of Herbs' for women's reproductive vitality and holistic wellness. Literally translated as 'she who possesses a hundred husbands,' Shatavari is a premier adaptogen and Rasayana. Sourced from high-altitude potent roots and traditionally processed, it provides natural phytoestrogens to balance hormonal fluctuations, soothe the digestive tract against excess Pitta heat (hyperacidity and ulcers), boost breast milk production (Stanyajanana), and enhance immune resilience (Ojas) for women at all life stages—from adolescence to motherhood and menopause.",
     keyBenefits: [

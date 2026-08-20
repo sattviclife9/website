@@ -192,7 +192,7 @@ export default function Store() {
 
   const getWhatsappLink = (product: Product) => {
     const text = encodeURIComponent(
-      `Hello! I would like to inquire about/order ${product.name} (${product.quantity}) from Sattvic Advanced Ayurveda.`
+      `Hello Doctor! I am a registered patient / consulting with Sattvic Advanced Ayurveda. I would like to inquire about/order the patient-exclusive formulation: ${product.name} (${product.quantity}).`
     );
     return `https://wa.me/919404417145?text=${text}`;
   };
@@ -200,9 +200,9 @@ export default function Store() {
   return (
     <>
       <SEO
-        title="Ayurvedic Store & Apothecary | Classical Formulations & Medicines"
-        description="Explore authentic physician-formulated Ayurvedic medicines at Sattvic Advanced Ayurveda, Pune. Classical formulations including Rakta-B (Blood Purifier) and Shatavari (Women's Health & Rejuvenation)."
-        keywords="Ayurvedic store Pune, Shatavari powder Pune, Rakta-B tablets, Ayurvedic blood purifier, women wellness Ayurveda, PCOS Ayurvedic medicine, authentic Ayurvedic apothecary Pune"
+        title="Ayurvedic Store & Apothecary | Exclusive Formulations for Sattvic Patients"
+        description="Authentic physician-formulated Ayurvedic medicines dispensed exclusively for registered patients of Sattvic Advanced Ayurveda, Pune. Classical formulations including Rakta-B (Blood Purifier) and Shatavari (Women's Health & Rejuvenation)."
+        keywords="Ayurvedic store Pune, Sattvic patient exclusive medicines, Shatavari powder Pune, Rakta-B tablets, Ayurvedic blood purifier, women wellness Ayurveda, PCOS Ayurvedic medicine, authentic Ayurvedic apothecary Pune"
       />
 
       <WellnessNav />
@@ -221,12 +221,11 @@ export default function Store() {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto text-center mb-10 md:mb-14"
           >
-            <div className="mb-3 inline-flex items-center gap-3">
-              <span className="h-[1px] w-8 bg-clinic-bronze"></span>
-              <span className="text-clinic-bronze font-serif italic text-sm md:text-base">
-                Classical Apothecary & Physician Formulations
+            <div className="mb-3 inline-flex items-center gap-2 bg-amber-50 border border-amber-200/80 px-3.5 py-1.5 rounded-full shadow-2xs">
+              <Award className="w-4 h-4 text-amber-700" />
+              <span className="text-amber-900 font-semibold text-xs uppercase tracking-wider">
+                Exclusive Formulations for Sattvic Patients
               </span>
-              <span className="h-[1px] w-8 bg-clinic-bronze"></span>
             </div>
             
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-clinic-teal-900 leading-[1.1] mb-4 font-light">
@@ -234,7 +233,7 @@ export default function Store() {
             </h1>
             
             <p className="text-sm sm:text-base md:text-lg text-clinic-charcoal/80 font-light leading-relaxed max-w-2xl mx-auto">
-              Authentic physician-formulated herbal medicines, single-herb classical extracts, and therapeutic preparations adhering to classical Ayurvedic pharmacopoeia.
+              Authentic physician-formulated herbal medicines, single-herb classical extracts, and therapeutic preparations adhering to classical Ayurvedic pharmacopoeia—dispensed exclusively under clinical consultation.
             </p>
           </motion.div>
 
@@ -250,7 +249,18 @@ export default function Store() {
                 onClick={() => handleOpenProduct(prod)}
                 className="bg-white rounded-3xl p-6 sm:p-7 border border-stone-200 shadow-xs hover:shadow-lg hover:border-clinic-teal-900/40 transition-all duration-300 flex flex-col justify-between cursor-pointer group relative overflow-hidden"
               >
-                {/* Top Badge Strip */}
+                {/* Top Patient Exclusivity Ribbon / Strip */}
+                <div className="mb-3.5 -mx-6 -mt-6 sm:-mx-7 sm:-mt-7 px-6 sm:px-7 py-2 bg-linear-to-r from-amber-500/15 via-amber-500/10 to-transparent border-b border-amber-200/60 flex items-center justify-between">
+                  <div className="inline-flex items-center gap-1.5 text-amber-900 font-bold text-[11px]">
+                    <Award className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                    <span>Exclusive for Sattvic Patients</span>
+                  </div>
+                  <span className="text-[10px] text-amber-800/80 font-medium hidden sm:inline">
+                    Physician Prescribed
+                  </span>
+                </div>
+
+                {/* Top Category Badge Strip */}
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-clinic-bronze bg-clinic-bronze/10 px-3 py-1 rounded-full">
                     {prod.category.split('(')[0].trim()}
@@ -270,6 +280,9 @@ export default function Store() {
                     />
                     <span className="absolute bottom-1.5 right-1.5 bg-clinic-teal-900 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md uppercase">
                       {prod.quantity}
+                    </span>
+                    <span className="absolute top-1.5 left-1.5 bg-amber-600 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-sm uppercase tracking-tight shadow-xs">
+                      Exclusive
                     </span>
                   </div>
 
@@ -328,7 +341,7 @@ export default function Store() {
                     }}
                     className="flex-1 inline-flex items-center justify-center gap-2 bg-clinic-teal-900 hover:bg-clinic-teal-800 text-white px-4 py-2.5 rounded-full text-xs font-semibold shadow-xs hover:shadow-md transition-all cursor-pointer"
                   >
-                    <span>View Full Details & Ingredients</span>
+                    <span>View Details & Patient Info</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
 
@@ -506,7 +519,12 @@ export default function Store() {
                   {/* Right: Title, Indications & Quick CTAs */}
                   <div className="md:col-span-7 flex flex-col justify-between">
                     <div>
-                      <div className="flex items-center gap-2 mb-2">
+                      {/* Top Badges */}
+                      <div className="flex flex-wrap items-center gap-2 mb-2.5">
+                        <span className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-amber-900 bg-amber-100 border border-amber-300/80 px-2.5 py-0.5 rounded-full shadow-2xs">
+                          <Award className="w-3 h-3 text-amber-800 shrink-0" />
+                          Exclusive for Sattvic Patients
+                        </span>
                         <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-clinic-bronze bg-clinic-bronze/10 px-2.5 py-0.5 rounded-full">
                           {activeProduct.category}
                         </span>
@@ -526,9 +544,20 @@ export default function Store() {
                         )}
                       </div>
 
-                      <p className="text-xs sm:text-sm text-stone-600 font-medium mb-4 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-stone-600 font-medium mb-3.5 leading-relaxed">
                         {activeProduct.tagline}
                       </p>
+
+                      {/* Patient Exclusivity Callout Box */}
+                      <div className="p-3.5 bg-amber-50/90 rounded-2xl border border-amber-200/80 mb-3.5 text-xs text-amber-950 leading-relaxed shadow-2xs">
+                        <div className="flex items-center gap-1.5 font-bold text-[11px] uppercase tracking-wider text-amber-900 mb-1">
+                          <ShieldCheck className="w-3.5 h-3.5 text-amber-800" />
+                          <span>Patient Exclusivity Notice</span>
+                        </div>
+                        <p className="text-[11px] sm:text-xs text-amber-900/90 leading-relaxed">
+                          This classical formulation is formulated and dispensed <strong>exclusively for registered patients</strong> of Sattvic Advanced Ayurveda & Panchakarma Centre under personalized physician diagnosis.
+                        </p>
+                      </div>
 
                       <div className="p-3.5 bg-emerald-50/70 rounded-2xl border border-emerald-100 mb-4 text-xs text-emerald-950 leading-relaxed">
                         <strong className="font-semibold block mb-0.5">Primary Clinical Action:</strong>
@@ -572,10 +601,10 @@ export default function Store() {
                         href={getWhatsappLink(activeProduct)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20BE5C] text-white px-5 py-2.5 rounded-full font-medium text-xs transition-all shadow-xs active:scale-98"
+                        className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20BE5C] text-white px-5 py-2.5 rounded-full font-semibold text-xs transition-all shadow-xs active:scale-98"
                       >
                         <WhatsAppIcon className="w-4 h-4" />
-                        Inquire / Order on WhatsApp
+                        Inquire as Sattvic Patient (WhatsApp)
                       </a>
 
                       <a
@@ -766,10 +795,10 @@ export default function Store() {
                   href={getWhatsappLink(activeProduct)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BE5C] text-white py-3 rounded-full font-medium text-xs shadow-md active:scale-98"
+                  className="flex-1 inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BE5C] text-white py-3 rounded-full font-semibold text-xs shadow-md active:scale-98"
                 >
                   <WhatsAppIcon className="w-4 h-4" />
-                  Inquire on WhatsApp
+                  Inquire as Sattvic Patient
                 </a>
 
                 <button
