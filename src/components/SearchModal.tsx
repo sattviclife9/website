@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Search, X, ChevronRight, Activity, Calendar, Newspaper } from 'lucide-react';
+import { Search, X, ChevronRight, Activity, Calendar, Newspaper, Pill } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useScrollLock } from '../hooks/useScrollLock';
 
@@ -10,10 +10,11 @@ import { NEWS_ARTICLES } from '../data/newsData';
 import { ANNOUNCEMENTS } from '../data/announcementsData';
 import { PROCEDURES } from '../pages/Services';
 import { TREATMENTS_CATEGORIES } from '../pages/Treatments';
+import { PRODUCTS } from '../data/productsData';
 
 interface SearchResult {
   title: string;
-  category: 'Treatment' | 'Condition' | 'News' | 'Announcement' | 'Page';
+  category: 'Treatment' | 'Condition' | 'News' | 'Announcement' | 'Page' | 'Medicine';
   path: string;
   description: string;
   icon?: React.ReactNode;
@@ -247,6 +248,35 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
       })
     );
 
+    // Search Products / Medicines
+    const matchedProducts: SearchResult[] = PRODUCTS
+      .flatMap(prod => {
+        const textToSearch = [
+          prod.name,
+          prod.hindiName || '',
+          prod.tagline,
+          prod.category,
+          prod.shortDescription,
+          prod.indications.join(' '),
+          prod.keyIngredients.map(i => `${i.name} ${i.botanicalName || ''}`).join(' ')
+        ].join(' ').toLowerCase();
+
+        if (!searchTerms.every(term => textToSearch.includes(term))) {
+          return [];
+        }
+
+        const score = calculateScore(prod.name, prod.tagline, prod.indications.join(' '));
+
+        return [{
+          title: prod.hindiName ? `${prod.name} (${prod.hindiName})` : prod.name,
+          category: 'Medicine' as any,
+          path: `/store?product=${prod.id}`,
+          description: `${prod.quantity} • ${prod.tagline}`,
+          icon: <Pill className="w-4 h-4 text-clinic-bronze" />,
+          score: score + 50 // prioritize medicines
+        }];
+      });
+
     // Search Pages
     const matchedPages: SearchResult[] = ALL_PAGES
       .flatMap(p => {
@@ -271,6 +301,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     const combinedMap = new Map<string, SearchResult>();
 
     [
+      ...matchedProducts,
       ...matchedConditions,
       ...matchedTreatmentsCategories,
       ...matchedProcedures,
@@ -325,6 +356,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
   const getCategoryColor = (category: string) => {
     switch(category) {
+      case 'Medicine': return 'bg-emerald-100 text-emerald-800';
       case 'Condition': return 'bg-clinic-bronze/10 text-clinic-bronze';
       case 'News': return 'bg-blue-100 text-blue-800';
       case 'Announcement': return 'bg-purple-100 text-purple-800';
